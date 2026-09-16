@@ -633,3 +633,23 @@
 .ev-form > .mv-tabs button {
   white-space: nowrap;
 }
+
+.ev-facility-facts {
+  margin: 0;
+}
+.ev-facility-facts > div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--mv-border);
+  font-size: 14px;
+  line-height: 22px;
+}
+.ev-facility-facts dt {
+  color: var(--mv-text-secondary);
+}
+.ev-facility-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

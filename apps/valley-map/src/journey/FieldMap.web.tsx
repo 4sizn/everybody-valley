@@ -17,7 +17,6 @@ import {
 } from '@modu-valley/core';
 import {
   Alert,
-  Badge,
   Button,
   Chip,
   Dialog,
@@ -147,8 +146,10 @@ function MapChrome({
       const match = lookupFacility(valleys, state.selectedFacilityId);
       if (match.ok) {
         const segment = match.value.valley.segments[0];
-        if (segment)
+        if (segment) {
           onPlace({ valley: match.value.valley, segment, facility: match.value.facility });
+          setSheet('half');
+        }
       }
     } else if (
       state.selectedSegmentId &&
@@ -239,10 +240,17 @@ function MapChrome({
     if (result.ok) {
       void session.recenterSelection();
       onPlace(next);
-      setSheet('peek');
+      setSheet(next.facility ? 'half' : 'peek');
     }
     selecting.current = false;
   };
+  const backToValley = () => {
+    setTab('segment');
+    void select({ valley: place.valley, segment: place.segment });
+  };
+  useEffect(() => {
+    if (place.facility) setOverlay(null);
+  }, [place.facility]);
   const title = place.facility?.name ?? place.valley.name;
   const destination = place.facility?.position ?? place.segment.midpoint();
   const shade = state.valleyShade?.get(place.valley.id);
@@ -250,11 +258,19 @@ function MapChrome({
     <div className="ev-map-chrome">
       <div className="app-map-top ev-map-top" ref={topRef}>
         <header className="map-place-header ev-selected">
-          <IconButton icon="arrow-left" label="선택 해제하고 탐색으로" onClick={onLeave} />
+          <IconButton
+            icon="arrow-left"
+            label={place.facility ? '계곡 지도로 돌아가기' : '선택 해제하고 탐색으로'}
+            onClick={place.facility ? backToValley : onLeave}
+          />
           <div className="ev-selected-title">
             <h1>{title}</h1>
           </div>
-          <IconButton icon="x" label="선택 해제" onClick={onLeave} />
+          <IconButton
+            icon="x"
+            label={place.facility ? '시설 선택 해제' : '선택 해제'}
+            onClick={place.facility ? backToValley : onLeave}
+          />
         </header>
         <Alert status={risk} title={weatherTitle}>
           {observed
@@ -280,7 +296,7 @@ function MapChrome({
           </Alert>
         )}
       </div>
-      {sheet === 'peek' && (
+      {sheet === 'peek' && !place.facility && (
         <div className="ev-map-tools" style={{ top: top + 4 }}>
           <MapTool
             icon="tree-pine"
@@ -387,12 +403,8 @@ function MapChrome({
                 <Button icon="navigation" onClick={() => setDirections(true)}>
                   길찾기
                 </Button>
-                <Button
-                  variant="secondary"
-                  icon="map"
-                  onClick={() => void select({ valley: place.valley, segment: place.segment })}
-                >
-                  계곡 지도
+                <Button variant="secondary" icon="map" onClick={backToValley}>
+                  계곡으로 돌아가기
                 </Button>
               </>
             ) : (
@@ -420,170 +432,184 @@ function MapChrome({
             )
           }
         >
-          <div className="ev-sheet-stack">
-            <Tabs
-              label="현장 정보"
-              value={tab}
-              onChange={setTab}
-              options={[
-                { value: 'segment', label: '구간 정보' },
-                { value: 'facilities', label: '주변 시설' },
-                { value: 'blogs', label: '방문 후기' },
-                { value: 'rain', label: '강우' },
-                { value: 'reports', label: '현장 제보' },
-              ]}
-            />
-            {tab === 'segment' && (
-              <>
-                <div className="ev-choice">
-                  {place.valley.segments.map((s) => (
-                    <Chip
-                      key={s.id}
-                      selected={s.id === place.segment.id && !place.facility}
-                      onClick={() => void select({ valley: place.valley, segment: s })}
-                    >
-                      {segmentPositionLabel(s.position)}
-                    </Chip>
-                  ))}
+          {place.facility ? (
+            <section className="ev-sheet-stack" aria-label={`${title} 시설 정보`}>
+              <h3>이용 정보</h3>
+              <dl className="ev-facility-facts">
+                <div>
+                  <dt>운영시간</dt>
+                  <dd>{place.facility.operatingHours ?? '미확인'}</dd>
                 </div>
-                {place.facility && (
-                  <>
-                    <Badge>{facilityTypeLabel(place.facility.facilityType)}</Badge>
-                    <p>
-                      {place.facility.feeNote ?? '이용 요금 미확인'} ·{' '}
-                      {place.facility.operatingHours ?? '운영시간 미확인'}
-                    </p>
-                    <Button
-                      variant="secondary"
-                      onClick={() => void select({ valley: place.valley, segment: place.segment })}
-                    >
-                      계곡 지도 보기
-                    </Button>
-                  </>
+                <div>
+                  <dt>이용 요금</dt>
+                  <dd>{place.facility.feeNote ?? '미확인'}</dd>
+                </div>
+                {place.facility.capacity !== undefined && (
+                  <div>
+                    <dt>{place.facility.facilityType === 'parking' ? '주차 면수' : '수용 규모'}</dt>
+                    <dd>{place.facility.capacity}</dd>
+                  </div>
                 )}
-                <div className="app-metrics">
-                  <Metric
-                    label="수심"
-                    value={place.segment.depth ? depthLabel(place.segment.depth) : '미확인'}
-                    icon="waves"
-                  />
-                  <Metric
-                    label="바닥"
-                    value={place.segment.bed ? bedLabel(place.segment.bed) : '미확인'}
-                  />
-                  <Metric
-                    label="그늘 비율"
-                    value={
-                      place.segment.shadeByHour?.[hour - 10] === undefined
-                        ? '미확인'
-                        : `${Math.round((place.segment.shadeByHour[hour - 10] ?? 0) * 100)}% · 추정`
-                    }
+                {place.facility.nationalPointNumber && (
+                  <div>
+                    <dt>국가지점번호</dt>
+                    <dd>{place.facility.nationalPointNumber}</dd>
+                  </div>
+                )}
+              </dl>
+              <p className="ev-muted">운영 여부와 이용 조건은 방문 전에 시설에 확인해주세요.</p>
+            </section>
+          ) : (
+            <div className="ev-sheet-stack">
+              <Tabs
+                label="현장 정보"
+                value={tab}
+                onChange={setTab}
+                options={[
+                  { value: 'segment', label: '구간 정보' },
+                  { value: 'facilities', label: '주변 시설' },
+                  { value: 'blogs', label: '방문 후기' },
+                  { value: 'rain', label: '강우' },
+                  { value: 'reports', label: '현장 제보' },
+                ]}
+              />
+              {tab === 'segment' && (
+                <>
+                  <div className="ev-choice">
+                    {place.valley.segments.map((s) => (
+                      <Chip
+                        key={s.id}
+                        selected={s.id === place.segment.id && !place.facility}
+                        onClick={() => void select({ valley: place.valley, segment: s })}
+                      >
+                        {segmentPositionLabel(s.position)}
+                      </Chip>
+                    ))}
+                  </div>
+                  <div className="app-metrics">
+                    <Metric
+                      label="수심"
+                      value={place.segment.depth ? depthLabel(place.segment.depth) : '미확인'}
+                      icon="waves"
+                    />
+                    <Metric
+                      label="바닥"
+                      value={place.segment.bed ? bedLabel(place.segment.bed) : '미확인'}
+                    />
+                    <Metric
+                      label="그늘 비율"
+                      value={
+                        place.segment.shadeByHour?.[hour - 10] === undefined
+                          ? '미확인'
+                          : `${Math.round((place.segment.shadeByHour[hour - 10] ?? 0) * 100)}% · 추정`
+                      }
+                      icon="tree-pine"
+                    />
+                    <Metric label="구간 길이" value={place.segment.length().format()} />
+                  </div>
+                  <p>{place.segment.riskNote ?? '이용 조건과 현장 통제를 방문 전에 확인하세요.'}</p>
+                  <Button
+                    variant="secondary"
                     icon="tree-pine"
-                  />
-                  <Metric label="구간 길이" value={place.segment.length().format()} />
-                </div>
-                <p>{place.segment.riskNote ?? '이용 조건과 현장 통제를 방문 전에 확인하세요.'}</p>
-                <Button
-                  variant="secondary"
-                  icon="tree-pine"
-                  onClick={() => {
-                    setOverlay('shade');
-                    setSheet('peek');
-                  }}
-                >
-                  시간별 그늘 보기
-                </Button>
-                <Button
-                  variant="ghost"
-                  icon="layers"
-                  onClick={() => {
-                    setOverlay('land');
-                    setSheet('peek');
-                  }}
-                >
-                  토지 경계 보기
-                </Button>
-                <Button variant="secondary" icon="navigation" onClick={() => setDirections(true)}>
-                  선택 구간 길찾기
-                </Button>
-                <Button
-                  variant="secondary"
-                  icon="message-square"
-                  onClick={() => {
-                    setTab('reports');
-                    setComposer(true);
-                  }}
-                >
-                  현장 제보 작성
-                </Button>
-                <p className="ev-muted">
-                  자료 출처: {state.valleyMetadata?.description ?? '계곡·시설 수집 자료'}. 그늘은{' '}
-                  {shade?.metadata.source ?? '지형·수관 모델'} 기반 추정입니다.
-                </p>
-              </>
-            )}
-            {tab === 'facilities' && (
-              <>
-                {place.valley
-                  .facilitiesByDistance(place.segment.midpoint())
-                  .map(({ facility, distance }) => (
-                    <div key={facility.id}>
-                      <FacilityRow
-                        name={facility.name}
-                        type={facilityTypeLabel(facility.facilityType)}
-                        valley={`${place.valley.name} · 직선 ${distance.format()}`}
-                        onClick={() => void select({ ...place, facility })}
-                      />
-                    </div>
-                  ))}
-                {!place.valley.facilities.length && (
-                  <EmptyState
-                    title="등록된 시설이 없어요"
-                    description="시설 없음과 위치 정보 미확인은 다릅니다. 현장 안내를 확인하세요."
-                  />
-                )}
-              </>
-            )}
-            {tab === 'rain' && (
-              <>
-                <Alert status={risk} title={weatherTitle}>
-                  {observed
-                    ? `마지막 관측: ${new Date(observed).toLocaleString('ko-KR')}`
-                    : '관측 시각 미확인'}
-                </Alert>
-                <div className="app-metrics">
-                  <Metric
-                    label="1시간 강우"
-                    value={
-                      alert?.rainfall1hMm === undefined ? '자료 없음' : `${alert.rainfall1hMm} mm`
-                    }
-                    icon="cloud-rain"
-                  />
-                  <Metric
-                    label="3시간 강우"
-                    value={
-                      alert?.rainfall3hMm === undefined ? '자료 없음' : `${alert.rainfall3hMm} mm`
-                    }
-                  />
-                </div>
-                <p className="ev-muted">
-                  관측소·유역 기준 정보이며 현장 안전이나 입수 가능을 보장하지 않습니다.
-                </p>
-                <Button variant="secondary" onClick={weather.refresh}>
-                  관측 정보 새로고침
-                </Button>
-                <Button variant="ghost" onClick={onSafety}>
-                  계곡 이용 안전 안내
-                </Button>
-              </>
-            )}
-            {tab === 'reports' && (
-              <Reports place={place} compose={composer} onCompose={setComposer} risk={risk} />
-            )}
-            {tab === 'blogs' && (
-              <BlogSection discovery={discovery} valleys={[place.valley]} valley={place.valley} />
-            )}
-          </div>
+                    onClick={() => {
+                      setOverlay('shade');
+                      setSheet('peek');
+                    }}
+                  >
+                    시간별 그늘 보기
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    icon="layers"
+                    onClick={() => {
+                      setOverlay('land');
+                      setSheet('peek');
+                    }}
+                  >
+                    토지 경계 보기
+                  </Button>
+                  <Button variant="secondary" icon="navigation" onClick={() => setDirections(true)}>
+                    선택 구간 길찾기
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    icon="message-square"
+                    onClick={() => {
+                      setTab('reports');
+                      setComposer(true);
+                    }}
+                  >
+                    현장 제보 작성
+                  </Button>
+                  <p className="ev-muted">
+                    자료 출처: {state.valleyMetadata?.description ?? '계곡·시설 수집 자료'}. 그늘은{' '}
+                    {shade?.metadata.source ?? '지형·수관 모델'} 기반 추정입니다.
+                  </p>
+                </>
+              )}
+              {tab === 'facilities' && (
+                <>
+                  {place.valley
+                    .facilitiesByDistance(place.segment.midpoint())
+                    .map(({ facility, distance }) => (
+                      <div key={facility.id}>
+                        <FacilityRow
+                          name={facility.name}
+                          type={facilityTypeLabel(facility.facilityType)}
+                          valley={`${place.valley.name} · 직선 ${distance.format()}`}
+                          onClick={() => void select({ ...place, facility })}
+                        />
+                      </div>
+                    ))}
+                  {!place.valley.facilities.length && (
+                    <EmptyState
+                      title="등록된 시설이 없어요"
+                      description="시설 없음과 위치 정보 미확인은 다릅니다. 현장 안내를 확인하세요."
+                    />
+                  )}
+                </>
+              )}
+              {tab === 'rain' && (
+                <>
+                  <Alert status={risk} title={weatherTitle}>
+                    {observed
+                      ? `마지막 관측: ${new Date(observed).toLocaleString('ko-KR')}`
+                      : '관측 시각 미확인'}
+                  </Alert>
+                  <div className="app-metrics">
+                    <Metric
+                      label="1시간 강우"
+                      value={
+                        alert?.rainfall1hMm === undefined ? '자료 없음' : `${alert.rainfall1hMm} mm`
+                      }
+                      icon="cloud-rain"
+                    />
+                    <Metric
+                      label="3시간 강우"
+                      value={
+                        alert?.rainfall3hMm === undefined ? '자료 없음' : `${alert.rainfall3hMm} mm`
+                      }
+                    />
+                  </div>
+                  <p className="ev-muted">
+                    관측소·유역 기준 정보이며 현장 안전이나 입수 가능을 보장하지 않습니다.
+                  </p>
+                  <Button variant="secondary" onClick={weather.refresh}>
+                    관측 정보 새로고침
+                  </Button>
+                  <Button variant="ghost" onClick={onSafety}>
+                    계곡 이용 안전 안내
+                  </Button>
+                </>
+              )}
+              {tab === 'reports' && (
+                <Reports place={place} compose={composer} onCompose={setComposer} risk={risk} />
+              )}
+              {tab === 'blogs' && (
+                <BlogSection discovery={discovery} valleys={[place.valley]} valley={place.valley} />
+              )}
+            </div>
+          )}
         </MapSheet>
       </div>
       <Dialog

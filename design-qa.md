@@ -57,3 +57,14 @@ final result: passed (모바일·데스크톱 웹의 아래 검증 범위)
 - 사진은 Ingo Stiller/Unsplash의 검증용 사진이며 실제 백운계곡 실사진이 아니다. 운영 DB에는 예시 콘텐츠를 넣지 않았다.
 
 증거: `.proof/editorial/home-proof.png`, `valley-proof.png`; 상세 재현은 [VALIDATION.md](docs/migration/VALIDATION.md).
+
+## 시설 선택 범위 (2026-09-17)
+
+final result: passed (웹 시설 상세)
+
+사용자가 제공한 문정휴게소 화면에서는 시설명 아래에 계곡용 탭과 구간 정보가 함께 표시됐다. 시설/계곡 본문을 분기해 P1 정보 대상 혼동을 수정했다. 원본 토큰과 MapSheet는 그대로 사용했다.
+
+- 시설 half/full: 계곡 탭 없음, 시설 이용 정보·길찾기·명시적 계곡 복귀만 표시. 보유하지 않은 운영시간/요금은 미확인으로 유지.
+- 390×844와 360×740의 실제 캡처를 열어 글자·버튼·하단 고정 영역·스크롤을 확인. 남은 P0/P1/P2 없음.
+- 지도 핀 직접 선택, 시설 목록, 직접 링크, 선택 해제→계곡 탭 복구 확인.
+- 증거 `.proof/facility/facility-390.png`, `facility-360-full.png`.
