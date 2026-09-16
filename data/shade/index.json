@@ -1,0 +1,3178 @@
+{
+  "generator": "scripts/shade 0.1.0",
+  "valleys": {
+    "jeungsimsa": {
+      "builtAt": "2026-09-08T15:42:52Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.95231, 35.11812, 126.97508, 35.13666],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N35_00_E126_00_DEM", "Copernicus_DSM_COG_10_N35_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132112120"],
+          "acquisition": ["2019-05"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 105.47,
+          "elevation": 51.01,
+          "shadeFrac": 0.8682
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 121.62,
+          "elevation": 62.27,
+          "shadeFrac": 0.8668
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 150.94,
+          "elevation": 70.89,
+          "shadeFrac": 0.8665
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.96,
+          "elevation": 72.24,
+          "shadeFrac": 0.8665
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 231.84,
+          "elevation": 65.11,
+          "shadeFrac": 0.8665
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 250.63,
+          "elevation": 54.31,
+          "shadeFrac": 0.8671
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 262.5,
+          "elevation": 42.38,
+          "shadeFrac": 0.8697
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 271.61,
+          "elevation": 30.15,
+          "shadeFrac": 0.8803
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.73,
+          "elevation": 17.97,
+          "shadeFrac": 0.9104
+        }
+      ],
+      "segments": {
+        "jeungsimsa-whole": {
+          "canopyCover": 0.398,
+          "shadeByHour": [0.402, 0.399, 0.398, 0.399, 0.399, 0.404, 0.41, 0.416, 0.485]
+        }
+      },
+      "files": {
+        "canopy.geojson": 57318,
+        "shadow-10.geojson": 3215,
+        "shadow-11.geojson": 1251,
+        "shadow-12.geojson": 1251,
+        "shadow-13.geojson": 1251,
+        "shadow-14.geojson": 1251,
+        "shadow-15.geojson": 1251,
+        "shadow-16.geojson": 8286,
+        "shadow-17.geojson": 23417,
+        "shadow-18.geojson": 48514
+      },
+      "totalBytes": 147005
+    },
+    "wonhyo": {
+      "builtAt": "2026-09-08T15:42:21Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.97698, 35.14144, 127.00165, 35.17003],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N35_00_E126_00_DEM", "Copernicus_DSM_COG_10_N35_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132112120"],
+          "acquisition": ["2019-05"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 105.53,
+          "elevation": 51.03,
+          "shadeFrac": 0.8412
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 121.7,
+          "elevation": 62.27,
+          "shadeFrac": 0.8394
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 151.04,
+          "elevation": 70.87,
+          "shadeFrac": 0.8388
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 197.01,
+          "elevation": 72.21,
+          "shadeFrac": 0.8388
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 231.83,
+          "elevation": 65.08,
+          "shadeFrac": 0.8389
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 250.62,
+          "elevation": 54.28,
+          "shadeFrac": 0.8397
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 262.49,
+          "elevation": 42.36,
+          "shadeFrac": 0.843
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 271.61,
+          "elevation": 30.13,
+          "shadeFrac": 0.8607
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.73,
+          "elevation": 17.95,
+          "shadeFrac": 0.916
+        }
+      ],
+      "segments": {
+        "wonhyo-whole": {
+          "canopyCover": 0.497,
+          "shadeByHour": [0.502, 0.498, 0.497, 0.497, 0.497, 0.498, 0.505, 0.54, 0.871]
+        }
+      },
+      "files": {
+        "canopy.geojson": 74169,
+        "shadow-10.geojson": 1775,
+        "shadow-11.geojson": 1251,
+        "shadow-12.geojson": 1251,
+        "shadow-13.geojson": 1251,
+        "shadow-14.geojson": 1251,
+        "shadow-15.geojson": 1251,
+        "shadow-16.geojson": 8084,
+        "shadow-17.geojson": 65246,
+        "shadow-18.geojson": 99813
+      },
+      "totalBytes": 255342
+    },
+    "gingorang": {
+      "builtAt": "2026-09-08T06:12:11Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.09289, 37.56043, 127.09903, 37.57343],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110320"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.44,
+          "elevation": 50.41,
+          "shadeFrac": 0.7982
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.58,
+          "elevation": 61.01,
+          "shadeFrac": 0.7816
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.32,
+          "elevation": 68.77,
+          "shadeFrac": 0.7798
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.36,
+          "elevation": 69.87,
+          "shadeFrac": 0.7796
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.18,
+          "elevation": 63.46,
+          "shadeFrac": 0.7796
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.64,
+          "elevation": 53.34,
+          "shadeFrac": 0.7806
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.41,
+          "elevation": 41.92,
+          "shadeFrac": 0.7854
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.28,
+          "elevation": 30.08,
+          "shadeFrac": 0.8046
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.01,
+          "elevation": 18.26,
+          "shadeFrac": 0.8802
+        }
+      ],
+      "segments": {
+        "gingorang-whole": {
+          "canopyCover": 0.871,
+          "shadeByHour": [0.871, 0.871, 0.871, 0.871, 0.871, 0.871, 0.876, 0.897, 0.97]
+        }
+      },
+      "files": {
+        "canopy.geojson": 24970,
+        "shadow-10.geojson": 5366,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 1208,
+        "shadow-16.geojson": 2929,
+        "shadow-17.geojson": 18975,
+        "shadow-18.geojson": 22521
+      },
+      "totalBytes": 80801
+    },
+    "suraksan": {
+      "builtAt": "2026-09-06T06:13:38Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.09818, 37.69577, 127.13428, 37.71672],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302", "132110320"],
+          "acquisition": ["2019-03", "2019-05"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.62,
+          "elevation": 50.38,
+          "shadeFrac": 0.4671
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.81,
+          "elevation": 60.94,
+          "shadeFrac": 0.4651
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.53,
+          "elevation": 68.65,
+          "shadeFrac": 0.4647
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.31,
+          "elevation": 69.73,
+          "shadeFrac": 0.4647
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.0,
+          "elevation": 63.36,
+          "shadeFrac": 0.4648
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.49,
+          "elevation": 53.28,
+          "shadeFrac": 0.4659
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.3,
+          "elevation": 41.88,
+          "shadeFrac": 0.4705
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.21,
+          "elevation": 30.06,
+          "shadeFrac": 0.4883
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.98,
+          "elevation": 18.26,
+          "shadeFrac": 0.565
+        }
+      ],
+      "segments": {
+        "suraksan-whole": {
+          "canopyCover": 0.066,
+          "shadeByHour": [0.068, 0.067, 0.067, 0.066, 0.067, 0.067, 0.069, 0.078, 0.212]
+        }
+      },
+      "files": {
+        "canopy.geojson": 110115,
+        "shadow-10.geojson": 3360,
+        "shadow-11.geojson": 1240,
+        "shadow-12.geojson": 1240,
+        "shadow-13.geojson": 1240,
+        "shadow-14.geojson": 1240,
+        "shadow-15.geojson": 1240,
+        "shadow-16.geojson": 13181,
+        "shadow-17.geojson": 74408,
+        "shadow-18.geojson": 152645
+      },
+      "totalBytes": 359909
+    },
+    "gwangdeok": {
+      "builtAt": "2026-09-06T06:12:08Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.44506, 38.08687, 127.4569, 38.09678],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2016-12"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.37,
+          "elevation": 50.5,
+          "shadeFrac": 0.6032
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.85,
+          "elevation": 60.93,
+          "shadeFrac": 0.6023
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.75,
+          "elevation": 68.41,
+          "shadeFrac": 0.6022
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.92,
+          "elevation": 69.29,
+          "shadeFrac": 0.6022
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.99,
+          "elevation": 62.9,
+          "shadeFrac": 0.6022
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.36,
+          "elevation": 52.88,
+          "shadeFrac": 0.6026
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.2,
+          "elevation": 41.55,
+          "shadeFrac": 0.6142
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.19,
+          "elevation": 29.8,
+          "shadeFrac": 0.6876
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.05,
+          "elevation": 18.06,
+          "shadeFrac": 0.8531
+        }
+      ],
+      "segments": {
+        "gwangdeok-whole": {
+          "canopyCover": 0.073,
+          "shadeByHour": [0.073, 0.073, 0.073, 0.073, 0.073, 0.073, 0.087, 0.193, 0.903]
+        }
+      },
+      "files": {
+        "canopy.geojson": 29693,
+        "shadow-10.geojson": 1208,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 1208,
+        "shadow-16.geojson": 7111,
+        "shadow-17.geojson": 26621,
+        "shadow-18.geojson": 24348
+      },
+      "totalBytes": 95021
+    },
+    "gugok": {
+      "builtAt": "2026-09-06T06:11:29Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.606, 37.78781, 127.61985, 37.79995],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.18,
+          "elevation": 50.72,
+          "shadeFrac": 0.8937
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.66,
+          "elevation": 61.21,
+          "shadeFrac": 0.8825
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.84,
+          "elevation": 68.74,
+          "shadeFrac": 0.8754
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.57,
+          "elevation": 69.54,
+          "shadeFrac": 0.873
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.69,
+          "elevation": 63.0,
+          "shadeFrac": 0.8753
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.89,
+          "elevation": 52.88,
+          "shadeFrac": 0.8867
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.58,
+          "elevation": 41.47,
+          "shadeFrac": 0.9049
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.46,
+          "elevation": 29.67,
+          "shadeFrac": 0.9335
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.23,
+          "elevation": 17.89,
+          "shadeFrac": 0.9676
+        }
+      ],
+      "segments": {
+        "gugok-whole": {
+          "canopyCover": 0.924,
+          "shadeByHour": [0.942, 0.933, 0.927, 0.925, 0.926, 0.932, 0.942, 0.968, 0.98]
+        }
+      },
+      "files": {
+        "canopy.geojson": 21872,
+        "shadow-10.geojson": 11936,
+        "shadow-11.geojson": 2796,
+        "shadow-12.geojson": 1470,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1470,
+        "shadow-15.geojson": 6760,
+        "shadow-16.geojson": 19177,
+        "shadow-17.geojson": 24454,
+        "shadow-18.geojson": 26191
+      },
+      "totalBytes": 117334
+    },
+    "hamheodongcheon": {
+      "builtAt": "2026-09-06T06:10:51Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.44102, 37.60512, 126.46645, 37.61746],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E126_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110231"],
+          "acquisition": ["2015-04"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 107.91,
+          "elevation": 49.91,
+          "shadeFrac": 0.2676
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 124.72,
+          "elevation": 60.57,
+          "shadeFrac": 0.2675
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 152.82,
+          "elevation": 68.5,
+          "shadeFrac": 0.2675
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 193.59,
+          "elevation": 69.96,
+          "shadeFrac": 0.2675
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.03,
+          "elevation": 63.81,
+          "shadeFrac": 0.2675
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 246.93,
+          "elevation": 53.8,
+          "shadeFrac": 0.2678
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 259.9,
+          "elevation": 42.41,
+          "shadeFrac": 0.2713
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 269.86,
+          "elevation": 30.59,
+          "shadeFrac": 0.3002
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.63,
+          "elevation": 18.76,
+          "shadeFrac": 0.4715
+        }
+      ],
+      "segments": {
+        "hamheodongcheon-whole": {
+          "canopyCover": 0.067,
+          "shadeByHour": [0.068, 0.067, 0.067, 0.067, 0.067, 0.069, 0.078, 0.085, 0.17]
+        }
+      },
+      "files": {
+        "canopy.geojson": 57076,
+        "shadow-10.geojson": 1208,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 1208,
+        "shadow-16.geojson": 2840,
+        "shadow-17.geojson": 43266,
+        "shadow-18.geojson": 78267
+      },
+      "totalBytes": 188697
+    },
+    "uidong": {
+      "builtAt": "2026-09-06T06:10:31Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.99424, 37.65841, 127.01721, 37.6871],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E126_00_DEM", "Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110320"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.48,
+          "elevation": 50.3,
+          "shadeFrac": 0.8203
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.6,
+          "elevation": 60.89,
+          "shadeFrac": 0.8191
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.22,
+          "elevation": 68.64,
+          "shadeFrac": 0.819
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.04,
+          "elevation": 69.79,
+          "shadeFrac": 0.819
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.87,
+          "elevation": 63.44,
+          "shadeFrac": 0.819
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.42,
+          "elevation": 53.37,
+          "shadeFrac": 0.8199
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.25,
+          "elevation": 41.97,
+          "shadeFrac": 0.827
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.16,
+          "elevation": 30.15,
+          "shadeFrac": 0.8575
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.93,
+          "elevation": 18.34,
+          "shadeFrac": 0.9123
+        }
+      ],
+      "segments": {
+        "uidong-whole": {
+          "canopyCover": 0.082,
+          "shadeByHour": [0.083, 0.082, 0.082, 0.082, 0.083, 0.084, 0.09, 0.108, 0.225]
+        }
+      },
+      "files": {
+        "canopy.geojson": 68242,
+        "shadow-10.geojson": 1776,
+        "shadow-11.geojson": 1251,
+        "shadow-12.geojson": 1251,
+        "shadow-13.geojson": 1251,
+        "shadow-14.geojson": 1251,
+        "shadow-15.geojson": 1251,
+        "shadow-16.geojson": 17127,
+        "shadow-17.geojson": 58229,
+        "shadow-18.geojson": 88729
+      },
+      "totalBytes": 240358
+    },
+    "yongmunsan": {
+      "builtAt": "2026-09-06T06:09:52Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.55599, 37.54175, 127.58853, 37.56471],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110321"],
+          "acquisition": ["2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.86,
+          "elevation": 50.77,
+          "shadeFrac": 0.9123
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.25,
+          "elevation": 61.32,
+          "shadeFrac": 0.9084
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.48,
+          "elevation": 68.94,
+          "shadeFrac": 0.9068
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.64,
+          "elevation": 69.78,
+          "shadeFrac": 0.9064
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.98,
+          "elevation": 63.19,
+          "shadeFrac": 0.9068
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 248.14,
+          "elevation": 53.0,
+          "shadeFrac": 0.9104
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.76,
+          "elevation": 41.55,
+          "shadeFrac": 0.9179
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.57,
+          "elevation": 29.7,
+          "shadeFrac": 0.9289
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.29,
+          "elevation": 17.88,
+          "shadeFrac": 0.9573
+        }
+      ],
+      "segments": {
+        "yongmunsan-whole": {
+          "canopyCover": 0.938,
+          "shadeByHour": [0.943, 0.94, 0.938, 0.938, 0.939, 0.947, 0.96, 0.976, 0.994]
+        }
+      },
+      "files": {
+        "canopy.geojson": 52732,
+        "shadow-10.geojson": 5659,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1740,
+        "shadow-15.geojson": 7063,
+        "shadow-16.geojson": 31385,
+        "shadow-17.geojson": 59483,
+        "shadow-18.geojson": 72529
+      },
+      "totalBytes": 234215
+    },
+    "sanasa": {
+      "builtAt": "2026-09-06T06:09:05Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.52824, 37.56701, 127.55913, 37.5849],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110321"],
+          "acquisition": ["2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.86,
+          "elevation": 50.74,
+          "shadeFrac": 0.9383
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.24,
+          "elevation": 61.29,
+          "shadeFrac": 0.9316
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.44,
+          "elevation": 68.91,
+          "shadeFrac": 0.9273
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.55,
+          "elevation": 69.77,
+          "shadeFrac": 0.9256
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.9,
+          "elevation": 63.19,
+          "shadeFrac": 0.9265
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 248.08,
+          "elevation": 53.01,
+          "shadeFrac": 0.9312
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.72,
+          "elevation": 41.56,
+          "shadeFrac": 0.9385
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.54,
+          "elevation": 29.73,
+          "shadeFrac": 0.9484
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.26,
+          "elevation": 17.91,
+          "shadeFrac": 0.9637
+        }
+      ],
+      "segments": {
+        "sanasa-whole": {
+          "canopyCover": 0.728,
+          "shadeByHour": [0.74, 0.733, 0.73, 0.729, 0.73, 0.735, 0.744, 0.758, 0.799]
+        }
+      },
+      "files": {
+        "canopy.geojson": 58974,
+        "shadow-10.geojson": 16384,
+        "shadow-11.geojson": 2521,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 3671,
+        "shadow-16.geojson": 22155,
+        "shadow-17.geojson": 49618,
+        "shadow-18.geojson": 84068
+      },
+      "totalBytes": 241015
+    },
+    "gamaksan": {
+      "builtAt": "2026-09-06T06:08:22Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.94082, 37.9221, 126.97305, 37.94433],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E126_00_DEM", "Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.73,
+          "elevation": 50.18,
+          "shadeFrac": 0.7319
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.91,
+          "elevation": 60.71,
+          "shadeFrac": 0.7295
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.39,
+          "elevation": 68.39,
+          "shadeFrac": 0.7292
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 194.73,
+          "elevation": 69.55,
+          "shadeFrac": 0.7291
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.4,
+          "elevation": 63.3,
+          "shadeFrac": 0.7292
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.05,
+          "elevation": 53.3,
+          "shadeFrac": 0.7299
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 259.98,
+          "elevation": 41.96,
+          "shadeFrac": 0.7358
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 269.98,
+          "elevation": 30.19,
+          "shadeFrac": 0.7624
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.81,
+          "elevation": 18.42,
+          "shadeFrac": 0.8211
+        }
+      ],
+      "segments": {
+        "gamaksan-whole": {
+          "canopyCover": 0.216,
+          "shadeByHour": [0.221, 0.216, 0.216, 0.216, 0.217, 0.219, 0.233, 0.37, 0.703]
+        }
+      },
+      "files": {
+        "canopy.geojson": 65613,
+        "shadow-10.geojson": 6353,
+        "shadow-11.geojson": 1251,
+        "shadow-12.geojson": 1251,
+        "shadow-13.geojson": 1251,
+        "shadow-14.geojson": 1782,
+        "shadow-15.geojson": 1558,
+        "shadow-16.geojson": 17235,
+        "shadow-17.geojson": 36599,
+        "shadow-18.geojson": 61536
+      },
+      "totalBytes": 194429
+    },
+    "dongmak": {
+      "builtAt": "2026-09-06T06:07:37Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.10366, 38.08909, 127.12287, 38.11193],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302"],
+          "acquisition": ["2016-12", "2018-03", "2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.07,
+          "elevation": 50.25,
+          "shadeFrac": 0.7171
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.37,
+          "elevation": 60.71,
+          "shadeFrac": 0.7165
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.95,
+          "elevation": 68.29,
+          "shadeFrac": 0.7164
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.03,
+          "elevation": 69.35,
+          "shadeFrac": 0.7164
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.42,
+          "elevation": 63.09,
+          "shadeFrac": 0.7164
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.0,
+          "elevation": 53.12,
+          "shadeFrac": 0.7168
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 259.95,
+          "elevation": 41.81,
+          "shadeFrac": 0.7189
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 269.98,
+          "elevation": 30.07,
+          "shadeFrac": 0.7287
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.85,
+          "elevation": 18.33,
+          "shadeFrac": 0.7899
+        }
+      ],
+      "segments": {
+        "dongmak-whole": {
+          "canopyCover": 0.057,
+          "shadeByHour": [0.058, 0.057, 0.057, 0.057, 0.057, 0.058, 0.067, 0.136, 0.43]
+        }
+      },
+      "files": {
+        "canopy.geojson": 38885,
+        "shadow-10.geojson": 3042,
+        "shadow-11.geojson": 1253,
+        "shadow-12.geojson": 1253,
+        "shadow-13.geojson": 1253,
+        "shadow-14.geojson": 1253,
+        "shadow-15.geojson": 1986,
+        "shadow-16.geojson": 5231,
+        "shadow-17.geojson": 22410,
+        "shadow-18.geojson": 45734
+      },
+      "totalBytes": 122300
+    },
+    "soyosan": {
+      "builtAt": "2026-09-06T06:07:02Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.04557, 37.93204, 127.06978, 37.96098],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": [
+            "Copernicus_DSM_COG_10_N37_00_E126_00_DEM",
+            "Copernicus_DSM_COG_10_N37_00_E127_00_DEM",
+            "Copernicus_DSM_COG_10_N38_00_E126_00_DEM",
+            "Copernicus_DSM_COG_10_N38_00_E127_00_DEM"
+          ]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.84,
+          "elevation": 50.26,
+          "shadeFrac": 0.3122
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.07,
+          "elevation": 60.76,
+          "shadeFrac": 0.3099
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.65,
+          "elevation": 68.41,
+          "shadeFrac": 0.3095
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 194.98,
+          "elevation": 69.51,
+          "shadeFrac": 0.3094
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.55,
+          "elevation": 63.23,
+          "shadeFrac": 0.3095
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.14,
+          "elevation": 53.23,
+          "shadeFrac": 0.3107
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.04,
+          "elevation": 41.88,
+          "shadeFrac": 0.3165
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.03,
+          "elevation": 30.11,
+          "shadeFrac": 0.3406
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.87,
+          "elevation": 18.35,
+          "shadeFrac": 0.4281
+        }
+      ],
+      "segments": {
+        "soyosan-whole": {
+          "canopyCover": 0.0,
+          "shadeByHour": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.023]
+        }
+      },
+      "files": {
+        "canopy.geojson": 65874,
+        "shadow-10.geojson": 5189,
+        "shadow-11.geojson": 1601,
+        "shadow-12.geojson": 1337,
+        "shadow-13.geojson": 1337,
+        "shadow-14.geojson": 1337,
+        "shadow-15.geojson": 1865,
+        "shadow-16.geojson": 11760,
+        "shadow-17.geojson": 37711,
+        "shadow-18.geojson": 85672
+      },
+      "totalBytes": 213683
+    },
+    "angol": {
+      "builtAt": "2026-09-06T06:05:22Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.01034, 37.71779, 127.04024, 37.74682],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E126_00_DEM", "Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302", "132110320"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.57,
+          "elevation": 50.3,
+          "shadeFrac": 0.5794
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.71,
+          "elevation": 60.87,
+          "shadeFrac": 0.578
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.34,
+          "elevation": 68.6,
+          "shadeFrac": 0.5777
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.05,
+          "elevation": 69.73,
+          "shadeFrac": 0.5776
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.81,
+          "elevation": 63.39,
+          "shadeFrac": 0.5777
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.37,
+          "elevation": 53.33,
+          "shadeFrac": 0.5789
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.21,
+          "elevation": 41.94,
+          "shadeFrac": 0.5846
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.14,
+          "elevation": 30.14,
+          "shadeFrac": 0.6061
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.92,
+          "elevation": 18.34,
+          "shadeFrac": 0.6737
+        }
+      ],
+      "segments": {
+        "angol-whole": {
+          "canopyCover": 0.656,
+          "shadeByHour": [0.663, 0.658, 0.657, 0.656, 0.656, 0.657, 0.664, 0.701, 0.882]
+        }
+      },
+      "files": {
+        "canopy.geojson": 143811,
+        "shadow-10.geojson": 5263,
+        "shadow-11.geojson": 1523,
+        "shadow-12.geojson": 1263,
+        "shadow-13.geojson": 1263,
+        "shadow-14.geojson": 1523,
+        "shadow-15.geojson": 3360,
+        "shadow-16.geojson": 32834,
+        "shadow-17.geojson": 130665,
+        "shadow-18.geojson": 215151
+      },
+      "totalBytes": 536656
+    },
+    "songchu": {
+      "builtAt": "2026-09-06T06:04:41Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.96608, 37.70283, 127.00504, 37.72141],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E126_00_DEM", "Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302", "132110320"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.51,
+          "elevation": 50.28,
+          "shadeFrac": 0.6353
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.63,
+          "elevation": 60.85,
+          "shadeFrac": 0.6319
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.22,
+          "elevation": 68.6,
+          "shadeFrac": 0.6314
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 194.96,
+          "elevation": 69.76,
+          "shadeFrac": 0.6314
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.78,
+          "elevation": 63.43,
+          "shadeFrac": 0.6314
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.35,
+          "elevation": 53.37,
+          "shadeFrac": 0.6325
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.2,
+          "elevation": 41.98,
+          "shadeFrac": 0.6362
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.12,
+          "elevation": 30.17,
+          "shadeFrac": 0.6472
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.9,
+          "elevation": 18.37,
+          "shadeFrac": 0.6942
+        }
+      ],
+      "segments": {
+        "songchu-whole": {
+          "canopyCover": 0.302,
+          "shadeByHour": [0.308, 0.303, 0.303, 0.302, 0.302, 0.304, 0.312, 0.342, 0.444]
+        }
+      },
+      "files": {
+        "canopy.geojson": 118943,
+        "shadow-10.geojson": 2584,
+        "shadow-11.geojson": 1263,
+        "shadow-12.geojson": 1263,
+        "shadow-13.geojson": 1263,
+        "shadow-14.geojson": 1263,
+        "shadow-15.geojson": 1813,
+        "shadow-16.geojson": 12809,
+        "shadow-17.geojson": 61950,
+        "shadow-18.geojson": 161404
+      },
+      "totalBytes": 364555
+    },
+    "jangheung": {
+      "builtAt": "2026-09-06T06:03:58Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [126.93549, 37.7165, 126.95944, 37.74306],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E126_00_DEM", "Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302", "132110320"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.49,
+          "elevation": 50.24,
+          "shadeFrac": 0.6246
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 125.6,
+          "elevation": 60.82,
+          "shadeFrac": 0.6213
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.14,
+          "elevation": 68.57,
+          "shadeFrac": 0.6207
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 194.84,
+          "elevation": 69.75,
+          "shadeFrac": 0.6207
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.69,
+          "elevation": 63.44,
+          "shadeFrac": 0.6208
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.29,
+          "elevation": 53.39,
+          "shadeFrac": 0.6223
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.15,
+          "elevation": 42.0,
+          "shadeFrac": 0.6281
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.09,
+          "elevation": 30.2,
+          "shadeFrac": 0.65
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.88,
+          "elevation": 18.4,
+          "shadeFrac": 0.7302
+        }
+      ],
+      "segments": {
+        "jangheung-whole": {
+          "canopyCover": 0.123,
+          "shadeByHour": [0.127, 0.123, 0.123, 0.123, 0.123, 0.123, 0.129, 0.161, 0.476]
+        }
+      },
+      "files": {
+        "canopy.geojson": 91682,
+        "shadow-10.geojson": 10579,
+        "shadow-11.geojson": 1263,
+        "shadow-12.geojson": 1263,
+        "shadow-13.geojson": 1263,
+        "shadow-14.geojson": 1263,
+        "shadow-15.geojson": 3131,
+        "shadow-16.geojson": 19307,
+        "shadow-17.geojson": 57135,
+        "shadow-18.geojson": 99378
+      },
+      "totalBytes": 286264
+    },
+    "chungnyeongsan": {
+      "builtAt": "2026-09-06T06:02:45Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.30216, 37.74466, 127.31754, 37.75764],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.85,
+          "elevation": 50.51,
+          "shadeFrac": 0.7181
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.15,
+          "elevation": 61.04,
+          "shadeFrac": 0.7128
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.05,
+          "elevation": 68.67,
+          "shadeFrac": 0.7119
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.79,
+          "elevation": 69.65,
+          "shadeFrac": 0.7119
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.26,
+          "elevation": 63.21,
+          "shadeFrac": 0.7124
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.63,
+          "elevation": 53.12,
+          "shadeFrac": 0.7155
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.4,
+          "elevation": 41.72,
+          "shadeFrac": 0.7227
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.3,
+          "elevation": 29.91,
+          "shadeFrac": 0.7415
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.08,
+          "elevation": 18.12,
+          "shadeFrac": 0.8087
+        }
+      ],
+      "segments": {
+        "chungnyeongsan-whole": {
+          "canopyCover": 0.461,
+          "shadeByHour": [0.472, 0.464, 0.461, 0.462, 0.462, 0.47, 0.487, 0.531, 0.757]
+        }
+      },
+      "files": {
+        "canopy.geojson": 44208,
+        "shadow-10.geojson": 5664,
+        "shadow-11.geojson": 1792,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 4510,
+        "shadow-16.geojson": 16983,
+        "shadow-17.geojson": 33673,
+        "shadow-18.geojson": 53930
+      },
+      "totalBytes": 164384
+    },
+    "sudong": {
+      "builtAt": "2026-09-06T06:02:12Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.26936, 37.74282, 127.2853, 37.76592],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2019-03", "2019-05"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.82,
+          "elevation": 50.48,
+          "shadeFrac": 0.721
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.11,
+          "elevation": 61.02,
+          "shadeFrac": 0.7167
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.97,
+          "elevation": 68.66,
+          "shadeFrac": 0.7161
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.71,
+          "elevation": 69.65,
+          "shadeFrac": 0.7162
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.2,
+          "elevation": 63.23,
+          "shadeFrac": 0.7165
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.6,
+          "elevation": 53.14,
+          "shadeFrac": 0.7197
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.37,
+          "elevation": 41.74,
+          "shadeFrac": 0.7276
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.28,
+          "elevation": 29.94,
+          "shadeFrac": 0.7473
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.06,
+          "elevation": 18.14,
+          "shadeFrac": 0.8162
+        }
+      ],
+      "segments": {
+        "sudong-whole": {
+          "canopyCover": 0.294,
+          "shadeByHour": [0.312, 0.298, 0.295, 0.294, 0.295, 0.303, 0.329, 0.404, 0.677]
+        }
+      },
+      "files": {
+        "canopy.geojson": 69531,
+        "shadow-10.geojson": 8247,
+        "shadow-11.geojson": 1228,
+        "shadow-12.geojson": 1228,
+        "shadow-13.geojson": 1228,
+        "shadow-14.geojson": 1228,
+        "shadow-15.geojson": 2016,
+        "shadow-16.geojson": 22655,
+        "shadow-17.geojson": 51525,
+        "shadow-18.geojson": 78606
+      },
+      "totalBytes": 237492
+    },
+    "domachi": {
+      "builtAt": "2026-09-06T06:01:18Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.43504, 37.99413, 127.44401, 38.00916],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM", "Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2016-12", "2018-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.26,
+          "elevation": 50.52,
+          "shadeFrac": 0.6857
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.71,
+          "elevation": 60.97,
+          "shadeFrac": 0.679
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.63,
+          "elevation": 68.49,
+          "shadeFrac": 0.6787
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.95,
+          "elevation": 69.38,
+          "shadeFrac": 0.6787
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.1,
+          "elevation": 62.97,
+          "shadeFrac": 0.6788
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.46,
+          "elevation": 52.93,
+          "shadeFrac": 0.6797
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.27,
+          "elevation": 41.57,
+          "shadeFrac": 0.6887
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.24,
+          "elevation": 29.81,
+          "shadeFrac": 0.7404
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.07,
+          "elevation": 18.06,
+          "shadeFrac": 0.8768
+        }
+      ],
+      "segments": {
+        "domachi-whole": {
+          "canopyCover": 0.089,
+          "shadeByHour": [0.09, 0.089, 0.089, 0.089, 0.089, 0.089, 0.107, 0.301, 0.863]
+        }
+      },
+      "files": {
+        "canopy.geojson": 31832,
+        "shadow-10.geojson": 7678,
+        "shadow-11.geojson": 1276,
+        "shadow-12.geojson": 1276,
+        "shadow-13.geojson": 1276,
+        "shadow-14.geojson": 1276,
+        "shadow-15.geojson": 1540,
+        "shadow-16.geojson": 8553,
+        "shadow-17.geojson": 20612,
+        "shadow-18.geojson": 29807
+      },
+      "totalBytes": 105126
+    },
+    "hyeondeungsa": {
+      "builtAt": "2026-09-06T06:00:46Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.33186, 37.86139, 127.35149, 37.87146],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.01,
+          "elevation": 50.49,
+          "shadeFrac": 0.7102
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.37,
+          "elevation": 60.99,
+          "shadeFrac": 0.7076
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.25,
+          "elevation": 68.58,
+          "shadeFrac": 0.7071
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.79,
+          "elevation": 69.53,
+          "shadeFrac": 0.7071
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.14,
+          "elevation": 63.12,
+          "shadeFrac": 0.7076
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.52,
+          "elevation": 53.05,
+          "shadeFrac": 0.7116
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.32,
+          "elevation": 41.67,
+          "shadeFrac": 0.7223
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.25,
+          "elevation": 29.89,
+          "shadeFrac": 0.7508
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.06,
+          "elevation": 18.11,
+          "shadeFrac": 0.8612
+        }
+      ],
+      "segments": {
+        "hyeondeungsa-whole": {
+          "canopyCover": 0.465,
+          "shadeByHour": [0.466, 0.465, 0.465, 0.465, 0.467, 0.472, 0.485, 0.509, 0.603]
+        }
+      },
+      "files": {
+        "canopy.geojson": 20469,
+        "shadow-10.geojson": 1208,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 2300,
+        "shadow-16.geojson": 10825,
+        "shadow-17.geojson": 21018,
+        "shadow-18.geojson": 27670
+      },
+      "totalBytes": 88322
+    },
+    "nonnamgi": {
+      "builtAt": "2026-09-06T06:00:15Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.40611, 37.96449, 127.42474, 37.97255],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM", "Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2018-03", "2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.2,
+          "elevation": 50.51,
+          "shadeFrac": 0.6958
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.62,
+          "elevation": 60.98,
+          "shadeFrac": 0.6913
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.54,
+          "elevation": 68.51,
+          "shadeFrac": 0.6909
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.91,
+          "elevation": 69.42,
+          "shadeFrac": 0.6909
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.11,
+          "elevation": 63.0,
+          "shadeFrac": 0.6912
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.47,
+          "elevation": 52.96,
+          "shadeFrac": 0.6947
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.29,
+          "elevation": 41.6,
+          "shadeFrac": 0.7042
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.24,
+          "elevation": 29.83,
+          "shadeFrac": 0.7411
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.07,
+          "elevation": 18.07,
+          "shadeFrac": 0.8321
+        }
+      ],
+      "segments": {
+        "nonnamgi-whole": {
+          "canopyCover": 0.236,
+          "shadeByHour": [0.239, 0.236, 0.236, 0.236, 0.236, 0.242, 0.258, 0.267, 0.395]
+        }
+      },
+      "files": {
+        "canopy.geojson": 32103,
+        "shadow-10.geojson": 1807,
+        "shadow-11.geojson": 1276,
+        "shadow-12.geojson": 1276,
+        "shadow-13.geojson": 1276,
+        "shadow-14.geojson": 1276,
+        "shadow-15.geojson": 3394,
+        "shadow-16.geojson": 10664,
+        "shadow-17.geojson": 27361,
+        "shadow-18.geojson": 45362
+      },
+      "totalBytes": 125795
+    },
+    "gyeongban": {
+      "builtAt": "2026-09-06T05:59:39Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.45162, 37.82636, 127.47944, 37.84383],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2015-07", "2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.09,
+          "elevation": 50.6,
+          "shadeFrac": 0.8596
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.5,
+          "elevation": 61.09,
+          "shadeFrac": 0.8571
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.52,
+          "elevation": 68.65,
+          "shadeFrac": 0.8565
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.15,
+          "elevation": 69.53,
+          "shadeFrac": 0.8565
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.39,
+          "elevation": 63.06,
+          "shadeFrac": 0.8566
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.69,
+          "elevation": 52.97,
+          "shadeFrac": 0.8582
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.44,
+          "elevation": 41.58,
+          "shadeFrac": 0.8644
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.35,
+          "elevation": 29.79,
+          "shadeFrac": 0.8867
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.14,
+          "elevation": 18.01,
+          "shadeFrac": 0.937
+        }
+      ],
+      "segments": {
+        "gyeongban-whole": {
+          "canopyCover": 0.447,
+          "shadeByHour": [0.456, 0.449, 0.448, 0.447, 0.448, 0.455, 0.473, 0.527, 0.744]
+        }
+      },
+      "files": {
+        "canopy.geojson": 57763,
+        "shadow-10.geojson": 4848,
+        "shadow-11.geojson": 1233,
+        "shadow-12.geojson": 1233,
+        "shadow-13.geojson": 1233,
+        "shadow-14.geojson": 1233,
+        "shadow-15.geojson": 2934,
+        "shadow-16.geojson": 17600,
+        "shadow-17.geojson": 45583,
+        "shadow-18.geojson": 70159
+      },
+      "totalBytes": 203819
+    },
+    "baekdunri": {
+      "builtAt": "2026-09-06T05:58:56Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.47354, 37.89384, 127.50672, 37.90651],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2015-07", "2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.19,
+          "elevation": 50.59,
+          "shadeFrac": 0.8072
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.63,
+          "elevation": 61.06,
+          "shadeFrac": 0.8046
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.65,
+          "elevation": 68.6,
+          "shadeFrac": 0.8042
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.16,
+          "elevation": 69.47,
+          "shadeFrac": 0.8042
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.34,
+          "elevation": 63.01,
+          "shadeFrac": 0.8043
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.63,
+          "elevation": 52.93,
+          "shadeFrac": 0.8059
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.4,
+          "elevation": 41.55,
+          "shadeFrac": 0.8119
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.33,
+          "elevation": 29.77,
+          "shadeFrac": 0.8314
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.13,
+          "elevation": 18.0,
+          "shadeFrac": 0.8981
+        }
+      ],
+      "segments": {
+        "baekdunri-whole": {
+          "canopyCover": 0.265,
+          "shadeByHour": [0.273, 0.267, 0.265, 0.265, 0.265, 0.274, 0.296, 0.354, 0.563]
+        }
+      },
+      "files": {
+        "canopy.geojson": 51192,
+        "shadow-10.geojson": 6284,
+        "shadow-11.geojson": 1233,
+        "shadow-12.geojson": 1233,
+        "shadow-13.geojson": 1233,
+        "shadow-14.geojson": 1233,
+        "shadow-15.geojson": 2031,
+        "shadow-16.geojson": 18294,
+        "shadow-17.geojson": 35053,
+        "shadow-18.geojson": 60520
+      },
+      "totalBytes": 178306
+    },
+    "eobi": {
+      "builtAt": "2026-09-06T05:58:20Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.48592, 37.58418, 127.50012, 37.61061],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110321"],
+          "acquisition": ["2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.84,
+          "elevation": 50.69,
+          "shadeFrac": 0.7656
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.2,
+          "elevation": 61.25,
+          "shadeFrac": 0.7583
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.33,
+          "elevation": 68.87,
+          "shadeFrac": 0.7558
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.4,
+          "elevation": 69.76,
+          "shadeFrac": 0.7554
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.79,
+          "elevation": 63.2,
+          "shadeFrac": 0.7559
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 248.01,
+          "elevation": 53.04,
+          "shadeFrac": 0.7607
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.67,
+          "elevation": 41.6,
+          "shadeFrac": 0.7732
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.5,
+          "elevation": 29.77,
+          "shadeFrac": 0.8016
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.23,
+          "elevation": 17.95,
+          "shadeFrac": 0.8971
+        }
+      ],
+      "segments": {
+        "eobi-whole": {
+          "canopyCover": 0.481,
+          "shadeByHour": [0.522, 0.491, 0.483, 0.482, 0.483, 0.501, 0.538, 0.602, 0.774]
+        }
+      },
+      "files": {
+        "canopy.geojson": 104699,
+        "shadow-10.geojson": 29136,
+        "shadow-11.geojson": 4885,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 4875,
+        "shadow-16.geojson": 40785,
+        "shadow-17.geojson": 100039,
+        "shadow-18.geojson": 119878
+      },
+      "totalBytes": 407921
+    },
+    "yumyeongsan": {
+      "builtAt": "2026-09-06T05:57:25Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.48592, 37.57795, 127.50186, 37.5948],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110321"],
+          "acquisition": ["2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.83,
+          "elevation": 50.7,
+          "shadeFrac": 0.9325
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.18,
+          "elevation": 61.25,
+          "shadeFrac": 0.9297
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.32,
+          "elevation": 68.89,
+          "shadeFrac": 0.9289
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.41,
+          "elevation": 69.77,
+          "shadeFrac": 0.9288
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.81,
+          "elevation": 63.21,
+          "shadeFrac": 0.9291
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 248.02,
+          "elevation": 53.04,
+          "shadeFrac": 0.9312
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.68,
+          "elevation": 41.6,
+          "shadeFrac": 0.9365
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.51,
+          "elevation": 29.77,
+          "shadeFrac": 0.9444
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.23,
+          "elevation": 17.95,
+          "shadeFrac": 0.9667
+        }
+      ],
+      "segments": {
+        "yumyeongsan-whole": {
+          "canopyCover": 0.937,
+          "shadeByHour": [0.947, 0.941, 0.938, 0.937, 0.937, 0.943, 0.955, 0.971, 0.992]
+        }
+      },
+      "files": {
+        "canopy.geojson": 31437,
+        "shadow-10.geojson": 6466,
+        "shadow-11.geojson": 2011,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 4277,
+        "shadow-16.geojson": 13494,
+        "shadow-17.geojson": 28713,
+        "shadow-18.geojson": 37100
+      },
+      "totalBytes": 127122
+    },
+    "jomurak": {
+      "builtAt": "2026-09-06T05:56:45Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.44692, 37.98415, 127.4734, 37.99451],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM", "Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2016-07", "2016-12"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.26,
+          "elevation": 50.54,
+          "shadeFrac": 0.7894
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.72,
+          "elevation": 60.99,
+          "shadeFrac": 0.7875
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.67,
+          "elevation": 68.51,
+          "shadeFrac": 0.7874
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.02,
+          "elevation": 69.39,
+          "shadeFrac": 0.7873
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.16,
+          "elevation": 62.96,
+          "shadeFrac": 0.7873
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.49,
+          "elevation": 52.92,
+          "shadeFrac": 0.7876
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.3,
+          "elevation": 41.56,
+          "shadeFrac": 0.7918
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.26,
+          "elevation": 29.79,
+          "shadeFrac": 0.8059
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.08,
+          "elevation": 18.04,
+          "shadeFrac": 0.8443
+        }
+      ],
+      "segments": {
+        "jomurak-whole": {
+          "canopyCover": 0.611,
+          "shadeByHour": [0.612, 0.611, 0.611, 0.611, 0.611, 0.611, 0.614, 0.615, 0.636]
+        }
+      },
+      "files": {
+        "canopy.geojson": 29521,
+        "shadow-10.geojson": 5518,
+        "shadow-11.geojson": 1271,
+        "shadow-12.geojson": 1271,
+        "shadow-13.geojson": 1271,
+        "shadow-14.geojson": 1271,
+        "shadow-15.geojson": 2065,
+        "shadow-16.geojson": 3364,
+        "shadow-17.geojson": 11660,
+        "shadow-18.geojson": 27456
+      },
+      "totalBytes": 84668
+    },
+    "yongchu-gapyeong": {
+      "builtAt": "2026-09-06T05:56:06Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.46302, 37.845, 127.48936, 37.8629],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2015-07", "2016-06"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.12,
+          "elevation": 50.6,
+          "shadeFrac": 0.8093
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.55,
+          "elevation": 61.08,
+          "shadeFrac": 0.8061
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.57,
+          "elevation": 68.64,
+          "shadeFrac": 0.8054
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 196.16,
+          "elevation": 69.51,
+          "shadeFrac": 0.8053
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.38,
+          "elevation": 63.04,
+          "shadeFrac": 0.8054
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.68,
+          "elevation": 52.96,
+          "shadeFrac": 0.8073
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.43,
+          "elevation": 41.57,
+          "shadeFrac": 0.8157
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.34,
+          "elevation": 29.78,
+          "shadeFrac": 0.8428
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.14,
+          "elevation": 18.01,
+          "shadeFrac": 0.9197
+        }
+      ],
+      "segments": {
+        "yongchu-gapyeong-whole": {
+          "canopyCover": 0.279,
+          "shadeByHour": [0.301, 0.284, 0.28, 0.279, 0.28, 0.29, 0.324, 0.476, 0.904]
+        }
+      },
+      "files": {
+        "canopy.geojson": 58642,
+        "shadow-10.geojson": 9524,
+        "shadow-11.geojson": 1502,
+        "shadow-12.geojson": 1233,
+        "shadow-13.geojson": 1233,
+        "shadow-14.geojson": 1233,
+        "shadow-15.geojson": 3179,
+        "shadow-16.geojson": 24646,
+        "shadow-17.geojson": 53700,
+        "shadow-18.geojson": 60618
+      },
+      "totalBytes": 215510
+    },
+    "myeongji": {
+      "builtAt": "2026-09-06T05:55:27Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.43443, 37.98185, 127.46618, 37.99173],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM", "Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2016-07", "2016-12", "2018-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.25,
+          "elevation": 50.53,
+          "shadeFrac": 0.7153
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.7,
+          "elevation": 60.99,
+          "shadeFrac": 0.712
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.64,
+          "elevation": 68.51,
+          "shadeFrac": 0.7118
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.99,
+          "elevation": 69.39,
+          "shadeFrac": 0.7118
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 228.14,
+          "elevation": 62.97,
+          "shadeFrac": 0.7118
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.49,
+          "elevation": 52.92,
+          "shadeFrac": 0.7125
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.3,
+          "elevation": 41.57,
+          "shadeFrac": 0.7195
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.25,
+          "elevation": 29.8,
+          "shadeFrac": 0.7422
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.08,
+          "elevation": 18.05,
+          "shadeFrac": 0.808
+        }
+      ],
+      "segments": {
+        "myeongji-whole": {
+          "canopyCover": 0.318,
+          "shadeByHour": [0.32, 0.319, 0.319, 0.319, 0.319, 0.319, 0.325, 0.376, 0.513]
+        }
+      },
+      "files": {
+        "canopy.geojson": 42172,
+        "shadow-10.geojson": 4127,
+        "shadow-11.geojson": 1296,
+        "shadow-12.geojson": 1296,
+        "shadow-13.geojson": 1296,
+        "shadow-14.geojson": 1296,
+        "shadow-15.geojson": 2945,
+        "shadow-16.geojson": 9871,
+        "shadow-17.geojson": 28234,
+        "shadow-18.geojson": 43503
+      },
+      "totalBytes": 136036
+    },
+    "wangbang": {
+      "builtAt": "2026-09-06T05:54:56Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.10645, 37.88889, 127.1344, 37.89895],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 108.84,
+          "elevation": 50.32,
+          "shadeFrac": 0.7157
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.09,
+          "elevation": 60.83,
+          "shadeFrac": 0.7119
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 154.74,
+          "elevation": 68.48,
+          "shadeFrac": 0.7113
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.19,
+          "elevation": 69.55,
+          "shadeFrac": 0.7113
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.73,
+          "elevation": 63.23,
+          "shadeFrac": 0.7117
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.26,
+          "elevation": 53.2,
+          "shadeFrac": 0.7147
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.13,
+          "elevation": 41.84,
+          "shadeFrac": 0.7217
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.1,
+          "elevation": 30.06,
+          "shadeFrac": 0.7366
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.92,
+          "elevation": 18.29,
+          "shadeFrac": 0.7889
+        }
+      ],
+      "segments": {
+        "wangbang-whole": {
+          "canopyCover": 0.262,
+          "shadeByHour": [0.275, 0.264, 0.263, 0.263, 0.263, 0.273, 0.291, 0.333, 0.512]
+        }
+      },
+      "files": {
+        "canopy.geojson": 51395,
+        "shadow-10.geojson": 3627,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 2535,
+        "shadow-16.geojson": 14652,
+        "shadow-17.geojson": 36368,
+        "shadow-18.geojson": 59360
+      },
+      "totalBytes": 172769
+    },
+    "jijangsan": {
+      "builtAt": "2026-09-06T05:54:22Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.19076, 38.09528, 127.21628, 38.12291],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110302"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.16,
+          "elevation": 50.31,
+          "shadeFrac": 0.5649
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.52,
+          "elevation": 60.76,
+          "shadeFrac": 0.5638
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.17,
+          "elevation": 68.31,
+          "shadeFrac": 0.5636
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.26,
+          "elevation": 69.33,
+          "shadeFrac": 0.5636
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.56,
+          "elevation": 63.03,
+          "shadeFrac": 0.5637
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.09,
+          "elevation": 53.06,
+          "shadeFrac": 0.5649
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.01,
+          "elevation": 41.74,
+          "shadeFrac": 0.5702
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.03,
+          "elevation": 30.0,
+          "shadeFrac": 0.5907
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.9,
+          "elevation": 18.26,
+          "shadeFrac": 0.6912
+        }
+      ],
+      "segments": {
+        "jijangsan-whole": {
+          "canopyCover": 0.012,
+          "shadeByHour": [0.013, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.013, 0.32]
+        }
+      },
+      "files": {
+        "canopy.geojson": 28537,
+        "shadow-10.geojson": 3521,
+        "shadow-11.geojson": 1208,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1208,
+        "shadow-15.geojson": 2273,
+        "shadow-16.geojson": 9743,
+        "shadow-17.geojson": 23069,
+        "shadow-18.geojson": 30715
+      },
+      "totalBytes": 102690
+    },
+    "bisun-sanjeong": {
+      "builtAt": "2026-09-06T05:53:24Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.30094, 38.06314, 127.32955, 38.07643],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2018-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.22,
+          "elevation": 50.41,
+          "shadeFrac": 0.6407
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.62,
+          "elevation": 60.85,
+          "shadeFrac": 0.6352
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.4,
+          "elevation": 68.39,
+          "shadeFrac": 0.6342
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.58,
+          "elevation": 69.34,
+          "shadeFrac": 0.6341
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.8,
+          "elevation": 62.99,
+          "shadeFrac": 0.6346
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.25,
+          "elevation": 52.99,
+          "shadeFrac": 0.6382
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.12,
+          "elevation": 41.66,
+          "shadeFrac": 0.6463
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.12,
+          "elevation": 29.91,
+          "shadeFrac": 0.664
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 278.98,
+          "elevation": 18.16,
+          "shadeFrac": 0.7327
+        }
+      ],
+      "segments": {
+        "bisun-sanjeong-whole": {
+          "canopyCover": 0.101,
+          "shadeByHour": [0.105, 0.102, 0.101, 0.101, 0.101, 0.102, 0.106, 0.112, 0.145]
+        }
+      },
+      "files": {
+        "canopy.geojson": 67797,
+        "shadow-10.geojson": 8258,
+        "shadow-11.geojson": 1751,
+        "shadow-12.geojson": 1208,
+        "shadow-13.geojson": 1208,
+        "shadow-14.geojson": 1479,
+        "shadow-15.geojson": 4786,
+        "shadow-16.geojson": 23254,
+        "shadow-17.geojson": 52451,
+        "shadow-18.geojson": 80649
+      },
+      "totalBytes": 242841
+    },
+    "cheonghakdong": {
+      "builtAt": "2026-09-06T05:52:39Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.29621, 37.92139, 127.31377, 37.94851],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N37_00_E127_00_DEM", "Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2019-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.06,
+          "elevation": 50.44,
+          "shadeFrac": 0.232
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.41,
+          "elevation": 60.93,
+          "shadeFrac": 0.2284
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.24,
+          "elevation": 68.51,
+          "shadeFrac": 0.2276
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.65,
+          "elevation": 69.47,
+          "shadeFrac": 0.2276
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.98,
+          "elevation": 63.09,
+          "shadeFrac": 0.2282
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.4,
+          "elevation": 53.05,
+          "shadeFrac": 0.2319
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.23,
+          "elevation": 41.69,
+          "shadeFrac": 0.2393
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.19,
+          "elevation": 29.92,
+          "shadeFrac": 0.2532
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.01,
+          "elevation": 18.15,
+          "shadeFrac": 0.3034
+        }
+      ],
+      "segments": {
+        "cheonghakdong-whole": {
+          "canopyCover": 0.056,
+          "shadeByHour": [0.057, 0.056, 0.056, 0.056, 0.056, 0.058, 0.065, 0.08, 0.164]
+        }
+      },
+      "files": {
+        "canopy.geojson": 46507,
+        "shadow-10.geojson": 2862,
+        "shadow-11.geojson": 1251,
+        "shadow-12.geojson": 1251,
+        "shadow-13.geojson": 1251,
+        "shadow-14.geojson": 1251,
+        "shadow-15.geojson": 2604,
+        "shadow-16.geojson": 14837,
+        "shadow-17.geojson": 45253,
+        "shadow-18.geojson": 68642
+      },
+      "totalBytes": 185709
+    },
+    "baegun-pocheon": {
+      "builtAt": "2026-09-06T05:51:08Z",
+      "representativeDate": "2026-08-01",
+      "hours": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+      "bbox": [127.42075, 38.08056, 127.43625, 38.09346],
+      "crs": "EPSG:32652",
+      "gridResM": 2,
+      "bufferHalfM": 25,
+      "corridorHalfM": 200,
+      "assets": {
+        "glo30": {
+          "dataset": "Copernicus DEM GLO-30 (COG, s3://copernicus-dem-30m)",
+          "tiles": ["Copernicus_DSM_COG_10_N38_00_E127_00_DEM"]
+        },
+        "chm": {
+          "dataset": "Meta/WRI Global Canopy Height Map v1 (alsgedi_global_v6_float, 1 m, CC-BY 4.0)",
+          "quadkeys": ["132110303"],
+          "acquisition": ["2016-12", "2018-03"]
+        }
+      },
+      "sun": [
+        {
+          "timeLocal": "10:00",
+          "azimuth": 109.34,
+          "elevation": 50.49,
+          "shadeFrac": 0.7526
+        },
+        {
+          "timeLocal": "11:00",
+          "azimuth": 126.81,
+          "elevation": 60.91,
+          "shadeFrac": 0.75
+        },
+        {
+          "timeLocal": "12:00",
+          "azimuth": 155.7,
+          "elevation": 68.41,
+          "shadeFrac": 0.7497
+        },
+        {
+          "timeLocal": "13:00",
+          "azimuth": 195.86,
+          "elevation": 69.3,
+          "shadeFrac": 0.7497
+        },
+        {
+          "timeLocal": "14:00",
+          "azimuth": 227.96,
+          "elevation": 62.92,
+          "shadeFrac": 0.7497
+        },
+        {
+          "timeLocal": "15:00",
+          "azimuth": 247.34,
+          "elevation": 52.9,
+          "shadeFrac": 0.7507
+        },
+        {
+          "timeLocal": "16:00",
+          "azimuth": 260.19,
+          "elevation": 41.57,
+          "shadeFrac": 0.7572
+        },
+        {
+          "timeLocal": "17:00",
+          "azimuth": 270.18,
+          "elevation": 29.82,
+          "shadeFrac": 0.7926
+        },
+        {
+          "timeLocal": "18:00",
+          "azimuth": 279.04,
+          "elevation": 18.08,
+          "shadeFrac": 0.8565
+        }
+      ],
+      "segments": {
+        "baegun-pocheon-whole": {
+          "canopyCover": 0.376,
+          "shadeByHour": [0.389, 0.379, 0.376, 0.376, 0.376, 0.377, 0.386, 0.445, 0.722]
+        }
+      },
+      "files": {
+        "canopy.geojson": 26430,
+        "shadow-10.geojson": 3744,
+        "shadow-11.geojson": 1233,
+        "shadow-12.geojson": 1233,
+        "shadow-13.geojson": 1233,
+        "shadow-14.geojson": 1233,
+        "shadow-15.geojson": 1233,
+        "shadow-16.geojson": 4463,
+        "shadow-17.geojson": 18170,
+        "shadow-18.geojson": 25171
+      },
+      "totalBytes": 84143
+    }
+  }
+}

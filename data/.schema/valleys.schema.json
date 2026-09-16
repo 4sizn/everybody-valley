@@ -1,0 +1,397 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://modugyegok.kr/.schema/valleys.schema.json",
+  "title": "계곡 구간 카탈로그",
+  "description": "계곡은 Point가 아니라 LineString이다. 상류/중류/하류가 수심·혼잡·그늘이 전부 다르므로 구간(segment) 단위로 소유한다. 좌표는 이 파일이 소유한다. [modu-valley 반입 정규화 (C3, 2026-09-03)] valley-ds 원본 대비: metadata.crs 를 required 로 올림(런타임 좌표 변환 금지를 로더가 const 검사로 강제), facilityType 은 store 로 통일(팔레트 convenience 폐기), crowdSnapshot.level 3단계는 busy 로 통일(팔레트 empty 폐기), facilities.geojson 용 facilityFeature/facilityCollection 정의 추가. 로더: packages/core/src/data/valley/.",
+  "type": "object",
+  "required": ["type", "metadata", "features"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "type": {
+      "const": "FeatureCollection"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/segmentFeature"
+      }
+    }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "description",
+        "source",
+        "datasetVersion",
+        "collectedAt",
+        "coordinateOrder",
+        "crs"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "description": "사람이 읽는 출처 문장. 예: 'VWorld 하천망 + 현장 검수'"
+        },
+        "sourceFile": {
+          "type": "string",
+          "description": "원본 파일 경로. 재생성 추적용"
+        },
+        "datasetVersion": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}\\.\\d+$"
+        },
+        "collectedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "coordinateOrder": {
+          "const": "[longitude, latitude]"
+        },
+        "crs": {
+          "const": "EPSG:4326",
+          "description": "저장 시점에 전부 4326으로 정규화한다. 런타임 변환 금지. 로더(core/data/valley)는 이 const 검사로만 규칙을 강제하며 좌표 변환 코드를 두지 않는다 — 그래서 required 다."
+        },
+        "filter": {
+          "type": "string",
+          "description": "이 파일에 포함/제외한 기준"
+        },
+        "verified": {
+          "enum": ["desk", "field"],
+          "description": "[SD1 (g)] 검수 수준. desk = 자료·위성·공개 데이터로만 만든 데스크 검수(앱은 '현장 미확인' 배지), field = 현장 확인. 계곡별 파일(data/valleys/<valleyId>.geojson)에 쓴다"
+        },
+        "sources": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "[SD1 (g)] 기계가 읽는 출처 목록 — 데이터셋 이름·URL(OSM ODbL, 표준데이터 공공누리, Terrarium 등). source 는 사람용 문장"
+        }
+      }
+    },
+    "segmentFeature": {
+      "type": "object",
+      "required": ["type", "geometry", "properties"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "type": "object",
+          "required": ["type", "coordinates"],
+          "properties": {
+            "type": {
+              "const": "LineString"
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "properties": {
+          "$ref": "#/$defs/segmentProps"
+        }
+      }
+    },
+    "segmentProps": {
+      "type": "object",
+      "required": ["id", "valleyId", "valleyName", "segment", "order"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "예: baegun-mid"
+        },
+        "valleyId": {
+          "type": "string",
+          "description": "예: baegun"
+        },
+        "valleyName": {
+          "type": "string",
+          "description": "예: 백운계곡"
+        },
+        "segment": {
+          "enum": ["upper", "mid", "lower", "whole"],
+          "description": "DEM 물길 방향에서 자동 판정 가능. [SD1 (c)] whole = 1구간 계곡(라벨 '전체') — 지명·물놀이관리지역·시설에 상·중·하 구분 근거가 없으면 나누지 않는다"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "상류→하류 순서"
+        },
+        "splitBasis": {
+          "enum": ["toponym", "safemap", "facility", "none"],
+          "description": "[SD1 (c)] 구간 분할 근거 — toponym 지명(상류/중류/하류·○○골) / safemap 물놀이관리지역 구역 / facility 시설·진입점 / none 1구간(나누지 않음). 시딩 스크립트가 남긴다(선택)"
+        },
+        "depth": {
+          "enum": ["knee", "waist", "adult", "mixed"],
+          "description": "무릎 / 허리 / 성인 / 혼재"
+        },
+        "bed": {
+          "enum": ["gravel", "rock", "sand", "mixed"],
+          "description": "바닥재. 돗자리 가능 여부와 직결"
+        },
+        "shadeByHour": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "description": "[D6/P1 산출] 대표일(8/1) KST 10~18 정시 9개 시각의 구간 그늘 비율(0~1). 구간 라인 ±25m 버퍼 셀 중 그늘 셀 비율 — 그늘 = 수관(CHM > 2m) ∪ 나무·지형 그림자 ∪ 원거리 지형 마스크. 인덱스 = 시각 순(10시=0 … 18시=8), data/shade/<valleyId>/shadow-<HH>.geojson 과 같은 순서. scripts/shade 가 쓴다 — 수기 입력 금지."
+        },
+        "canopyCover": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "[D6/P1 산출] 나무 밀도 — 구간 라인 ±25m 버퍼 안 CHM > 2m 셀 비율(0~1). Meta/WRI 1m 수관 높이(2016~2018 촬영). 3단계 표시(dense/moderate/sparse)는 표현 계층이 임계값으로 만든다. 수기 입력 금지."
+        },
+        "shadeRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "정오 값(산출) — shadeByHour[2](12시) 와 같은 값. 호환용으로 남긴다. scripts/shade 가 덮어쓴다(D6: 수기 금지). [이력] C3 유보 → R3b 수기 태그 권고 → D6 에서 불채택, R3c/P1 로 산출값 확정."
+        },
+        "accessDistanceM": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "주차장→물가 도보 거리(m)"
+        },
+        "accessGradePct": {
+          "type": "number",
+          "description": "접근로 평균 경사(%). DEM 산출"
+        },
+        "accessDifficulty": {
+          "enum": ["easy", "moderate", "hard"],
+          "description": "easy = 유모차 가능, hard = 계단·급경사"
+        },
+        "swimBanned": {
+          "type": "boolean",
+          "description": "행안부 물놀이관리지역 금지 구역인가"
+        },
+        "riskNote": {
+          "type": "string",
+          "description": "공식 위험 안내 원문 요약"
+        },
+        "upstreamStationCode": {
+          "type": "string",
+          "description": "한강홍수통제소 상류 관측소 코드. VWorld 표준유역 매칭으로 자동 채움"
+        },
+        "basinCode": {
+          "type": "string",
+          "description": "표준유역 코드"
+        },
+        "freeAccess": {
+          "type": "boolean",
+          "description": "무료 개방 여부(자릿세 없음)"
+        },
+        "campingAllowed": {
+          "type": "boolean"
+        },
+        "petAllowed": {
+          "type": "boolean"
+        },
+        "mapIconTier": {
+          "type": "integer",
+          "enum": [0, 1, 2],
+          "description": "0 유명 계곡 / 1 지선 / 2 소규모 소·명소. 클러스터링 대신 이 값으로 밀도 제어"
+        },
+        "mapLabelTier": {
+          "type": "integer",
+          "enum": [0, 1, 2]
+        },
+        "mapImportance": {
+          "type": "number",
+          "description": "symbol-sort-key 값. 작을수록 위"
+        },
+        "selected": {
+          "type": "boolean",
+          "default": false,
+          "description": "런타임 주입 필드. 원본 데이터에는 넣지 말 것"
+        }
+      }
+    },
+    "facilityProps": {
+      "description": "facilities.geojson 용. geometry는 Point.",
+      "type": "object",
+      "required": ["id", "valleyId", "name", "facilityType"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "valleyId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "facilityType": {
+          "enum": [
+            "parking",
+            "restroom",
+            "food",
+            "cafe",
+            "store",
+            "shelter",
+            "station",
+            "access",
+            "safety",
+            "etc"
+          ],
+          "description": "마커 색 10종과 1:1 대응 (tokens/map-palette.json). shelter(정자·쉼터)는 2026-09-08 추가 — OSM amenity=shelter/shelter_type=gazebo 수집. [C3 통일] 팔레트 키 convenience 는 store 로 바꾼다 — 스키마와 lazy-marker-icons.ts 가 이미 store 이고, 매점·슈퍼·편의점을 모두 담는 넓은 이름이라 계곡 현장에 맞다. 팔레트 교체는 C2 에서."
+        },
+        "capacity": {
+          "type": "integer",
+          "description": "주차 면수 등"
+        },
+        "feeNote": {
+          "type": "string"
+        },
+        "operatingHours": {
+          "type": "string",
+          "description": "예: 09:00~18:00"
+        },
+        "nationalPointNumber": {
+          "type": "string",
+          "description": "국가지점번호. 119 좌표 카드용"
+        },
+        "mapIconTier": {
+          "type": "integer",
+          "enum": [0, 1, 2]
+        },
+        "mapImportance": {
+          "type": "number"
+        }
+      }
+    },
+    "facilityFeature": {
+      "description": "facilities.geojson 의 피처. geometry 는 Point.",
+      "type": "object",
+      "required": ["type", "geometry", "properties"],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "geometry": {
+          "type": "object",
+          "required": ["type", "coordinates"],
+          "properties": {
+            "type": {
+              "const": "Point"
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "properties": {
+          "$ref": "#/$defs/facilityProps"
+        }
+      }
+    },
+    "facilityCollection": {
+      "description": "facilities.geojson 의 루트. metadata 규칙은 구간 파일과 같다.",
+      "type": "object",
+      "required": ["type", "metadata", "features"],
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "const": "FeatureCollection"
+        },
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/facilityFeature"
+          }
+        }
+      }
+    },
+    "crowdSnapshot": {
+      "description": "혼잡도 스냅샷. 마커 3단계 색과 대응. [C3 통일] available=여유 / low=보통 / busy=혼잡. 팔레트 status3 의 empty 는 busy 로 바꾼다 — 스키마와 lazy-marker-icons.ts CROWD_COLOR 가 이미 busy 다.",
+      "type": "object",
+      "required": ["valleyId", "level", "observedAt", "source"],
+      "properties": {
+        "valleyId": {
+          "type": "string"
+        },
+        "segmentId": {
+          "type": "string"
+        },
+        "level": {
+          "enum": ["available", "low", "busy"]
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "enum": ["report", "checkin", "parking-api", "estimate"]
+        },
+        "sampleCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "upstreamAlert": {
+      "description": "상류 강우 경보 이벤트. SSE 채널 payload.",
+      "type": "object",
+      "required": ["valleyId", "stationCode", "level", "issuedAt"],
+      "properties": {
+        "valleyId": {
+          "type": "string"
+        },
+        "stationCode": {
+          "type": "string"
+        },
+        "level": {
+          "enum": ["watch", "warning", "evacuate"]
+        },
+        "rainfall10mMm": {
+          "type": "number"
+        },
+        "waterLevelDeltaM": {
+          "type": "number"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "clearedAt": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "verified": {
+          "type": ["boolean", "null"],
+          "description": "사후 검증 — 실제로 수위가 올랐는가. 임계값 튜닝용"
+        }
+      }
+    }
+  }
+}

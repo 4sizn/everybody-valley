@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>불꽃축제 지도 — 클론 예제</title>
+
+<!-- 1) MapLibre GL JS : spotts.kr 과 동일한 렌더링 엔진 (Mapbox 아님)
+     알려진 이슈 — flyTo/easeTo 를 빠르게 반복하면 내부 타일 캐시에서
+     _updateRetainedTiles 가 "Cannot read properties of undefined
+     (reading 'key')" 를 던진다. 5.4.0 / 5.6.0 양쪽에서 비결정적으로 재현되고
+     (커스텀 레이어·Marker 유무와 무관, 카메라 이동만으로도 발생)
+     rAF 안에서 삼켜져 렌더링·상태에는 영향이 없다. 업스트림 레이스. -->
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css" />
+<script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+
+<!-- 2) Pretendard : spotts.kr 이 쓰는 것과 같은 CDN/폰트 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<style>
+  /* ═══ spotts.kr 실측 디자인 토큰 ═══════════════════════════════
+     getComputedStyle 로 뽑은 실제 값. 색·반경·타이포 모두 원본 그대로. */
+  :root{
+    --bg:#18181c;            /* rgb(24,24,28)    베이스            */
+    --surface:#202024;       /* rgb(32,32,36)    카드              */
+    --fg:#f2f4f6;            /* rgb(242,244,246) 본문              */
+    --fg2:#9ea4ad;           /* rgb(158,164,173) 보조              */
+    --fg3:#6e747f;           /* rgb(110,116,127) 캡션              */
+    --accent:#297cff;        /* rgb(41,124,255)  블루 CTA          */
+    --line:rgba(46,46,52,.9);
+    --line2:rgba(57,57,64,.7);
+    --shadow:rgba(0,0,0,.2) 0 1px 1px, rgba(0,0,0,.28) 0 4px 12px;
+    --col:560px;             /* 중앙 컬럼 폭 — 시트·컨트롤 정렬 기준 */
+    --sheet-h:45vh;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
+  body{font-family:Pretendard Variable,Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+       color:var(--fg);font-size:16px;-webkit-font-smoothing:antialiased}
+  button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+  #map-root{position:absolute;inset:0}
+  svg{display:block;flex:none}
+
+  /* ── 상단 검색바 : 전체폭, 반투명 + blur ─────────────────────── */
+  .topbar{position:absolute;top:16px;left:16px;right:16px;z-index:6;height:48px;
+    display:flex;align-items:center;gap:10px;padding:0 14px;border-radius:9999px;
+    background:rgba(24,24,28,.8);border:1px solid var(--line);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+  .brand{display:flex;align-items:baseline;gap:6px;padding-right:12px;margin-right:2px;
+    border-right:1px solid var(--line)}
+  .brand b{font-size:17px;font-weight:700;letter-spacing:-.5px}
+  .brand i{font-style:normal;font-size:14px;font-weight:600;color:var(--accent)}
+  .chip{font-size:10px;font-weight:700;letter-spacing:.4px;color:var(--fg3);
+    border:1px solid var(--line2);border-radius:9999px;padding:2px 6px;align-self:center}
+  .topbar input{flex:1;background:none;border:0;outline:0;color:var(--fg);font-size:15px}
+  .topbar input::placeholder{color:var(--fg3)}
+
+  /* ── 중앙 컬럼 : 시트와 우측 컨트롤이 같은 축에 정렬된다 ─────── */
+  .col{position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);
+    width:min(var(--col),calc(100% - 32px));pointer-events:none;z-index:5}
+
+  /* ── 우측 원형 컨트롤 : 컬럼 오른쪽 끝에 붙는다 ─────────────── */
+  .controls{position:absolute;right:16px;bottom:calc(var(--sheet-h) + 16px);
+    display:flex;flex-direction:column;align-items:flex-end;gap:12px;pointer-events:auto}
+  .ctrl{width:44px;height:44px;border-radius:9999px;background:var(--bg);
+    display:grid;place-items:center;box-shadow:var(--shadow);transition:background .15s,transform .15s}
+  .ctrl:hover{background:#242429;transform:scale(1.05)}
+  .ctrl.on{background:var(--accent)}
+  .report{height:48px;padding:0 18px;border-radius:9999px;background:var(--bg);
+    display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;box-shadow:var(--shadow)}
+  #needle{transition:transform .2s ease-out;transform-origin:center}
+
+  /* ── 실시간 소식 티커 ───────────────────────────────────────── */
+  .ticker{position:absolute;left:16px;bottom:calc(var(--sheet-h) + 20px);width:300px;
+    pointer-events:none;transition:opacity .3s}
+  .ticker .hd{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#ff5b5b;margin-bottom:6px}
+  .ticker .hd s{width:7px;height:7px;border-radius:50%;background:#ff3b3b;text-decoration:none;
+    animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+  .ticker p{margin:0;font-size:14px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.9);
+    transition:opacity .35s}
+  .ticker p em{font-style:normal;font-weight:400;font-size:12px;color:var(--fg2);margin-left:6px}
+
+  /* ── 하단 시트 ──────────────────────────────────────────────── */
+  .sheet{position:absolute;left:50%;transform:translateX(-50%);bottom:0;z-index:5;
+    width:min(var(--col),calc(100% - 32px));height:var(--sheet-h);
+    background:var(--bg);border-radius:16px 16px 0 0;overflow:auto;
+    padding:0 16px 84px;
+    box-shadow:rgba(0,0,0,.24) 0 -1px 4px, rgba(0,0,0,.4) 0 -10px 30px;
+    transition:transform .32s cubic-bezier(.32,.72,0,1);
+    scrollbar-width:none;-ms-overflow-style:none}
+  .sheet::-webkit-scrollbar{display:none}
+  .sheet.down{transform:translateX(-50%) translateY(calc(100% - 68px))}
+  .grab{position:sticky;top:0;z-index:2;height:20px;display:grid;place-items:center;
+    background:var(--bg);cursor:grab}
+  .grab s{width:44px;height:4px;border-radius:2px;background:#3a3a41;text-decoration:none}
+  .hrow{display:flex;align-items:center;justify-content:space-between;height:40px;margin-bottom:16px}
+  .hrow h1{margin:0;font-size:22px;font-weight:600;letter-spacing:-.6px}
+  .share{width:40px;height:40px;border-radius:9999px;background:var(--bg);border:1px solid var(--line);
+    display:grid;place-items:center;box-shadow:var(--shadow)}
+  .cta{display:flex;gap:8px;height:40px;margin-bottom:24px}
+  .cta button{border-radius:9999px;font-size:15px;font-weight:500;transition:filter .15s}
+  .cta button:hover{filter:brightness(1.12)}
+  .cta .primary{flex:1;background:var(--accent);color:#fff}
+  .cta .ghost{padding:0 18px;background:var(--bg);border:1px solid var(--line2)}
+  h2.sec{margin:0 0 8px;font-size:15px;font-weight:600}
+  p.sub{margin:0 0 12px;font-size:12px;color:var(--fg3)}
+  .card{background:var(--surface);border-radius:12px;padding:13px;margin-bottom:8px}
+  .card .t{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:32px}
+  .card .t b{font-size:17px;font-weight:600}
+  .cal{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--fg);
+    border:1px solid var(--line2);border-radius:9999px;padding:6px 12px;white-space:nowrap}
+  .card .d{margin:8px 0 0;font-size:12px;color:var(--fg2)}
+  .card .s{margin:6px 0 0;font-size:15px;color:var(--fg2)}
+  /* ── 컨텐츠 레이아웃 플립플랍 ────────────────────────────────
+     같은 데이터를 두 배치로 오간다. 행 ↔ 타일.
+     perspective 는 부모에 걸어야 자식 rotateY 가 원근으로 접힌다.   */
+  #spotList{perspective:1200px}
+  #spotList.rows{display:flex;flex-direction:column;gap:8px}
+  #spotList.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  #spotList.tiles .spot{flex-direction:column;align-items:flex-start;gap:10px;padding:14px;min-height:104px}
+  #spotList.tiles .spot .ds{margin-left:0}
+  #spotList.tiles .spot .dot{box-shadow:0 0 0 5px rgba(255,255,255,.07)}
+
+  .seghead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .seghead h2.sec{margin:0}
+  .segbar{display:flex;gap:2px;padding:2px;border-radius:9999px;background:var(--surface);
+    border:1px solid var(--line)}
+  .seg{width:30px;height:26px;border-radius:9999px;display:grid;place-items:center;
+    color:var(--fg3);transition:background .18s,color .18s}
+  .seg.act{background:rgba(242,244,246,.10);color:var(--fg)}
+
+  .spot{display:flex;align-items:center;gap:12px;padding:13px;border-radius:12px;
+    background:var(--surface);cursor:pointer;transition:background .15s;
+    transform-style:preserve-3d;backface-visibility:hidden}
+  .spot:hover{background:#26262b}
+  .spot .dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+  .spot .nm{font-size:15px;font-weight:600}
+  .spot .tg{font-size:12px;color:var(--fg3);margin-top:2px}
+  .spot .ds{margin-left:auto;font-size:13px;color:var(--fg2);font-variant-numeric:tabular-nums}
+  .foot{margin:20px 0 0;font-size:12px;color:var(--fg3);line-height:1.6;text-align:center}
+
+  /* ── 플립플랍 전환 : 목록 ↔ 상세 ─────────────────────────────
+     높이가 다른 두 면을 다루려고 2단계로 나눈다.
+     0→90도 접기(220ms) → 중간에 내용 교체 → 90→0도 펴기(240ms).
+     한 컨테이너를 180도 돌리는 방식은 뒷면을 absolute 로 띄워야 해서
+     스크롤되는 시트에는 안 맞는다.                                 */
+  .flip{transform-origin:50% 45%;
+    transition:transform .22s cubic-bezier(.55,0,1,.45), opacity .22s ease-in}
+  .flip.turn{transform:perspective(1400px) rotateY(90deg) scale(.94);opacity:.08}
+  .flip.back{transition:transform .24s cubic-bezier(0,.55,.45,1), opacity .24s ease-out}
+  .face[hidden]{display:none}
+
+  /* ── 상세 패널 ─────────────────────────────────────────────── */
+  .eyebrow{display:block;font-size:12px;font-weight:600;color:#4d94ff;margin-bottom:3px}
+  .dmeta{margin:0 0 14px;display:flex;align-items:center;gap:6px;
+    font-size:14px;font-weight:500;color:var(--fg2)}
+  .ddesc{margin:0 0 14px;font-size:15px;color:var(--fg2);line-height:1.5}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .icard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+  .icard .l{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;
+    color:var(--fg3);margin-bottom:4px}
+  .icard .v{font-size:15px;font-weight:500;color:var(--fg);line-height:1.4}
+
+  /* 선택 핀 — 원본의 물방울 마커 */
+  .pin{cursor:pointer;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6));animation:drop .42s cubic-bezier(.2,1.5,.4,1)}
+  @keyframes drop{0%{transform:translateY(-22px) scale(.5);opacity:0}100%{transform:none;opacity:1}}
+
+  /* ── 하단 플로팅 내비 ───────────────────────────────────────── */
+  .nav{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;z-index:7;
+    height:50px;padding:0 8px;display:flex;align-items:center;border-radius:9999px;background:var(--bg);
+    box-shadow:rgba(46,46,52,.55) 0 0 2px 1px, rgba(0,0,0,.45) 0 6px 20px}
+  .nav button{width:50px;height:50px;border-radius:9999px;display:grid;place-items:center;color:var(--fg3)}
+  .nav button:hover{color:var(--fg2)}
+  .nav button.act{color:var(--fg);background:rgba(242,244,246,.10);
+    box-shadow:inset 0 0 0 1px rgba(242,244,246,.5)}
+
+  .credit{position:absolute;left:16px;bottom:8px;z-index:4;font-size:10.5px;color:rgba(255,255,255,.35)}
+  .credit a{color:inherit}
+  .maplibregl-ctrl-attrib{font-size:10px !important}
+  .maplibregl-ctrl-bottom-right{margin-bottom:74px}
+</style>
+</head>
+<body>
+<div id="map-root"></div>
+
+<!-- 상단 검색바 : 원본은 전체폭 pill 하나에 브랜드를 겹쳐 올린다 -->
+<div class="topbar">
+  <span class="brand"><b>spotts</b><i>fireworks</i></span>
+  <span class="chip">CLONE</span>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6e747f" stroke-width="2"
+       stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+  <input placeholder="관람 지역 검색" />
+</div>
+
+<!-- 시트와 같은 축에 정렬되는 중앙 컬럼 -->
+<div class="col">
+  <div class="ticker" id="ticker">
+    <div class="hd"><s></s>실시간 소식</div>
+    <p id="tickerLine">지금 상황을 제보해 주세요 <em>현장 제보</em></p>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl" id="compass" title="북쪽으로 정렬">
+      <svg width="30" height="30" viewBox="0 0 24 24"><g id="needle">
+        <path d="M12 3.5 L15.6 12.6 L12 10.9 L8.4 12.6 Z" fill="#ff6b35"/>
+        <path d="M12 20.5 L8.4 11.4 L12 13.1 L15.6 11.4 Z" fill="#e8eaed"/>
+      </g></svg>
+    </button>
+    <button class="ctrl on" id="toggleFw" title="불꽃 애니메이션">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round">
+        <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/>
+        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></svg>
+    </button>
+    <button class="ctrl" id="locate" title="발사 지점으로">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+        <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3" stroke-linecap="round"/></svg>
+    </button>
+    <button class="ctrl" id="globeBtn" title="지구본에서 보기">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="3.6" ry="8.5"/><path d="M3.6 12h16.8"/></svg>
+    </button>
+    <button class="report" id="reportBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linejoin="round"><path d="M3.5 10v4h3l6 4V6l-6 4h-3z" fill="currentColor"/>
+        <path d="M17 9.2a4 4 0 010 5.6" stroke-linecap="round"/></svg>
+      현장 제보
+    </button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet">
+  <div class="grab" id="grab"><s></s></div>
+  <div class="flip" id="flip">
+
+  <!-- ── 앞면 : 목록 뷰 ─────────────────────────────────────── -->
+  <section class="face" id="faceList">
+  <div class="hrow">
+    <h1>서울세계불꽃축제 2026</h1>
+    <button class="share" id="shareBtn" title="공유">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/>
+        <circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>
+    </button>
+  </div>
+
+  <div class="cta">
+    <button class="primary" id="flyBtn">명당 순회 비행</button>
+    <button class="ghost" id="pitchBtn">2D / 3D</button>
+  </div>
+
+  <h2 class="sec">행사 프로그램</h2>
+  <div class="card">
+    <div class="t"><b>전야제</b>
+      <span class="cal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/>
+        <path d="M3.5 10h17M8 3v4M16 3v4" stroke-linecap="round"/></svg>캘린더 등록</span></div>
+    <p class="d">2026년 9월 4일 (금) · 20:00–20:20</p>
+    <p class="s">시민 불꽃쇼 · 드론쇼</p>
+  </div>
+  <div class="card">
+    <div class="t"><b>메인 불꽃쇼</b>
+      <span class="cal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/>
+        <path d="M3.5 10h17M8 3v4M16 3v4" stroke-linecap="round"/></svg>캘린더 등록</span></div>
+    <p class="d">2026년 9월 5일 (토) · 19:20–20:40</p>
+    <p class="s">영국 20:00 · 미국 20:20 · 한국 20:40</p>
+  </div>
+
+  <div class="seghead" style="margin-top:24px">
+    <h2 class="sec">관람 명당</h2>
+    <div class="segbar">
+      <button class="seg act" data-lay="rows" title="행 배치">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button class="seg" data-lay="tiles" title="타일 배치">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.9"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/>
+          <rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/>
+          <rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/>
+          <rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="sub">예시 데이터입니다. 원본 사이트의 큐레이션 목록이 아닙니다.</p>
+  <div id="spotList" class="rows"></div>
+
+  <p class="foot">지도 © OpenFreeMap · 데이터 © OpenStreetMap contributors<br>
+    학습용 클론 예제 — 공식으로 제공하는 정보가 아닙니다.</p>
+  </section>
+
+  <!-- ── 뒷면 : 명당 상세 뷰 (지도 포인트 클릭 시) ─────────────── -->
+  <section class="face" id="faceDetail" hidden>
+    <div class="hrow" style="height:auto;align-items:flex-start">
+      <div><span class="eyebrow">관람 Spot</span><h1 id="dName"></h1></div>
+      <div style="display:flex;gap:8px;flex:none">
+        <button class="share" title="공유">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/>
+            <circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg>
+        </button>
+        <button class="share" id="closeDetail" title="닫기">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="dmeta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>
+      <span id="dDist"></span>
+    </p>
+
+    <div class="cta">
+      <button class="ghost" style="flex:1" data-demo>
+        <span style="display:inline-flex;align-items:center;gap:6px;justify-content:center">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linejoin="round"><path d="M12 3l8 18-8-4-8 4z"/></svg>길찾기</span>
+      </button>
+      <button class="primary" style="flex:1" id="nearbyBtn">주변에서 명당 찾기</button>
+    </div>
+
+    <p class="ddesc" id="dDesc"></p>
+    <div class="grid2" id="dInfo"></div>
+    <p class="foot">예시 데이터입니다 — 실제 관람 정보가 아닙니다.</p>
+  </section>
+
+  </div><!-- /flip -->
+</div>
+
+<nav class="nav">
+  <button title="영상"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.7"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/>
+    <path d="M10.5 9.5l4.5 2.5-4.5 2.5z" fill="currentColor" stroke="none"/></svg></button>
+  <button class="act" title="홈"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19z"/>
+    <path d="M9.5 20.5v-6h5v6"/></svg></button>
+  <button title="명당"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></button>
+  <button title="제보"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 10v4h3l6 4V6l-6 4h-3z"/>
+    <path d="M17 9.2a4 4 0 010 5.6" stroke-linecap="round"/></svg></button>
+  <button title="설정"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.7" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/>
+    <path d="M19.4 15a1.6 1.6 0 00.32 1.77l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.6 1.6 0 00-1.77-.32 1.6 1.6 0 00-1 1.47V21a2 2 0 11-4 0v-.1a1.6 1.6 0 00-1.05-1.47 1.6 1.6 0 00-1.77.32l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.6 1.6 0 004.6 15a1.6 1.6 0 00-1.47-1H3a2 2 0 110-4h.1A1.6 1.6 0 004.6 9a1.6 1.6 0 00-.33-1.77l-.06-.06a2 2 0 112.83-2.83l.06.06A1.6 1.6 0 009 4.6h.08A1.6 1.6 0 0010 3.13V3a2 2 0 114 0v.1a1.6 1.6 0 001 1.47 1.6 1.6 0 001.77-.32l.06-.06a2 2 0 112.83 2.83l-.06.06A1.6 1.6 0 0019.4 9v.08a1.6 1.6 0 001.47 1H21a2 2 0 110 4h-.1a1.6 1.6 0 00-1.5 1z"/></svg></button>
+</nav>
+
+<div class="credit">
+  © <a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> ·
+  © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   불꽃축제 지도 클론 — spotts.kr/firework 과 동일한 기술 스택
+   ───────────────────────────────────────────────────────────────
+   MapLibre GL JS 5      렌더링 엔진 (WebGL2)
+   OpenFreeMap           OpenMapTiles 스키마 벡터 타일 (무료·무키)
+   OpenStreetMap         원본 지리 데이터
+   fill-extrusion        3D 건물 (스타일 스펙 내장)
+   custom layer + WebGL  불꽃 파티클 (원본은 three.js + GLTFLoader)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 발사 지점 — 여의도 한강공원 상공 */
+const LAUNCH = [126.9345, 37.5285];
+
+/* 관람 명당 예시 데이터 (원본 사이트 데이터가 아닌 데모용 좌표) */
+const SPOTS = [
+  { name:'여의도 한강공원', lngLat:[126.9330,37.5285], tag:'공식 관람구역', color:'#f97316',
+    desc:'두 불꽃 연출 지점과 가까운 대표 무료 관람지예요.',
+    info:[['관람 포인트','불꽃이 크게 보이는 중심 관람지'],['혼잡도','극심한 혼잡 예상'],
+          ['화장실','안내센터 앞 계절광장 약 100m'],['교통','5호선 여의나루역 약 400m']] },
+  { name:'원효대교 남단', lngLat:[126.9430,37.5245], tag:'다리 위 조망', color:'#38bdf8',
+    desc:'다리 위에서 정면으로 내려다보는 각도가 나오는 자리예요.',
+    info:[['관람 포인트','정면 시야 · 강 반사 함께 보임'],['혼잡도','혼잡'],
+          ['화장실','남단 진입로 공원 약 250m'],['교통','1호선 남영역 약 900m']] },
+  { name:'63빌딩 앞', lngLat:[126.9400,37.5195], tag:'랜드마크 배경', color:'#a78bfa',
+    desc:'랜드마크를 배경에 걸고 촬영하기 좋은 각도예요.',
+    info:[['관람 포인트','건물 실루엣과 겹치는 구도'],['혼잡도','보통'],
+          ['화장실','건물 내 이용 가능'],['교통','5호선 여의도역 약 1.1km']] },
+  { name:'노들섬', lngLat:[126.9585,37.5175], tag:'정면 조망', color:'#34d399',
+    desc:'강 건너 정면에서 전체를 조망할 수 있어요.',
+    info:[['관람 포인트','시야를 가리는 구조물이 적음'],['혼잡도','혼잡'],
+          ['화장실','노들섬 내 상시 개방'],['교통','9호선 노들역 약 600m']] },
+  { name:'서강대교 북단', lngLat:[126.9310,37.5405], tag:'인파 우회', color:'#fbbf24',
+    desc:'중심부 인파를 피하면서 볼 수 있는 우회 지점이에요.',
+    info:[['관람 포인트','거리는 있지만 여유로움'],['혼잡도','여유'],
+          ['화장실','밤섬 전망대 인근 약 300m'],['교통','2호선 신촌역 약 1.4km']] },
+  { name:'이촌 한강공원', lngLat:[126.9690,37.5170], tag:'측면 조망', color:'#fb7185',
+    desc:'측면에서 넓게 펼쳐지는 구도로 볼 수 있어요.',
+    info:[['관람 포인트','돗자리 펼치기 좋은 잔디'],['혼잡도','보통'],
+          ['화장실','이촌나들목 인근 약 200m'],['교통','4호선 이촌역 약 500m']] },
+];
+
+/* ── 1. 지도 생성 ────────────────────────────────────────────── */
+const map = new maplibregl.Map({
+  container: 'map-root',
+  style: 'https://tiles.openfreemap.org/styles/dark',  // OpenMapTiles 스키마
+  center: LAUNCH,
+  zoom: 13.6,
+  pitch: 62,          // 원본과 같은 저각 3D 시점
+  bearing: -22,
+  maxPitch: 85,
+  antialias: true,    // fill-extrusion 모서리 계단현상 제거
+  /* projection 은 생성자에 넣어도 style.load 가 덮어쓴다.
+     아래 style.load 안에서 setProjection 으로 지정한다.            */
+  attributionControl: { compact: true },
+});
+map.addControl(new maplibregl.NavigationControl({ visualizePitch:true }), 'bottom-right');
+
+/* 스타일이 참조하지만 스프라이트에 없는 아이콘 — 투명 1px 로 대체해 경고 제거 */
+map.on('styleimagemissing', e => {
+  if (!map.hasImage(e.id)) map.addImage(e.id, { width:1, height:1, data:new Uint8Array(4) });
+});
+
+const meters = () =>
+  maplibregl.MercatorCoordinate.fromLngLat(LAUNCH, 0).meterInMercatorCoordinateUnits();
+
+map.on('style.load', () => {
+
+  /* ── 1.5 ★ 지구본 : 줌아웃하면 구체가 되는 부분 ───────────────
+     'globe'                = 적응형. 멀리서는 구체, 가까이 가면
+                              메르카토르로 자동 모핑 (spotts.kr 방식)
+     'vertical-perspective' = 항상 구체
+     'mercator'             = 항상 평면 (기본값)
+     ※ 외부 스타일 URL 을 쓰면 스타일에 projection 이 없어
+        mercator 로 초기화되므로 반드시 style.load 이후에 건다. */
+  map.setProjection({ type: 'globe' });
+
+  /* ── 2. 밤하늘 (MapLibre 5 내장 sky) ───────────────────────── */
+  map.setSky({
+    'sky-color':'#070d1c', 'horizon-color':'#16233f', 'fog-color':'#0b1020',
+    'sky-horizon-blend':0.7, 'horizon-fog-blend':0.5, 'fog-ground-blend':0.75,
+    'atmosphere-blend': [                 // ★ globe 일 때만 대기 테두리를 보여준다
+      'interpolate', ['linear'], ['zoom'], 0, 1, 5, 1, 7, 0
+    ],
+  });
+
+  /* ── 3. 라벨을 한국어로 (OpenMapTiles name:ko 필드) ────────── */
+  for (const l of map.getStyle().layers) {
+    if (l.type === 'symbol' && l.layout && l.layout['text-field']) {
+      map.setLayoutProperty(l.id, 'text-field',
+        ['coalesce', ['get','name:ko'], ['get','name:latin'], ['get','name']]);
+    }
+  }
+
+  /* ── 4. 3D 건물 : fill-extrusion ───────────────────────────── */
+  const firstSymbol = map.getStyle().layers.find(l => l.type === 'symbol')?.id;
+  map.addLayer({
+    id:'3d-buildings', source:'openmaptiles', 'source-layer':'building',
+    type:'fill-extrusion', minzoom:13,
+    paint:{
+      'fill-extrusion-color': [
+        'interpolate', ['linear'], ['coalesce',['get','render_height'],10],
+        0,'#1b2233', 40,'#26304a', 120,'#36436a', 250,'#4a5b8c'
+      ],
+      'fill-extrusion-height': ['coalesce',['get','render_height'],['get','height'],10],
+      'fill-extrusion-base':   ['coalesce',['get','render_min_height'],0],
+      'fill-extrusion-opacity':0.92,
+    },
+  }, firstSymbol);
+
+  /* ── 5. 명당 마커 : GeoJSON 소스 + circle/symbol 레이어 ────── */
+  map.addSource('spots', { type:'geojson', data:{
+    type:'FeatureCollection',
+    features: SPOTS.map((s,i) => ({
+      type:'Feature',
+      geometry:{ type:'Point', coordinates:s.lngLat },
+      properties:{ idx:i, name:s.name, color:s.color, dist: distLabel(s.lngLat) },
+    })),
+  }});
+  map.addLayer({ id:'spot-glow', type:'circle', source:'spots', paint:{
+    'circle-radius':['interpolate',['linear'],['zoom'],11,10,16,26],
+    'circle-color':['get','color'], 'circle-opacity':0.16, 'circle-blur':0.9 }});
+  map.addLayer({ id:'spot-dot', type:'circle', source:'spots', paint:{
+    'circle-radius':6, 'circle-color':['get','color'],
+    'circle-stroke-width':2.5, 'circle-stroke-color':'rgba(255,255,255,.9)' }});
+  map.addLayer({ id:'spot-label', type:'symbol', source:'spots', layout:{
+    'text-field':['format',['get','name'],{}, '\n',{}, ['get','dist'],{'font-scale':0.82}],
+    'text-font':['Noto Sans Bold'], 'text-size':13, 'text-offset':[0,-1.9],
+    'text-anchor':'bottom', 'text-allow-overlap':false },
+    paint:{ 'text-color':'#ffffff', 'text-halo-color':'rgba(0,0,0,.85)', 'text-halo-width':1.6 }});
+
+  /* 지도 포인트 클릭 → 2D UI 상호작용. 라벨·글로우까지 히트 영역에 포함 */
+  for (const lyr of ['spot-dot','spot-glow','spot-label']){
+    map.on('click', lyr, e => { e.preventDefault(); openSpot(+e.features[0].properties.idx); });
+    map.on('mouseenter', lyr, ()=> map.getCanvas().style.cursor='pointer');
+    map.on('mouseleave', lyr, ()=> map.getCanvas().style.cursor='');
+  }
+  /* 빈 곳 클릭이면 상세를 닫는다 */
+  map.on('click', e => { if (!e.defaultPrevented && selected !== null) closeSpot(); });
+
+  /* ── 6. 불꽃 파티클 : MapLibre custom layer (WebGL 직접 렌더) ─
+     원본 spotts.kr 은 여기에 three.js + GLTFLoader 를 얹어
+     63빌딩 .glb 모델까지 같은 방식으로 그린다.                    */
+  map.addLayer(fireworkLayer());
+});
+
+/* ═══ 불꽃 커스텀 레이어 ═══════════════════════════════════════ */
+function fireworkLayer(){
+  const P_PER_BURST = 320, MAX_BURSTS = 6;
+  let prog, aPos, aCol, uMat, uSize, bursts = [];
+  const RING = 3;               // 링 버퍼 깊이 (GPU 인플라이트 프레임 수)
+  let ring = [], ringIdx = 0;
+  const posArr = new Float32Array(P_PER_BURST*MAX_BURSTS*3);
+  const colArr = new Float32Array(P_PER_BURST*MAX_BURSTS*4);
+  const PALETTE = [[1,.42,.21],[1,.85,.32],[.45,.82,1],[1,.45,.72],[.65,1,.55],[1,1,.95]];
+
+  const spawn = () => {
+    if (bursts.length >= MAX_BURSTS) bursts.shift();
+    const base = PALETTE[(Math.random()*PALETTE.length)|0];
+    const alt  = 300 + Math.random()*260;                       // 고도 300~560m
+    const jitter = 0.0035;
+    const origin = maplibregl.MercatorCoordinate.fromLngLat(
+      [LAUNCH[0]+(Math.random()-.5)*jitter, LAUNCH[1]+(Math.random()-.5)*jitter], alt);
+    const parts = [];
+    for (let i=0;i<P_PER_BURST;i++){
+      // 구면 균등 분포 → 폭발 방향
+      const th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
+      const sp = 95 + Math.random()*135;                        // 초기 속도 m/s → 직경 200~300m 셸
+      parts.push({
+        vx: Math.sin(ph)*Math.cos(th)*sp,
+        vy: Math.sin(ph)*Math.sin(th)*sp,
+        vz: Math.cos(ph)*sp,
+        c: base, life: 1.7 + Math.random()*1.5,
+      });
+    }
+    bursts.push({ origin, parts, t0: performance.now()/1000 });
+  };
+
+  const VS = `
+    attribute vec3 a_pos; attribute vec4 a_col;
+    uniform mat4 u_matrix; uniform float u_size;
+    varying vec4 v_col;
+    void main(){
+      gl_Position = u_matrix * vec4(a_pos, 1.0);
+      gl_PointSize = u_size * (0.35 + 0.65 * a_col.a);
+      v_col = a_col;
+    }`;
+  const FS = `
+    precision mediump float; varying vec4 v_col;
+    void main(){
+      float d = length(gl_PointCoord - vec2(0.5));
+      if (d > 0.5) discard;
+      float glow = pow(1.0 - d*2.0, 1.8);
+      gl_FragColor = vec4(v_col.rgb, 1.0) * v_col.a * glow;
+    }`;
+
+  return {
+    id:'fireworks', type:'custom', renderingMode:'3d',
+    onAdd(_map, gl){
+      const mk = (t,s)=>{ const sh=gl.createShader(t); gl.shaderSource(sh,s); gl.compileShader(sh);
+        if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(sh)); return sh; };
+      prog = gl.createProgram();
+      gl.attachShader(prog, mk(gl.VERTEX_SHADER, VS));
+      gl.attachShader(prog, mk(gl.FRAGMENT_SHADER, FS));
+      gl.linkProgram(prog);
+      aPos = gl.getAttribLocation(prog,'a_pos');  aCol = gl.getAttribLocation(prog,'a_col');
+      uMat = gl.getUniformLocation(prog,'u_matrix'); uSize = gl.getUniformLocation(prog,'u_size');
+      /* ★ 버퍼는 최대 크기로 한 번만 할당하고, 매 프레임 bufferSubData 로
+         덮어쓴다. 매번 bufferData 를 부르면 드라이버가 버퍼를 재할당해
+         "READ-usage buffer was written, then fenced" 경고가 쏟아진다.   */
+      /* ★★ VAO + 링 버퍼
+         · VAO 없이 enableVertexAttribArray 를 부르면 그 상태가 전역에 남아
+           MapLibre 의 GL 상태 캐시(context.currentNumAttributes)와 어긋나고,
+           이후 MapLibre 자체 드로우콜이 INVALID_OPERATION 을 뱉는다.
+         · 같은 버퍼를 매 프레임 덮어쓰면 아직 GPU 가 읽는 중인 버퍼를
+           건드려 드라이버가 셰도우 카피를 버린다("READ-usage buffer ...").
+           프레임마다 다른 버퍼를 돌려 쓰면 사라진다.                      */
+      for (let i = 0; i < RING; i++){
+        const bp = gl.createBuffer(), bc = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, bp);
+        gl.bufferData(gl.ARRAY_BUFFER, posArr.byteLength, gl.STREAM_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bc);
+        gl.bufferData(gl.ARRAY_BUFFER, colArr.byteLength, gl.STREAM_DRAW);
+        const va = gl.createVertexArray();
+        gl.bindVertexArray(va);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bp);
+        gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos,3,gl.FLOAT,false,0,0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bc);
+        gl.enableVertexAttribArray(aCol); gl.vertexAttribPointer(aCol,4,gl.FLOAT,false,0,0);
+        gl.bindVertexArray(null);
+        ring.push({ bp, bc, va });
+      }
+      gl.bindBuffer(gl.ARRAY_BUFFER, null);
+
+      spawn(); setTimeout(spawn, 700); setTimeout(spawn, 1400);
+      this._timer = setInterval(() => { if (window.__fwOn !== false) spawn(); }, 620);
+    },
+    onRemove(_map, gl){
+      clearInterval(this._timer);
+      for (const r of ring){ gl.deleteVertexArray(r.va); gl.deleteBuffer(r.bp); gl.deleteBuffer(r.bc); }
+      ring = []; gl.deleteProgram(prog);
+    },
+    render(gl, args){
+      // MapLibre 5 는 args 객체, 4 이하는 matrix 배열을 넘긴다 — 양쪽 대응
+      const pd = args?.defaultProjectionData;
+      const matrix = pd?.mainMatrix ?? args;
+      /* ★ globe 함정 ─────────────────────────────────────────────
+         커스텀 레이어의 정점은 메르카토르 좌표계다. 구체로 전환되면
+         mainMatrix 가 구면 투영 행렬로 바뀌어 좌표가 깨지고, 그대로
+         drawArrays 하면 WebGL 에러가 쏟아진다.
+         projectionTransition 이 0(평면) → 1(구체) 이므로
+         0 을 넘는 순간부터는 그리지 않는다. 어차피 그 줌에서는
+         불꽃이 픽셀 하나보다 작다.                                  */
+      const globeness = pd?.projectionTransition ?? 0;
+      if (globeness > 0) { map.triggerRepaint(); return; }
+      const fade = 1;
+      const now = performance.now()/1000, mScale = meters();
+      let n = 0;
+      for (const b of bursts){
+        const t = now - b.t0;
+        for (const p of b.parts){
+          if (t > p.life) continue;
+          const drag = Math.exp(-0.55*t);                        // 공기 저항
+          const dx = p.vx * t * drag;
+          const dy = p.vy * t * drag;
+          const dz = p.vz * t * drag - 0.5 * 9.8 * t * t;         // 중력 낙하
+          const a  = Math.max(0, 1 - t/p.life);
+          posArr[n*3  ] = b.origin.x + dx * mScale;
+          posArr[n*3+1] = b.origin.y - dy * mScale;               // 머케이터 y 는 남쪽이 +
+          posArr[n*3+2] = Math.max(0, b.origin.z + dz * mScale);
+          colArr[n*4  ] = p.c[0]; colArr[n*4+1] = p.c[1];
+          colArr[n*4+2] = p.c[2]; colArr[n*4+3] = a*a*fade;       // 제곱 감쇠 → 잔광
+          n++;
+        }
+      }
+      if (n){
+        const slot = ring[ringIdx];  ringIdx = (ringIdx + 1) % RING;
+        gl.bindBuffer(gl.ARRAY_BUFFER, slot.bp);
+        gl.bufferSubData(gl.ARRAY_BUFFER, 0, posArr, 0, n*3);
+        gl.bindBuffer(gl.ARRAY_BUFFER, slot.bc);
+        gl.bufferSubData(gl.ARRAY_BUFFER, 0, colArr, 0, n*4);
+        gl.bindBuffer(gl.ARRAY_BUFFER, null);
+
+        gl.bindVertexArray(slot.va);
+        gl.useProgram(prog);
+        gl.uniformMatrix4fv(uMat, false, matrix);
+        gl.uniform1f(uSize, 22.0 * (window.devicePixelRatio||1));
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);                       // 가산 합성 = 발광
+        gl.depthMask(false);
+        gl.drawArrays(gl.POINTS, 0, n);
+
+        /* 건드린 상태를 되돌리고 MapLibre 의 상태 캐시를 무효화한다.
+           이걸 빠뜨리면 다음 레이어부터 렌더링이 어긋난다.            */
+        gl.depthMask(true);
+        gl.bindVertexArray(null);
+        map.painter.context.setDirty();
+      }
+      // 살아있는 파티클이 있을 때만 재도색을 요청한다.
+      // 무조건 부르면 flyTo 같은 카메라 전환과 겹쳐 MapLibre 의
+      // 타일 캐시 갱신(_updateRetainedTiles)과 경합한다.
+      if (n) map.triggerRepaint();
+    },
+  };
+}
+
+/* ═══ 보조 ════════════════════════════════════════════════════ */
+function distLabel(lngLat){
+  const R=6371000, [a,b]=LAUNCH, [c,d]=lngLat, r=Math.PI/180;
+  const x=(c-a)*r*Math.cos((b+d)*r/2), y=(d-b)*r, m=Math.sqrt(x*x+y*y)*R;
+  return m<1000 ? Math.round(m)+'m' : (m/1000).toFixed(1)+'km';
+}
+
+/* ═══ 2D UI 배선 ══════════════════════════════════════════════ */
+
+/* 명당 목록 */
+document.getElementById('spotList').innerHTML = SPOTS.map((s,i)=>`
+  <div class="spot" data-i="${i}">
+    <span class="dot" style="background:${s.color}"></span>
+    <div><div class="nm">${s.name}</div><div class="tg">${s.tag}</div></div>
+    <span class="ds">${distLabel(s.lngLat)}</span>
+  </div>`).join('');
+/* 목록 클릭 핸들러는 아래 openSpot 배선에서 함께 건다 */
+
+/* 원형 컨트롤 */
+document.getElementById('compass').onclick = () => map.easeTo({ bearing:0, pitch:62, duration:800 });
+document.getElementById('locate').onclick  = () =>
+  map.flyTo({ center:LAUNCH, zoom:13.6, pitch:62, bearing:-22, duration:1400 });
+document.getElementById('toggleFw').onclick = e => {
+  window.__fwOn = !(window.__fwOn ?? true);
+  e.currentTarget.classList.toggle('on', window.__fwOn);
+};
+document.getElementById('globeBtn').onclick = () => {
+  if (map.getZoom() > 4) map.flyTo({ center:LAUNCH, zoom:1.5, pitch:0, bearing:0, duration:3000 });
+  else                   map.flyTo({ center:LAUNCH, zoom:13.6, pitch:62, bearing:-22, duration:3400 });
+};
+map.on('rotate', () => {
+  document.getElementById('needle').style.transform = `rotate(${-map.getBearing()}deg)`;
+});
+
+/* 시트 CTA */
+document.getElementById('pitchBtn').onclick = () =>
+  map.easeTo({ pitch: map.getPitch() > 20 ? 0 : 62, duration:800 });
+let tour = 0;
+document.getElementById('flyBtn').onclick = () => {
+  const s = SPOTS[tour++ % SPOTS.length];
+  map.flyTo({ center:s.lngLat, zoom:15.4, pitch:72, bearing:(tour*47)%360, duration:2600, curve:1.5 });
+};
+
+/* 시트 접기 — 핸들 클릭 / 드래그 */
+const sheet = document.getElementById('sheet'), grab = document.getElementById('grab');
+grab.onclick = () => sheet.classList.toggle('down');
+let dragY = null;
+grab.addEventListener('pointerdown', e => { dragY = e.clientY; grab.setPointerCapture(e.pointerId); });
+grab.addEventListener('pointerup', e => {
+  if (dragY === null) return;
+  const dy = e.clientY - dragY; dragY = null;
+  if (Math.abs(dy) > 24) sheet.classList.toggle('down', dy > 0);
+});
+
+/* 실시간 소식 티커 — 원본처럼 문구가 순환한다 */
+const TICKS = [
+  ['지금 상황을 제보해 주세요', '현장 제보'],
+  ['교통 통제·공지도 여기 모여요', '공식 소식'],
+  ['소식이 들어오면 여기 먼저 떠요', '실시간'],
+];
+let ti = 0;
+const tickerLine = document.getElementById('tickerLine');
+setInterval(() => {
+  tickerLine.style.opacity = 0;
+  setTimeout(() => {
+    ti = (ti + 1) % TICKS.length;
+    tickerLine.innerHTML = `${TICKS[ti][0]} <em>${TICKS[ti][1]}</em>`;
+    tickerLine.style.opacity = 1;
+  }, 350);
+}, 3200);
+
+/* 데모용 안내 */
+for (const id of ['shareBtn','reportBtn'])
+  document.getElementById(id).onclick = () => alert('클론 예제입니다 — 동작하지 않습니다.');
+document.querySelectorAll('.nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.nav button').forEach(x => x.classList.remove('act'));
+  b.classList.add('act');
+});
+document.querySelectorAll('.cal').forEach(c => c.onclick = e => {
+  e.stopPropagation(); alert('클론 예제입니다 — 동작하지 않습니다.');
+});
+document.querySelectorAll('[data-demo]').forEach(b => b.onclick = () =>
+  alert('클론 예제입니다 — 동작하지 않습니다.'));
+
+/* ═══ 목록 ↔ 상세 플립플랍 ════════════════════════════════════
+   높이가 다른 두 면이라 한 컨테이너를 180도 돌릴 수 없다.
+   0→90도 접고 → 그 순간 내용을 바꾸고 → 90→0도 펴는 2단계.      */
+const flipEl = document.getElementById('flip');
+const faceList = document.getElementById('faceList');
+const faceDetail = document.getElementById('faceDetail');
+const sheetEl = document.getElementById('sheet');
+let busy = false;
+
+function flipTo(toDetail, fill){
+  if (busy) return; busy = true;
+  flipEl.classList.remove('back');
+  flipEl.classList.add('turn');                       // 0 → 90도
+  setTimeout(() => {
+    if (fill) fill();
+    faceList.hidden = toDetail;
+    faceDetail.hidden = !toDetail;
+    sheetEl.scrollTop = 0;
+    flipEl.classList.add('back');                     // 되펴기 이징으로 교체
+    flipEl.classList.remove('turn');                  // 90 → 0도
+    stagger([...(toDetail
+      ? document.querySelectorAll('#faceDetail .cta, #faceDetail .ddesc, #faceDetail .icard')
+      : document.querySelectorAll('#faceList .cta, #faceList .card, #faceList .spot'))].slice(0, 8));
+    setTimeout(() => { flipEl.classList.remove('back'); busy = false; }, 260);
+  }, 230);
+}
+
+/* ═══ 선택 핀 ═════════════════════════════════════════════════ */
+let selected = null, pin = null;
+function setPin(lngLat, color){
+  if (pin) pin.remove();
+  const el = document.createElement('div');
+  el.className = 'pin';
+  el.innerHTML = `<svg width="34" height="46" viewBox="0 0 34 46">
+    <path d="M17 45C17 45 32 27.5 32 16A15 15 0 1 0 2 16c0 11.5 15 29 15 29z"
+          fill="${color}" stroke="rgba(255,255,255,.92)" stroke-width="2.4"/>
+    <circle cx="17" cy="16" r="5.4" fill="rgba(255,255,255,.95)"/></svg>`;
+  pin = new maplibregl.Marker({ element: el, anchor: 'bottom' }).setLngLat(lngLat).addTo(map);
+}
+
+/* ═══ 상세 열기 / 닫기 ════════════════════════════════════════ */
+function setNav(i){
+  document.querySelectorAll('.nav button').forEach((b,k) => b.classList.toggle('act', k === i));
+}
+
+function openSpot(i){
+  if (busy) return;                                   // 플립 중 재진입 차단
+  const s = SPOTS[i];
+  selected = i;
+  map.stop();                                         // ★ 진행 중 카메라 애니메이션 중단
+  setPin(s.lngLat, s.color);
+  setNav(2);                                          // 내비 활성 탭 → 명당
+  document.getElementById('ticker').style.opacity = 0;
+  map.flyTo({ center:s.lngLat, zoom:15.4, pitch:64, duration:1400, offset:[0,-90], essential:true });
+
+  flipTo(true, () => {
+    document.getElementById('dName').textContent = s.name;
+    document.getElementById('dDist').textContent = `불꽃까지 약 ${distLabel(s.lngLat)}`;
+    document.getElementById('dDesc').textContent = s.desc;
+    document.getElementById('dInfo').innerHTML = s.info.map(([l,v]) => `
+      <div class="icard"><div class="l">${ICON[l] ?? ICON._}${l}</div><div class="v">${v}</div></div>`).join('');
+  });
+}
+
+function closeSpot(){
+  if (selected === null || busy) return;
+  selected = null;
+  map.stop();                                         // ★ 진행 중 카메라 애니메이션 중단
+  if (pin) { pin.remove(); pin = null; }
+  setNav(1);                                          // 내비 활성 탭 → 홈
+  document.getElementById('ticker').style.opacity = 1;
+  map.easeTo({ zoom:13.8, pitch:62, duration:1100, offset:[0,0] });
+  flipTo(false);
+}
+
+/* 정보 카드 아이콘 */
+const I = (d,f) => `<svg width="13" height="13" viewBox="0 0 24 24" fill="${f?'currentColor':'none'}"
+  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICON = {
+  '관람 포인트': I('<path d="M2 12s3.8-6.5 10-6.5S22 12 22 12s-3.8 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.6"/>'),
+  '혼잡도'    : I('<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 5.2a3 3 0 010 5.6M17.5 20a6 6 0 00-2-4.5"/>'),
+  '화장실'    : I('<path d="M7 21v-6M7 15a2.5 2.5 0 01-2.5-2.5V10A2.5 2.5 0 017 7.5 2.5 2.5 0 019.5 10v2.5A2.5 2.5 0 017 15z"/><circle cx="7" cy="4" r="1.6"/><path d="M17 21v-6l2-5-2-2.5-2 2.5 2 5"/><circle cx="17" cy="4" r="1.6"/>'),
+  '교통'      : I('<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 12h14M8 21l2-4M16 21l-2-4"/><circle cx="8.5" cy="14.5" r=".9" fill="currentColor"/><circle cx="15.5" cy="14.5" r=".9" fill="currentColor"/>'),
+  _           : I('<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/>'),
+};
+
+document.getElementById('closeDetail').onclick = closeSpot;
+document.getElementById('nearbyBtn').onclick = () => {
+  if (selected === null) return;
+  map.stop();
+  map.flyTo({ center:SPOTS[selected].lngLat, zoom:16.4, pitch:74,
+              bearing:(map.getBearing()+70)%360, duration:2000 });
+};
+/* 목록 항목 클릭도 같은 상세 뷰로 */
+document.querySelectorAll('.spot').forEach(el =>
+  el.onclick = () => openSpot(+el.dataset.i));
+/* Esc 로 닫기 */
+addEventListener('keydown', e => { if (e.key === 'Escape') closeSpot(); });
+
+/* ═══ 컨텐츠 레이아웃 플립플랍 ════════════════════════════════
+   행 배치 ↔ 타일 배치. 두 배치는 항목의 위치·크기가 모두 달라서
+   클래스만 바꾸면 순간이동한다. FLIP 기법으로 메운다.
+
+     First  : 바꾸기 전 각 항목의 좌표를 잰다
+     Last   : 클래스를 바꾼 직후 좌표를 다시 잰다
+     Invert : 차이만큼 되돌려 놓아 "안 움직인 것처럼" 만들고
+     Play   : 0 으로 풀면서 실제 이동을 재생한다
+
+   여기에 중간 지점 rotateY(-72도) 를 얹었다. 거의 옆면이 되는
+   순간 폭·높이가 바뀌므로 크기 변화가 눈에 걸리지 않는다.
+   scale 로 늘리는 방식은 글자가 찌그러져서 쓰지 않았다.        */
+const listEl = document.getElementById('spotList');
+let layout = 'rows';
+
+function setLayout(next, animate = true){
+  if (next === layout) return;
+  const items = [...listEl.children];
+
+  /* 진행 중인 전환이 있으면 걷어내고 새 전환을 받는다.
+     플래그로 잠그면, cancel 된 애니메이션은 finish 이벤트가 오지 않아
+     플래그가 영영 안 풀리고 토글이 죽는다.                          */
+  items.forEach(el => el.getAnimations().forEach(a => a.cancel()));
+
+  if (!animate || !items.length){
+    listEl.classList.remove(layout); listEl.classList.add(next);
+    layout = next; syncSeg(); return;
+  }
+
+  const first = items.map(el => el.getBoundingClientRect());   // First
+  listEl.classList.remove(layout); listEl.classList.add(next);
+  layout = next; syncSeg();
+  const last = items.map(el => el.getBoundingClientRect());    // Last
+
+  const anims = items.map((el, i) => {
+    const dx = first[i].left - last[i].left;
+    const dy = first[i].top  - last[i].top;
+    /* easing 을 effect 전체에 걸면 곡선이 keyframe offset 보다 먼저
+       적용돼, 접힘이 앞쪽 95ms 에 몰리고 펴짐만 길게 늘어진다.
+       keyframe 마다 따로 걸어야 접힘·펴짐이 대칭이 된다.          */
+    return el.animate([
+      { transform:`translate(${dx}px, ${dy}px) rotateY(0deg)`,           opacity:1,
+        offset:0,   easing:'cubic-bezier(.55,0,1,.45)' },       // 접힘 (가속)
+      { transform:`translate(${dx*.45}px, ${dy*.45}px) rotateY(-72deg)`, opacity:.18,
+        offset:.46, easing:'cubic-bezier(0,.55,.45,1)' },       // 펴짐 (감속)
+      { transform:'translate(0,0) rotateY(0deg)',                        opacity:1, offset:1 },
+    ], { duration:560, delay:i*48, fill:'both', easing:'linear' });   // Invert → Play
+  });
+
+  /* finished 는 cancel 시 reject 되므로 allSettled 로 받아야
+     중간에 끊겨도 잔여 transform 이 남지 않는다. */
+  Promise.allSettled(anims.map(a => a.finished)).then(() => {
+    for (const a of anims) { try { if (a.playState === 'finished') a.cancel(); } catch {} }
+  });
+}
+
+function syncSeg(){
+  document.querySelectorAll('.seg').forEach(b =>
+    b.classList.toggle('act', b.dataset.lay === layout));
+}
+document.querySelectorAll('.seg').forEach(b =>
+  b.onclick = () => setLayout(b.dataset.lay));
+
+/* 마지막 배치를 기억한다 (파일 하나로 열어도 유지) */
+try {
+  const saved = localStorage.getItem('spotts-clone-layout');
+  if (saved && saved !== layout) setLayout(saved, false);
+} catch {}
+document.querySelectorAll('.seg').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('spotts-clone-layout', layout); } catch {}
+}));
+
+/* ═══ 면 전환 시 항목 스태거 등장 ═════════════════════════════
+   시트가 목록↔상세로 뒤집힌 뒤, 안쪽 항목이 한 박자씩 늦게 세워진다.
+   면 전체 플립만 있으면 교체가 단조로워서 결을 하나 더 얹었다.     */
+function stagger(nodes, dir = 1){
+  nodes.forEach((el, i) => {
+    const a = el.animate([
+      { transform:`perspective(900px) rotateX(${34*dir}deg) translateY(${13*dir}px)`, opacity:0 },
+      { transform:'none', opacity:1 },
+    ], { duration:380, delay:60 + i*55, fill:'both', easing:'cubic-bezier(.22,.9,.3,1)' });
+    a.onfinish = () => a.cancel();
+  });
+}
+
+
+
+</script>
+</body>
+</html>

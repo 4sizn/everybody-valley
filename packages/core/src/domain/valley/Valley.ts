@@ -1,0 +1,196 @@
+/**
+ * 계곡 애그리게이트 — 구간(선) 여럿과 시설(점) 여럿의 루트.
+ *
+ * `Festival` 과 같은 자리다. 표현 계층이 구간 배열을 직접 뒤지지 않도록 조회를
+ * 여기로 모은다. 구간은 항상 상류→하류(`order` 오름차순)로 정렬되어 있다 —
+ * 데이터 파일의 피처 순서에 기대지 않는다.
+ *
+ * 혼잡 스냅샷·경보는 애그리게이트에 싣지 않는다. 계곡 데이터는 시딩 시점에
+ * 굳는 정적 카탈로그이고, 스냅샷·경보는 분 단위로 바뀌는 런타임 상태라
+ * 생애가 다르다. 그 결합은 애플리케이션 상태(`AppState`)가 맡는다.
+ */
+import { ValleyError } from '../../shared/errors';
+import { err, ok, type Result } from '../../shared/result';
+import type { Distance } from '../geo/Distance';
+import { LngLat } from '../geo/LngLat';
+import type { Facility, FacilityType } from './Facility';
+import type { BasinCode, FacilityId, SegmentId, ValleyId } from './ids';
+import type { Segment, SegmentPosition } from './Segment';
+import type { AlertConfidence } from './UpstreamAlert';
+import type { Verification } from './ValleyDataset';
+
+/**
+ * 계곡의 표준유역(정적 속성, R2). `sbsncd` 는 구간의 `basinCode` 에서 온다(상류 구간
+ * 대표). `catchmentKm2`·`leadTimeMin` 은 DEM 집수역 추적(v2)이 나오기 전까지 비어 있다.
+ */
+export type ValleyBasin = {
+  readonly sbsncd: BasinCode;
+  readonly catchmentKm2?: number;
+  readonly leadTimeMin?: number;
+};
+
+export type ValleyProps = {
+  readonly id: ValleyId;
+  readonly name: string;
+  readonly segments: readonly Segment[];
+  readonly facilities?: readonly Facility[];
+  /** 이 계곡 파일의 검수 수준(SD1 (g)). 계곡별 파일 `metadata.verified` 에서 온다. */
+  readonly verified?: Verification;
+  /** 표준유역. 생략하면 구간의 `basinCode` 로 유도한다(가장 상류 구간). */
+  readonly basin?: ValleyBasin;
+  /** 이 계곡이 낼 수 있는 최고 경보 확신(F3 §5). 관측소 로스터가 없으면 `undefined`. */
+  readonly alertCapability?: AlertConfidence;
+};
+
+export class Valley {
+  readonly id: ValleyId;
+  readonly name: string;
+  /** 상류→하류 순. */
+  readonly segments: readonly Segment[];
+  readonly facilities: readonly Facility[];
+  /** 검수 수준. 모르면(샘플·옛 파일) `undefined` — 배지를 붙이지 않는다. */
+  readonly verified: Verification | undefined;
+  /** 표준유역. 구간에 `basinCode` 가 하나도 없으면 `undefined`. */
+  readonly basin: ValleyBasin | undefined;
+  /** 이 계곡이 낼 수 있는 최고 경보 확신. 모르면 `undefined`(배지에 쓰지 않는다). */
+  readonly alertCapability: AlertConfidence | undefined;
+
+  readonly #segmentsById: ReadonlyMap<SegmentId, Segment>;
+  readonly #facilitiesById: ReadonlyMap<FacilityId, Facility>;
+
+  private constructor(props: ValleyProps) {
+    this.id = props.id;
+    this.name = props.name;
+    this.segments = [...props.segments].sort((a, b) => a.order - b.order);
+    this.facilities = props.facilities ?? [];
+    this.verified = props.verified;
+    this.basin = props.basin ?? deriveBasin(this.segments);
+    this.alertCapability = props.alertCapability;
+    this.#segmentsById = new Map(this.segments.map((segment) => [segment.id, segment]));
+    this.#facilitiesById = new Map(this.facilities.map((facility) => [facility.id, facility]));
+  }
+
+  /**
+   * 검증된 생성. 구간이 하나 이상이고, 모든 구간·시설이 이 계곡의 것이어야 한다.
+   * 로더가 `valleyId` 로 묶어 넘기므로 여기서 다시 확인하는 것은 방어선이다.
+   */
+  static create(props: ValleyProps): Result<Valley, ValleyError> {
+    if (props.segments.length === 0) {
+      return err(
+        new ValleyError('valley/empty-valley', '계곡에는 구간이 하나 이상 있어야 합니다.', {
+          context: { valleyId: props.id },
+        }),
+      );
+    }
+    const stray =
+      props.segments.find((segment) => segment.valleyId !== props.id) ??
+      props.facilities?.find((facility) => facility.valleyId !== props.id);
+    if (stray !== undefined) {
+      return err(
+        new ValleyError(
+          'valley/inconsistent-segments',
+          '다른 계곡에 속한 구간 또는 시설이 섞여 있습니다.',
+          { context: { valleyId: props.id, strayId: stray.id, strayValleyId: stray.valleyId } },
+        ),
+      );
+    }
+    return ok(new Valley(props));
+  }
+
+  findSegment(id: SegmentId): Result<Segment, ValleyError> {
+    const segment = this.#segmentsById.get(id);
+    if (segment === undefined) {
+      return err(
+        new ValleyError('valley/segment-not-found', '해당 구간을 찾을 수 없습니다.', {
+          context: { valleyId: this.id, segmentId: id },
+        }),
+      );
+    }
+    return ok(segment);
+  }
+
+  /** 같은 위치(상류/중류/하류)의 구간들. 긴 계곡은 중류가 둘일 수 있다. */
+  segmentsAt(position: SegmentPosition): readonly Segment[] {
+    return this.segments.filter((segment) => segment.position === position);
+  }
+
+  findFacility(id: FacilityId): Result<Facility, ValleyError> {
+    const facility = this.#facilitiesById.get(id);
+    if (facility === undefined) {
+      return err(
+        new ValleyError('valley/facility-not-found', '해당 시설을 찾을 수 없습니다.', {
+          context: { valleyId: this.id, facilityId: id },
+        }),
+      );
+    }
+    return ok(facility);
+  }
+
+  /** 종류별 시설. "대안 주차장 거리순" 의 입력. */
+  facilitiesOf(type: FacilityType): readonly Facility[] {
+    return this.facilities.filter((facility) => facility.facilityType === type);
+  }
+
+  /**
+   * 기준점에서 가장 가까운 시설. 카드 부제의 "주차장 320m" 재료.
+   * `type` 을 생략하면 종류를 가리지 않는다. 그 종류가 하나도 없으면 `undefined`.
+   */
+  nearestFacility(from: LngLat, type?: FacilityType): NearestFacility | undefined {
+    const candidates = type === undefined ? this.facilities : this.facilitiesOf(type);
+    let nearest: NearestFacility | undefined;
+    for (const facility of candidates) {
+      const distance = facility.distanceFrom(from);
+      if (nearest === undefined || distance.meters < nearest.distance.meters) {
+        nearest = { facility, distance };
+      }
+    }
+    return nearest;
+  }
+
+  /** 기준점에서 가까운 순으로 정렬한 시설 전부. 상세 면의 시설 목록. */
+  facilitiesByDistance(from: LngLat): readonly FacilityAtDistance[] {
+    return this.facilities
+      .map((facility) => ({ facility, distance: facility.distanceFrom(from) }))
+      .sort((a, b) => a.distance.meters - b.distance.meters);
+  }
+
+  /**
+   * 계곡 전체가 보이는 중심 — 모든 구간 좌표의 경계 상자 가운데.
+   *
+   * 평균(무게중심)이 아닌 이유: 굽이가 많은 쪽에 점이 몰리면 평균이 그쪽으로
+   * 끌려가 반대편 끝이 화면 밖으로 밀린다. 상자 가운데는 양끝을 공평하게 잡는다.
+   * 생성자가 구간 하나 이상·구간마다 두 점 이상을 보장하므로 항상 값이 있다.
+   */
+  center(): LngLat {
+    let minLng = Number.POSITIVE_INFINITY;
+    let maxLng = Number.NEGATIVE_INFINITY;
+    let minLat = Number.POSITIVE_INFINITY;
+    let maxLat = Number.NEGATIVE_INFINITY;
+    for (const segment of this.segments) {
+      for (const point of segment.path) {
+        minLng = Math.min(minLng, point.lng);
+        maxLng = Math.max(maxLng, point.lng);
+        minLat = Math.min(minLat, point.lat);
+        maxLat = Math.max(maxLat, point.lat);
+      }
+    }
+    return LngLat.of((minLng + maxLng) / 2, (minLat + maxLat) / 2);
+  }
+}
+
+/**
+ * 가장 상류(정렬된 첫) 구간의 `basinCode` 를 표준유역으로 삼는다. 지금은 계곡마다
+ * 구간이 하나뿐이라(SD1) 이견이 없다 — 여러 구간이 다른 유역을 물고 있으면(장래) 그래도
+ * 상류가 대표다. `basinCode` 가 있는 구간이 하나도 없으면 `undefined`.
+ */
+function deriveBasin(sortedSegments: readonly Segment[]): ValleyBasin | undefined {
+  const sbsncd = sortedSegments.find((segment) => segment.basinCode !== undefined)?.basinCode;
+  return sbsncd === undefined ? undefined : { sbsncd };
+}
+
+/** 기준점과의 거리를 곁들인 시설. */
+export type FacilityAtDistance = {
+  readonly facility: Facility;
+  readonly distance: Distance;
+};
+export type NearestFacility = FacilityAtDistance;

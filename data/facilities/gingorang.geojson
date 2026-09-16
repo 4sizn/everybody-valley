@@ -1,0 +1,69 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "긴고랑계곡 주변 시설 — 공공데이터포털 표준데이터 화장실·주차장. 위치는 제공 좌표, 현장 미확인. 정자·쉼터 1곳 추가(OSM shelter/pavilion, 중심선 250 m 안).",
+    "source": "전국공중화장실정보·전국주차장정보 표준데이터",
+    "sourceFile": "scripts/research/gingorang/trace.mts (SD3) — pnpm seed:build 자동 매칭을 사람이 검토해 되돌림",
+    "datasetVersion": "2026-09-09.0",
+    "collectedAt": "2026-09-08",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m 전수 검토 — 계곡 특유 시설(트레일헤드 주차장·화장실) 없음",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do",
+      "https://www.data.go.kr/data/15012896/standard.do"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09104, 37.558858]
+      },
+      "properties": {
+        "id": "gingorang-std-restroom",
+        "valleyId": "gingorang",
+        "name": "긴고랑어린이공원",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 10,
+        "operatingHours": "연중무휴"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.0928443, 37.5529341]
+      },
+      "properties": {
+        "id": "gingorang-std-parking",
+        "valleyId": "gingorang",
+        "name": "구의2동 주택가공동 주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 10,
+        "feeNote": "유료"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093745, 37.568859]
+      },
+      "properties": {
+        "id": "gingorang-osm-shelter-13077431253",
+        "valleyId": "gingorang",
+        "name": "정자(용마산정)",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 0.4
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "지장산계곡 시설 4개 — 표준데이터 주차장 1 · 화장실 1 · OSM 2 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.193201, 38.103593]
+      },
+      "properties": {
+        "id": "jijangsan-std-p-236-2-000041",
+        "valleyId": "jijangsan",
+        "name": "지장산마을 주차장",
+        "facilityType": "parking",
+        "capacity": 32,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.180993, 38.110953]
+      },
+      "properties": {
+        "id": "jijangsan-std-r-22742",
+        "valleyId": "jijangsan",
+        "name": "승일공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.193621, 38.10409]
+      },
+      "properties": {
+        "id": "jijangsan-osm-restroom-9913457838",
+        "valleyId": "jijangsan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.193619, 38.103938]
+      },
+      "properties": {
+        "id": "jijangsan-osm-parking-1081636155",
+        "valleyId": "jijangsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "feeNote": "무료",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

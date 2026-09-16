@@ -1,0 +1,79 @@
+{
+ "chm": {
+  "url": "https://dataforgood-fb-data.s3.amazonaws.com/forests/v1/alsgedi_global_v6_float/chm/132110303.tif",
+  "quadkey": "132110303",
+  "file": {
+   "crs": "EPSG:3857",
+   "size": [
+    65536,
+    65536
+   ],
+   "dtype": "uint8",
+   "blockShape": [
+    1,
+    65536
+   ],
+   "overviews": [],
+   "compression": "Compression.deflate",
+   "tiled": false,
+   "tags": {
+    "UNITS": "METERS",
+    "AREA_OR_POINT": "Area"
+   }
+  },
+  "window": {
+   "colOff": 11662,
+   "rowOff": 20860,
+   "width": 4799,
+   "height": 4563
+  },
+  "readSeconds": 28.3,
+  "httpRequests": 6,
+  "downloadedBytes": 54525952,
+  "fileBytes": 680823726
+ },
+ "acquisition": {
+  "source": "CHM_acquisition_date.tif (0.01°, float32, 값 = 연도-2000 로 해석)",
+  "values": {
+   "16.9167": 15,
+   "18.1667": 27
+  },
+  "decoded": [
+   "2016-12",
+   "2018-03"
+  ],
+  "downloadedBytes": 12582912,
+  "seconds": 6.0
+ },
+ "mask": {
+  "values": {
+   "0": 21897837
+  },
+  "downloadedBytes": 4194304,
+  "flags": null
+ },
+ "utm1m": {
+  "width": 4589,
+  "height": 4355,
+  "cells": 19985095,
+  "seconds": 4.0,
+  "chmMean": 5.89,
+  "chmMax": 27,
+  "fracAbove2m": 0.7127,
+  "fracZero": 0.1503,
+  "demMin": 186.6,
+  "demMax": 922.6
+ },
+ "utm2m": {
+  "width": 2295,
+  "height": 2178,
+  "cells": 4998510,
+  "seconds": 1.1,
+  "chmMean": 5.89,
+  "chmMax": 27,
+  "fracAbove2m": 0.7124,
+  "fracZero": 0.1507,
+  "demMin": 186.6,
+  "demMax": 922.8
+ }
+}

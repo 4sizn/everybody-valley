@@ -1,0 +1,116 @@
+/* ============================================================
+   원본 참조용 — spotts.kr/firework 에서 실측 추출한 --spot-* 토큰
+   2026-09-01 CSSOM 스냅샷. 수정하지 말고 대조용으로만 사용.
+   ============================================================ */
+
+:root{
+  --spot-color-background:#fff;
+  --spot-color-backgroundOpacity:#fffc;
+  --spot-color-backgroundSecondary:#f9fafb;
+  --spot-color-foreground:#191f28;
+  --spot-color-secondary:#6b7684;
+  --spot-color-muted:#8b95a1;
+  --spot-color-cardBackground:#f7f8fa;
+  --spot-color-cardBorder:transparent;
+  --spot-color-border:#dbdfe4cc;
+  --spot-color-borderLight:#e9ecefe6;
+  --spot-color-borderHover:#c4cad2e6;
+  --spot-color-gray100:#f2f4f6;
+  --spot-color-gray200:#e5e8eb;
+  --spot-color-gray300:#d1d6db;
+  --spot-color-gray500:#8b95a1;
+  --spot-color-primary:#297cff;
+  --spot-color-primaryHover:#2776f2;
+  --spot-color-primaryActive:#2570e6;
+  --spot-color-onPrimary:#fff;
+  --spot-color-link:#297cff;
+  --spot-color-danger:#f04452;
+  --spot-color-dangerHover:#db3a47;
+  --spot-color-onDanger:#fff;
+  --spot-color-success:#15b76d;
+  --spot-color-warning:#ff9500;
+  --spot-color-info:#0ea5e9;
+  --spot-color-overlay:#0006;
+  --spot-color-overlaySoft:#0000003d;
+  --spot-color-menuOutline:#0000001a;
+  --spot-color-mapBackground:#eaecef;
+  --spot-color-transparent:transparent;
+
+  --spot-font-body:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --spot-font-mono:var(--font-geist-mono),ui-monospace,SFMono-Regular,Menlo,monospace;
+  --spot-fontWeight-regular:400;
+  --spot-fontWeight-medium:500;
+  --spot-fontWeight-semibold:600;
+  --spot-fontWeight-bold:600;
+  --spot-lineHeight-tight:1.25;
+  --spot-lineHeight-normal:1.5;
+  --spot-lineHeight-relaxed:1.75;
+
+  --spot-space-none:0;   --spot-space-xxs:2px;  --spot-space-xs:4px;
+  --spot-space-xsm:6px;  --spot-space-sm:8px;   --spot-space-smd:12px;
+  --spot-space-md:16px;  --spot-space-lg:24px;  --spot-space-xl:32px;
+  --spot-space-2xl:48px;
+
+  --spot-radius-none:0;  --spot-radius-xs:4px;  --spot-radius-sm:6px;
+  --spot-radius-md:8px;  --spot-radius-lg:12px; --spot-radius-xl:24px;
+  --spot-radius-full:9999px;
+
+  --spot-shadow-sm:0 2px 2px #00000012;
+  --spot-shadow-md:0 4px 8px -4px #00000012,0 16px 24px -8px #0000001a;
+  --spot-shadow-lg:0 1px 1px #0000000a,0 4px 8px -4px #00000012,0 16px 24px -8px #0000001a;
+  --spot-shadow-xl:0 2px 4px #00000017,0 8px 16px -4px #00000029,0 24px 40px -12px #00000042;
+  --spot-shadow-sheet:0 -1px 4px #0000000a,0 -8px 48px #00000024;
+  --spot-shadow-gnb:0 2px 4px #00000024,0 10px 20px -4px #0000002e,0 28px 56px -12px #0000003d;
+  --spot-shadow-markerPin:0 4px 6px #00000047;
+  --spot-shadow-markerBubble:0 2px 3px #00000040;
+  --spot-shadow-markerDot:0 0 4px #00000047;
+
+  --spot-zIndex-dropdown:1000; --spot-zIndex-profile:1000;
+  --spot-zIndex-sticky:1100;   --spot-zIndex-modal:1300;
+  --spot-zIndex-indicator:1400;--spot-zIndex-overlay:1450;
+  --spot-zIndex-panel:1500;    --spot-zIndex-popover:1600;
+  --spot-zIndex-tooltip:1700;
+}
+
+:root[data-theme="dark"]{
+  --spot-color-background:#18181c;
+  --spot-color-backgroundOpacity:#18181ccc;
+  --spot-color-backgroundSecondary:#0e0e11;
+  --spot-color-foreground:#f2f4f6;
+  --spot-color-secondary:#9ea4ad;
+  --spot-color-muted:#6e747f;
+  --spot-color-cardBackground:#202024;
+  --spot-color-cardBorder:transparent;
+  --spot-color-border:#393940b3;
+  --spot-color-borderLight:#2e2e34e6;
+  --spot-color-borderHover:#4b4b54e6;
+  --spot-color-gray100:#202024;
+  --spot-color-gray200:#26262b;
+  --spot-color-gray300:#303036;
+  --spot-color-gray500:#4b4b54;
+  --spot-color-primary:#297cff;
+  --spot-color-primaryHover:#2776f2;
+  --spot-color-primaryActive:#2570e6;
+  --spot-color-onPrimary:#fff;
+  --spot-color-link:#4d94ff;
+  --spot-color-danger:#ff6b73;
+  --spot-color-dangerHover:#ff8a90;
+  --spot-color-onDanger:#fff;
+  --spot-color-success:#37d089;
+  --spot-color-warning:#ffb02e;
+  --spot-color-info:#38bdf8;
+  --spot-color-overlay:#0009;
+  --spot-color-overlaySoft:#0000005c;
+  --spot-color-menuOutline:#fff3;
+  --spot-color-mapBackground:#2a2c31;
+
+  --spot-shadow-sm:0 2px 2px #00000047;
+  --spot-shadow-md:0 4px 8px -4px #00000047,0 16px 24px -8px #0000005c;
+  --spot-shadow-lg:0 1px 1px #0003,0 4px 8px -4px #00000047,0 16px 24px -8px #0000005c;
+  --spot-shadow-xl:0 2px 4px #00000052,0 8px 16px -4px #00000070,0 24px 40px -12px #0009;
+  --spot-shadow-sheet:0 -1px 4px #0000003d,0 -8px 48px #0006;
+  --spot-shadow-gnb:0 2px 4px #0006,0 10px 20px -4px #0000007a,0 28px 56px -12px #00000094;
+  --spot-shadow-markerPin:0 4px 6px #0000008c;
+  --spot-shadow-markerBubble:0 2px 3px #00000080;
+  --spot-shadow-markerDot:0 0 4px #0000008c;
+}

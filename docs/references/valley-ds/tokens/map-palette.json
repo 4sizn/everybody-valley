@@ -1,0 +1,83 @@
+{
+  "_source": "spotts.kr /api/map/style/{dark|light} · 2026-09-01 실측",
+  "_note": "MapLibre style spec v8. UI 토큰과 분리된 별도 팔레트.",
+  "dark": {
+    "background": "#242729",
+    "water": "#1e3143",
+    "park": "#232e1f",
+    "parkOpacity": { "z9": 0.5, "z12": 0.2 },
+    "building": "#2b2f33",
+    "landuseResidential": ["hsla(0,0%,18%,0.4)", "hsla(0,0%,18%,0.2)"],
+    "roadCasing": "#15181a",
+    "roadMinor": "#3e414c",
+    "roadPrimary": "#565963",
+    "roadMotorway": "#696e7f",
+    "railway": "#4a4e55",
+    "labelText": "#e3e7eb",
+    "labelHalo": "#1a1d1f",
+    "poiText": "#c5c6cb",
+    "krComplexFill": "#2b2f33",
+    "krComplexLabel": "#c5c6cb",
+    "subwayDotStroke": "#1c1c1e"
+  },
+  "light": {
+    "background": "#f7f7f7",
+    "water": "#a5d1f2",
+    "park": "#d8ecc5",
+    "parkOpacity": { "z9": 0.5, "z12": 0.2 },
+    "building": "#ffffff",
+    "landuseResidential": ["hsla(0,0%,93%,0.4)", "hsla(0,0%,93%,0.2)"],
+    "roadCasing": "#ecd792",
+    "roadMinor": "#ffffff",
+    "roadPrimary": "#fdf0b5",
+    "roadMotorway": "#f8d39a",
+    "railway": "#a6a29e",
+    "labelText": "#333333",
+    "labelHalo": "#ffffff",
+    "poiText": "#575b66",
+    "krComplexFill": "#f1eeeb",
+    "krComplexLabel": "#827368",
+    "subwayDotStroke": "#ffffff"
+  },
+  "marker": {
+    "facility": {
+      "station": "#1597d1",
+      "restroom": "#16a36a",
+      "food": "#e58b20",
+      "cafe": "#a66b3d",
+      "convenience": "#7b61ff",
+      "parking": "#4b5563",
+      "access": "#6b5dd3",
+      "safety": "#d65a5a",
+      "etc": "#3d7ab8"
+    },
+    "status3": {
+      "available": "#2f9e64",
+      "low": "#e79b38",
+      "empty": "#d64545",
+      "_valleyMapping": "available=여유 / low=보통 / empty=혼잡"
+    },
+    "route": { "from": "#22c55e", "to": "#ef4444" },
+    "circle": {
+      "viewBox": "0 0 40 40",
+      "render": "80x80 (2x)",
+      "radius": { "default": 15, "selected": 16 },
+      "fillLight": "#ffffff",
+      "fillDark": "#aaaaaa",
+      "dropShadow": "dy 0.6 · stdDeviation 1.5 · #1c2530 24%"
+    }
+  },
+  "labelLanguage": {
+    "textField": ["coalesce", ["get", "name:ko"], ["get", "name:nonlatin"], ["get", "name"], ["get", "name:latin"]],
+    "localIdeographFontFamily": "'Geist','Apple SD Gothic Neo','Noto Sans CJK KR','Malgun Gothic', sans-serif",
+    "_note": "한글은 glyph PBF가 아니라 로컬 SDF로 렌더. 폰트 서버 부담 없음."
+  },
+  "declutter": {
+    "_strategy": "클러스터링 없음. 데이터에 티어를 미리 구워 표현식으로 거른다.",
+    "iconAllowOverlap": true,
+    "iconIgnorePlacement": true,
+    "symbolSortKey": ["case", ["get", "selected"], -1, ["get", "mapImportance"]],
+    "labelZoomSteps": [11.5, 13, 15.5],
+    "dataColumns": ["mapIconTier", "mapLabelTier", "mapImportance"]
+  }
+}

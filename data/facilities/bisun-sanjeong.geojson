@@ -1,0 +1,138 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "산정호수 비선폭포 계곡 시설 8개 — 표준데이터 주차장 0 · 화장실 0 · OSM 8 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.312172, 38.067654]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-food-5304012722",
+        "valleyId": "bisun-sanjeong",
+        "name": "cobaco",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.303793, 38.070664]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-food-5486070921",
+        "valleyId": "bisun-sanjeong",
+        "name": "산비탈손두부",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.314271, 38.065386]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-food-9093010766",
+        "valleyId": "bisun-sanjeong",
+        "name": "카페라끄",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.305561, 38.074186]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-food-9093010774",
+        "valleyId": "bisun-sanjeong",
+        "name": "몽베르CC클럽하우스",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.311064, 38.067956]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-food-13014679571",
+        "valleyId": "bisun-sanjeong",
+        "name": "오공육 취나물국밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.316011, 38.066138]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-parking-1182174851",
+        "valleyId": "bisun-sanjeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.324962, 38.067563]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-parking-1226865356",
+        "valleyId": "bisun-sanjeong",
+        "name": "상동주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.314473, 38.06655]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-osm-parking-1342058656",
+        "valleyId": "bisun-sanjeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

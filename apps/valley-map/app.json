@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "modu-valley",
+    "slug": "valley-map",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "valleymap",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#18181c",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.valleymap"
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.valleymap"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": ["expo-router", "@maplibre/maplibre-react-native"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

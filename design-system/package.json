@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build_production.mjs",
+    "build": "node scripts/build_production.mjs && python3 scripts/package_production.py",
     "test": "node scripts/check_design_system.mjs",
     "preview": "python3 -m http.server 4318 --bind 127.0.0.1 --directory public"
   },

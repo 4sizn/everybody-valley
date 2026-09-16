@@ -1,0 +1,9 @@
+.venv/
+data/
+out/*.tif
+out/*.npy
+__pycache__/
+out/canopy/*.npz
+out/canopy/*.tif
+# R3c 합성 폴리곤(9장 5.6 MB) — 분리형(canopy-gt2m + cast-*) 만 커밋, 합성은 31초에 재생성
+out/canopy/shade-0801-*.geojson

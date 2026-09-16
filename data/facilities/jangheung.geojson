@@ -1,0 +1,295 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "장흥계곡 시설 17개 — 표준데이터 주차장 6 · 화장실 0 · OSM 11 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950832, 37.735759]
+      },
+      "properties": {
+        "id": "jangheung-std-p-235-2-000013",
+        "valleyId": "jangheung",
+        "name": "장흥관광지 제5주차장(아시나요)",
+        "facilityType": "parking",
+        "capacity": 39,
+        "feeNote": "혼합",
+        "operatingHours": "09:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951322, 37.735944]
+      },
+      "properties": {
+        "id": "jangheung-std-p-235-2-000012",
+        "valleyId": "jangheung",
+        "name": "장흥관광지 제4주차장(선비촌)",
+        "facilityType": "parking",
+        "capacity": 55,
+        "feeNote": "혼합",
+        "operatingHours": "09:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949497, 37.731549]
+      },
+      "properties": {
+        "id": "jangheung-std-p-235-2-000011",
+        "valleyId": "jangheung",
+        "name": "장흥관광지 제3주차장(효편의점)",
+        "facilityType": "parking",
+        "capacity": 18,
+        "feeNote": "혼합",
+        "operatingHours": "09:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949621, 37.731062]
+      },
+      "properties": {
+        "id": "jangheung-std-p-235-2-000010",
+        "valleyId": "jangheung",
+        "name": "장흥관광지 제2주차장(장흥관광지)",
+        "facilityType": "parking",
+        "capacity": 118,
+        "feeNote": "혼합",
+        "operatingHours": "09:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949159, 37.729951]
+      },
+      "properties": {
+        "id": "jangheung-std-p-235-2-000009",
+        "valleyId": "jangheung",
+        "name": "장흥관광지 제1주차장(하천변)",
+        "facilityType": "parking",
+        "capacity": 74,
+        "feeNote": "혼합",
+        "operatingHours": "09:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95138, 37.736417]
+      },
+      "properties": {
+        "id": "jangheung-std-p-235-1-000001",
+        "valleyId": "jangheung",
+        "name": "장흥관광지(노상)",
+        "facilityType": "parking",
+        "capacity": 20,
+        "feeNote": "혼합",
+        "operatingHours": "09:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.946976, 37.722393]
+      },
+      "properties": {
+        "id": "jangheung-osm-cafe-8189194755",
+        "valleyId": "jangheung",
+        "name": "박물관옆 카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945339, 37.720857]
+      },
+      "properties": {
+        "id": "jangheung-osm-food-9093003844",
+        "valleyId": "jangheung",
+        "name": "동보성",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947148, 37.721722]
+      },
+      "properties": {
+        "id": "jangheung-osm-food-9093003848",
+        "valleyId": "jangheung",
+        "name": "참이맛감자탕 양주장흥점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938331, 37.724492]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-302176175",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949485, 37.732902]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-547083511",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942012, 37.733922]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-547422350",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949429, 37.728951]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-547422358",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941214, 37.736177]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-547465874",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943222, 37.733673]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-547465879",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950987, 37.724366]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-804540266",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949108, 37.718747]
+      },
+      "properties": {
+        "id": "jangheung-osm-parking-1110499418",
+        "valleyId": "jangheung",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 16,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

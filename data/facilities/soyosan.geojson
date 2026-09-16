@@ -1,0 +1,554 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "소요산계곡 시설 34개 — 표준데이터 주차장 0 · 화장실 23 · OSM 11 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.061214, 37.947953]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3567",
+        "valleyId": "soyosan",
+        "name": "소요산역 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.065131, 37.946402]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3578",
+        "valleyId": "soyosan",
+        "name": "소요119안전센터 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.064452, 37.944672]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3595",
+        "valleyId": "soyosan",
+        "name": "소요산어린이공원 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3596",
+        "valleyId": "soyosan",
+        "name": "소요산산림욕장 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3604",
+        "valleyId": "soyosan",
+        "name": "소요산주차장 화장실(중앙)",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3605",
+        "valleyId": "soyosan",
+        "name": "소요산주차장 화장실(관리사무소)",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3606",
+        "valleyId": "soyosan",
+        "name": "소요산일주문 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3607",
+        "valleyId": "soyosan",
+        "name": "소요산야외음악당 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3608",
+        "valleyId": "soyosan",
+        "name": "소요산백운암 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.054029, 37.94849]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3609",
+        "valleyId": "soyosan",
+        "name": "지혜의등대 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "(평일)09:00~18:00+(주말)이용불가+(공휴일)이용불가",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.064452, 37.944672]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3614",
+        "valleyId": "soyosan",
+        "name": "어린이박물관 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.066056, 37.942502]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3640",
+        "valleyId": "soyosan",
+        "name": "자유수호평화박물관 화장실(야외)",
+        "facilityType": "restroom",
+        "operatingHours": "(평일)09:00~18:00+(주말)이용불가+(공휴일)이용불가",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.066056, 37.942502]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3641",
+        "valleyId": "soyosan",
+        "name": "자유수호평화박물관 화장실(본관)",
+        "facilityType": "restroom",
+        "operatingHours": "(평일)09:00~18:00+(매주월요일)이용불가+(공휴일익일)이용불가",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.064425, 37.945836]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3644",
+        "valleyId": "soyosan",
+        "name": "소요산축산물브랜드육타운 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3645",
+        "valleyId": "soyosan",
+        "name": "소요산주차장 화장실(박물관진입로)",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.069327, 37.945938]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3646",
+        "valleyId": "soyosan",
+        "name": "소요산자재암 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.059992, 37.944102]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3655",
+        "valleyId": "soyosan",
+        "name": "스마트주유소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.060312, 37.946184]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3657",
+        "valleyId": "soyosan",
+        "name": "소요산주유소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.055366, 37.941527]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3662",
+        "valleyId": "soyosan",
+        "name": "동성주유소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.062767, 37.959957]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3665",
+        "valleyId": "soyosan",
+        "name": "광나는주유소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.060847, 37.94413]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3696",
+        "valleyId": "soyosan",
+        "name": "창림에너지 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.055788, 37.939487]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3697",
+        "valleyId": "soyosan",
+        "name": "착한주유소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.051969, 37.93844]
+      },
+      "properties": {
+        "id": "soyosan-std-r-3699",
+        "valleyId": "soyosan",
+        "name": "중앙LPG충전소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.059522, 37.943379]
+      },
+      "properties": {
+        "id": "soyosan-osm-store-368949092",
+        "valleyId": "soyosan",
+        "name": "놀부편의점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.065479, 37.94567]
+      },
+      "properties": {
+        "id": "soyosan-osm-food-9092988204",
+        "valleyId": "soyosan",
+        "name": "작은성",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.065994, 37.95019]
+      },
+      "properties": {
+        "id": "soyosan-osm-restroom-11297605529",
+        "valleyId": "soyosan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.066277, 37.950057]
+      },
+      "properties": {
+        "id": "soyosan-osm-cafe-11297605539",
+        "valleyId": "soyosan",
+        "name": "카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.063313, 37.945863]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1095611766",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.065134, 37.94236]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1095611772",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.066937, 37.945934]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1095611791",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.065282, 37.949497]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1219283744",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.06535, 37.950653]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1219283866",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.056342, 37.936045]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1450031786",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.064641, 37.958732]
+      },
+      "properties": {
+        "id": "soyosan-osm-parking-1546486324",
+        "valleyId": "soyosan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

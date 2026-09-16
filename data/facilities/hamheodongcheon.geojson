@@ -1,0 +1,303 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "함허동천 시설 18개 — 표준데이터 주차장 1 · 화장실 8 · OSM 9 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.45726, 37.610473]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-p-169-2-000006",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천주차장",
+        "facilityType": "parking",
+        "capacity": 451,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.445864, 37.608464]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15624",
+        "valleyId": "hamheodongcheon",
+        "name": "정수사B",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.445864, 37.608464]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15625",
+        "valleyId": "hamheodongcheon",
+        "name": "정수사A",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.451019, 37.613469]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-23736",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천(3야영장)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.448142, 37.613447]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-23737",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천(2야영장)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.454707, 37.611445]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-23738",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천(1야영장)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.450071, 37.61245]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-23739",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천(샤워장)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.455095, 37.610126]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-23740",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천(매표소)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.450778, 37.614011]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-23741",
+        "valleyId": "hamheodongcheon",
+        "name": "함허동천(수련장)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.44385, 37.607362]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-3421390828",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.452927, 37.611819]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-restroom-5458464860",
+        "valleyId": "hamheodongcheon",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.455329, 37.614655]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9632515953",
+        "valleyId": "hamheodongcheon",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.452073, 37.611042]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-restroom-9668209239",
+        "valleyId": "hamheodongcheon",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.447693, 37.612768]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-restroom-9668209246",
+        "valleyId": "hamheodongcheon",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.45499, 37.610049]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-566902621",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.455971, 37.610113]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-566902622",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.456127, 37.610264]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-food-566902623",
+        "valleyId": "hamheodongcheon",
+        "name": "기사식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.457191, 37.609366]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-566902625",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

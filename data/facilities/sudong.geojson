@@ -1,0 +1,99 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "수동계곡 시설 5개 — 표준데이터 주차장 0 · 화장실 3 · OSM 2 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.27415, 37.748893]
+      },
+      "properties": {
+        "id": "sudong-std-r-29630",
+        "valleyId": "sudong",
+        "name": "비금계곡 (구) KT 연수원 앞",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.273474, 37.756283]
+      },
+      "properties": {
+        "id": "sudong-std-r-30306",
+        "valleyId": "sudong",
+        "name": "몽골문화촌 승마장 마구간 입구",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.273474, 37.756283]
+      },
+      "properties": {
+        "id": "sudong-std-r-30307",
+        "valleyId": "sudong",
+        "name": "몽골문화촌승마장 전 가족쉼터 접수처 옆",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.272338, 37.749981]
+      },
+      "properties": {
+        "id": "sudong-osm-parking-1492972558",
+        "valleyId": "sudong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.275368, 37.757242]
+      },
+      "properties": {
+        "id": "sudong-osm-parking-1492972615",
+        "valleyId": "sudong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

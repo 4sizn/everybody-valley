@@ -1,0 +1,4355 @@
+{
+ "valley": "포천 백운계곡 (OSM way 531287119)",
+ "gridResM": 2,
+ "date": "2026-08-01",
+ "hours": [
+  "10:00",
+  "11:00",
+  "12:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+  "18:00"
+ ],
+ "sensDates": [
+  "2026-07-25",
+  "2026-08-15"
+ ],
+ "canopyThresholdM": 2.0,
+ "buffersM": {
+  "buffer50": 50.0,
+  "buffer25": 25.0,
+  "water10": 10.0
+ },
+ "bbox": {
+  "canopyCover": 0.7481,
+  "chmZeroFrac": 0.1129,
+  "chmMax": 27,
+  "road": {
+   "cells": 13539,
+   "areaM2": 54156,
+   "chmAbove2mFrac": 0.2044,
+   "chmAbove5mFrac": 0.1403,
+   "meanChmM": 1.71,
+   "note": "OSM highway(path/footway/track 제외) 중심선 ±3 m — 도로 위 CHM>2 m 는 가로수·수관 돌출 또는 오분류"
+  }
+ },
+ "sun": [
+  {
+   "date": "2026-08-01",
+   "timeLocal": "10:00",
+   "sunAzimuth": 109.32,
+   "sunElevation": 50.48
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "11:00",
+   "sunAzimuth": 126.78,
+   "sunElevation": 60.91
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "12:00",
+   "sunAzimuth": 155.66,
+   "sunElevation": 68.41
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "13:00",
+   "sunAzimuth": 195.84,
+   "sunElevation": 69.31
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "14:00",
+   "sunAzimuth": 227.96,
+   "sunElevation": 62.93
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "15:00",
+   "sunAzimuth": 247.34,
+   "sunElevation": 52.91
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "16:00",
+   "sunAzimuth": 260.19,
+   "sunElevation": 41.58
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "17:00",
+   "sunAzimuth": 270.18,
+   "sunElevation": 29.83
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "18:00",
+   "sunAzimuth": 279.03,
+   "sunElevation": 18.09
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "10:00",
+   "sunAzimuth": 107.24,
+   "sunElevation": 51.45
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "11:00",
+   "sunAzimuth": 124.41,
+   "sunElevation": 62.09
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "12:00",
+   "sunAzimuth": 153.92,
+   "sunElevation": 69.93
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "13:00",
+   "sunAzimuth": 196.85,
+   "sunElevation": 70.91
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "14:00",
+   "sunAzimuth": 230.2,
+   "sunElevation": 64.23
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "15:00",
+   "sunAzimuth": 249.42,
+   "sunElevation": 53.99
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "16:00",
+   "sunAzimuth": 261.97,
+   "sunElevation": 42.55
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "17:00",
+   "sunAzimuth": 271.73,
+   "sunElevation": 30.78
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "18:00",
+   "sunAzimuth": 280.43,
+   "sunElevation": 19.06
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "10:00",
+   "sunAzimuth": 114.37,
+   "sunElevation": 48.24
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "11:00",
+   "sunAzimuth": 132.37,
+   "sunElevation": 58.12
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "12:00",
+   "sunAzimuth": 159.8,
+   "sunElevation": 64.78
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "13:00",
+   "sunAzimuth": 194.72,
+   "sunElevation": 65.35
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "14:00",
+   "sunAzimuth": 223.85,
+   "sunElevation": 59.47
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "15:00",
+   "sunAzimuth": 243.08,
+   "sunElevation": 49.93
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "16:00",
+   "sunAzimuth": 256.37,
+   "sunElevation": 38.86
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "17:00",
+   "sunAzimuth": 266.77,
+   "sunElevation": 27.19
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "18:00",
+   "sunAzimuth": 275.93,
+   "sunElevation": 15.42
+  }
+ ],
+ "segments": [
+  {
+   "id": "baegun-upper",
+   "label": "상류(광덕고개 쪽)",
+   "order": 1,
+   "lengthM": 1199,
+   "canopy": {
+    "buffer50": {
+     "cells": 29894,
+     "areaM2": 119576,
+     "canopyCover": 0.3809,
+     "meanChmM": 3.24,
+     "coverByThreshold": {
+      "1m": 0.4191,
+      "2m": 0.3809,
+      "3m": 0.3449,
+      "5m": 0.2731
+     },
+     "chmZeroFrac": 0.5267,
+     "osmForestFrac": 0.0
+    },
+    "buffer25": {
+     "cells": 14975,
+     "areaM2": 59900,
+     "canopyCover": 0.2301,
+     "meanChmM": 1.86,
+     "coverByThreshold": {
+      "1m": 0.2737,
+      "2m": 0.2301,
+      "3m": 0.1961,
+      "5m": 0.1388
+     },
+     "chmZeroFrac": 0.6618,
+     "osmForestFrac": 0.0
+    },
+    "water10": {
+     "cells": 5986,
+     "areaM2": 23944,
+     "canopyCover": 0.122,
+     "meanChmM": 0.93,
+     "coverByThreshold": {
+      "1m": 0.1662,
+      "2m": 0.122,
+      "3m": 0.0971,
+      "5m": 0.0555
+     },
+     "chmZeroFrac": 0.7671,
+     "osmForestFrac": 0.0
+    }
+   },
+   "shadeByHour": {
+    "2026-08-01": {
+     "buffer50": [
+      0.3943,
+      0.3842,
+      0.3815,
+      0.3811,
+      0.381,
+      0.383,
+      0.3924,
+      0.4334,
+      0.6174
+     ],
+     "buffer25": [
+      0.2432,
+      0.2335,
+      0.2307,
+      0.2304,
+      0.2301,
+      0.2315,
+      0.2387,
+      0.2811,
+      0.5484
+     ],
+     "water10": [
+      0.1341,
+      0.1253,
+      0.1228,
+      0.1226,
+      0.122,
+      0.1231,
+      0.1283,
+      0.1554,
+      0.5139
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.3922,
+      0.3837,
+      0.3812,
+      0.381,
+      0.381,
+      0.383,
+      0.3921,
+      0.4315,
+      0.5906
+     ],
+     "buffer25": [
+      0.2409,
+      0.233,
+      0.2304,
+      0.2302,
+      0.2302,
+      0.2311,
+      0.2379,
+      0.278,
+      0.5137
+     ],
+     "water10": [
+      0.1311,
+      0.1246,
+      0.1225,
+      0.1223,
+      0.1221,
+      0.1228,
+      0.1281,
+      0.1557,
+      0.4661
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.3995,
+      0.3854,
+      0.3825,
+      0.3815,
+      0.381,
+      0.3835,
+      0.3939,
+      0.4478,
+      0.6839
+     ],
+     "buffer25": [
+      0.2485,
+      0.2347,
+      0.2316,
+      0.2308,
+      0.2302,
+      0.232,
+      0.2406,
+      0.3029,
+      0.6231
+     ],
+     "water10": [
+      0.141,
+      0.1275,
+      0.1241,
+      0.123,
+      0.1221,
+      0.1243,
+      0.1298,
+      0.1838,
+      0.6183
+     ]
+    }
+   },
+   "openShadedByHour": {
+    "2026-08-01": {
+     "buffer50": [
+      0.0216,
+      0.0052,
+      0.0009,
+      0.0003,
+      0.0001,
+      0.0033,
+      0.0185,
+      0.0848,
+      0.382
+     ],
+     "buffer25": [
+      0.0171,
+      0.0044,
+      0.0009,
+      0.0004,
+      0.0001,
+      0.0019,
+      0.0113,
+      0.0663,
+      0.4135
+     ],
+     "water10": [
+      0.0139,
+      0.0038,
+      0.001,
+      0.0008,
+      0.0,
+      0.0013,
+      0.0072,
+      0.0381,
+      0.4463
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.0181,
+      0.0045,
+      0.0005,
+      0.0001,
+      0.0002,
+      0.0032,
+      0.018,
+      0.0817,
+      0.3387
+     ],
+     "buffer25": [
+      0.0141,
+      0.0038,
+      0.0004,
+      0.0002,
+      0.0002,
+      0.0013,
+      0.0102,
+      0.0623,
+      0.3683
+     ],
+     "water10": [
+      0.0105,
+      0.003,
+      0.0006,
+      0.0004,
+      0.0002,
+      0.001,
+      0.007,
+      0.0384,
+      0.3919
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.03,
+      0.0072,
+      0.0024,
+      0.001,
+      0.0002,
+      0.0042,
+      0.021,
+      0.1081,
+      0.4895
+     ],
+     "buffer25": [
+      0.0239,
+      0.006,
+      0.002,
+      0.001,
+      0.0002,
+      0.0025,
+      0.0137,
+      0.0946,
+      0.5105
+     ],
+     "water10": [
+      0.0217,
+      0.0063,
+      0.0025,
+      0.0011,
+      0.0002,
+      0.0027,
+      0.0089,
+      0.0704,
+      0.5653
+     ]
+    }
+   },
+   "shadeByHourNaive": {
+    "2026-08-01": {
+     "buffer50": [
+      0.4038,
+      0.3861,
+      0.3819,
+      0.3812,
+      0.381,
+      0.3834,
+      0.3955,
+      0.4629,
+      0.6939
+     ],
+     "buffer25": [
+      0.255,
+      0.236,
+      0.2313,
+      0.2305,
+      0.2301,
+      0.2318,
+      0.2413,
+      0.3171,
+      0.648
+     ],
+     "water10": [
+      0.1468,
+      0.1285,
+      0.123,
+      0.1226,
+      0.122,
+      0.1236,
+      0.129,
+      0.201,
+      0.6525
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.3999,
+      0.3852,
+      0.3816,
+      0.381,
+      0.381,
+      0.3834,
+      0.3943,
+      0.4593,
+      0.6738
+     ],
+     "buffer25": [
+      0.2506,
+      0.2349,
+      0.2309,
+      0.2302,
+      0.2302,
+      0.2313,
+      0.2403,
+      0.3125,
+      0.6259
+     ],
+     "water10": [
+      0.1427,
+      0.1271,
+      0.1228,
+      0.1223,
+      0.1221,
+      0.123,
+      0.1286,
+      0.1961,
+      0.6316
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.4128,
+      0.3882,
+      0.3836,
+      0.3816,
+      0.3812,
+      0.3842,
+      0.399,
+      0.4793,
+      0.7749
+     ],
+     "buffer25": [
+      0.2646,
+      0.2385,
+      0.2331,
+      0.2309,
+      0.2303,
+      0.2327,
+      0.2438,
+      0.3406,
+      0.7308
+     ],
+     "water10": [
+      0.158,
+      0.1338,
+      0.126,
+      0.1231,
+      0.1225,
+      0.1248,
+      0.1308,
+      0.2304,
+      0.7474
+     ]
+    }
+   }
+  },
+  {
+   "id": "baegun-middle",
+   "label": "중류(흥룡사 입구)",
+   "order": 2,
+   "lengthM": 1274,
+   "canopy": {
+    "buffer50": {
+     "cells": 31836,
+     "areaM2": 127344,
+     "canopyCover": 0.3337,
+     "meanChmM": 2.79,
+     "coverByThreshold": {
+      "1m": 0.3882,
+      "2m": 0.3337,
+      "3m": 0.2874,
+      "5m": 0.2132
+     },
+     "chmZeroFrac": 0.5353,
+     "osmForestFrac": 0.0
+    },
+    "buffer25": {
+     "cells": 15920,
+     "areaM2": 63680,
+     "canopyCover": 0.2797,
+     "meanChmM": 2.02,
+     "coverByThreshold": {
+      "1m": 0.3355,
+      "2m": 0.2797,
+      "3m": 0.2332,
+      "5m": 0.1507
+     },
+     "chmZeroFrac": 0.5766,
+     "osmForestFrac": 0.0
+    },
+    "water10": {
+     "cells": 6370,
+     "areaM2": 25480,
+     "canopyCover": 0.2232,
+     "meanChmM": 1.53,
+     "coverByThreshold": {
+      "1m": 0.276,
+      "2m": 0.2232,
+      "3m": 0.1788,
+      "5m": 0.111
+     },
+     "chmZeroFrac": 0.6265,
+     "osmForestFrac": 0.0
+    }
+   },
+   "shadeByHour": {
+    "2026-08-01": {
+     "buffer50": [
+      0.346,
+      0.3365,
+      0.3344,
+      0.3342,
+      0.3351,
+      0.3411,
+      0.3625,
+      0.4511,
+      0.7869
+     ],
+     "buffer25": [
+      0.29,
+      0.2819,
+      0.2802,
+      0.28,
+      0.2809,
+      0.2884,
+      0.3106,
+      0.4002,
+      0.778
+     ],
+     "water10": [
+      0.2381,
+      0.2265,
+      0.2243,
+      0.2232,
+      0.2234,
+      0.2256,
+      0.2349,
+      0.3201,
+      0.7268
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.3439,
+      0.3361,
+      0.334,
+      0.334,
+      0.3347,
+      0.3404,
+      0.3609,
+      0.4391,
+      0.7689
+     ],
+     "buffer25": [
+      0.2883,
+      0.2815,
+      0.2798,
+      0.2797,
+      0.2805,
+      0.288,
+      0.3079,
+      0.3852,
+      0.7553
+     ],
+     "water10": [
+      0.2359,
+      0.2261,
+      0.2232,
+      0.2232,
+      0.2234,
+      0.2259,
+      0.2333,
+      0.3126,
+      0.708
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.3496,
+      0.3377,
+      0.3351,
+      0.3349,
+      0.3357,
+      0.3433,
+      0.369,
+      0.4761,
+      0.8283
+     ],
+     "buffer25": [
+      0.2932,
+      0.2827,
+      0.2808,
+      0.2809,
+      0.2815,
+      0.2918,
+      0.319,
+      0.4363,
+      0.8271
+     ],
+     "water10": [
+      0.2432,
+      0.2278,
+      0.2246,
+      0.2239,
+      0.224,
+      0.2284,
+      0.24,
+      0.3593,
+      0.7967
+     ]
+    }
+   },
+   "openShadedByHour": {
+    "2026-08-01": {
+     "buffer50": [
+      0.0183,
+      0.0041,
+      0.0009,
+      0.0007,
+      0.002,
+      0.011,
+      0.0432,
+      0.1762,
+      0.6802
+     ],
+     "buffer25": [
+      0.0143,
+      0.0031,
+      0.0007,
+      0.0003,
+      0.0017,
+      0.012,
+      0.0428,
+      0.1673,
+      0.6918
+     ],
+     "water10": [
+      0.0192,
+      0.0042,
+      0.0014,
+      0.0,
+      0.0002,
+      0.003,
+      0.015,
+      0.1247,
+      0.6483
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.0152,
+      0.0036,
+      0.0004,
+      0.0003,
+      0.0014,
+      0.01,
+      0.0408,
+      0.1581,
+      0.6532
+     ],
+     "buffer25": [
+      0.0119,
+      0.0025,
+      0.0001,
+      0.0,
+      0.0011,
+      0.0115,
+      0.0391,
+      0.1465,
+      0.6602
+     ],
+     "water10": [
+      0.0164,
+      0.0036,
+      0.0,
+      0.0,
+      0.0002,
+      0.0034,
+      0.0129,
+      0.115,
+      0.6241
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.0239,
+      0.0059,
+      0.0021,
+      0.0017,
+      0.0029,
+      0.0144,
+      0.053,
+      0.2137,
+      0.7423
+     ],
+     "buffer25": [
+      0.0187,
+      0.0041,
+      0.0015,
+      0.0017,
+      0.0025,
+      0.0168,
+      0.0545,
+      0.2174,
+      0.76
+     ],
+     "water10": [
+      0.0257,
+      0.0059,
+      0.0018,
+      0.0008,
+      0.001,
+      0.0067,
+      0.0216,
+      0.1752,
+      0.7383
+     ]
+    }
+   },
+   "shadeByHourNaive": {
+    "2026-08-01": {
+     "buffer50": [
+      0.3518,
+      0.3378,
+      0.3347,
+      0.3343,
+      0.3353,
+      0.3452,
+      0.3771,
+      0.5026,
+      0.8312
+     ],
+     "buffer25": [
+      0.2945,
+      0.283,
+      0.2806,
+      0.2801,
+      0.2808,
+      0.2945,
+      0.3307,
+      0.4612,
+      0.8285
+     ],
+     "water10": [
+      0.2438,
+      0.2281,
+      0.2243,
+      0.2234,
+      0.2235,
+      0.2273,
+      0.26,
+      0.3932,
+      0.7989
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.3489,
+      0.3371,
+      0.3343,
+      0.334,
+      0.3349,
+      0.3437,
+      0.3745,
+      0.4983,
+      0.8197
+     ],
+     "buffer25": [
+      0.2914,
+      0.2823,
+      0.28,
+      0.2798,
+      0.2807,
+      0.2926,
+      0.3269,
+      0.456,
+      0.817
+     ],
+     "water10": [
+      0.2392,
+      0.227,
+      0.2237,
+      0.2232,
+      0.2234,
+      0.2261,
+      0.2537,
+      0.3876,
+      0.7739
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.3574,
+      0.3397,
+      0.3359,
+      0.3352,
+      0.3366,
+      0.3485,
+      0.3883,
+      0.5283,
+      0.8563
+     ],
+     "buffer25": [
+      0.2997,
+      0.2849,
+      0.2816,
+      0.281,
+      0.2827,
+      0.2984,
+      0.3445,
+      0.4878,
+      0.8511
+     ],
+     "water10": [
+      0.2535,
+      0.2306,
+      0.2257,
+      0.2239,
+      0.224,
+      0.229,
+      0.2777,
+      0.416,
+      0.837
+     ]
+    }
+   }
+  },
+  {
+   "id": "baegun-lower",
+   "label": "하류(도평리)",
+   "order": 3,
+   "lengthM": 1621,
+   "canopy": {
+    "buffer50": {
+     "cells": 40493,
+     "areaM2": 161972,
+     "canopyCover": 0.2272,
+     "meanChmM": 1.69,
+     "coverByThreshold": {
+      "1m": 0.2662,
+      "2m": 0.2272,
+      "3m": 0.1953,
+      "5m": 0.1338
+     },
+     "chmZeroFrac": 0.6705,
+     "osmForestFrac": 0.0
+    },
+    "buffer25": {
+     "cells": 20245,
+     "areaM2": 80980,
+     "canopyCover": 0.1159,
+     "meanChmM": 0.76,
+     "coverByThreshold": {
+      "1m": 0.1495,
+      "2m": 0.1159,
+      "3m": 0.0907,
+      "5m": 0.0505
+     },
+     "chmZeroFrac": 0.7936,
+     "osmForestFrac": 0.0
+    },
+    "water10": {
+     "cells": 8109,
+     "areaM2": 32436,
+     "canopyCover": 0.0206,
+     "meanChmM": 0.15,
+     "coverByThreshold": {
+      "1m": 0.0358,
+      "2m": 0.0206,
+      "3m": 0.0123,
+      "5m": 0.0042
+     },
+     "chmZeroFrac": 0.9282,
+     "osmForestFrac": 0.0
+    }
+   },
+   "shadeByHour": {
+    "2026-08-01": {
+     "buffer50": [
+      0.2378,
+      0.2291,
+      0.2277,
+      0.2273,
+      0.2278,
+      0.2326,
+      0.2466,
+      0.3014,
+      0.5969
+     ],
+     "buffer25": [
+      0.1233,
+      0.1168,
+      0.1161,
+      0.1162,
+      0.1168,
+      0.1219,
+      0.1316,
+      0.1872,
+      0.5154
+     ],
+     "water10": [
+      0.0236,
+      0.021,
+      0.0206,
+      0.0206,
+      0.0207,
+      0.022,
+      0.0248,
+      0.0766,
+      0.422
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.2368,
+      0.2288,
+      0.2276,
+      0.2273,
+      0.2277,
+      0.2315,
+      0.2442,
+      0.2964,
+      0.571
+     ],
+     "buffer25": [
+      0.1228,
+      0.1168,
+      0.1161,
+      0.116,
+      0.1165,
+      0.1207,
+      0.1297,
+      0.1827,
+      0.4867
+     ],
+     "water10": [
+      0.0232,
+      0.0208,
+      0.0206,
+      0.0206,
+      0.0206,
+      0.0216,
+      0.0236,
+      0.0703,
+      0.3934
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.2413,
+      0.23,
+      0.228,
+      0.2279,
+      0.2285,
+      0.2345,
+      0.2519,
+      0.3263,
+      0.6754
+     ],
+     "buffer25": [
+      0.1264,
+      0.1172,
+      0.1163,
+      0.1166,
+      0.1178,
+      0.1246,
+      0.1368,
+      0.2107,
+      0.6171
+     ],
+     "water10": [
+      0.0257,
+      0.0212,
+      0.0206,
+      0.0206,
+      0.0211,
+      0.0232,
+      0.0274,
+      0.0964,
+      0.561
+     ]
+    }
+   },
+   "openShadedByHour": {
+    "2026-08-01": {
+     "buffer50": [
+      0.0137,
+      0.0025,
+      0.0007,
+      0.0002,
+      0.0008,
+      0.0071,
+      0.0251,
+      0.0961,
+      0.4784
+     ],
+     "buffer25": [
+      0.0084,
+      0.0011,
+      0.0002,
+      0.0003,
+      0.0011,
+      0.0068,
+      0.0178,
+      0.0806,
+      0.4519
+     ],
+     "water10": [
+      0.003,
+      0.0004,
+      0.0,
+      0.0,
+      0.0001,
+      0.0014,
+      0.0043,
+      0.0572,
+      0.4098
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.0125,
+      0.0021,
+      0.0006,
+      0.0002,
+      0.0006,
+      0.0056,
+      0.022,
+      0.0896,
+      0.4448
+     ],
+     "buffer25": [
+      0.0078,
+      0.001,
+      0.0003,
+      0.0001,
+      0.0007,
+      0.0055,
+      0.0156,
+      0.0756,
+      0.4195
+     ],
+     "water10": [
+      0.0026,
+      0.0003,
+      0.0,
+      0.0,
+      0.0,
+      0.001,
+      0.003,
+      0.0507,
+      0.3806
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.0183,
+      0.0037,
+      0.0011,
+      0.0009,
+      0.0018,
+      0.0095,
+      0.032,
+      0.1283,
+      0.58
+     ],
+     "buffer25": [
+      0.0119,
+      0.0015,
+      0.0005,
+      0.0008,
+      0.0021,
+      0.0099,
+      0.0237,
+      0.1072,
+      0.5669
+     ],
+     "water10": [
+      0.0052,
+      0.0006,
+      0.0,
+      0.0,
+      0.0005,
+      0.0026,
+      0.0069,
+      0.0774,
+      0.5518
+     ]
+    }
+   },
+   "shadeByHourNaive": {
+    "2026-08-01": {
+     "buffer50": [
+      0.2439,
+      0.2309,
+      0.228,
+      0.2276,
+      0.2282,
+      0.2338,
+      0.2541,
+      0.3332,
+      0.6486
+     ],
+     "buffer25": [
+      0.1285,
+      0.1183,
+      0.1164,
+      0.1166,
+      0.1174,
+      0.1234,
+      0.1366,
+      0.2149,
+      0.5858
+     ],
+     "water10": [
+      0.0257,
+      0.0212,
+      0.0206,
+      0.0206,
+      0.0207,
+      0.0232,
+      0.0258,
+      0.0982,
+      0.515
+     ]
+    },
+    "2026-07-25": {
+     "buffer50": [
+      0.2421,
+      0.2303,
+      0.2278,
+      0.2274,
+      0.2281,
+      0.2323,
+      0.2502,
+      0.3269,
+      0.6243
+     ],
+     "buffer25": [
+      0.1268,
+      0.1181,
+      0.1162,
+      0.1161,
+      0.1172,
+      0.1219,
+      0.1336,
+      0.2096,
+      0.5536
+     ],
+     "water10": [
+      0.0244,
+      0.0208,
+      0.0206,
+      0.0206,
+      0.0206,
+      0.0223,
+      0.0248,
+      0.0971,
+      0.4754
+     ]
+    },
+    "2026-08-15": {
+     "buffer50": [
+      0.249,
+      0.2322,
+      0.2288,
+      0.2282,
+      0.229,
+      0.236,
+      0.2637,
+      0.3696,
+      0.7283
+     ],
+     "buffer25": [
+      0.1336,
+      0.119,
+      0.1173,
+      0.1171,
+      0.1183,
+      0.1262,
+      0.1454,
+      0.2535,
+      0.6869
+     ],
+     "water10": [
+      0.0289,
+      0.0213,
+      0.0207,
+      0.0206,
+      0.0211,
+      0.0239,
+      0.0294,
+      0.1323,
+      0.6605
+     ]
+    }
+   }
+  }
+ ],
+ "byHour": [
+  {
+   "date": "2026-08-01",
+   "timeLocal": "10:00",
+   "sunAzimuth": 109.32,
+   "sunElevation": 50.48,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7504,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0024,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7515,
+    "openCellsShaded": 0.0094
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3943,
+      "shadeNaive": 0.4038,
+      "castOnly": 0.0133,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0216
+     },
+     "buffer25": {
+      "shade": 0.2432,
+      "shadeNaive": 0.255,
+      "castOnly": 0.0132,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0171
+     },
+     "water10": {
+      "shade": 0.1341,
+      "shadeNaive": 0.1468,
+      "castOnly": 0.0122,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0139
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.346,
+      "shadeNaive": 0.3518,
+      "castOnly": 0.0122,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0183
+     },
+     "buffer25": {
+      "shade": 0.29,
+      "shadeNaive": 0.2945,
+      "castOnly": 0.0103,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0143
+     },
+     "water10": {
+      "shade": 0.2381,
+      "shadeNaive": 0.2438,
+      "castOnly": 0.0149,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0192
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2378,
+      "shadeNaive": 0.2439,
+      "castOnly": 0.0106,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0137
+     },
+     "buffer25": {
+      "shade": 0.1233,
+      "shadeNaive": 0.1285,
+      "castOnly": 0.0075,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0084
+     },
+     "water10": {
+      "shade": 0.0236,
+      "shadeNaive": 0.0257,
+      "castOnly": 0.003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.003
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "11:00",
+   "sunAzimuth": 126.78,
+   "sunElevation": 60.91,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7483,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0002,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7484,
+    "openCellsShaded": 0.0009
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3842,
+      "shadeNaive": 0.3861,
+      "castOnly": 0.0032,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0052
+     },
+     "buffer25": {
+      "shade": 0.2335,
+      "shadeNaive": 0.236,
+      "castOnly": 0.0034,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0044
+     },
+     "water10": {
+      "shade": 0.1253,
+      "shadeNaive": 0.1285,
+      "castOnly": 0.0033,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0038
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3365,
+      "shadeNaive": 0.3378,
+      "castOnly": 0.0027,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0041
+     },
+     "buffer25": {
+      "shade": 0.2819,
+      "shadeNaive": 0.283,
+      "castOnly": 0.0022,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0031
+     },
+     "water10": {
+      "shade": 0.2265,
+      "shadeNaive": 0.2281,
+      "castOnly": 0.0033,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0042
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2291,
+      "shadeNaive": 0.2309,
+      "castOnly": 0.0019,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0025
+     },
+     "buffer25": {
+      "shade": 0.1168,
+      "shadeNaive": 0.1183,
+      "castOnly": 0.0009,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0011
+     },
+     "water10": {
+      "shade": 0.021,
+      "shadeNaive": 0.0212,
+      "castOnly": 0.0004,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0004
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "12:00",
+   "sunAzimuth": 155.66,
+   "sunElevation": 68.41,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.01,
+    "castNaive": 0.01
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0002
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3815,
+      "shadeNaive": 0.3819,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0009
+     },
+     "buffer25": {
+      "shade": 0.2307,
+      "shadeNaive": 0.2313,
+      "castOnly": 0.0007,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0009
+     },
+     "water10": {
+      "shade": 0.1228,
+      "shadeNaive": 0.123,
+      "castOnly": 0.0008,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3344,
+      "shadeNaive": 0.3347,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0009
+     },
+     "buffer25": {
+      "shade": 0.2802,
+      "shadeNaive": 0.2806,
+      "castOnly": 0.0005,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0007
+     },
+     "water10": {
+      "shade": 0.2243,
+      "shadeNaive": 0.2243,
+      "castOnly": 0.0011,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0014
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2277,
+      "shadeNaive": 0.228,
+      "castOnly": 0.0005,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0007
+     },
+     "buffer25": {
+      "shade": 0.1161,
+      "shadeNaive": 0.1164,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0206,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "13:00",
+   "sunAzimuth": 195.84,
+   "sunElevation": 69.31,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.01,
+    "castNaive": 0.01
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0001
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3811,
+      "shadeNaive": 0.3812,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0003
+     },
+     "buffer25": {
+      "shade": 0.2304,
+      "shadeNaive": 0.2305,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0004
+     },
+     "water10": {
+      "shade": 0.1226,
+      "shadeNaive": 0.1226,
+      "castOnly": 0.0007,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0008
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3342,
+      "shadeNaive": 0.3343,
+      "castOnly": 0.0004,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0007
+     },
+     "buffer25": {
+      "shade": 0.28,
+      "shadeNaive": 0.2801,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0003
+     },
+     "water10": {
+      "shade": 0.2232,
+      "shadeNaive": 0.2234,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2273,
+      "shadeNaive": 0.2276,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "buffer25": {
+      "shade": 0.1162,
+      "shadeNaive": 0.1166,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0003
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0206,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "14:00",
+   "sunAzimuth": 227.96,
+   "sunElevation": 62.93,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0001,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0002
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.381,
+      "shadeNaive": 0.381,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0001
+     },
+     "buffer25": {
+      "shade": 0.2301,
+      "shadeNaive": 0.2301,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0001
+     },
+     "water10": {
+      "shade": 0.122,
+      "shadeNaive": 0.122,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3351,
+      "shadeNaive": 0.3353,
+      "castOnly": 0.0013,
+      "terrainOnly": 0.0,
+      "openShaded": 0.002
+     },
+     "buffer25": {
+      "shade": 0.2809,
+      "shadeNaive": 0.2808,
+      "castOnly": 0.0012,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0017
+     },
+     "water10": {
+      "shade": 0.2234,
+      "shadeNaive": 0.2235,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2278,
+      "shadeNaive": 0.2282,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0008
+     },
+     "buffer25": {
+      "shade": 0.1168,
+      "shadeNaive": 0.1174,
+      "castOnly": 0.0009,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0011
+     },
+     "water10": {
+      "shade": 0.0207,
+      "shadeNaive": 0.0207,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0001
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "15:00",
+   "sunAzimuth": 247.34,
+   "sunElevation": 52.91,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7489,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0009,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7493,
+    "openCellsShaded": 0.0034
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.383,
+      "shadeNaive": 0.3834,
+      "castOnly": 0.002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0033
+     },
+     "buffer25": {
+      "shade": 0.2315,
+      "shadeNaive": 0.2318,
+      "castOnly": 0.0015,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0019
+     },
+     "water10": {
+      "shade": 0.1231,
+      "shadeNaive": 0.1236,
+      "castOnly": 0.0012,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0013
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3411,
+      "shadeNaive": 0.3452,
+      "castOnly": 0.0074,
+      "terrainOnly": 0.0,
+      "openShaded": 0.011
+     },
+     "buffer25": {
+      "shade": 0.2884,
+      "shadeNaive": 0.2945,
+      "castOnly": 0.0087,
+      "terrainOnly": 0.0,
+      "openShaded": 0.012
+     },
+     "water10": {
+      "shade": 0.2256,
+      "shadeNaive": 0.2273,
+      "castOnly": 0.0024,
+      "terrainOnly": 0.0,
+      "openShaded": 0.003
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2326,
+      "shadeNaive": 0.2338,
+      "castOnly": 0.0055,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0071
+     },
+     "buffer25": {
+      "shade": 0.1219,
+      "shadeNaive": 0.1234,
+      "castOnly": 0.006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0068
+     },
+     "water10": {
+      "shade": 0.022,
+      "shadeNaive": 0.0232,
+      "castOnly": 0.0014,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0014
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "16:00",
+   "sunAzimuth": 260.19,
+   "sunElevation": 41.58,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.02,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.7552,
+    "underCanopy": 0.7481,
+    "castOnly": 0.007,
+    "terrainOnly": 0.0001,
+    "shadeNaive": 0.7574,
+    "openCellsShaded": 0.0282
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3924,
+      "shadeNaive": 0.3955,
+      "castOnly": 0.0114,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0185
+     },
+     "buffer25": {
+      "shade": 0.2387,
+      "shadeNaive": 0.2413,
+      "castOnly": 0.0087,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0113
+     },
+     "water10": {
+      "shade": 0.1283,
+      "shadeNaive": 0.129,
+      "castOnly": 0.0063,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0072
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3625,
+      "shadeNaive": 0.3771,
+      "castOnly": 0.0288,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0432
+     },
+     "buffer25": {
+      "shade": 0.3106,
+      "shadeNaive": 0.3307,
+      "castOnly": 0.0308,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0428
+     },
+     "water10": {
+      "shade": 0.2349,
+      "shadeNaive": 0.26,
+      "castOnly": 0.0116,
+      "terrainOnly": 0.0,
+      "openShaded": 0.015
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2466,
+      "shadeNaive": 0.2541,
+      "castOnly": 0.0194,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0251
+     },
+     "buffer25": {
+      "shade": 0.1316,
+      "shadeNaive": 0.1366,
+      "castOnly": 0.0157,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0178
+     },
+     "water10": {
+      "shade": 0.0248,
+      "shadeNaive": 0.0258,
+      "castOnly": 0.0042,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0043
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "17:00",
+   "sunAzimuth": 270.18,
+   "sunElevation": 29.83,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.02,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.7768,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0274,
+    "terrainOnly": 0.0014,
+    "shadeNaive": 0.7826,
+    "openCellsShaded": 0.1142
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.4334,
+      "shadeNaive": 0.4629,
+      "castOnly": 0.0521,
+      "terrainOnly": 0.0004,
+      "openShaded": 0.0848
+     },
+     "buffer25": {
+      "shade": 0.2811,
+      "shadeNaive": 0.3171,
+      "castOnly": 0.0508,
+      "terrainOnly": 0.0003,
+      "openShaded": 0.0663
+     },
+     "water10": {
+      "shade": 0.1554,
+      "shadeNaive": 0.201,
+      "castOnly": 0.0327,
+      "terrainOnly": 0.0007,
+      "openShaded": 0.0381
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.4511,
+      "shadeNaive": 0.5026,
+      "castOnly": 0.1088,
+      "terrainOnly": 0.0086,
+      "openShaded": 0.1762
+     },
+     "buffer25": {
+      "shade": 0.4002,
+      "shadeNaive": 0.4612,
+      "castOnly": 0.1116,
+      "terrainOnly": 0.0089,
+      "openShaded": 0.1673
+     },
+     "water10": {
+      "shade": 0.3201,
+      "shadeNaive": 0.3932,
+      "castOnly": 0.0958,
+      "terrainOnly": 0.0011,
+      "openShaded": 0.1247
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.3014,
+      "shadeNaive": 0.3332,
+      "castOnly": 0.0652,
+      "terrainOnly": 0.009,
+      "openShaded": 0.0961
+     },
+     "buffer25": {
+      "shade": 0.1872,
+      "shadeNaive": 0.2149,
+      "castOnly": 0.0609,
+      "terrainOnly": 0.0104,
+      "openShaded": 0.0806
+     },
+     "water10": {
+      "shade": 0.0766,
+      "shadeNaive": 0.0982,
+      "castOnly": 0.0443,
+      "terrainOnly": 0.0117,
+      "openShaded": 0.0572
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-01",
+   "timeLocal": "18:00",
+   "sunAzimuth": 279.03,
+   "sunElevation": 18.09,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.02,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.8255,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0756,
+    "terrainOnly": 0.0019,
+    "shadeNaive": 0.8333,
+    "openCellsShaded": 0.3073
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.6174,
+      "shadeNaive": 0.6939,
+      "castOnly": 0.219,
+      "terrainOnly": 0.0175,
+      "openShaded": 0.382
+     },
+     "buffer25": {
+      "shade": 0.5484,
+      "shadeNaive": 0.648,
+      "castOnly": 0.2915,
+      "terrainOnly": 0.0269,
+      "openShaded": 0.4135
+     },
+     "water10": {
+      "shade": 0.5139,
+      "shadeNaive": 0.6525,
+      "castOnly": 0.3475,
+      "terrainOnly": 0.0444,
+      "openShaded": 0.4463
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.7869,
+      "shadeNaive": 0.8312,
+      "castOnly": 0.4481,
+      "terrainOnly": 0.0051,
+      "openShaded": 0.6802
+     },
+     "buffer25": {
+      "shade": 0.778,
+      "shadeNaive": 0.8285,
+      "castOnly": 0.4926,
+      "terrainOnly": 0.0057,
+      "openShaded": 0.6918
+     },
+     "water10": {
+      "shade": 0.7268,
+      "shadeNaive": 0.7989,
+      "castOnly": 0.4934,
+      "terrainOnly": 0.0102,
+      "openShaded": 0.6483
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.5969,
+      "shadeNaive": 0.6486,
+      "castOnly": 0.3622,
+      "terrainOnly": 0.0075,
+      "openShaded": 0.4784
+     },
+     "buffer25": {
+      "shade": 0.5154,
+      "shadeNaive": 0.5858,
+      "castOnly": 0.3897,
+      "terrainOnly": 0.0099,
+      "openShaded": 0.4519
+     },
+     "water10": {
+      "shade": 0.422,
+      "shadeNaive": 0.515,
+      "castOnly": 0.3923,
+      "terrainOnly": 0.0091,
+      "openShaded": 0.4098
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "10:00",
+   "sunAzimuth": 107.24,
+   "sunElevation": 51.45,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.75,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0019,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7509,
+    "openCellsShaded": 0.0077
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3922,
+      "shadeNaive": 0.3999,
+      "castOnly": 0.0112,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0181
+     },
+     "buffer25": {
+      "shade": 0.2409,
+      "shadeNaive": 0.2506,
+      "castOnly": 0.0108,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0141
+     },
+     "water10": {
+      "shade": 0.1311,
+      "shadeNaive": 0.1427,
+      "castOnly": 0.0092,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0105
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3439,
+      "shadeNaive": 0.3489,
+      "castOnly": 0.0101,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0152
+     },
+     "buffer25": {
+      "shade": 0.2883,
+      "shadeNaive": 0.2914,
+      "castOnly": 0.0086,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0119
+     },
+     "water10": {
+      "shade": 0.2359,
+      "shadeNaive": 0.2392,
+      "castOnly": 0.0127,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0164
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2368,
+      "shadeNaive": 0.2421,
+      "castOnly": 0.0097,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0125
+     },
+     "buffer25": {
+      "shade": 0.1228,
+      "shadeNaive": 0.1268,
+      "castOnly": 0.0069,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0078
+     },
+     "water10": {
+      "shade": 0.0232,
+      "shadeNaive": 0.0244,
+      "castOnly": 0.0026,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0026
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "11:00",
+   "sunAzimuth": 124.41,
+   "sunElevation": 62.09,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7482,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0002,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7484,
+    "openCellsShaded": 0.0008
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3837,
+      "shadeNaive": 0.3852,
+      "castOnly": 0.0028,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0045
+     },
+     "buffer25": {
+      "shade": 0.233,
+      "shadeNaive": 0.2349,
+      "castOnly": 0.0029,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0038
+     },
+     "water10": {
+      "shade": 0.1246,
+      "shadeNaive": 0.1271,
+      "castOnly": 0.0027,
+      "terrainOnly": 0.0,
+      "openShaded": 0.003
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3361,
+      "shadeNaive": 0.3371,
+      "castOnly": 0.0024,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0036
+     },
+     "buffer25": {
+      "shade": 0.2815,
+      "shadeNaive": 0.2823,
+      "castOnly": 0.0018,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0025
+     },
+     "water10": {
+      "shade": 0.2261,
+      "shadeNaive": 0.227,
+      "castOnly": 0.0028,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0036
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2288,
+      "shadeNaive": 0.2303,
+      "castOnly": 0.0016,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0021
+     },
+     "buffer25": {
+      "shade": 0.1168,
+      "shadeNaive": 0.1181,
+      "castOnly": 0.0009,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     },
+     "water10": {
+      "shade": 0.0208,
+      "shadeNaive": 0.0208,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0003
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "12:00",
+   "sunAzimuth": 153.92,
+   "sunElevation": 69.93,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.01,
+    "castNaive": 0.01
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0001
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3812,
+      "shadeNaive": 0.3816,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0005
+     },
+     "buffer25": {
+      "shade": 0.2304,
+      "shadeNaive": 0.2309,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0004
+     },
+     "water10": {
+      "shade": 0.1225,
+      "shadeNaive": 0.1228,
+      "castOnly": 0.0005,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0006
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.334,
+      "shadeNaive": 0.3343,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0004
+     },
+     "buffer25": {
+      "shade": 0.2798,
+      "shadeNaive": 0.28,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0001
+     },
+     "water10": {
+      "shade": 0.2232,
+      "shadeNaive": 0.2237,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2276,
+      "shadeNaive": 0.2278,
+      "castOnly": 0.0004,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0006
+     },
+     "buffer25": {
+      "shade": 0.1161,
+      "shadeNaive": 0.1162,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0003
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0206,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "13:00",
+   "sunAzimuth": 196.85,
+   "sunElevation": 70.91,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.01,
+    "castNaive": 0.01
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.381,
+      "shadeNaive": 0.381,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0001
+     },
+     "buffer25": {
+      "shade": 0.2302,
+      "shadeNaive": 0.2302,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "water10": {
+      "shade": 0.1223,
+      "shadeNaive": 0.1223,
+      "castOnly": 0.0003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0004
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.334,
+      "shadeNaive": 0.334,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0003
+     },
+     "buffer25": {
+      "shade": 0.2797,
+      "shadeNaive": 0.2798,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     },
+     "water10": {
+      "shade": 0.2232,
+      "shadeNaive": 0.2232,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2273,
+      "shadeNaive": 0.2274,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "buffer25": {
+      "shade": 0.116,
+      "shadeNaive": 0.1161,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0001
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0206,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "14:00",
+   "sunAzimuth": 230.2,
+   "sunElevation": 64.23,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0002
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.381,
+      "shadeNaive": 0.381,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "buffer25": {
+      "shade": 0.2302,
+      "shadeNaive": 0.2302,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "water10": {
+      "shade": 0.1221,
+      "shadeNaive": 0.1221,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3347,
+      "shadeNaive": 0.3349,
+      "castOnly": 0.0009,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0014
+     },
+     "buffer25": {
+      "shade": 0.2805,
+      "shadeNaive": 0.2807,
+      "castOnly": 0.0008,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0011
+     },
+     "water10": {
+      "shade": 0.2234,
+      "shadeNaive": 0.2234,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2277,
+      "shadeNaive": 0.2281,
+      "castOnly": 0.0005,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0006
+     },
+     "buffer25": {
+      "shade": 0.1165,
+      "shadeNaive": 0.1172,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0007
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0206,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "15:00",
+   "sunAzimuth": 249.42,
+   "sunElevation": 53.99,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.02,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7487,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0007,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7491,
+    "openCellsShaded": 0.0027
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.383,
+      "shadeNaive": 0.3834,
+      "castOnly": 0.002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0032
+     },
+     "buffer25": {
+      "shade": 0.2311,
+      "shadeNaive": 0.2313,
+      "castOnly": 0.001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0013
+     },
+     "water10": {
+      "shade": 0.1228,
+      "shadeNaive": 0.123,
+      "castOnly": 0.0008,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3404,
+      "shadeNaive": 0.3437,
+      "castOnly": 0.0067,
+      "terrainOnly": 0.0,
+      "openShaded": 0.01
+     },
+     "buffer25": {
+      "shade": 0.288,
+      "shadeNaive": 0.2926,
+      "castOnly": 0.0083,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0115
+     },
+     "water10": {
+      "shade": 0.2259,
+      "shadeNaive": 0.2261,
+      "castOnly": 0.0027,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0034
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2315,
+      "shadeNaive": 0.2323,
+      "castOnly": 0.0043,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0056
+     },
+     "buffer25": {
+      "shade": 0.1207,
+      "shadeNaive": 0.1219,
+      "castOnly": 0.0048,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0055
+     },
+     "water10": {
+      "shade": 0.0216,
+      "shadeNaive": 0.0223,
+      "castOnly": 0.001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "16:00",
+   "sunAzimuth": 261.97,
+   "sunElevation": 42.55,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7539,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0058,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7557,
+    "openCellsShaded": 0.0231
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3921,
+      "shadeNaive": 0.3943,
+      "castOnly": 0.0112,
+      "terrainOnly": 0.0,
+      "openShaded": 0.018
+     },
+     "buffer25": {
+      "shade": 0.2379,
+      "shadeNaive": 0.2403,
+      "castOnly": 0.0079,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0102
+     },
+     "water10": {
+      "shade": 0.1281,
+      "shadeNaive": 0.1286,
+      "castOnly": 0.0062,
+      "terrainOnly": 0.0,
+      "openShaded": 0.007
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3609,
+      "shadeNaive": 0.3745,
+      "castOnly": 0.0272,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0408
+     },
+     "buffer25": {
+      "shade": 0.3079,
+      "shadeNaive": 0.3269,
+      "castOnly": 0.0281,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0391
+     },
+     "water10": {
+      "shade": 0.2333,
+      "shadeNaive": 0.2537,
+      "castOnly": 0.01,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0129
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2442,
+      "shadeNaive": 0.2502,
+      "castOnly": 0.017,
+      "terrainOnly": 0.0,
+      "openShaded": 0.022
+     },
+     "buffer25": {
+      "shade": 0.1297,
+      "shadeNaive": 0.1336,
+      "castOnly": 0.0138,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0156
+     },
+     "water10": {
+      "shade": 0.0236,
+      "shadeNaive": 0.0248,
+      "castOnly": 0.003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.003
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "17:00",
+   "sunAzimuth": 271.73,
+   "sunElevation": 30.78,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.02,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.7739,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0247,
+    "terrainOnly": 0.0012,
+    "shadeNaive": 0.7796,
+    "openCellsShaded": 0.1025
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.4315,
+      "shadeNaive": 0.4593,
+      "castOnly": 0.0496,
+      "terrainOnly": 0.0009,
+      "openShaded": 0.0817
+     },
+     "buffer25": {
+      "shade": 0.278,
+      "shadeNaive": 0.3125,
+      "castOnly": 0.0473,
+      "terrainOnly": 0.0007,
+      "openShaded": 0.0623
+     },
+     "water10": {
+      "shade": 0.1557,
+      "shadeNaive": 0.1961,
+      "castOnly": 0.0322,
+      "terrainOnly": 0.0015,
+      "openShaded": 0.0384
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.4391,
+      "shadeNaive": 0.4983,
+      "castOnly": 0.104,
+      "terrainOnly": 0.0013,
+      "openShaded": 0.1581
+     },
+     "buffer25": {
+      "shade": 0.3852,
+      "shadeNaive": 0.456,
+      "castOnly": 0.1033,
+      "terrainOnly": 0.0023,
+      "openShaded": 0.1465
+     },
+     "water10": {
+      "shade": 0.3126,
+      "shadeNaive": 0.3876,
+      "castOnly": 0.0893,
+      "terrainOnly": 0.0,
+      "openShaded": 0.115
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2964,
+      "shadeNaive": 0.3269,
+      "castOnly": 0.0609,
+      "terrainOnly": 0.0084,
+      "openShaded": 0.0896
+     },
+     "buffer25": {
+      "shade": 0.1827,
+      "shadeNaive": 0.2096,
+      "castOnly": 0.0558,
+      "terrainOnly": 0.0111,
+      "openShaded": 0.0756
+     },
+     "water10": {
+      "shade": 0.0703,
+      "shadeNaive": 0.0971,
+      "castOnly": 0.0375,
+      "terrainOnly": 0.0122,
+      "openShaded": 0.0507
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-07-25",
+   "timeLocal": "18:00",
+   "sunAzimuth": 280.43,
+   "sunElevation": 19.06,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.02,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.82,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0703,
+    "terrainOnly": 0.0016,
+    "shadeNaive": 0.8278,
+    "openCellsShaded": 0.2856
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.5906,
+      "shadeNaive": 0.6738,
+      "castOnly": 0.2002,
+      "terrainOnly": 0.0094,
+      "openShaded": 0.3387
+     },
+     "buffer25": {
+      "shade": 0.5137,
+      "shadeNaive": 0.6259,
+      "castOnly": 0.2649,
+      "terrainOnly": 0.0187,
+      "openShaded": 0.3683
+     },
+     "water10": {
+      "shade": 0.4661,
+      "shadeNaive": 0.6316,
+      "castOnly": 0.3092,
+      "terrainOnly": 0.0349,
+      "openShaded": 0.3919
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.7689,
+      "shadeNaive": 0.8197,
+      "castOnly": 0.4303,
+      "terrainOnly": 0.0049,
+      "openShaded": 0.6532
+     },
+     "buffer25": {
+      "shade": 0.7553,
+      "shadeNaive": 0.817,
+      "castOnly": 0.4714,
+      "terrainOnly": 0.0041,
+      "openShaded": 0.6602
+     },
+     "water10": {
+      "shade": 0.708,
+      "shadeNaive": 0.7739,
+      "castOnly": 0.4824,
+      "terrainOnly": 0.0024,
+      "openShaded": 0.6241
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.571,
+      "shadeNaive": 0.6243,
+      "castOnly": 0.3351,
+      "terrainOnly": 0.0087,
+      "openShaded": 0.4448
+     },
+     "buffer25": {
+      "shade": 0.4867,
+      "shadeNaive": 0.5536,
+      "castOnly": 0.3576,
+      "terrainOnly": 0.0133,
+      "openShaded": 0.4195
+     },
+     "water10": {
+      "shade": 0.3934,
+      "shadeNaive": 0.4754,
+      "castOnly": 0.3574,
+      "terrainOnly": 0.0154,
+      "openShaded": 0.3806
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "10:00",
+   "sunAzimuth": 114.37,
+   "sunElevation": 48.24,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7517,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0036,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7533,
+    "openCellsShaded": 0.0143
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3995,
+      "shadeNaive": 0.4128,
+      "castOnly": 0.0186,
+      "terrainOnly": 0.0,
+      "openShaded": 0.03
+     },
+     "buffer25": {
+      "shade": 0.2485,
+      "shadeNaive": 0.2646,
+      "castOnly": 0.0184,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0239
+     },
+     "water10": {
+      "shade": 0.141,
+      "shadeNaive": 0.158,
+      "castOnly": 0.019,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0217
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3496,
+      "shadeNaive": 0.3574,
+      "castOnly": 0.0159,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0239
+     },
+     "buffer25": {
+      "shade": 0.2932,
+      "shadeNaive": 0.2997,
+      "castOnly": 0.0134,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0187
+     },
+     "water10": {
+      "shade": 0.2432,
+      "shadeNaive": 0.2535,
+      "castOnly": 0.0199,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0257
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2413,
+      "shadeNaive": 0.249,
+      "castOnly": 0.0141,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0183
+     },
+     "buffer25": {
+      "shade": 0.1264,
+      "shadeNaive": 0.1336,
+      "castOnly": 0.0105,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0119
+     },
+     "water10": {
+      "shade": 0.0257,
+      "shadeNaive": 0.0289,
+      "castOnly": 0.0051,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0052
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "11:00",
+   "sunAzimuth": 132.37,
+   "sunElevation": 58.12,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7484,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0003,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7486,
+    "openCellsShaded": 0.0013
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3854,
+      "shadeNaive": 0.3882,
+      "castOnly": 0.0044,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0072
+     },
+     "buffer25": {
+      "shade": 0.2347,
+      "shadeNaive": 0.2385,
+      "castOnly": 0.0046,
+      "terrainOnly": 0.0,
+      "openShaded": 0.006
+     },
+     "water10": {
+      "shade": 0.1275,
+      "shadeNaive": 0.1338,
+      "castOnly": 0.0055,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0063
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3377,
+      "shadeNaive": 0.3397,
+      "castOnly": 0.0039,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0059
+     },
+     "buffer25": {
+      "shade": 0.2827,
+      "shadeNaive": 0.2849,
+      "castOnly": 0.003,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0041
+     },
+     "water10": {
+      "shade": 0.2278,
+      "shadeNaive": 0.2306,
+      "castOnly": 0.0046,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0059
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.23,
+      "shadeNaive": 0.2322,
+      "castOnly": 0.0028,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0037
+     },
+     "buffer25": {
+      "shade": 0.1172,
+      "shadeNaive": 0.119,
+      "castOnly": 0.0013,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0015
+     },
+     "water10": {
+      "shade": 0.0212,
+      "shadeNaive": 0.0213,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0006
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "12:00",
+   "sunAzimuth": 159.8,
+   "sunElevation": 64.78,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.01,
+    "castNaive": 0.01
+   },
+   "bbox": {
+    "shade": 0.7482,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0001,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7482,
+    "openCellsShaded": 0.0005
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3825,
+      "shadeNaive": 0.3836,
+      "castOnly": 0.0015,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0024
+     },
+     "buffer25": {
+      "shade": 0.2316,
+      "shadeNaive": 0.2331,
+      "castOnly": 0.0015,
+      "terrainOnly": 0.0,
+      "openShaded": 0.002
+     },
+     "water10": {
+      "shade": 0.1241,
+      "shadeNaive": 0.126,
+      "castOnly": 0.0022,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0025
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3351,
+      "shadeNaive": 0.3359,
+      "castOnly": 0.0014,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0021
+     },
+     "buffer25": {
+      "shade": 0.2808,
+      "shadeNaive": 0.2816,
+      "castOnly": 0.0011,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0015
+     },
+     "water10": {
+      "shade": 0.2246,
+      "shadeNaive": 0.2257,
+      "castOnly": 0.0014,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0018
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.228,
+      "shadeNaive": 0.2288,
+      "castOnly": 0.0008,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0011
+     },
+     "buffer25": {
+      "shade": 0.1163,
+      "shadeNaive": 0.1173,
+      "castOnly": 0.0004,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0005
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0207,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "13:00",
+   "sunAzimuth": 194.72,
+   "sunElevation": 65.35,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.01,
+    "castNaive": 0.01
+   },
+   "bbox": {
+    "shade": 0.7481,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0001,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7481,
+    "openCellsShaded": 0.0003
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3815,
+      "shadeNaive": 0.3816,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     },
+     "buffer25": {
+      "shade": 0.2308,
+      "shadeNaive": 0.2309,
+      "castOnly": 0.0007,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     },
+     "water10": {
+      "shade": 0.123,
+      "shadeNaive": 0.1231,
+      "castOnly": 0.001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0011
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3349,
+      "shadeNaive": 0.3352,
+      "castOnly": 0.0012,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0017
+     },
+     "buffer25": {
+      "shade": 0.2809,
+      "shadeNaive": 0.281,
+      "castOnly": 0.0012,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0017
+     },
+     "water10": {
+      "shade": 0.2239,
+      "shadeNaive": 0.2239,
+      "castOnly": 0.0006,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0008
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2279,
+      "shadeNaive": 0.2282,
+      "castOnly": 0.0007,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0009
+     },
+     "buffer25": {
+      "shade": 0.1166,
+      "shadeNaive": 0.1171,
+      "castOnly": 0.0007,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0008
+     },
+     "water10": {
+      "shade": 0.0206,
+      "shadeNaive": 0.0206,
+      "castOnly": 0.0,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "14:00",
+   "sunAzimuth": 223.85,
+   "sunElevation": 59.47,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.01,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.7482,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0001,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7482,
+    "openCellsShaded": 0.0004
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.381,
+      "shadeNaive": 0.3812,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "buffer25": {
+      "shade": 0.2302,
+      "shadeNaive": 0.2303,
+      "castOnly": 0.0001,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     },
+     "water10": {
+      "shade": 0.1221,
+      "shadeNaive": 0.1225,
+      "castOnly": 0.0002,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0002
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3357,
+      "shadeNaive": 0.3366,
+      "castOnly": 0.0019,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0029
+     },
+     "buffer25": {
+      "shade": 0.2815,
+      "shadeNaive": 0.2827,
+      "castOnly": 0.0018,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0025
+     },
+     "water10": {
+      "shade": 0.224,
+      "shadeNaive": 0.224,
+      "castOnly": 0.0008,
+      "terrainOnly": 0.0,
+      "openShaded": 0.001
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2285,
+      "shadeNaive": 0.229,
+      "castOnly": 0.0014,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0018
+     },
+     "buffer25": {
+      "shade": 0.1178,
+      "shadeNaive": 0.1183,
+      "castOnly": 0.0019,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0021
+     },
+     "water10": {
+      "shade": 0.0211,
+      "shadeNaive": 0.0211,
+      "castOnly": 0.0005,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0005
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "15:00",
+   "sunAzimuth": 243.08,
+   "sunElevation": 49.93,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7495,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0015,
+    "terrainOnly": 0.0,
+    "shadeNaive": 0.7501,
+    "openCellsShaded": 0.0058
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3835,
+      "shadeNaive": 0.3842,
+      "castOnly": 0.0026,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0042
+     },
+     "buffer25": {
+      "shade": 0.232,
+      "shadeNaive": 0.2327,
+      "castOnly": 0.0019,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0025
+     },
+     "water10": {
+      "shade": 0.1243,
+      "shadeNaive": 0.1248,
+      "castOnly": 0.0023,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0027
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.3433,
+      "shadeNaive": 0.3485,
+      "castOnly": 0.0096,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0144
+     },
+     "buffer25": {
+      "shade": 0.2918,
+      "shadeNaive": 0.2984,
+      "castOnly": 0.0121,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0168
+     },
+     "water10": {
+      "shade": 0.2284,
+      "shadeNaive": 0.229,
+      "castOnly": 0.0052,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0067
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2345,
+      "shadeNaive": 0.236,
+      "castOnly": 0.0073,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0095
+     },
+     "buffer25": {
+      "shade": 0.1246,
+      "shadeNaive": 0.1262,
+      "castOnly": 0.0087,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0099
+     },
+     "water10": {
+      "shade": 0.0232,
+      "shadeNaive": 0.0239,
+      "castOnly": 0.0026,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0026
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "16:00",
+   "sunAzimuth": 256.37,
+   "sunElevation": 38.86,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.03,
+    "castNaive": 0.03
+   },
+   "bbox": {
+    "shade": 0.7596,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0114,
+    "terrainOnly": 0.0001,
+    "shadeNaive": 0.7627,
+    "openCellsShaded": 0.0458
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.3939,
+      "shadeNaive": 0.399,
+      "castOnly": 0.013,
+      "terrainOnly": 0.0,
+      "openShaded": 0.021
+     },
+     "buffer25": {
+      "shade": 0.2406,
+      "shadeNaive": 0.2438,
+      "castOnly": 0.0106,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0137
+     },
+     "water10": {
+      "shade": 0.1298,
+      "shadeNaive": 0.1308,
+      "castOnly": 0.0079,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0089
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.369,
+      "shadeNaive": 0.3883,
+      "castOnly": 0.0353,
+      "terrainOnly": 0.0,
+      "openShaded": 0.053
+     },
+     "buffer25": {
+      "shade": 0.319,
+      "shadeNaive": 0.3445,
+      "castOnly": 0.0393,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0545
+     },
+     "water10": {
+      "shade": 0.24,
+      "shadeNaive": 0.2777,
+      "castOnly": 0.0168,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0216
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.2519,
+      "shadeNaive": 0.2637,
+      "castOnly": 0.0247,
+      "terrainOnly": 0.0,
+      "openShaded": 0.032
+     },
+     "buffer25": {
+      "shade": 0.1368,
+      "shadeNaive": 0.1454,
+      "castOnly": 0.0209,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0237
+     },
+     "water10": {
+      "shade": 0.0274,
+      "shadeNaive": 0.0294,
+      "castOnly": 0.0068,
+      "terrainOnly": 0.0,
+      "openShaded": 0.0069
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "17:00",
+   "sunAzimuth": 266.77,
+   "sunElevation": 27.19,
+   "seconds": {
+    "terrain30m": 0.24,
+    "castCorrected": 0.02,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.7897,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0399,
+    "terrainOnly": 0.0017,
+    "shadeNaive": 0.7965,
+    "openCellsShaded": 0.1652
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.4478,
+      "shadeNaive": 0.4793,
+      "castOnly": 0.064,
+      "terrainOnly": 0.0029,
+      "openShaded": 0.1081
+     },
+     "buffer25": {
+      "shade": 0.3029,
+      "shadeNaive": 0.3406,
+      "castOnly": 0.067,
+      "terrainOnly": 0.0058,
+      "openShaded": 0.0946
+     },
+     "water10": {
+      "shade": 0.1838,
+      "shadeNaive": 0.2304,
+      "castOnly": 0.0489,
+      "terrainOnly": 0.0129,
+      "openShaded": 0.0704
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.4761,
+      "shadeNaive": 0.5283,
+      "castOnly": 0.1359,
+      "terrainOnly": 0.0065,
+      "openShaded": 0.2137
+     },
+     "buffer25": {
+      "shade": 0.4363,
+      "shadeNaive": 0.4878,
+      "castOnly": 0.1489,
+      "terrainOnly": 0.0077,
+      "openShaded": 0.2174
+     },
+     "water10": {
+      "shade": 0.3593,
+      "shadeNaive": 0.416,
+      "castOnly": 0.1289,
+      "terrainOnly": 0.0072,
+      "openShaded": 0.1752
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.3263,
+      "shadeNaive": 0.3696,
+      "castOnly": 0.0895,
+      "terrainOnly": 0.0096,
+      "openShaded": 0.1283
+     },
+     "buffer25": {
+      "shade": 0.2107,
+      "shadeNaive": 0.2535,
+      "castOnly": 0.0817,
+      "terrainOnly": 0.0131,
+      "openShaded": 0.1072
+     },
+     "water10": {
+      "shade": 0.0964,
+      "shadeNaive": 0.1323,
+      "castOnly": 0.0651,
+      "terrainOnly": 0.0107,
+      "openShaded": 0.0774
+     }
+    }
+   }
+  },
+  {
+   "date": "2026-08-15",
+   "timeLocal": "18:00",
+   "sunAzimuth": 275.93,
+   "sunElevation": 15.42,
+   "seconds": {
+    "terrain30m": 0.25,
+    "castCorrected": 0.03,
+    "castNaive": 0.02
+   },
+   "bbox": {
+    "shade": 0.8396,
+    "underCanopy": 0.7481,
+    "castOnly": 0.0899,
+    "terrainOnly": 0.0016,
+    "shadeNaive": 0.8477,
+    "openCellsShaded": 0.3633
+   },
+   "segments": {
+    "baegun-upper": {
+     "buffer50": {
+      "shade": 0.6839,
+      "shadeNaive": 0.7749,
+      "castOnly": 0.2946,
+      "terrainOnly": 0.0084,
+      "openShaded": 0.4895
+     },
+     "buffer25": {
+      "shade": 0.6231,
+      "shadeNaive": 0.7308,
+      "castOnly": 0.3819,
+      "terrainOnly": 0.0112,
+      "openShaded": 0.5105
+     },
+     "water10": {
+      "shade": 0.6183,
+      "shadeNaive": 0.7474,
+      "castOnly": 0.4753,
+      "terrainOnly": 0.021,
+      "openShaded": 0.5653
+     }
+    },
+    "baegun-middle": {
+     "buffer50": {
+      "shade": 0.8283,
+      "shadeNaive": 0.8563,
+      "castOnly": 0.491,
+      "terrainOnly": 0.0036,
+      "openShaded": 0.7423
+     },
+     "buffer25": {
+      "shade": 0.8271,
+      "shadeNaive": 0.8511,
+      "castOnly": 0.544,
+      "terrainOnly": 0.0035,
+      "openShaded": 0.76
+     },
+     "water10": {
+      "shade": 0.7967,
+      "shadeNaive": 0.837,
+      "castOnly": 0.5658,
+      "terrainOnly": 0.0077,
+      "openShaded": 0.7383
+     }
+    },
+    "baegun-lower": {
+     "buffer50": {
+      "shade": 0.6754,
+      "shadeNaive": 0.7283,
+      "castOnly": 0.4411,
+      "terrainOnly": 0.0071,
+      "openShaded": 0.58
+     },
+     "buffer25": {
+      "shade": 0.6171,
+      "shadeNaive": 0.6869,
+      "castOnly": 0.489,
+      "terrainOnly": 0.0122,
+      "openShaded": 0.5669
+     },
+     "water10": {
+      "shade": 0.561,
+      "shadeNaive": 0.6605,
+      "castOnly": 0.5213,
+      "terrainOnly": 0.0191,
+      "openShaded": 0.5518
+     }
+    }
+   }
+  }
+ ],
+ "polygonSizes": {
+  "0m": {
+   "totalBytes": 14353452,
+   "totalGzipBytes": 1776267,
+   "totalVertices": 647555,
+   "totalPolygons": 3815,
+   "seconds": 5.4,
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 441,
+      "vertices": 76099,
+      "bytes": 1643154,
+      "gzipBytes": 207248
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 117,
+       "vertices": 853,
+       "bytes": 36078,
+       "gzipBytes": 3185
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 16,
+       "vertices": 122,
+       "bytes": 5108,
+       "gzipBytes": 627
+      },
+      "16:00": {
+       "polygons": 342,
+       "vertices": 3666,
+       "bytes": 129909,
+       "gzipBytes": 11877
+      },
+      "17:00": {
+       "polygons": 926,
+       "vertices": 17676,
+       "bytes": 512767,
+       "gzipBytes": 52568
+      },
+      "18:00": {
+       "polygons": 1150,
+       "vertices": 33477,
+       "bytes": 876435,
+       "gzipBytes": 96965
+      }
+     },
+     "castTotalBytes": 1560465,
+     "castTotalGzipBytes": 165454,
+     "castTotalVertices": 55794,
+     "totalBytes": 3203619,
+     "totalGzipBytes": 372702,
+     "totalVertices": 131893
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 81,
+      "vertices": 10963,
+      "bytes": 238975,
+      "gzipBytes": 29967
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 17,
+       "vertices": 135,
+       "bytes": 5507,
+       "gzipBytes": 658
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 2,
+       "vertices": 14,
+       "bytes": 647,
+       "gzipBytes": 235
+      },
+      "16:00": {
+       "polygons": 41,
+       "vertices": 375,
+       "bytes": 14283,
+       "gzipBytes": 1408
+      },
+      "17:00": {
+       "polygons": 158,
+       "vertices": 2797,
+       "bytes": 82948,
+       "gzipBytes": 8185
+      },
+      "18:00": {
+       "polygons": 162,
+       "vertices": 5469,
+       "bytes": 139181,
+       "gzipBytes": 16009
+      }
+     },
+     "castTotalBytes": 242734,
+     "castTotalGzipBytes": 26727,
+     "castTotalVertices": 8790,
+     "totalBytes": 481709,
+     "totalGzipBytes": 56694,
+     "totalVertices": 19753
+    }
+   }
+  },
+  "1m": {
+   "totalBytes": 11973728,
+   "totalGzipBytes": 1591482,
+   "totalVertices": 533065,
+   "totalPolygons": 3815,
+   "seconds": 6.3,
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 441,
+      "vertices": 62315,
+      "bytes": 1356634,
+      "gzipBytes": 185317
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 117,
+       "vertices": 833,
+       "bytes": 35661,
+       "gzipBytes": 3163
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 16,
+       "vertices": 118,
+       "bytes": 5024,
+       "gzipBytes": 626
+      },
+      "16:00": {
+       "polygons": 342,
+       "vertices": 3320,
+       "bytes": 122725,
+       "gzipBytes": 11332
+      },
+      "17:00": {
+       "polygons": 926,
+       "vertices": 15250,
+       "bytes": 462374,
+       "gzipBytes": 48474
+      },
+      "18:00": {
+       "polygons": 1150,
+       "vertices": 28345,
+       "bytes": 769811,
+       "gzipBytes": 88212
+      }
+     },
+     "castTotalBytes": 1395763,
+     "castTotalGzipBytes": 152039,
+     "castTotalVertices": 47866,
+     "totalBytes": 2752397,
+     "totalGzipBytes": 337356,
+     "totalVertices": 110181
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 81,
+      "vertices": 8711,
+      "bytes": 192178,
+      "gzipBytes": 27003
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 17,
+       "vertices": 131,
+       "bytes": 5424,
+       "gzipBytes": 654
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 2,
+       "vertices": 14,
+       "bytes": 647,
+       "gzipBytes": 235
+      },
+      "16:00": {
+       "polygons": 41,
+       "vertices": 343,
+       "bytes": 13614,
+       "gzipBytes": 1363
+      },
+      "17:00": {
+       "polygons": 158,
+       "vertices": 2355,
+       "bytes": 73777,
+       "gzipBytes": 7574
+      },
+      "18:00": {
+       "polygons": 162,
+       "vertices": 4547,
+       "bytes": 120018,
+       "gzipBytes": 14430
+      }
+     },
+     "castTotalBytes": 213648,
+     "castTotalGzipBytes": 24488,
+     "castTotalVertices": 7390,
+     "totalBytes": 405826,
+     "totalGzipBytes": 51491,
+     "totalVertices": 16101
+    }
+   }
+  },
+  "2m": {
+   "totalBytes": 5812537,
+   "totalGzipBytes": 932658,
+   "totalVertices": 236576,
+   "totalPolygons": 3815,
+   "seconds": 4.9,
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 441,
+      "vertices": 26915,
+      "bytes": 621037,
+      "gzipBytes": 106545
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 117,
+       "vertices": 692,
+       "bytes": 32729,
+       "gzipBytes": 2918
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 16,
+       "vertices": 100,
+       "bytes": 4647,
+       "gzipBytes": 603
+      },
+      "16:00": {
+       "polygons": 342,
+       "vertices": 2284,
+       "bytes": 101187,
+       "gzipBytes": 9232
+      },
+      "17:00": {
+       "polygons": 926,
+       "vertices": 8671,
+       "bytes": 325690,
+       "gzipBytes": 34151
+      },
+      "18:00": {
+       "polygons": 1150,
+       "vertices": 14694,
+       "bytes": 486182,
+       "gzipBytes": 58003
+      }
+     },
+     "castTotalBytes": 950603,
+     "castTotalGzipBytes": 105139,
+     "castTotalVertices": 26441,
+     "totalBytes": 1571640,
+     "totalGzipBytes": 211684,
+     "totalVertices": 53356
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 81,
+      "vertices": 2862,
+      "bytes": 70622,
+      "gzipBytes": 12403
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 17,
+       "vertices": 98,
+       "bytes": 4737,
+       "gzipBytes": 599
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 2,
+       "vertices": 10,
+       "bytes": 564,
+       "gzipBytes": 230
+      },
+      "16:00": {
+       "polygons": 41,
+       "vertices": 241,
+       "bytes": 11489,
+       "gzipBytes": 1175
+      },
+      "17:00": {
+       "polygons": 158,
+       "vertices": 1292,
+       "bytes": 51704,
+       "gzipBytes": 5342
+      },
+      "18:00": {
+       "polygons": 162,
+       "vertices": 2190,
+       "bytes": 71034,
+       "gzipBytes": 9095
+      }
+     },
+     "castTotalBytes": 139696,
+     "castTotalGzipBytes": 16673,
+     "castTotalVertices": 3831,
+     "totalBytes": 210318,
+     "totalGzipBytes": 29076,
+     "totalVertices": 6693
+    }
+   }
+  },
+  "4m": {
+   "totalBytes": 3966075,
+   "totalGzipBytes": 634751,
+   "totalVertices": 147713,
+   "totalPolygons": 3815,
+   "seconds": 4.4,
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 441,
+      "vertices": 16858,
+      "bytes": 412060,
+      "gzipBytes": 72362
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 117,
+       "vertices": 624,
+       "bytes": 31314,
+       "gzipBytes": 2780
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 16,
+       "vertices": 83,
+       "bytes": 4290,
+       "gzipBytes": 559
+      },
+      "16:00": {
+       "polygons": 342,
+       "vertices": 1927,
+       "bytes": 93764,
+       "gzipBytes": 8206
+      },
+      "17:00": {
+       "polygons": 926,
+       "vertices": 6529,
+       "bytes": 281160,
+       "gzipBytes": 27506
+      },
+      "18:00": {
+       "polygons": 1150,
+       "vertices": 10390,
+       "bytes": 396732,
+       "gzipBytes": 44058
+      }
+     },
+     "castTotalBytes": 807428,
+     "castTotalGzipBytes": 83341,
+     "castTotalVertices": 19553,
+     "totalBytes": 1219488,
+     "totalGzipBytes": 155703,
+     "totalVertices": 36411
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 81,
+      "vertices": 1619,
+      "bytes": 44805,
+      "gzipBytes": 7594
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 17,
+       "vertices": 89,
+       "bytes": 4550,
+       "gzipBytes": 581
+      },
+      "11:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "15:00": {
+       "polygons": 2,
+       "vertices": 10,
+       "bytes": 564,
+       "gzipBytes": 230
+      },
+      "16:00": {
+       "polygons": 41,
+       "vertices": 216,
+       "bytes": 10966,
+       "gzipBytes": 1098
+      },
+      "17:00": {
+       "polygons": 158,
+       "vertices": 1004,
+       "bytes": 45712,
+       "gzipBytes": 4389
+      },
+      "18:00": {
+       "polygons": 162,
+       "vertices": 1566,
+       "bytes": 58058,
+       "gzipBytes": 6944
+      }
+     },
+     "castTotalBytes": 120018,
+     "castTotalGzipBytes": 13474,
+     "castTotalVertices": 2885,
+     "totalBytes": 164823,
+     "totalGzipBytes": 21068,
+     "totalVertices": 4504
+    }
+   }
+  }
+ },
+ "timing": {
+  "load": 0.2,
+  "computeAllHours": 9.7,
+  "polygons": 21.0,
+  "total": 31.3
+ },
+ "maxRssMB": 405
+}

@@ -1,0 +1,17 @@
+#!/bin/sh
+# 스테이징된 파일만 biome 로 검사합니다. 자동 수정은 하지 않습니다 —
+# 커밋 직전에 파일 내용이 몰래 바뀌는 것이 더 혼란스럽기 때문입니다.
+#
+# 통과하지 못하면:
+#   pnpm lint:fix     안전한 수정 적용
+#   pnpm lint         남은 문제 확인
+#
+# 이 훅을 끄려면: git config --unset core.hooksPath
+set -e
+
+if [ ! -x ./node_modules/.bin/biome ]; then
+  echo "pre-commit: biome 가 설치되지 않아 검사를 건너뜁니다 (pnpm install)"
+  exit 0
+fi
+
+./node_modules/.bin/biome check --staged --no-errors-on-unmatched

@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    init: true
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8787:8787'
+    env_file:
+      - .env.local
+    environment:
+      NODE_ENV: production
+      DB_PATH: /data/valley.db
+      UPLOADS_DIR: /data/uploads
+      WEB_DIR: /app/web
+      MIGRATIONS_DIR: /app/migrations
+      VALLEYS_DIR: /app/data/valleys
+    volumes:
+      - valley-data:/data
+volumes:
+  valley-data:

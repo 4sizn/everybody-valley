@@ -1,0 +1,477 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "우이동계곡 시설 30개 — 표준데이터 주차장 1 · 화장실 1 · OSM 28 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.012665, 37.663371]
+      },
+      "properties": {
+        "id": "uidong-std-p-108-2-000004",
+        "valleyId": "uidong",
+        "name": "교통광장",
+        "facilityType": "parking",
+        "capacity": 158,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.013158, 37.662832]
+      },
+      "properties": {
+        "id": "uidong-std-r-15651",
+        "valleyId": "uidong",
+        "name": "우이동교통광장",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010033, 37.662308]
+      },
+      "properties": {
+        "id": "uidong-osm-store-5973570785",
+        "valleyId": "uidong",
+        "name": "GS25",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.003092, 37.677141]
+      },
+      "properties": {
+        "id": "uidong-osm-restroom-7908897570",
+        "valleyId": "uidong",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.997082, 37.684859]
+      },
+      "properties": {
+        "id": "uidong-osm-restroom-8404551352",
+        "valleyId": "uidong",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.011069, 37.683439]
+      },
+      "properties": {
+        "id": "uidong-osm-restroom-11377260470",
+        "valleyId": "uidong",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.012014, 37.663621]
+      },
+      "properties": {
+        "id": "uidong-osm-store-11377260491",
+        "valleyId": "uidong",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.011974, 37.663741]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11377260496",
+        "valleyId": "uidong",
+        "name": "길동우동",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.006868, 37.66104]
+      },
+      "properties": {
+        "id": "uidong-osm-restroom-11380621700",
+        "valleyId": "uidong",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.009833, 37.662446]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11380629778",
+        "valleyId": "uidong",
+        "name": "우리콩순두부",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010066, 37.661995]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11380629779",
+        "valleyId": "uidong",
+        "name": "들깨칼국소",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.008796, 37.661592]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11380629780",
+        "valleyId": "uidong",
+        "name": "감나무집보리밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010804, 37.662634]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11380629781",
+        "valleyId": "uidong",
+        "name": "풍성식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.00717, 37.667835]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11382651227",
+        "valleyId": "uidong",
+        "name": "샘터가든",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.003879, 37.671788]
+      },
+      "properties": {
+        "id": "uidong-osm-food-11382651232",
+        "valleyId": "uidong",
+        "name": "청운산장",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.004758, 37.671455]
+      },
+      "properties": {
+        "id": "uidong-osm-restroom-11382651234",
+        "valleyId": "uidong",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.012336, 37.662985]
+      },
+      "properties": {
+        "id": "uidong-osm-store-11505423921",
+        "valleyId": "uidong",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.007773, 37.661646]
+      },
+      "properties": {
+        "id": "uidong-osm-restroom-11667825306",
+        "valleyId": "uidong",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010354, 37.664079]
+      },
+      "properties": {
+        "id": "uidong-osm-cafe-12805651510",
+        "valleyId": "uidong",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.007293, 37.661306]
+      },
+      "properties": {
+        "id": "uidong-osm-food-13946818957",
+        "valleyId": "uidong",
+        "name": "우이천닭칼국수 우이점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.009239, 37.662003]
+      },
+      "properties": {
+        "id": "uidong-osm-food-13946852243",
+        "valleyId": "uidong",
+        "name": "산두부집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.013081, 37.661506]
+      },
+      "properties": {
+        "id": "uidong-osm-food-13946852836",
+        "valleyId": "uidong",
+        "name": "산정",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.007025, 37.660659]
+      },
+      "properties": {
+        "id": "uidong-osm-food-13946853026",
+        "valleyId": "uidong",
+        "name": "허준호쉐프",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.006521, 37.670134]
+      },
+      "properties": {
+        "id": "uidong-osm-food-1227478072",
+        "valleyId": "uidong",
+        "name": "시골길",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.005833, 37.670822]
+      },
+      "properties": {
+        "id": "uidong-osm-cafe-1227478073",
+        "valleyId": "uidong",
+        "name": "카페쉼",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.011396, 37.662664]
+      },
+      "properties": {
+        "id": "uidong-osm-cafe-1238521164",
+        "valleyId": "uidong",
+        "name": "이디야커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.011031, 37.662656]
+      },
+      "properties": {
+        "id": "uidong-osm-store-1238521514",
+        "valleyId": "uidong",
+        "name": "대양마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.012903, 37.66209]
+      },
+      "properties": {
+        "id": "uidong-osm-food-1254795621",
+        "valleyId": "uidong",
+        "name": "식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 47
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010334, 37.662687]
+      },
+      "properties": {
+        "id": "uidong-osm-cafe-1255136807",
+        "valleyId": "uidong",
+        "name": "할아버지카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 48
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.007374, 37.66152]
+      },
+      "properties": {
+        "id": "uidong-osm-cafe-1255137688",
+        "valleyId": "uidong",
+        "name": "베이스캠프",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 49
+      }
+    }
+  ]
+}

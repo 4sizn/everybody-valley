@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://modugyegok.kr/.schema/valleys.schema.json",
+  "title": "계곡 구간 카탈로그",
+  "description": "계곡은 Point가 아니라 LineString이다. 상류/중류/하류가 수심·혼잡·그늘이 전부 다르므로 구간(segment) 단위로 소유한다. 좌표는 이 파일이 소유한다.",
+  "type": "object",
+  "required": ["type", "metadata", "features"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "type": { "const": "FeatureCollection" },
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "features": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/segmentFeature" }
+    }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "required": ["description", "source", "datasetVersion", "collectedAt", "coordinateOrder"],
+      "properties": {
+        "description": { "type": "string" },
+        "source": { "type": "string", "description": "사람이 읽는 출처 문장. 예: 'VWorld 하천망 + 현장 검수'" },
+        "sourceFile": { "type": "string", "description": "원본 파일 경로. 재생성 추적용" },
+        "datasetVersion": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}\\.\\d+$" },
+        "collectedAt": { "type": "string", "format": "date" },
+        "coordinateOrder": { "const": "[longitude, latitude]" },
+        "crs": { "const": "EPSG:4326", "description": "저장 시점에 전부 4326으로 정규화한다. 런타임 변환 금지." },
+        "filter": { "type": "string", "description": "이 파일에 포함/제외한 기준" }
+      }
+    },
+
+    "segmentFeature": {
+      "type": "object",
+      "required": ["type", "geometry", "properties"],
+      "properties": {
+        "type": { "const": "Feature" },
+        "geometry": {
+          "type": "object",
+          "required": ["type", "coordinates"],
+          "properties": {
+            "type": { "const": "LineString" },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": { "type": "number" }
+              }
+            }
+          }
+        },
+        "properties": { "$ref": "#/$defs/segmentProps" }
+      }
+    },
+
+    "segmentProps": {
+      "type": "object",
+      "required": ["id", "valleyId", "valleyName", "segment", "order"],
+      "properties": {
+        "id": { "type": "string", "description": "예: baegun-mid" },
+        "valleyId": { "type": "string", "description": "예: baegun" },
+        "valleyName": { "type": "string", "description": "예: 백운계곡" },
+        "segment": {
+          "enum": ["upper", "mid", "lower"],
+          "description": "DEM 물길 방향에서 자동 판정 가능"
+        },
+        "order": { "type": "integer", "minimum": 0, "description": "상류→하류 순서" },
+
+        "depth": {
+          "enum": ["knee", "waist", "adult", "mixed"],
+          "description": "무릎 / 허리 / 성인 / 혼재"
+        },
+        "bed": {
+          "enum": ["gravel", "rock", "sand", "mixed"],
+          "description": "바닥재. 돗자리 가능 여부와 직결"
+        },
+        "shadeRatio": {
+          "type": "number", "minimum": 0, "maximum": 1,
+          "description": "정오 기준 그늘 비율. DEM+태양고도로 산출"
+        },
+        "accessDistanceM": { "type": "integer", "minimum": 0, "description": "주차장→물가 도보 거리(m)" },
+        "accessGradePct": { "type": "number", "description": "접근로 평균 경사(%). DEM 산출" },
+        "accessDifficulty": {
+          "enum": ["easy", "moderate", "hard"],
+          "description": "easy = 유모차 가능, hard = 계단·급경사"
+        },
+
+        "swimBanned": { "type": "boolean", "description": "행안부 물놀이관리지역 금지 구역인가" },
+        "riskNote": { "type": "string", "description": "공식 위험 안내 원문 요약" },
+        "upstreamStationCode": {
+          "type": "string",
+          "description": "한강홍수통제소 상류 관측소 코드. VWorld 표준유역 매칭으로 자동 채움"
+        },
+        "basinCode": { "type": "string", "description": "표준유역 코드" },
+
+        "freeAccess": { "type": "boolean", "description": "무료 개방 여부(자릿세 없음)" },
+        "campingAllowed": { "type": "boolean" },
+        "petAllowed": { "type": "boolean" },
+
+        "mapIconTier": {
+          "type": "integer", "enum": [0, 1, 2],
+          "description": "0 유명 계곡 / 1 지선 / 2 소규모 소·명소. 클러스터링 대신 이 값으로 밀도 제어"
+        },
+        "mapLabelTier": { "type": "integer", "enum": [0, 1, 2] },
+        "mapImportance": { "type": "number", "description": "symbol-sort-key 값. 작을수록 위" },
+
+        "selected": { "type": "boolean", "default": false, "description": "런타임 주입 필드. 원본 데이터에는 넣지 말 것" }
+      }
+    },
+
+    "facilityProps": {
+      "description": "facilities.geojson 용. geometry는 Point.",
+      "type": "object",
+      "required": ["id", "valleyId", "name", "facilityType"],
+      "properties": {
+        "id": { "type": "string" },
+        "valleyId": { "type": "string" },
+        "name": { "type": "string" },
+        "facilityType": {
+          "enum": ["parking", "restroom", "food", "cafe", "store", "station", "access", "safety", "etc"],
+          "description": "마커 색 9종과 1:1 대응 (tokens/map-palette.json)"
+        },
+        "capacity": { "type": "integer", "description": "주차 면수 등" },
+        "feeNote": { "type": "string" },
+        "operatingHours": { "type": "string", "description": "예: 09:00~18:00" },
+        "nationalPointNumber": { "type": "string", "description": "국가지점번호. 119 좌표 카드용" },
+        "mapIconTier": { "type": "integer", "enum": [0, 1, 2] },
+        "mapImportance": { "type": "number" }
+      }
+    },
+
+    "crowdSnapshot": {
+      "description": "혼잡도 스냅샷. 마커 3단계 색과 대응.",
+      "type": "object",
+      "required": ["valleyId", "level", "observedAt", "source"],
+      "properties": {
+        "valleyId": { "type": "string" },
+        "segmentId": { "type": "string" },
+        "level": { "enum": ["available", "low", "busy"] },
+        "observedAt": { "type": "string", "format": "date-time" },
+        "source": { "enum": ["report", "checkin", "parking-api", "estimate"] },
+        "sampleCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+
+    "upstreamAlert": {
+      "description": "상류 강우 경보 이벤트. SSE 채널 payload.",
+      "type": "object",
+      "required": ["valleyId", "stationCode", "level", "issuedAt"],
+      "properties": {
+        "valleyId": { "type": "string" },
+        "stationCode": { "type": "string" },
+        "level": { "enum": ["watch", "warning", "evacuate"] },
+        "rainfall10mMm": { "type": "number" },
+        "waterLevelDeltaM": { "type": "number" },
+        "issuedAt": { "type": "string", "format": "date-time" },
+        "clearedAt": { "type": ["string", "null"], "format": "date-time" },
+        "verified": {
+          "type": ["boolean", "null"],
+          "description": "사후 검증 — 실제로 수위가 올랐는가. 임계값 튜닝용"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "증심사계곡 시설 24개 — 표준데이터 주차장 0 · 화장실 10 · OSM 14 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-09.0",
+    "collectedAt": "2026-09-09",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.956358, 35.124532]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17043",
+        "valleyId": "jeungsimsa",
+        "name": "중머리재",
+        "facilityType": "restroom",
+        "operatingHours": "09~18",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.956358, 35.124532]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17044",
+        "valleyId": "jeungsimsa",
+        "name": "토끼등",
+        "facilityType": "restroom",
+        "operatingHours": "09~18",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955514, 35.133957]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17049",
+        "valleyId": "jeungsimsa",
+        "name": "증심사버스회차지",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.960281, 35.133194]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17051",
+        "valleyId": "jeungsimsa",
+        "name": "무등산공원탐방안내센터",
+        "facilityType": "restroom",
+        "operatingHours": "09~18",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.961664, 35.132528]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17052",
+        "valleyId": "jeungsimsa",
+        "name": "문빈정사앞화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.970092, 35.128845]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17053",
+        "valleyId": "jeungsimsa",
+        "name": "증심사",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972335, 35.125543]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17054",
+        "valleyId": "jeungsimsa",
+        "name": "당산나무옆화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972218, 35.122388]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-17055",
+        "valleyId": "jeungsimsa",
+        "name": "약사암",
+        "facilityType": "restroom",
+        "operatingHours": "09~18",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.958119, 35.120369]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-27713",
+        "valleyId": "jeungsimsa",
+        "name": "동적골",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.956358, 35.124532]
+      },
+      "properties": {
+        "id": "jeungsimsa-std-r-28879",
+        "valleyId": "jeungsimsa",
+        "name": "동적골쉼터",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955172, 35.134297]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-store-5384910225",
+        "valleyId": "jeungsimsa",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955427, 35.134311]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-cafe-5384910523",
+        "valleyId": "jeungsimsa",
+        "name": "엔제리너스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955054, 35.133816]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-parking-10238153303",
+        "valleyId": "jeungsimsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955589, 35.134419]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-parking-10989621752",
+        "valleyId": "jeungsimsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 10,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.958608, 35.132853]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-parking-1183464786",
+        "valleyId": "jeungsimsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 60,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.960516, 35.133138]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-parking-1183465513",
+        "valleyId": "jeungsimsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.97196, 35.122173]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-parking-1236240023",
+        "valleyId": "jeungsimsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955438, 35.133259]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-food-1236241397",
+        "valleyId": "jeungsimsa",
+        "name": "전북식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95565, 35.133273]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-parking-1236241398",
+        "valleyId": "jeungsimsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.964708, 35.130657]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-shelter-10238153288",
+        "valleyId": "jeungsimsa",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.961486, 35.132366]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-shelter-10238153294",
+        "valleyId": "jeungsimsa",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95988, 35.13326]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-shelter-10238153298",
+        "valleyId": "jeungsimsa",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.956277, 35.134023]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-shelter-10238153302",
+        "valleyId": "jeungsimsa",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96295, 35.131598]
+      },
+      "properties": {
+        "id": "jeungsimsa-osm-shelter-11166362977",
+        "valleyId": "jeungsimsa",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    }
+  ]
+}

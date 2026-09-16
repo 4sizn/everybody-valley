@@ -1,0 +1,82 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "우이동계곡(서울 강북구) — 구간 1개. OSM 하천 중심선(백운천·우이천, way 1478779796·1184867647·701286542) 을 계곡 점 기준 상류 2 km·하류 1 km 로 자른 1000 m. 데스크 검수 — 수심·바닥·금지·요금은 manual.csv 로 채운다.",
+    "source": "OSM 하천 중심선(© OpenStreetMap contributors, ODbL) + 브이월드 표준유역 코드 + Terrarium 표고 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 (127.00502385164091, 37.67298212971784) [vworld-search] · 중심선 오프셋 672 m · 표고 87→20 m · 구간 분할 근거 none",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://www.vworld.kr/ (표준유역 lt_c_wkmsbsn 코드 조회 — 기하 저장 없음)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.009364, 37.668018],
+          [127.009258, 37.667761],
+          [127.009126, 37.667555],
+          [127.009068, 37.66736],
+          [127.009131, 37.667251],
+          [127.009293, 37.667171],
+          [127.009562, 37.667125],
+          [127.00988, 37.667062],
+          [127.010246, 37.666974],
+          [127.010586, 37.66687],
+          [127.010782, 37.666778],
+          [127.010869, 37.666669],
+          [127.01093, 37.666545],
+          [127.01094, 37.66635],
+          [127.010836, 37.666176],
+          [127.010641, 37.665982],
+          [127.010418, 37.665774],
+          [127.010255, 37.665581],
+          [127.010274, 37.665402],
+          [127.010386, 37.665184],
+          [127.0106, 37.664953],
+          [127.010903, 37.664813],
+          [127.011397, 37.664694],
+          [127.011753, 37.66472],
+          [127.012023, 37.664782],
+          [127.012184, 37.664713],
+          [127.012265, 37.664604],
+          [127.012251, 37.664421],
+          [127.012207, 37.664129],
+          [127.013426, 37.662979],
+          [127.013867, 37.662605],
+          [127.014206, 37.662284],
+          [127.014372, 37.662019]
+        ]
+      },
+      "properties": {
+        "id": "uidong-whole",
+        "valleyId": "uidong",
+        "valleyName": "우이동계곡",
+        "segment": "whole",
+        "order": 0,
+        "splitBasis": "none",
+        "shadeByHour": [0.083, 0.082, 0.082, 0.082, 0.083, 0.084, 0.09, 0.108, 0.225],
+        "canopyCover": 0.082,
+        "shadeRatio": 0.082,
+        "accessDistanceM": 593,
+        "accessGradePct": 3.7,
+        "basinCode": "101810",
+        "campingAllowed": false,
+        "petAllowed": false,
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    }
+  ]
+}

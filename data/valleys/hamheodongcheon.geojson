@@ -1,0 +1,71 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "함허동천(인천 강화군) — 구간 1개. OSM 하천 중심선(이름 없음, way 749668479·749668480·749668481·749668487) 을 계곡 점 기준 상류 2 km·하류 1 km 로 자른 1041 m. 데스크 검수 — 수심·바닥·금지·요금은 manual.csv 로 채운다.",
+    "source": "OSM 하천 중심선(© OpenStreetMap contributors, ODbL) + 브이월드 표준유역 코드 + Terrarium 표고 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 (126.45261009958554, 37.6113332967845) [vworld-search] · 중심선 오프셋 452 m · 표고 21→6 m · 구간 분할 근거 none",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://www.vworld.kr/ (표준유역 lt_c_wkmsbsn 코드 조회 — 기하 저장 없음)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [126.454683, 37.615211],
+          [126.454806, 37.615053],
+          [126.455023, 37.614919],
+          [126.455305, 37.6149],
+          [126.455585, 37.614863],
+          [126.455816, 37.61487],
+          [126.456071, 37.614806],
+          [126.456394, 37.614742],
+          [126.457279, 37.614311],
+          [126.457931, 37.614215],
+          [126.458664, 37.614222],
+          [126.459409, 37.61423],
+          [126.45985, 37.614102],
+          [126.460738, 37.613985],
+          [126.461465, 37.61406],
+          [126.462043, 37.614112],
+          [126.463032, 37.613911],
+          [126.463234, 37.613759],
+          [126.463332, 37.613534],
+          [126.463616, 37.613168],
+          [126.463523, 37.613096],
+          [126.461848, 37.612626]
+        ]
+      },
+      "properties": {
+        "id": "hamheodongcheon-whole",
+        "valleyId": "hamheodongcheon",
+        "valleyName": "함허동천",
+        "segment": "whole",
+        "order": 0,
+        "splitBasis": "none",
+        "shadeByHour": [0.068, 0.067, 0.067, 0.067, 0.067, 0.069, 0.078, 0.085, 0.17],
+        "canopyCover": 0.067,
+        "shadeRatio": 0.067,
+        "accessDistanceM": 574,
+        "accessGradePct": 2.1,
+        "basinCode": "120105",
+        "freeAccess": false,
+        "campingAllowed": true,
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    }
+  ]
+}

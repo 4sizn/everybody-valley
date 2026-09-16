@@ -1,0 +1,474 @@
+{
+  "_comment": "R1 계곡 후보 30개. 좌표 출처 source: vworld-search(VWorld 검색 API 결과 그대로) | manual(수기). geocode.ts 가 valleys.seed.json 에서 생성.",
+  "generatedAt": "2026-09-04",
+  "valleys": [
+    {
+      "id": "baegun-pocheon",
+      "name": "백운계곡",
+      "region": "포천시",
+      "query": "백운계곡",
+      "lng": 127.43157829512694,
+      "lat": 38.088611055196225,
+      "source": "vworld-search",
+      "matched": {
+        "title": "백운계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 포천시 이동면 도평리 산 1-2임"
+      },
+      "distFromManualKm": 2.7,
+      "note": "영평천 상류, 광덕고개 아래. R3b·P1 샘플 계곡"
+    },
+    {
+      "id": "cheonghakdong",
+      "name": "청학동계곡",
+      "region": "포천시",
+      "query": "청학동계곡 | 청학계곡 | 청학동 포천 | 청학교 일동",
+      "lng": 127.301,
+      "lat": 37.944,
+      "source": "manual",
+      "note": "청계산(포천 일동) 북사면. VWorld 에 포천 청학동 지명 없음 · VWorld 검색(청학동계곡, 청학계곡, 청학동 포천, 청학교 일동)에 포천 결과 없음, 수기 좌표"
+    },
+    {
+      "id": "bisun-sanjeong",
+      "name": "산정호수 비선폭포 계곡",
+      "region": "포천시",
+      "query": "산정호수",
+      "lng": 127.32064685884856,
+      "lat": 38.07057838344686,
+      "source": "vworld-search",
+      "matched": {
+        "title": "산정호수",
+        "category": "자연지명 > 호소 > 습지",
+        "address": "경기도 포천시 영북면 산정리 193-1유"
+      },
+      "distFromManualKm": 1.7,
+      "note": "명성산 자락, 산정호수 인근"
+    },
+    {
+      "id": "jijangsan",
+      "name": "지장산계곡",
+      "region": "포천시",
+      "query": "지장계곡",
+      "lng": 127.19376090005133,
+      "lat": 38.102901202993735,
+      "source": "vworld-search",
+      "matched": {
+        "title": "지장계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 포천시 관인면 중리 986"
+      },
+      "distFromManualKm": 2.3,
+      "note": "관인면 중리"
+    },
+    {
+      "id": "wangbang",
+      "name": "왕방계곡",
+      "region": "동두천시",
+      "query": "왕방계곡",
+      "lng": 127.11517082181237,
+      "lat": 37.895526048719624,
+      "source": "vworld-search",
+      "matched": {
+        "title": "왕방계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 동두천시 탑동동 330-1"
+      },
+      "distFromManualKm": 3.2,
+      "note": "왕방산 동사면, 동두천 탑동동(시드의 포천 표기는 검색 결과로 정정)"
+    },
+    {
+      "id": "myeongji",
+      "name": "명지계곡",
+      "region": "가평군",
+      "query": "명지계곡",
+      "lng": 127.44297349997287,
+      "lat": 37.9880644039668,
+      "source": "vworld-search",
+      "matched": {
+        "title": "명지계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 북면 적목리 45"
+      },
+      "distFromManualKm": 4.1,
+      "note": "북면 익근리, 명지산 남측"
+    },
+    {
+      "id": "yongchu-gapyeong",
+      "name": "용추계곡",
+      "region": "가평군",
+      "query": "용추계곡",
+      "lng": 127.480533500044,
+      "lat": 37.859473752148475,
+      "source": "vworld-search",
+      "matched": {
+        "title": "용추계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 가평읍 승안리 223"
+      },
+      "distFromManualKm": 2.5,
+      "note": "가평읍 승안리, 연인산"
+    },
+    {
+      "id": "jomurak",
+      "name": "조무락골",
+      "region": "가평군",
+      "query": "조무락계곡",
+      "lng": 127.46046490047452,
+      "lat": 37.98746958402888,
+      "source": "vworld-search",
+      "matched": {
+        "title": "조무락계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 북면 적목리 2"
+      },
+      "distFromManualKm": 3.7,
+      "note": "북면 적목리, 석룡산"
+    },
+    {
+      "id": "yumyeongsan",
+      "name": "유명산계곡",
+      "region": "가평군",
+      "query": "유명산계곡",
+      "lng": 127.49566799952447,
+      "lat": 37.58268953037403,
+      "source": "vworld-search",
+      "matched": {
+        "title": "유명산계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 설악면 가일리 58-1"
+      },
+      "distFromManualKm": 1.7,
+      "note": "설악면 가일리"
+    },
+    {
+      "id": "eobi",
+      "name": "어비계곡",
+      "region": "가평군",
+      "query": "어비계곡",
+      "lng": 127.49520830283143,
+      "lat": 37.60044114847045,
+      "source": "vworld-search",
+      "matched": {
+        "title": "어비계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 설악면 가일리 350"
+      },
+      "distFromManualKm": 2.2,
+      "note": "설악면 가일리, 어비산"
+    },
+    {
+      "id": "baekdunri",
+      "name": "백둔리계곡",
+      "region": "가평군",
+      "query": "백둔계곡",
+      "lng": 127.49418703994928,
+      "lat": 37.89721024586811,
+      "source": "vworld-search",
+      "matched": {
+        "title": "백둔계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 북면 백둔리 1099천"
+      },
+      "distFromManualKm": 7.9,
+      "note": "북면 백둔리, 연인산 북사면"
+    },
+    {
+      "id": "gyeongban",
+      "name": "경반계곡",
+      "region": "가평군",
+      "query": "경반계곡",
+      "lng": 127.46915534720853,
+      "lat": 37.833004139594586,
+      "source": "vworld-search",
+      "matched": {
+        "title": "경반계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 가평군 가평읍 경반리 189"
+      },
+      "distFromManualKm": 2.8,
+      "note": "가평읍 경반리, 칼봉산"
+    },
+    {
+      "id": "nonnamgi",
+      "name": "논남기계곡",
+      "region": "가평군",
+      "query": "강씨봉자연휴양림",
+      "lng": 127.4106576663136,
+      "lat": 37.962147636624984,
+      "source": "vworld-search",
+      "matched": {
+        "title": "강씨봉자연휴양림",
+        "category": "자연휴양림",
+        "address": "경기도 가평군 북면 적목리 산 92임"
+      },
+      "distFromManualKm": 6.7,
+      "note": "북면 적목리, 강씨봉"
+    },
+    {
+      "id": "hyeondeungsa",
+      "name": "현등사계곡(운악산)",
+      "region": "가평군",
+      "query": "현등사",
+      "lng": 127.33108219967302,
+      "lat": 37.870324683402856,
+      "source": "vworld-search",
+      "matched": {
+        "title": "현등사",
+        "category": "기타협회및단체 > 종교단체 >",
+        "address": "경기도 가평군 조종면 운악리 163"
+      },
+      "distFromManualKm": 1.6,
+      "note": "조종면 하판리, 운악산"
+    },
+    {
+      "id": "domachi",
+      "name": "도마치계곡",
+      "region": "가평군",
+      "query": "도마치계곡",
+      "lng": 127.43765350048652,
+      "lat": 38.001542200888906,
+      "source": "vworld-search",
+      "matched": {
+        "title": "도마치계곡",
+        "category": "일반및생활숙박시설운영업 > 기타일반및생활숙박시설운영업 > 펜션",
+        "address": "경기도 가평군 북면 적목리 564-2"
+      },
+      "distFromManualKm": 5.7,
+      "note": "북면 적목리, 도마치봉"
+    },
+    {
+      "id": "sudong",
+      "name": "수동계곡",
+      "region": "남양주시",
+      "query": "수동계곡",
+      "lng": 127.27307311782788,
+      "lat": 37.74988389141767,
+      "source": "vworld-search",
+      "matched": {
+        "title": "수동계곡",
+        "category": "관광지구 > 관광단지",
+        "address": "경기도 남양주시 수동면 내방리 29-9"
+      },
+      "distFromManualKm": 2.8,
+      "note": "수동면, 주금산 자락"
+    },
+    {
+      "id": "chungnyeongsan",
+      "name": "축령산계곡",
+      "region": "남양주시",
+      "query": "축령산자연휴양림",
+      "lng": 127.31399583194766,
+      "lat": 37.7552536834698,
+      "source": "vworld-search",
+      "matched": {
+        "title": "축령산자연휴양림",
+        "category": "자연휴양림",
+        "address": "경기도 남양주시 수동면 축령산로 299-0"
+      },
+      "distFromManualKm": 1.3,
+      "note": "수동면 외방리, 축령산자연휴양림"
+    },
+    {
+      "id": "jangheung",
+      "name": "장흥계곡",
+      "region": "양주시",
+      "query": "장흥유원지",
+      "lng": 126.94968939311008,
+      "lat": 37.73022047473116,
+      "source": "vworld-search",
+      "matched": {
+        "title": "장흥유원지",
+        "category": "운송장비용연료소매업 > 전기차충전소",
+        "address": "경기도 양주시 장흥면 석현리 394-22"
+      },
+      "distFromManualKm": 1.3,
+      "note": "장흥면 석현리"
+    },
+    {
+      "id": "songchu",
+      "name": "송추계곡",
+      "region": "양주시",
+      "query": "송추계곡",
+      "lng": 126.9846682034491,
+      "lat": 37.712115166255,
+      "source": "vworld-search",
+      "matched": {
+        "title": "송추계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 양주시 장흥면 울대리 495-1"
+      },
+      "distFromManualKm": 2.6,
+      "note": "장흥면 울대리, 북한산 국립공원"
+    },
+    {
+      "id": "angol",
+      "name": "안골계곡",
+      "region": "의정부시",
+      "query": "안골계곡",
+      "lng": 127.02054772606576,
+      "lat": 37.73170329099102,
+      "source": "vworld-search",
+      "matched": {
+        "title": "안골계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 의정부시 가능동 81-2"
+      },
+      "distFromManualKm": 0.3,
+      "note": "호원동, 사패산"
+    },
+    {
+      "id": "soyosan",
+      "name": "소요산계곡",
+      "region": "동두천시",
+      "query": "소요산관광지",
+      "lng": 127.0583344955521,
+      "lat": 37.949255872977304,
+      "source": "vworld-search",
+      "matched": {
+        "title": "소요산관광지(자재암)",
+        "category": "관광지구 > 지정관광지",
+        "address": "경기도 동두천시 상봉암동 109-8 답"
+      },
+      "distFromManualKm": 1.9,
+      "note": "소요동, 소요산"
+    },
+    {
+      "id": "dongmak",
+      "name": "동막골계곡",
+      "region": "연천군",
+      "query": "동막골계곡",
+      "lng": 127.11133813375149,
+      "lat": 38.09822503020022,
+      "source": "vworld-search",
+      "matched": {
+        "title": "동막골계곡상회",
+        "category": "일반및생활숙박시설운영업 > 기타일반및생활숙박시설운영업 > 캠프/별장/펜션",
+        "address": "경기도 연천군 연천읍 동막리 181"
+      },
+      "distFromManualKm": 1.9,
+      "note": "연천읍 동막리, 고대산 자락"
+    },
+    {
+      "id": "gamaksan",
+      "name": "감악산 운계폭포 계곡",
+      "region": "파주시",
+      "query": "운계폭포 | 범륜사 | 감악산출렁다리 | 감악산계곡 | 감악산",
+      "lng": 126.962,
+      "lat": 37.937,
+      "source": "manual",
+      "note": "적성면 설마리, 범륜사·운계폭포 · VWorld 검색(운계폭포, 범륜사, 감악산출렁다리, 감악산계곡, 감악산)에 파주 결과 없음, 수기 좌표"
+    },
+    {
+      "id": "sanasa",
+      "name": "사나사계곡",
+      "region": "양평군",
+      "query": "사나사계곡",
+      "lng": 127.5430936960196,
+      "lat": 37.58099430080427,
+      "source": "vworld-search",
+      "matched": {
+        "title": "사나사계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "경기도 양평군 옥천면 용천리 20-2"
+      },
+      "distFromManualKm": 7.8,
+      "note": "옥천면 용천리, 용문산 서사면"
+    },
+    {
+      "id": "yongmunsan",
+      "name": "용문산계곡",
+      "region": "양평군",
+      "query": "용문산관광지",
+      "lng": 127.57228428678687,
+      "lat": 37.549814634459366,
+      "source": "vworld-search",
+      "matched": {
+        "title": "용문산관광지",
+        "category": "관광지구 > 지정관광지",
+        "address": "경기도 양평군 용문면 신점리 618대"
+      },
+      "distFromManualKm": 2.1,
+      "note": "용문면 신점리, 용문사"
+    },
+    {
+      "id": "uidong",
+      "name": "우이동계곡",
+      "region": "서울 강북구",
+      "query": "우이동계곡",
+      "lng": 127.00502385164091,
+      "lat": 37.67298212971784,
+      "source": "vworld-search",
+      "matched": {
+        "title": "우이동계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "서울특별시 강북구 우이동 1-1"
+      },
+      "distFromManualKm": 1.3,
+      "note": "북한산 동사면, 도심 인접"
+    },
+    {
+      "id": "suraksan",
+      "name": "수락산계곡(청학리)",
+      "region": "남양주시",
+      "query": "수락산유원지",
+      "lng": 127.1189829255341,
+      "lat": 37.707155262607166,
+      "source": "vworld-search",
+      "matched": {
+        "title": "수락산유원지",
+        "category": "테마관광지 > 유원지",
+        "address": "경기도 남양주시 별내면 청학리 438-4 대"
+      },
+      "distFromManualKm": 4.1,
+      "note": "수락산 동사면 청학리(남양주 별내면). 서울 노원 쪽은 VWorld 지명 없음"
+    },
+    {
+      "id": "hamheodongcheon",
+      "name": "함허동천",
+      "region": "인천 강화군",
+      "query": "함허동천",
+      "lng": 126.45261009958554,
+      "lat": 37.6113332967845,
+      "source": "vworld-search",
+      "matched": {
+        "title": "함허동천계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "인천광역시 강화군 화도면 사기리 340-5"
+      },
+      "distFromManualKm": 0.8,
+      "note": "화도면 사기리, 마니산"
+    },
+    {
+      "id": "gugok",
+      "name": "구곡폭포 계곡",
+      "region": "춘천시",
+      "query": "구곡폭포",
+      "lng": 127.60990879967372,
+      "lat": 37.792490311332855,
+      "source": "vworld-search",
+      "matched": {
+        "title": "구곡폭포",
+        "category": "자연지명 > 하천 > 폭포",
+        "address": "강원특별자치도 춘천시 남산면 강촌리 136-1"
+      },
+      "distFromManualKm": 2.9,
+      "note": "남산면 강촌리"
+    },
+    {
+      "id": "gwangdeok",
+      "name": "광덕계곡",
+      "region": "화천군",
+      "query": "광덕계곡",
+      "lng": 127.44642199976035,
+      "lat": 38.094990203200794,
+      "source": "vworld-search",
+      "matched": {
+        "title": "광덕계곡",
+        "category": "자연지명 > 산지 > 골짜기",
+        "address": "강원특별자치도 화천군 사내면 광덕리 273-13"
+      },
+      "distFromManualKm": 2.9,
+      "note": "사내면 광덕리, 광덕고개 동측(포천 인접)"
+    }
+  ]
+}

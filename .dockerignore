@@ -1,0 +1,19 @@
+# server/Dockerfile 의 빌드 콘텍스트(저장소 루트)에서 뺄 것
+node_modules
+**/node_modules
+.git
+.expo
+**/dist
+**/build
+apps/valley-map/ios
+apps/valley-map/android
+apps/valley-map/public/maplibre
+docs
+.proof
+server/data
+.env*
+*.log
+
+**/.env*
+!**/.env.example
+design-system/node_modules

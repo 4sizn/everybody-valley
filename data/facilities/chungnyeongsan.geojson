@@ -1,0 +1,123 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "축령산계곡 시설 7개 — 표준데이터 주차장 0 · 화장실 0 · OSM 7 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.314701, 37.755393]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-parking-1305846641",
+        "valleyId": "chungnyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.311172, 37.754001]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-parking-1305846648",
+        "valleyId": "chungnyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.311713, 37.754318]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-parking-1305846649",
+        "valleyId": "chungnyeongsan",
+        "name": "2주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.314378, 37.754008]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-parking-1305846650",
+        "valleyId": "chungnyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.313214, 37.753188]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-parking-1305846653",
+        "valleyId": "chungnyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.313762, 37.753018]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-restroom-1305846655",
+        "valleyId": "chungnyeongsan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.311856, 37.754085]
+      },
+      "properties": {
+        "id": "chungnyeongsan-osm-restroom-1387934859",
+        "valleyId": "chungnyeongsan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    }
+  ]
+}

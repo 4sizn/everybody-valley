@@ -1,0 +1,31 @@
+# React Native / Expo 의 Metro 리졸버와 네이티브 빌드는 심링크 스토어를
+# 온전히 다루지 못한다. 평평한 node_modules 로 설치한다.
+# (pnpm 10+ 부터 이 설정은 .npmrc 가 아니라 이 파일에서 읽힌다)
+nodeLinker: hoisted
+
+packages:
+  - apps/*
+  - packages/*
+  - server
+minimumReleaseAgeExclude:
+  - '@expo/cli@57.0.21'
+  - '@expo/fingerprint@0.20.12'
+  - '@expo/metro-runtime@57.0.15'
+  - '@expo/router-server@57.0.9'
+  - '@expo/ui@57.0.15'
+  - babel-preset-expo@57.0.10
+  - expo-asset@57.0.16
+  - expo-constants@57.0.17
+  - expo-font@57.0.3
+  - expo-image@57.0.4
+  - expo-linking@57.0.9
+  - expo-modules-core@57.0.15
+  - expo-modules-jsi@57.0.7
+  - expo-router@57.0.18
+  - expo@57.0.19
+allowBuilds:
+  esbuild: false
+  # SQLite 네이티브 바인딩 — prebuild-install 이 미리 빌드된 바이너리를 받는다(S1)
+  better-sqlite3: true
+  # 사진 리사이즈·EXIF 제거(F5a) — 미리 빌드된 libvips 바이너리를 받는다
+  sharp: true

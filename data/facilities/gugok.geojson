@@ -1,0 +1,67 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "구곡폭포 계곡 시설 2개 — 표준데이터 주차장 0 · 화장실 1 · OSM 1 · 수기 0. 계곡 점 반경 1.5 km. 정자·쉼터 1곳 추가(OSM shelter/pavilion, 중심선 250 m 안).",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-09.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.615758, 37.79703]
+      },
+      "properties": {
+        "id": "gugok-std-r-20189",
+        "valleyId": "gugok",
+        "name": "구곡폭포관리사무실",
+        "facilityType": "restroom",
+        "operatingHours": "상시",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.617006, 37.797709]
+      },
+      "properties": {
+        "id": "gugok-osm-parking-1213203340",
+        "valleyId": "gugok",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.609501, 37.794827]
+      },
+      "properties": {
+        "id": "gugok-osm-shelter-10214239273",
+        "valleyId": "gugok",
+        "name": "구곡정",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 0.4
+      }
+    }
+  ]
+}

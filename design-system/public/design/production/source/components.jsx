@@ -312,7 +312,7 @@ export function FacilityRow({ name, type, valley, onClick }) {
 export function Metric({ label, value, icon }) {
   return (
     <div className="mv-metric">
-      {icon && <Icon name={icon} size={20} />}
+      {icon ? <Icon name={icon} size={20} /> : <span aria-hidden="true" />}
       <span>{label}</span>
       <strong>{value}</strong>
     </div>
@@ -445,7 +445,10 @@ export function Dialog({
     uid = useId();
   useEffect(() => {
     const d = ref.current;
-    if (open && !d.open) d.showModal();
+    if (open && !d.open) {
+      d.showModal();
+      d.querySelector("[data-initial-focus]")?.focus();
+    }
     if (!open && d.open) d.close();
   }, [open]);
   return (

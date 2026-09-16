@@ -1,0 +1,161 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "감악산 운계폭포 계곡 시설 7개 — 표준데이터 주차장 0 · 화장실 5 · OSM 2 · 수기 0. 계곡 점 반경 1.5 km. 정자·쉼터 2곳 추가(OSM shelter/pavilion, 중심선 250 m 안).",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-09.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947913, 37.934522]
+      },
+      "properties": {
+        "id": "gamaksan-std-r-20134",
+        "valleyId": "gamaksan",
+        "name": "은계폭포",
+        "facilityType": "restroom",
+        "operatingHours": "(평일) 09:00~18:00 (주말) 09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947913, 37.934522]
+      },
+      "properties": {
+        "id": "gamaksan-std-r-20135",
+        "valleyId": "gamaksan",
+        "name": "곰바위휴게소",
+        "facilityType": "restroom",
+        "operatingHours": "(평일) 09:00~18:00 (주말) 09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947913, 37.934522]
+      },
+      "properties": {
+        "id": "gamaksan-std-r-20136",
+        "valleyId": "gamaksan",
+        "name": "약수터휴게소",
+        "facilityType": "restroom",
+        "operatingHours": "(평일) 09:00~18:00 (주말) 09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.946344, 37.937175]
+      },
+      "properties": {
+        "id": "gamaksan-std-r-20137",
+        "valleyId": "gamaksan",
+        "name": "법륜사초입",
+        "facilityType": "restroom",
+        "operatingHours": "(평일) 09:00~18:00 (주말) 09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947913, 37.934522]
+      },
+      "properties": {
+        "id": "gamaksan-std-r-20138",
+        "valleyId": "gamaksan",
+        "name": "충혼탑",
+        "facilityType": "restroom",
+        "operatingHours": "(평일) 09:00~18:00 (주말) 09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.970204, 37.942084]
+      },
+      "properties": {
+        "id": "gamaksan-osm-parking-1307370025",
+        "valleyId": "gamaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948269, 37.936583]
+      },
+      "properties": {
+        "id": "gamaksan-osm-food-1441575368",
+        "valleyId": "gamaksan",
+        "name": "거북바위휴게소",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94931, 37.939091]
+      },
+      "properties": {
+        "id": "gamaksan-osm-shelter-8810246069",
+        "valleyId": "gamaksan",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 0.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945637, 37.937533]
+      },
+      "properties": {
+        "id": "gamaksan-osm-shelter-10214217224",
+        "valleyId": "gamaksan",
+        "name": "정자",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 0.4
+      }
+    }
+  ]
+}

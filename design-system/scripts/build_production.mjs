@@ -72,7 +72,7 @@ await writeFile(
         ".": { types: "./index.d.ts", import: "./index.js" },
         "./styles.css": "./index.css",
       },
-      peerDependencies: { react: "^18.3.1" },
+      peerDependencies: { react: "^18.3.1 || ^19.2.3" },
       sideEffects: ["*.css"],
     },
     null,

@@ -1,0 +1,118 @@
+{
+  "$schema": "./.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "데이터 모양을 보여주기 위한 샘플. 좌표·수치는 예시이며 실제 측정값이 아님.",
+    "source": "샘플 — 실제 데이터는 VWorld 하천망 + 현장 검수로 생성",
+    "sourceFile": "~/vault/valley/data/example-valley.geojson",
+    "datasetVersion": "2026-09-01.0",
+    "collectedAt": "2026-09-01",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "샘플 1개 계곡 3개 구간만 포함"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.2612, 37.8341],
+          [127.2628, 37.8329],
+          [127.2641, 37.8318]
+        ]
+      },
+      "properties": {
+        "id": "sample-upper",
+        "valleyId": "sample",
+        "valleyName": "샘플계곡",
+        "segment": "upper",
+        "order": 0,
+        "depth": "knee",
+        "bed": "rock",
+        "shadeRatio": 0.78,
+        "accessDistanceM": 640,
+        "accessGradePct": 11.4,
+        "accessDifficulty": "moderate",
+        "swimBanned": false,
+        "riskNote": "",
+        "upstreamStationCode": "SAMPLE-UP-01",
+        "basinCode": "1012345",
+        "freeAccess": true,
+        "campingAllowed": false,
+        "petAllowed": true,
+        "mapIconTier": 1,
+        "mapLabelTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.2641, 37.8318],
+          [127.2659, 37.8303],
+          [127.2674, 37.8291]
+        ]
+      },
+      "properties": {
+        "id": "sample-mid",
+        "valleyId": "sample",
+        "valleyName": "샘플계곡",
+        "segment": "mid",
+        "order": 1,
+        "depth": "waist",
+        "bed": "gravel",
+        "shadeRatio": 0.52,
+        "accessDistanceM": 320,
+        "accessGradePct": 5.1,
+        "accessDifficulty": "easy",
+        "swimBanned": false,
+        "riskNote": "",
+        "upstreamStationCode": "SAMPLE-UP-01",
+        "basinCode": "1012345",
+        "freeAccess": true,
+        "campingAllowed": false,
+        "petAllowed": true,
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.2674, 37.8291],
+          [127.2698, 37.8276],
+          [127.2721, 37.8264]
+        ]
+      },
+      "properties": {
+        "id": "sample-lower",
+        "valleyId": "sample",
+        "valleyName": "샘플계곡",
+        "segment": "lower",
+        "order": 2,
+        "depth": "adult",
+        "bed": "mixed",
+        "shadeRatio": 0.21,
+        "accessDistanceM": 90,
+        "accessGradePct": 2.3,
+        "accessDifficulty": "easy",
+        "swimBanned": true,
+        "riskNote": "수심 급변 구간 — 물놀이 금지 안내 표지 있음",
+        "upstreamStationCode": "SAMPLE-UP-01",
+        "basinCode": "1012345",
+        "freeAccess": true,
+        "campingAllowed": false,
+        "petAllowed": true,
+        "mapIconTier": 1,
+        "mapLabelTier": 2,
+        "mapImportance": 30
+      }
+    }
+  ]
+}

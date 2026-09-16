@@ -1,0 +1,82 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "도마치계곡(가평군) — 구간 1개. OSM 하천 중심선(도마천, way 1289915314) 을 계곡 점 기준 상류 2 km·하류 1 km 로 자른 1666 m. 데스크 검수 — 수심·바닥·금지·요금은 manual.csv 로 채운다.",
+    "source": "OSM 하천 중심선(© OpenStreetMap contributors, ODbL) + 브이월드 표준유역 코드 + Terrarium 표고 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 (127.43765350048652, 38.001542200888906) [vworld-search] · 중심선 오프셋 54 m · 표고 462→262 m · 구간 분할 근거 none",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://www.vworld.kr/ (표준유역 lt_c_wkmsbsn 코드 조회 — 기하 저장 없음)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.438808, 38.006911],
+          [127.438477, 38.006172],
+          [127.438623, 38.005566],
+          [127.438792, 38.005089],
+          [127.438752, 38.004764],
+          [127.438566, 38.004349],
+          [127.438154, 38.004184],
+          [127.437895, 38.003948],
+          [127.437887, 38.003735],
+          [127.438573, 38.002696],
+          [127.438513, 38.002289],
+          [127.438349, 38.001817],
+          [127.438171, 38.001068],
+          [127.438302, 38.000587],
+          [127.438451, 38.000311],
+          [127.439032, 38.000377],
+          [127.439731, 38.000396],
+          [127.440538, 38.000366],
+          [127.441064, 37.999924],
+          [127.441165, 37.999744],
+          [127.441075, 37.999425],
+          [127.440614, 37.998732],
+          [127.440545, 37.99835],
+          [127.44067, 37.997758],
+          [127.440773, 37.997313],
+          [127.440735, 37.997008],
+          [127.440341, 37.996612],
+          [127.440022, 37.996413],
+          [127.439714, 37.99638],
+          [127.439266, 37.996546],
+          [127.438768, 37.996822],
+          [127.438122, 37.996937],
+          [127.438071, 37.996921]
+        ]
+      },
+      "properties": {
+        "id": "domachi-whole",
+        "valleyId": "domachi",
+        "valleyName": "도마치계곡",
+        "segment": "whole",
+        "order": 0,
+        "splitBasis": "none",
+        "depth": "adult",
+        "shadeByHour": [0.09, 0.089, 0.089, 0.089, 0.089, 0.089, 0.107, 0.301, 0.863],
+        "canopyCover": 0.089,
+        "shadeRatio": 0.089,
+        "swimBanned": true,
+        "riskNote": "물놀이관리지역(위험) 적목리 용소폭포 — 최대 수심 10 m·평균 3 m, 입수 금지",
+        "basinCode": "101305",
+        "freeAccess": true,
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    }
+  ]
+}

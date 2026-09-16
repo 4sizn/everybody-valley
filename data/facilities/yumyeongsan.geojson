@@ -1,0 +1,82 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "유명산계곡 시설 4개 — 표준데이터 주차장 0 · 화장실 1 · OSM 3 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.488881, 37.592288]
+      },
+      "properties": {
+        "id": "yumyeongsan-std-r-30061",
+        "valleyId": "yumyeongsan",
+        "name": "유명산 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.491531, 37.591884]
+      },
+      "properties": {
+        "id": "yumyeongsan-osm-parking-1094659200",
+        "valleyId": "yumyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.490169, 37.591061]
+      },
+      "properties": {
+        "id": "yumyeongsan-osm-parking-1414543328",
+        "valleyId": "yumyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.488759, 37.592559]
+      },
+      "properties": {
+        "id": "yumyeongsan-osm-parking-1414543330",
+        "valleyId": "yumyeongsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,889 @@
+{
+  "generatedAt": "2026-09-06",
+  "radiusM": 2000,
+  "coverMaxM": 500,
+  "rows": [
+    {
+      "id": "baegun-pocheon",
+      "name": "백운계곡",
+      "region": "포천시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 6043,
+        "outlineKm": 51.27,
+        "verticesPerKm": 118,
+        "nearestM": 2483,
+        "rivers": ["영평천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 2,
+        "namedWays": 1,
+        "names": ["지촌천"],
+        "vertices": 443,
+        "lengthKm": 32.54,
+        "verticesPerKm": 14,
+        "nearestM": 10
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "cheonghakdong",
+      "name": "청학동계곡",
+      "region": "포천시",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 634,
+        "outlineKm": 27.4,
+        "verticesPerKm": 23,
+        "nearestM": 549,
+        "rivers": ["길명천(지방2급하천)", "수입천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 3,
+        "namedWays": 0,
+        "names": [],
+        "vertices": 237,
+        "lengthKm": 17.45,
+        "verticesPerKm": 14,
+        "nearestM": 554
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "bisun-sanjeong",
+      "name": "산정호수 비선폭포 계곡",
+      "region": "포천시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 2336,
+        "outlineKm": 16.31,
+        "verticesPerKm": 143,
+        "nearestM": 413,
+        "rivers": ["부소천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 4,
+        "namedWays": 2,
+        "names": ["부소천"],
+        "vertices": 117,
+        "lengthKm": 10.46,
+        "verticesPerKm": 11,
+        "nearestM": 13
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(143/km)이 OSM(11/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "jijangsan",
+      "name": "지장산계곡",
+      "region": "포천시",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 1743,
+        "outlineKm": 34.12,
+        "verticesPerKm": 51,
+        "nearestM": 18,
+        "rivers": ["건지천(지방2급하천)", "향로천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 1,
+        "namedWays": 0,
+        "names": [],
+        "vertices": 205,
+        "lengthKm": 12.95,
+        "verticesPerKm": 16,
+        "nearestM": 1354
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(51/km)이 OSM(16/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "wangbang",
+      "name": "왕방계곡",
+      "region": "동두천시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 1350,
+        "outlineKm": 24.97,
+        "verticesPerKm": 54,
+        "nearestM": 2,
+        "rivers": ["동두천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 1,
+        "namedWays": 0,
+        "names": [],
+        "vertices": 99,
+        "lengthKm": 4.56,
+        "verticesPerKm": 22,
+        "nearestM": 12
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(54/km)이 OSM(22/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "myeongji",
+      "name": "명지계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 642,
+        "outlineKm": 16.13,
+        "verticesPerKm": 40,
+        "nearestM": 126,
+        "rivers": ["석룡천(지방2급하천)", "도마천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 3,
+        "namedWays": 2,
+        "names": ["도마천"],
+        "vertices": 223,
+        "lengthKm": 10.92,
+        "verticesPerKm": 20,
+        "nearestM": 152
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(40/km)이 OSM(20/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "yongchu-gapyeong",
+      "name": "용추계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 1572,
+        "outlineKm": 30.21,
+        "verticesPerKm": 52,
+        "nearestM": 34,
+        "rivers": ["승안천(지방2급하천)", "마장천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 5,
+        "namedWays": 1,
+        "names": ["승안천"],
+        "vertices": 612,
+        "lengthKm": 15.03,
+        "verticesPerKm": 41,
+        "nearestM": 11
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(52/km)이 OSM(41/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "jomurak",
+      "name": "조무락골",
+      "region": "가평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 642,
+        "outlineKm": 16.13,
+        "verticesPerKm": 40,
+        "nearestM": 36,
+        "rivers": ["석룡천(지방2급하천)", "도마천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 3,
+        "namedWays": 2,
+        "names": ["도마천"],
+        "vertices": 223,
+        "lengthKm": 10.92,
+        "verticesPerKm": 20,
+        "nearestM": 25
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(40/km)이 OSM(20/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "yumyeongsan",
+      "name": "유명산계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 2379,
+        "outlineKm": 61.51,
+        "verticesPerKm": 39,
+        "nearestM": 45,
+        "rivers": ["가일천(지방2급하천)", "벽계천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 3,
+        "namedWays": 2,
+        "names": ["벽계천", "사기막천"],
+        "vertices": 530,
+        "lengthKm": 33.17,
+        "verticesPerKm": 16,
+        "nearestM": 46
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(39/km)이 OSM(16/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "eobi",
+      "name": "어비계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 3,
+        "geometryTypes": {
+          "MultiPolygon": 3
+        },
+        "vertices": 3721,
+        "outlineKm": 96.08,
+        "verticesPerKm": 39,
+        "nearestM": 9,
+        "rivers": ["가일천(지방2급하천)", "미원천(지방2급하천)", "벽계천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 3,
+        "namedWays": 2,
+        "names": ["벽계천", "사기막천"],
+        "vertices": 530,
+        "lengthKm": 33.17,
+        "verticesPerKm": 16,
+        "nearestM": 1
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(39/km)이 OSM(16/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "baekdunri",
+      "name": "백둔리계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 3698,
+        "outlineKm": 87.85,
+        "verticesPerKm": 42,
+        "nearestM": 47,
+        "rivers": ["백둔천(지방2급하천)", "가평천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 3,
+        "namedWays": 1,
+        "names": ["가평천"],
+        "vertices": 515,
+        "lengthKm": 43.27,
+        "verticesPerKm": 12,
+        "nearestM": 20
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(42/km)이 OSM(12/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "gyeongban",
+      "name": "경반계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 4,
+        "geometryTypes": {
+          "MultiPolygon": 4
+        },
+        "vertices": 2810,
+        "outlineKm": 63.8,
+        "verticesPerKm": 44,
+        "nearestM": 23,
+        "rivers": [
+          "달전천(지방2급하천)",
+          "경반천(지방2급하천)",
+          "승안천(지방2급하천)",
+          "두밀천(지방2급하천)"
+        ]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 6,
+        "namedWays": 1,
+        "names": ["경반천"],
+        "vertices": 1076,
+        "lengthKm": 13.09,
+        "verticesPerKm": 82,
+        "nearestM": 2
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "OSM(82/km)이 하천망(44/km)보다 촘촘"
+    },
+    {
+      "id": "nonnamgi",
+      "name": "논남기계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 3377,
+        "outlineKm": 75.28,
+        "verticesPerKm": 45,
+        "nearestM": 658,
+        "rivers": ["가평천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 2,
+        "namedWays": 2,
+        "names": ["가평천"],
+        "vertices": 286,
+        "lengthKm": 34.79,
+        "verticesPerKm": 8,
+        "nearestM": 651
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "hyeondeungsa",
+      "name": "현등사계곡(운악산)",
+      "region": "가평군",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 3392,
+        "outlineKm": 82.78,
+        "verticesPerKm": 41,
+        "nearestM": 1721,
+        "rivers": ["조종천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 4,
+        "namedWays": 2,
+        "names": ["조종천"],
+        "vertices": 299,
+        "lengthKm": 14.57,
+        "verticesPerKm": 21,
+        "nearestM": 899
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "domachi",
+      "name": "도마치계곡",
+      "region": "가평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 642,
+        "outlineKm": 16.13,
+        "verticesPerKm": 40,
+        "nearestM": 491,
+        "rivers": ["석룡천(지방2급하천)", "도마천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 2,
+        "namedWays": 1,
+        "names": ["도마천"],
+        "vertices": 212,
+        "lengthKm": 10.57,
+        "verticesPerKm": 20,
+        "nearestM": 54
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(40/km)이 OSM(20/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "sudong",
+      "name": "수동계곡",
+      "region": "남양주시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 983,
+        "outlineKm": 30.48,
+        "verticesPerKm": 32,
+        "nearestM": 848,
+        "rivers": ["구운천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 7,
+        "namedWays": 3,
+        "names": ["구운천", "청룡천", "방동천"],
+        "vertices": 425,
+        "lengthKm": 24.47,
+        "verticesPerKm": 17,
+        "nearestM": 11
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "chungnyeongsan",
+      "name": "축령산계곡",
+      "region": "남양주시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 201,
+        "outlineKm": 6.91,
+        "verticesPerKm": 29,
+        "nearestM": 1089,
+        "rivers": ["외방천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 7,
+        "namedWays": 3,
+        "names": ["외방천", "청룡천", "방동천"],
+        "vertices": 342,
+        "lengthKm": 9.83,
+        "verticesPerKm": 35,
+        "nearestM": 644
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "jangheung",
+      "name": "장흥계곡",
+      "region": "양주시",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 25583,
+        "outlineKm": 71.27,
+        "verticesPerKm": 359,
+        "nearestM": 58,
+        "rivers": ["공릉천(지방2급하천)", "석현천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 10,
+        "namedWays": 2,
+        "names": ["공릉천", "석현천"],
+        "vertices": 631,
+        "lengthKm": 55.42,
+        "verticesPerKm": 11,
+        "nearestM": 14
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(359/km)이 OSM(11/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "songchu",
+      "name": "송추계곡",
+      "region": "양주시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 25260,
+        "outlineKm": 59.24,
+        "verticesPerKm": 426,
+        "nearestM": 1343,
+        "rivers": ["공릉천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 17,
+        "namedWays": 1,
+        "names": ["공릉천"],
+        "vertices": 786,
+        "lengthKm": 57.36,
+        "verticesPerKm": 14,
+        "nearestM": 5
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "angol",
+      "name": "안골계곡",
+      "region": "의정부시",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 2562,
+        "outlineKm": 19.9,
+        "verticesPerKm": 129,
+        "nearestM": 741,
+        "rivers": ["회룡천(지방2급하천)", "백석천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 24,
+        "namedWays": 7,
+        "names": ["백석천", "회룡천"],
+        "vertices": 560,
+        "lengthKm": 18.2,
+        "verticesPerKm": 31,
+        "nearestM": 13
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "soyosan",
+      "name": "소요산계곡",
+      "region": "동두천시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 12706,
+        "outlineKm": 74.62,
+        "verticesPerKm": 170,
+        "nearestM": 54,
+        "rivers": ["신천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 1,
+        "namedWays": 1,
+        "names": ["신천"],
+        "vertices": 367,
+        "lengthKm": 18.63,
+        "verticesPerKm": 20,
+        "nearestM": 102
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(170/km)이 OSM(20/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "dongmak",
+      "name": "동막골계곡",
+      "region": "연천군",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 483,
+        "outlineKm": 21.97,
+        "verticesPerKm": 22,
+        "nearestM": 82,
+        "rivers": ["아미천(지방2급하천)"]
+      },
+      "vworldCovers": true,
+      "osm": {
+        "ways": 1,
+        "namedWays": 1,
+        "names": ["아미천"],
+        "vertices": 107,
+        "lengthKm": 11.15,
+        "verticesPerKm": 10,
+        "nearestM": 81
+      },
+      "recommended": "vworld-stream-network",
+      "stored": "osm",
+      "note": "하천망(22/km)이 OSM(10/km) 이상 — 저장은 답신 전 OSM"
+    },
+    {
+      "id": "gamaksan",
+      "name": "감악산 운계폭포 계곡",
+      "region": "파주시",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 475,
+        "outlineKm": 18.35,
+        "verticesPerKm": 26,
+        "nearestM": 1244,
+        "rivers": ["설마천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 1,
+        "namedWays": 1,
+        "names": ["설마천"],
+        "vertices": 183,
+        "lengthKm": 10.33,
+        "verticesPerKm": 18,
+        "nearestM": 1229
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "sanasa",
+      "name": "사나사계곡",
+      "region": "양평군",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 1342,
+        "outlineKm": 34.57,
+        "verticesPerKm": 39,
+        "nearestM": 1939,
+        "rivers": ["미원천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 9,
+        "namedWays": 5,
+        "names": ["미원천", "사기막천", "균골", "원암골", "까마귀골"],
+        "vertices": 566,
+        "lengthKm": 19.17,
+        "verticesPerKm": 30,
+        "nearestM": 51
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "yongmunsan",
+      "name": "용문산계곡",
+      "region": "양평군",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 1895,
+        "outlineKm": 43.17,
+        "verticesPerKm": 44,
+        "nearestM": 988,
+        "rivers": ["연수천(지방2급하천)", "용문천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 16,
+        "namedWays": 10,
+        "names": [
+          "용문천",
+          "연수천",
+          "용각골",
+          "용계골",
+          "조계골",
+          "금수골",
+          "용암골",
+          "문수골",
+          "조달골",
+          "큰조계골"
+        ],
+        "vertices": 1452,
+        "lengthKm": 36.59,
+        "verticesPerKm": 40,
+        "nearestM": 73
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "uidong",
+      "name": "우이동계곡",
+      "region": "서울 강북구",
+      "vworld": {
+        "features": 3,
+        "geometryTypes": {
+          "MultiPolygon": 3
+        },
+        "vertices": 874,
+        "outlineKm": 29.38,
+        "verticesPerKm": 30,
+        "nearestM": 1335,
+        "rivers": ["방학천(지방2급하천)", "도봉천(지방2급하천)", "우이천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 12,
+        "namedWays": 5,
+        "names": ["백운천", "우이천", "계곡", "소귀천계곡"],
+        "vertices": 287,
+        "lengthKm": 12.2,
+        "verticesPerKm": 24,
+        "nearestM": 672
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "suraksan",
+      "name": "수락산계곡(청학리)",
+      "region": "남양주시",
+      "vworld": {
+        "features": 2,
+        "geometryTypes": {
+          "MultiPolygon": 2
+        },
+        "vertices": 2616,
+        "outlineKm": 39.29,
+        "verticesPerKm": 67,
+        "nearestM": 509,
+        "rivers": ["용암천(지방2급하천)", "부용천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 17,
+        "namedWays": 10,
+        "names": ["용암천", "청학천", "제청천", "응달천"],
+        "vertices": 593,
+        "lengthKm": 23.22,
+        "verticesPerKm": 26,
+        "nearestM": 96
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "hamheodongcheon",
+      "name": "함허동천",
+      "region": "인천 강화군",
+      "vworld": {
+        "features": 1,
+        "geometryTypes": {
+          "MultiPolygon": 1
+        },
+        "vertices": 457,
+        "outlineKm": 12.11,
+        "verticesPerKm": 38,
+        "nearestM": 1687,
+        "rivers": ["길정천(지방2급하천)"]
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 13,
+        "namedWays": 0,
+        "names": [],
+        "vertices": 105,
+        "lengthKm": 6.76,
+        "verticesPerKm": 16,
+        "nearestM": 452
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "gugok",
+      "name": "구곡폭포 계곡",
+      "region": "춘천시",
+      "vworld": {
+        "features": 0,
+        "geometryTypes": {},
+        "vertices": 0,
+        "outlineKm": 0,
+        "verticesPerKm": 0,
+        "nearestM": -1,
+        "rivers": []
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 1,
+        "namedWays": 0,
+        "names": [],
+        "vertices": 12,
+        "lengthKm": 0.47,
+        "verticesPerKm": 26,
+        "nearestM": 0
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    },
+    {
+      "id": "gwangdeok",
+      "name": "광덕계곡",
+      "region": "화천군",
+      "vworld": {
+        "features": 0,
+        "geometryTypes": {},
+        "vertices": 0,
+        "outlineKm": 0,
+        "verticesPerKm": 0,
+        "nearestM": -1,
+        "rivers": []
+      },
+      "vworldCovers": false,
+      "osm": {
+        "ways": 2,
+        "namedWays": 1,
+        "names": ["지촌천"],
+        "vertices": 443,
+        "lengthKm": 32.54,
+        "verticesPerKm": 14,
+        "nearestM": 140
+      },
+      "recommended": "osm",
+      "stored": "osm",
+      "note": "하천망이 계곡을 덮지 않음(국가·지방하천만)"
+    }
+  ]
+}

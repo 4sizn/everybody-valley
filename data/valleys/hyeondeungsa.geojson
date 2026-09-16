@@ -1,0 +1,80 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "현등사계곡(운악산)(가평군) — 구간 1개. OSM 하천 중심선(조종천, way 1214439228·471313427) 을 계곡 점 기준 상류 2 km·하류 1 km 로 자른 1000 m. 데스크 검수 — 수심·바닥·금지·요금은 manual.csv 로 채운다.",
+    "source": "OSM 하천 중심선(© OpenStreetMap contributors, ODbL) + 브이월드 표준유역 코드 + Terrarium 표고 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 (127.33108219967302, 37.870324683402856) [vworld-search] · 중심선 오프셋 899 m · 표고 300→158 m · 구간 분할 근거 none",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://www.vworld.kr/ (표준유역 lt_c_wkmsbsn 코드 조회 — 기하 저장 없음)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.338855, 37.865071],
+          [127.33971, 37.864749],
+          [127.339879, 37.864741],
+          [127.34005, 37.864678],
+          [127.340207, 37.864619],
+          [127.34041, 37.864493],
+          [127.340582, 37.86451],
+          [127.341, 37.864682],
+          [127.341129, 37.864688],
+          [127.34151, 37.864582],
+          [127.341811, 37.864538],
+          [127.342242, 37.864461],
+          [127.342379, 37.864353],
+          [127.342438, 37.864169],
+          [127.342556, 37.863894],
+          [127.342913, 37.863674],
+          [127.343189, 37.86364],
+          [127.343873, 37.863758],
+          [127.344627, 37.863765],
+          [127.345045, 37.863797],
+          [127.345558, 37.863737],
+          [127.34585, 37.863786],
+          [127.346172, 37.863909],
+          [127.346588, 37.863911],
+          [127.346805, 37.863921],
+          [127.347261, 37.864173],
+          [127.347778, 37.864461],
+          [127.348068, 37.864794],
+          [127.348151, 37.864853],
+          [127.348401, 37.864696],
+          [127.348642, 37.864465]
+        ]
+      },
+      "properties": {
+        "id": "hyeondeungsa-whole",
+        "valleyId": "hyeondeungsa",
+        "valleyName": "현등사계곡(운악산)",
+        "segment": "whole",
+        "order": 0,
+        "splitBasis": "none",
+        "depth": "waist",
+        "shadeByHour": [0.466, 0.465, 0.465, 0.465, 0.467, 0.472, 0.485, 0.509, 0.603],
+        "canopyCover": 0.465,
+        "shadeRatio": 0.465,
+        "swimBanned": false,
+        "riskNote": "물놀이관리지역(일반) 조종천 — 최대 수심 1.5 m·평균 1 m",
+        "basinCode": "101503",
+        "freeAccess": true,
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    }
+  ]
+}

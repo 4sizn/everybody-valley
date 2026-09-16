@@ -1,0 +1,46 @@
+{
+  "name": "everybody-valley",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24.13"
+  },
+  "scripts": {
+    "prepare": "node scripts/install-hooks.mjs",
+    "web": "pnpm --filter valley-map web",
+    "ios": "pnpm --filter valley-map ios",
+    "android": "pnpm --filter valley-map android",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "test": "pnpm -r --parallel test",
+    "shade:build": "sh scripts/shade/build.sh",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test",
+    "research:coverage": "tsx scripts/research/station-coverage/main.ts",
+    "research:calibration": "tsx scripts/research/alert-calibration/main.ts",
+    "seed:compare": "tsx scripts/seed/compare.mts",
+    "seed:std": "tsx scripts/seed/std.mts",
+    "seed:safemap": "tsx scripts/seed/safemap.mts",
+    "seed:build": "tsx scripts/seed/build.mts",
+    "icons:build": "tsx scripts/icons/build.mts",
+    "server:dev": "pnpm --filter @modu-valley/server dev",
+    "server:build": "pnpm --filter @modu-valley/server build",
+    "server:start": "pnpm --filter @modu-valley/server start",
+    "server:test": "pnpm --filter @modu-valley/server test",
+    "seed:shelters": "tsx scripts/seed/shelters.mts",
+    "design:check": "npm --prefix design-system test",
+    "design:build": "npm --prefix design-system run build && node scripts/sync-design.mjs",
+    "build": "pnpm --filter valley-map build:web && pnpm server:build",
+    "native:prebuild": "pnpm --filter valley-map prebuild"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.11",
+    "@modu-valley/core": "workspace:*",
+    "@modu-valley/map-style": "workspace:*",
+    "@resvg/resvg-js": "^2.6.2",
+    "tsx": "^4.23.13",
+    "typescript": "~6.0.3"
+  }
+}

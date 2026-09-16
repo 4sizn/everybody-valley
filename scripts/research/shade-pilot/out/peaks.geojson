@@ -1,0 +1,170 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "백운산",
+    "ele": "903",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4445315,
+     38.0749351
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "도마봉",
+    "ele": "883",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4456706,
+     38.0511317
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "도마치봉",
+    "ele": "925.1",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4440086,
+     38.058504
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "향적봉",
+    "ele": "784",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4311106,
+     38.0604317
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "가리산",
+    "ele": "774.2",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4066588,
+     38.0404174
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "삼각봉",
+    "ele": "921",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4465939,
+     38.0675882
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "흥룡봉",
+    "ele": "729",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4243065,
+     38.0577588
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "박달봉",
+    "ele": "820",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4123365,
+     38.0968545
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "감투봉",
+    "ele": "500.9",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.3717124,
+     38.0667798
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "무학봉",
+    "ele": "813",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.45336,
+     38.08092
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "452봉",
+    "ele": "452",
+    "kind": "peak"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.4191533,
+     38.0706831
+    ]
+   }
+  }
+ ]
+}

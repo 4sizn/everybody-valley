@@ -1,0 +1,48 @@
+{
+  "name": "valley-map",
+  "main": "expo-router/entry",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "sync:maplibre": "node ./scripts/sync-maplibre-worker.mjs",
+    "sync:valley-data": "node ./scripts/sync-valley-data.mjs",
+    "sync": "pnpm sync:maplibre && pnpm sync:valley-data",
+    "start": "pnpm sync && expo start",
+    "web": "pnpm sync && expo start --web",
+    "build:web": "pnpm sync && expo export --platform web && node scripts/compress-web.mjs",
+    "prebuild": "expo prebuild",
+    "android": "pnpm sync:valley-data && expo run:android",
+    "ios": "pnpm sync:valley-data && expo run:ios",
+    "typecheck": "pnpm sync:valley-data && tsc --noEmit -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~57.0.15",
+    "@maplibre/maplibre-react-native": "11.3.8",
+    "@modu-valley/adapter-native": "workspace:*",
+    "@modu-valley/adapter-web": "workspace:*",
+    "@modu-valley/core": "workspace:*",
+    "@modu-valley/map-style": "workspace:*",
+    "@react-native-async-storage/async-storage": "^3.1.1",
+    "expo": "~57.0.19",
+    "expo-constants": "~57.0.17",
+    "expo-linking": "~57.0.9",
+    "expo-router": "~57.0.18",
+    "expo-status-bar": "~57.0.1",
+    "expo-system-ui": "~57.0.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-gesture-handler": "~2.32.0",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.26.0",
+    "react-native-svg": "15.15.5",
+    "react-native-web": "~0.21.0",
+    "@moduvalley/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.11"
+  }
+}

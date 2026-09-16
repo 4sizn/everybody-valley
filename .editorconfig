@@ -1,0 +1,15 @@
+# biome.json 의 formatter 설정과 같은 값입니다.
+# 편집기가 biome 확장 없이도 최소한 어긋나지 않게 합니다.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 100
+
+[*.md]
+trim_trailing_whitespace = false

@@ -1,0 +1,608 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "수락산계곡(청학리) 시설 37개 — 표준데이터 주차장 8 · 화장실 5 · OSM 24 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.111865, 37.707659]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-2-000024",
+        "valleyId": "suraksan",
+        "name": "별내면 제2공영",
+        "facilityType": "parking",
+        "capacity": 30,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.106371, 37.7052]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-2-000023",
+        "valleyId": "suraksan",
+        "name": "별내면 제1공영",
+        "facilityType": "parking",
+        "capacity": 22,
+        "feeNote": "유료",
+        "operatingHours": "08:00~20:00",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.113521, 37.711064]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-1-000015",
+        "valleyId": "suraksan",
+        "name": "별내면 노상제6",
+        "facilityType": "parking",
+        "capacity": 15,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.11149, 37.710759]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-1-000014",
+        "valleyId": "suraksan",
+        "name": "별내면 노상제5",
+        "facilityType": "parking",
+        "capacity": 16,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.119462, 37.707725]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-1-000013",
+        "valleyId": "suraksan",
+        "name": "별내면 노상제4",
+        "facilityType": "parking",
+        "capacity": 10,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.119118, 37.707277]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-1-000012",
+        "valleyId": "suraksan",
+        "name": "별내면 노상제3",
+        "facilityType": "parking",
+        "capacity": 15,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.115464, 37.709273]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-1-000011",
+        "valleyId": "suraksan",
+        "name": "별내면 노상제2",
+        "facilityType": "parking",
+        "capacity": 71,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.115464, 37.709273]
+      },
+      "properties": {
+        "id": "suraksan-std-p-222-1-000010",
+        "valleyId": "suraksan",
+        "name": "별내면 노상제1",
+        "facilityType": "parking",
+        "capacity": 51,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.112556, 37.719648]
+      },
+      "properties": {
+        "id": "suraksan-std-r-12255",
+        "valleyId": "suraksan",
+        "name": "흑석마을 등산로",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.104915, 37.703035]
+      },
+      "properties": {
+        "id": "suraksan-std-r-24000",
+        "valleyId": "suraksan",
+        "name": "청학리 수락산-1",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.10637, 37.705211]
+      },
+      "properties": {
+        "id": "suraksan-std-r-24001",
+        "valleyId": "suraksan",
+        "name": "달팽이 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.120418, 37.710809]
+      },
+      "properties": {
+        "id": "suraksan-std-r-24043",
+        "valleyId": "suraksan",
+        "name": "청학리 근린공원",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.104452, 37.702603]
+      },
+      "properties": {
+        "id": "suraksan-std-r-24045",
+        "valleyId": "suraksan",
+        "name": "청학리 수락산-2",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.119488, 37.709619]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-368684070",
+        "valleyId": "suraksan",
+        "name": "청학쌀마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.118216, 37.708754]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-368684073",
+        "valleyId": "suraksan",
+        "name": "아울렛DC마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.113079, 37.708371]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-368684152",
+        "valleyId": "suraksan",
+        "name": "(주)청학할인마트 (Cheonghak Retail Shop)",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.118216, 37.708754]
+      },
+      "properties": {
+        "id": "suraksan-osm-food-368963516",
+        "valleyId": "suraksan",
+        "name": "대호횟집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.117568, 37.708861]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-4574073291",
+        "valleyId": "suraksan",
+        "name": "청학하나로마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.116837, 37.708538]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-4649455994",
+        "valleyId": "suraksan",
+        "name": "한국유통",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.118903, 37.707534]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-5140734932",
+        "valleyId": "suraksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.123178, 37.707454]
+      },
+      "properties": {
+        "id": "suraksan-osm-food-9093003929",
+        "valleyId": "suraksan",
+        "name": "설악만",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.13132, 37.704484]
+      },
+      "properties": {
+        "id": "suraksan-osm-cafe-11304313147",
+        "valleyId": "suraksan",
+        "name": "카페에코",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.118389, 37.708657]
+      },
+      "properties": {
+        "id": "suraksan-osm-cafe-12425134587",
+        "valleyId": "suraksan",
+        "name": "카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.126033, 37.712254]
+      },
+      "properties": {
+        "id": "suraksan-osm-cafe-12427912234",
+        "valleyId": "suraksan",
+        "name": "투썸",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.125841, 37.698192]
+      },
+      "properties": {
+        "id": "suraksan-osm-food-293854469",
+        "valleyId": "suraksan",
+        "name": "향촌",
+        "facilityType": "food",
+        "capacity": 50,
+        "operatingHours": "10:00-20:00",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.12592, 37.698013]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-293854470",
+        "valleyId": "suraksan",
+        "name": "향촌 주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.114416, 37.712584]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-844535675",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.114163, 37.712039]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-844535676",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.113469, 37.711867]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-844535677",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.113189, 37.711464]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-844535679",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.114756, 37.711716]
+      },
+      "properties": {
+        "id": "suraksan-osm-store-861095108",
+        "valleyId": "suraksan",
+        "name": "GS25 청학제일점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.131438, 37.703922]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-1219997088",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.129231, 37.703701]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-1219997099",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.121066, 37.713321]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-1396806294",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.121403, 37.714478]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-1396806415",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.105482, 37.703946]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-1413917109",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.105175, 37.702789]
+      },
+      "properties": {
+        "id": "suraksan-osm-parking-1554945943",
+        "valleyId": "suraksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
+}

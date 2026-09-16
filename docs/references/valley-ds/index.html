@@ -1,0 +1,688 @@
+<title>모두의계곡 디자인 시스템</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* ── 페이지 크롬 토큰 (문서 자체의 옷) ───────────────────────── */
+:root{
+  --bg:#f6f7f8; --bg2:#ffffff; --surface:#ffffff; --surface2:#f1f3f5;
+  --fg:#15181c; --fg2:#454c55; --muted:#79818c; --line:#e2e5e9; --line2:#cdd2d8;
+  --accent:#0c8b80; --accent-strong:#076a62; --accent-soft:#e4f2f0;
+  --code:#0f4f4a;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0f11; --bg2:#131619; --surface:#15181b; --surface2:#1c2024;
+    --fg:#e9edf0; --fg2:#b3bcc5; --muted:#7c868f; --line:#252b30; --line2:#333b42;
+    --accent:#2fbfb2; --accent-strong:#5fd8cd; --accent-soft:#10312e;
+    --code:#8fded5;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d0f11; --bg2:#131619; --surface:#15181b; --surface2:#1c2024;
+  --fg:#e9edf0; --fg2:#b3bcc5; --muted:#7c868f; --line:#252b30; --line2:#333b42;
+  --accent:#2fbfb2; --accent-strong:#5fd8cd; --accent-soft:#10312e;
+  --code:#8fded5;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-weight:400;
+  -webkit-font-smoothing:antialiased;font-size:15px;line-height:1.6}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+a:hover{border-bottom-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.layout{display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:1000px){ .layout{grid-template-columns:190px 1fr;gap:56px;align-items:start} }
+
+/* ── 헤더 ──────────────────────────────────────────────── */
+header.hd{border-bottom:1px solid var(--line);background:var(--bg2)}
+.hd-in{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 18px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:700;margin:0 0 14px;text-wrap:balance}
+.lede{font-size:17px;line-height:1.6;color:var(--fg2);max-width:60ch;margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.fact{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;padding:6px 11px;border:1px solid var(--line2);border-radius:999px;color:var(--fg2);background:var(--surface)}
+.fact b{color:var(--fg);font-weight:600}
+
+/* ── 사이드 인덱스 ──────────────────────────────────────── */
+nav.idx{display:none}
+@media (min-width:1000px){
+  nav.idx{display:block;position:sticky;top:24px;padding:40px 0 0}
+  nav.idx ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;counter-reset:s}
+  nav.idx a{display:flex;gap:10px;font-size:13px;color:var(--muted);border:0;padding:5px 0;line-height:1.4}
+  nav.idx a:hover{color:var(--fg)}
+  nav.idx a .n{font-family:var(--mono);font-size:11px;color:var(--line2);padding-top:1px}
+}
+
+/* ── 섹션 ──────────────────────────────────────────────── */
+main{padding:40px 0 96px;min-width:0}
+section{padding:36px 0;border-top:1px solid var(--line)}
+section:first-child{border-top:0;padding-top:8px}
+h2{font-size:22px;line-height:1.25;letter-spacing:-.02em;font-weight:600;margin:0 0 6px}
+h3{font-size:14px;font-weight:600;letter-spacing:.01em;margin:30px 0 12px;color:var(--fg)}
+h3:first-of-type{margin-top:20px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 22px;max-width:64ch}
+p{max-width:66ch}
+code{font-family:var(--mono);font-size:.88em;color:var(--code);background:var(--surface2);padding:1px 5px;border-radius:4px}
+
+/* ── 표 ────────────────────────────────────────────────── */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+  padding:11px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--bg2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.m,th.m{font-family:var(--mono);font-size:12px}
+td.tok{font-family:var(--mono);font-size:12px;color:var(--fg);white-space:nowrap}
+td.use{color:var(--muted)}
+.sw{display:inline-block;width:22px;height:22px;border-radius:6px;border:1px solid var(--line2);vertical-align:-6px;margin-right:8px}
+.ck{background-image:linear-gradient(45deg,#0000001a 25%,transparent 25%),linear-gradient(-45deg,#0000001a 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#0000001a 75%),linear-gradient(-45deg,transparent 75%,#0000001a 75%);background-size:8px 8px;background-position:0 0,0 4px,4px -4px,-4px 0}
+
+/* ── 코드 블록 ──────────────────────────────────────────── */
+.codebox{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.codebox .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 12px 9px 14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.codebox .bar span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.cpy{font-family:var(--sans);font-size:12px;font-weight:500;padding:5px 11px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--fg2);cursor:pointer;transition:border-color .15s,color .15s}
+.cpy:hover{border-color:var(--accent);color:var(--accent)}
+pre{margin:0;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--fg2)}
+
+/* ── 프리뷰 (실제 spot 토큰으로 렌더) ────────────────────── */
+.pvbar{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.pvbar .lbl{font-size:12px;color:var(--muted)}
+.seg-t{display:inline-flex;gap:2px;padding:2px;border-radius:999px;background:var(--surface2);border:1px solid var(--line)}
+.seg-t button{border:0;background:transparent;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--muted);padding:5px 13px;border-radius:999px;cursor:pointer}
+.seg-t button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 2px #0000001f}
+
+.pv{
+  --spot-color-background:#18181c; --spot-color-backgroundSecondary:#0e0e11;
+  --spot-color-foreground:#f2f4f6; --spot-color-secondary:#9ea4ad; --spot-color-muted:#6e747f;
+  --spot-color-cardBackground:#202024; --spot-color-border:#393940b3; --spot-color-borderLight:#2e2e34e6;
+  --spot-color-gray300:#303036; --spot-color-primary:#297cff; --spot-color-danger:#ff6b73;
+  --spot-color-mapBackground:#2a2c31; --spot-map-bg:#242729; --spot-map-water:#1e3143; --spot-map-park:#232e1f; --spot-map-road:#565963;
+  --spot-shadow-md:0 4px 8px -4px #00000047,0 16px 24px -8px #0000005c;
+  --spot-shadow-lg:0 1px 1px #0003,0 4px 8px -4px #00000047,0 16px 24px -8px #0000005c;
+  --spot-shadow-sheet:0 -1px 4px #0000003d,0 -8px 48px #0006;
+  --spot-shadow-gnb:0 2px 4px #0006,0 10px 20px -4px #0000007a,0 28px 56px -12px #00000094;
+  --spot-shadow-sm:0 2px 2px #00000047;
+  position:relative;border-radius:14px;border:1px solid var(--line);overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 20% 10%, var(--spot-map-park) 0%, transparent 55%),
+    radial-gradient(90% 60% at 85% 75%, var(--spot-map-water) 0%, transparent 60%),
+    var(--spot-map-bg);
+  padding:16px;font-size:15px;line-height:1.5;color:var(--spot-color-foreground);
+}
+.pv[data-pv="light"]{
+  --spot-color-background:#ffffff; --spot-color-backgroundSecondary:#f9fafb;
+  --spot-color-foreground:#191f28; --spot-color-secondary:#6b7684; --spot-color-muted:#8b95a1;
+  --spot-color-cardBackground:#f7f8fa; --spot-color-border:#dbdfe4cc; --spot-color-borderLight:#e9ecefe6;
+  --spot-color-gray300:#d1d6db; --spot-color-primary:#297cff; --spot-color-danger:#f04452;
+  --spot-color-mapBackground:#eaecef; --spot-map-bg:#f7f7f7; --spot-map-water:#a5d1f2; --spot-map-park:#d8ecc5; --spot-map-road:#fdf0b5;
+  --spot-shadow-md:0 4px 8px -4px #00000012,0 16px 24px -8px #0000001a;
+  --spot-shadow-lg:0 1px 1px #0000000a,0 4px 8px -4px #00000012,0 16px 24px -8px #0000001a;
+  --spot-shadow-sheet:0 -1px 4px #0000000a,0 -8px 48px #00000024;
+  --spot-shadow-gnb:0 2px 4px #00000024,0 10px 20px -4px #0000002e,0 28px 56px -12px #0000003d;
+  --spot-shadow-sm:0 2px 2px #00000012;
+}
+.pvgrid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:760px){.pvgrid{grid-template-columns:1fr 1fr}}
+.pvcap{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.03em;margin:8px 0 0}
+
+/* 프리뷰 내부 컴포넌트 — 모두 --spot-* 로만 색을 잡는다 */
+.c-search{display:flex;align-items:center;gap:8px;height:48px;padding:0 16px;border-radius:9999px;
+  background:color-mix(in srgb,var(--spot-color-background) 80%,transparent);backdrop-filter:blur(14px);
+  border:.67px solid var(--spot-color-borderLight);box-shadow:var(--spot-shadow-lg);color:var(--spot-color-muted);font-size:15px}
+.c-search .brand{font-weight:700;font-size:15px;color:var(--spot-color-foreground);letter-spacing:-.02em}
+.c-fabs{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.c-fab{width:44px;height:44px;border-radius:9999px;background:var(--spot-color-background);box-shadow:var(--spot-shadow-lg);
+  display:grid;place-items:center;color:var(--spot-color-foreground);border:0;cursor:default}
+.c-cta{display:inline-flex;align-items:center;gap:6px;height:48px;padding:0 16px;border-radius:9999px;
+  background:var(--spot-color-background);box-shadow:var(--spot-shadow-lg);color:var(--spot-color-foreground);
+  font-size:15px;font-weight:600;line-height:1;border:0}
+.c-gnb{display:inline-flex;gap:4px;padding:0;border-radius:9999px;background:var(--spot-color-background);
+  box-shadow:inset 0 0 2px .5px color-mix(in srgb,var(--spot-color-foreground) 12%,transparent),var(--spot-shadow-gnb)}
+.c-gnb i{width:50px;height:50px;border-radius:9999px;display:grid;place-items:center;color:var(--spot-color-muted)}
+.c-gnb i[data-on]{color:var(--spot-color-foreground)}
+.c-sheet{border-radius:16px 16px 0 0;background:var(--spot-color-background);box-shadow:var(--spot-shadow-sheet);padding:0 0 12px}
+.c-handle{height:20px;display:grid;place-items:center}
+.c-handle b{display:block;width:36px;height:4px;border-radius:9999px;background:var(--spot-color-border)}
+.c-sheetbody{padding:4px 12px 0;display:flex;flex-direction:column;gap:8px}
+.c-seg{display:flex;gap:2px;padding:2px;height:40px;border-radius:9999px;background:var(--spot-color-cardBackground)}
+.c-seg span{flex:1;height:36px;border-radius:9999px;display:grid;place-items:center;font-size:15px;font-weight:600;color:var(--spot-color-secondary)}
+.c-seg span[data-on]{background:var(--spot-color-gray300);color:var(--spot-color-foreground);box-shadow:var(--spot-shadow-sm)}
+.c-card{background:var(--spot-color-cardBackground);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.c-card .row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.c-card .t{font-size:15px;font-weight:600;line-height:1.5;color:var(--spot-color-foreground)}
+.c-card .d{font-size:12px;line-height:1.5;color:var(--spot-color-secondary)}
+.c-card .mt{font-size:12px;line-height:1.5;color:var(--spot-color-muted);font-variant-numeric:tabular-nums}
+.c-badge{flex:none;font-size:12px;font-weight:600;line-height:1.5;padding:2px 8px;border-radius:9999px;background:var(--spot-color-danger);color:#fff}
+.c-badge[data-tone="ok"]{background:#2f9e64}
+.c-badge[data-tone="warn"]{background:#e79b38}
+.c-toast{background:var(--spot-color-background);border-radius:12px;padding:10px 12px;box-shadow:var(--spot-shadow-md);display:flex;flex-direction:column;gap:2px;max-width:290px}
+.c-toast .e{font-size:10px;font-weight:600;line-height:1.8;color:var(--spot-color-danger);letter-spacing:.02em}
+.c-toast .t{font-size:12px;font-weight:700;line-height:1.5}
+
+/* 마커 스와치 */
+.mkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+.mk{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--fg2)}
+.mk b{width:22px;height:22px;border-radius:9999px;flex:none;box-shadow:0 2px 3px #00000040}
+.mk code{background:transparent;padding:0;color:var(--muted);font-size:11px}
+
+/* 지도 팔레트 스트립 */
+.strip{display:flex;border-radius:10px;overflow:hidden;border:1px solid var(--line);min-height:56px}
+.strip div{flex:1;display:flex;align-items:flex-end;padding:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.02em}
+.striplab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin:6px 0 18px}
+
+/* 타입 스케일 데모 */
+.tsc{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--surface);overflow-x:auto}
+.tsc div{display:flex;align-items:baseline;gap:14px;white-space:nowrap}
+.tsc .k{font-family:var(--mono);font-size:11px;color:var(--muted);width:86px;flex:none}
+
+.note{border-left:2px solid var(--accent);background:var(--accent-soft);padding:12px 16px;border-radius:0 8px 8px 0;font-size:13.5px;color:var(--fg2);margin:18px 0 0;max-width:70ch}
+.note b{color:var(--fg)}
+.cols{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:800px){.cols{grid-template-columns:1fr 1fr}}
+ul.tight{margin:0;padding-left:18px;color:var(--fg2);font-size:14px}
+ul.tight li{margin:5px 0}
+footer{border-top:1px solid var(--line);padding:26px 0 60px;color:var(--muted);font-size:12.5px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="hd">
+  <div class="wrap hd-in">
+    <p class="eyebrow">Spotts fireworks → 모두의계곡</p>
+    <h1>모두의계곡 디자인 시스템</h1>
+    <p class="lede">spotts.kr/firework을 DevTools로 뜯어 추출한 토큰·컴포넌트 규격입니다. 지도가 화면 전체를 차지하고 UI는 그 위에 알약처럼 떠 있는 구조 — 계곡 탐색 서비스에 그대로 옮겨 쓸 수 있게 정리했습니다.</p>
+    <div class="facts">
+      <span class="fact">추출일 <b>2026-09-01</b></span>
+      <span class="fact">컬러 토큰 <b>30</b></span>
+      <span class="fact">타입 램프 <b>11–30px</b></span>
+      <span class="fact">z-index <b>9단</b></span>
+      <span class="fact">브레이크포인트 <b>768px 1개</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="idx" aria-label="목차">
+    <ol>
+      <li><a href="#principles"><span class="n">01</span>설계 원칙</a></li>
+      <li><a href="#color"><span class="n">02</span>컬러</a></li>
+      <li><a href="#type"><span class="n">03</span>타이포그래피</a></li>
+      <li><a href="#scale"><span class="n">04</span>간격·라운드·깊이</a></li>
+      <li><a href="#components"><span class="n">05</span>컴포넌트</a></li>
+      <li><a href="#map"><span class="n">06</span>지도 팔레트</a></li>
+      <li><a href="#marker"><span class="n">07</span>마커 체계</a></li>
+      <li><a href="#motion"><span class="n">08</span>모션·레이아웃</a></li>
+      <li><a href="#port"><span class="n">09</span>계곡으로 이식</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <section id="principles">
+    <h2>설계 원칙</h2>
+    <p class="sub">이 시스템이 다른 모바일 UI와 갈라지는 지점 다섯 가지. 계곡 서비스에서도 이 다섯은 유지하는 게 좋습니다.</p>
+    <div class="cols">
+      <ul class="tight">
+        <li><b>지도가 배경이 아니라 본문이다.</b> 모든 UI는 지도 위에 떠 있고, 시트·GNB·검색바가 지도를 가리는 면적을 최소로 잡습니다.</li>
+        <li><b>떠 있는 것은 전부 알약.</b> <code>radius-full</code>이 전체 라운드 사용의 절반(95회)입니다. 카드만 12px, 시트만 상단 16px.</li>
+        <li><b>테마는 토큰 한 겹으로만.</b> 컴포넌트 CSS에 색 리터럴이 없고 <code>--spot-color-*</code> 30개만 교체하면 다크/라이트가 통째로 바뀝니다.</li>
+      </ul>
+      <ul class="tight">
+        <li><b>8px 리듬, 4px 미세조정.</b> gap 사용 상위 두 개가 <code>sm(8px)</code> 78회, <code>xs(4px)</code> 76회. 12px(<code>smd</code>)이 카드 내부 패딩의 기본값.</li>
+        <li><b>모바일 단일 폭.</b> 미디어 쿼리 브레이크포인트는 <code>min-width:768px</code> 하나뿐. 나머지는 <code>hover</code>·<code>pointer</code>·<code>prefers-*</code> 능력 질의입니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="color">
+    <h2>컬러</h2>
+    <p class="sub">시맨틱 토큰 30개. 원본은 vanilla-extract 컨트랙트(<code>vars.color.*</code>)로 노출되고 런타임에는 <code>--spot-color-*</code> CSS 변수로 떨어집니다. primary 계열과 on* 계열은 두 테마가 같은 값을 씁니다.</p>
+    <div class="tw"><table id="colortable">
+      <thead><tr><th>토큰</th><th>Light</th><th>Dark</th><th>쓰임</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="note"><b>토스 계열 뉴트럴입니다.</b> <code>#191f28 / #8b95a1 / #f2f4f6 / #f04452 / #15b76d</code>는 토스 프로덕트 팔레트와 동일 계열이라, 한국 사용자에게 “익숙한 앱”처럼 읽히는 효과가 큽니다. 계곡 서비스에서도 뉴트럴은 그대로 두고 accent만 바꾸는 편을 권합니다.</div>
+  </section>
+
+  <section id="type">
+    <h2>타이포그래피</h2>
+    <p class="sub">Pretendard Variable 한 벌 + 숫자·코드용 Geist Mono. 굵기는 400 / 500 / 600 세 단계만 쓰고 bold와 semibold가 둘 다 600입니다(700은 실질적으로 미사용).</p>
+
+    <h3>행간 공식</h3>
+    <p>11px부터 30px까지 1px 단위로 클래스가 다 뚫려 있고, 행간은 두 구간 규칙을 따릅니다.</p>
+    <div class="codebox">
+      <div class="bar"><span>line-height rule</span></div>
+      <pre>lineHeight = fontSize &lt;= 17 ? fontSize * 1.5 : fontSize + 9
+// 11→16.5  12→18  15→22.5  17→25.5 │ 18→27  24→33  29→38  (30→40 만 예외)</pre>
+    </div>
+
+    <h3>실제로 쓰이는 단</h3>
+    <div class="tsc">
+      <div><span class="k">12 / 400</span><span style="font-size:12px;line-height:18px;color:var(--muted)">본문·설명 — 화면에서 가장 많이 쓰임(70회)</span></div>
+      <div><span class="k">12 / 600</span><span style="font-size:12px;line-height:18px;font-weight:600">배지 · 강조 라벨</span></div>
+      <div><span class="k">15 / 600</span><span style="font-size:15px;line-height:22.5px;font-weight:600">카드 제목 · 세그먼트 · 버튼 (37회)</span></div>
+      <div><span class="k">16 / 400</span><span style="font-size:16px;line-height:24px">기본 본문 · 인풋</span></div>
+      <div><span class="k">11 / 400</span><span style="font-size:11px;line-height:16.5px;color:var(--muted)">캡션 · 보조 메타</span></div>
+      <div><span class="k">10 / 600</span><span style="font-size:10px;line-height:18px;font-weight:600;color:#ff6b73">실시간 소식 같은 아이브로우</span></div>
+    </div>
+    <div class="note">본문 15px·제목 15px으로 <b>크기 차이 대신 굵기(400↔600)와 색(foreground↔secondary)으로 위계</b>를 만듭니다. 지도 위 좁은 시트에서 정보 밀도를 지키려는 선택이고, 계곡 카드에도 그대로 유효합니다.</div>
+  </section>
+
+  <section id="scale">
+    <h2>간격 · 라운드 · 깊이</h2>
+    <div class="cols">
+      <div>
+        <h3>Space</h3>
+        <div class="tw"><table>
+          <thead><tr><th>토큰</th><th class="m">값</th><th>주 용도</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">xxs</td><td class="m">2px</td><td class="use">세그먼트 내부 갭</td></tr>
+            <tr><td class="tok">xs</td><td class="m">4px</td><td class="use">텍스트 줄 사이</td></tr>
+            <tr><td class="tok">xsm</td><td class="m">6px</td><td class="use">아이콘+라벨</td></tr>
+            <tr><td class="tok">sm</td><td class="m">8px</td><td class="use">카드 사이 · FAB 스택</td></tr>
+            <tr><td class="tok">smd</td><td class="m">12px</td><td class="use">카드 내부 패딩</td></tr>
+            <tr><td class="tok">md</td><td class="m">16px</td><td class="use">화면 좌우 인셋</td></tr>
+            <tr><td class="tok">lg / xl / 2xl</td><td class="m">24 / 32 / 48</td><td class="use">섹션 구분</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <h3>Radius</h3>
+        <div class="tw"><table>
+          <thead><tr><th>토큰</th><th class="m">값</th><th>주 용도</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">xs / sm</td><td class="m">4 / 6px</td><td class="use">작은 태그</td></tr>
+            <tr><td class="tok">md</td><td class="m">8px</td><td class="use">인풋·소형 서피스 (39회)</td></tr>
+            <tr><td class="tok">lg</td><td class="m">12px</td><td class="use">리스트 카드 (29회)</td></tr>
+            <tr><td class="tok">xl</td><td class="m">24px</td><td class="use">대형 패널</td></tr>
+            <tr><td class="tok">full</td><td class="m">9999px</td><td class="use">버튼·칩·GNB·검색바 (95회)</td></tr>
+            <tr><td class="tok">—</td><td class="m">16px 16px 0 0</td><td class="use">바텀시트 상단 (하드코딩)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <h3>Shadow — 다크 기준 (라이트는 같은 지오메트리에 알파만 1/3)</h3>
+    <div class="tw"><table>
+      <thead><tr><th>토큰</th><th>값</th><th>쓰임</th></tr></thead>
+      <tbody>
+        <tr><td class="tok">sm</td><td class="m">0 2px 2px #00000047</td><td class="use">세그먼트 활성 알약</td></tr>
+        <tr><td class="tok">md</td><td class="m">0 4px 8px -4px #00000047, 0 16px 24px -8px #0000005c</td><td class="use">토스트 · 소형 플로팅</td></tr>
+        <tr><td class="tok">lg</td><td class="m">+ 0 1px 1px #0003 선행</td><td class="use">검색바 · FAB</td></tr>
+        <tr><td class="tok">xl</td><td class="m">0 2px 4px, 0 8px 16px -4px, 0 24px 40px -12px</td><td class="use">최상위 팝오버</td></tr>
+        <tr><td class="tok">sheet</td><td class="m">0 -1px 4px #0000003d, 0 -8px 48px #0006</td><td class="use">바텀시트(위로 뜬 그림자)</td></tr>
+        <tr><td class="tok">gnb</td><td class="m">0 2px 4px, 0 10px 20px -4px, 0 28px 56px -12px</td><td class="use">하단 내비 — 가장 강함</td></tr>
+        <tr><td class="tok">markerPin / Bubble / Dot</td><td class="m">0 4px 6px · 0 2px 3px · 0 0 4px</td><td class="use">지도 마커 3종</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>z-index 사다리</h3>
+    <div class="tw"><table>
+      <thead><tr><th class="m">1000</th><th class="m">1100</th><th class="m">1300</th><th class="m">1400</th><th class="m">1450</th><th class="m">1500</th><th class="m">1600</th><th class="m">1700</th></tr></thead>
+      <tbody><tr>
+        <td class="use">dropdown<br>profile</td><td class="use">sticky</td><td class="use">modal<br>(바텀시트)</td><td class="use">indicator</td><td class="use">overlay</td><td class="use">panel</td><td class="use">popover<br>(시트 위 버튼)</td><td class="use">tooltip</td>
+      </tr></tbody>
+    </table></div>
+    <div class="note">바텀시트가 <code>modal(1300)</code>인데 그 안의 “맨 위로” 버튼은 <code>popover(1600)</code>를 씁니다. <b>시트 스크롤 레이어를 별도 fixed 레이어로 띄우는</b> 패턴이라, 계곡 리스트 시트에도 같은 구조가 필요합니다.</div>
+  </section>
+
+  <section id="components">
+    <h2>컴포넌트</h2>
+    <p class="sub">실측값 그대로 재현한 프리뷰입니다. 아래 토글로 두 테마를 비교해 보세요.</p>
+    <div class="pvbar">
+      <span class="lbl">프리뷰 테마</span>
+      <div class="seg-t" role="group" aria-label="프리뷰 테마">
+        <button type="button" data-pvset="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-pvset="light" aria-pressed="false">Light</button>
+      </div>
+    </div>
+
+    <div class="pvgrid">
+      <div>
+        <div class="pv">
+          <div class="c-search"><span class="brand">모두의계곡</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <span>계곡 이름 · 지역 검색</span>
+          </div>
+          <div style="height:14px"></div>
+          <div style="display:flex;justify-content:flex-end"><div class="c-fabs">
+            <button class="c-fab" aria-label="즐겨찾기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.3-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.7-7 9-7 9z"/></svg></button>
+            <button class="c-fab" aria-label="내 위치"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke-linecap="round"/></svg></button>
+            <button class="c-cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 10v4h3l6 4V6L7 10H4z"/></svg>현장 제보</button>
+          </div></div>
+        </div>
+        <p class="pvcap">검색바 h48 · FAB 44×44 · CTA h48 / pad 0 16 / gap 6 · 모두 radius full + shadow-lg</p>
+      </div>
+
+      <div>
+        <div class="pv" style="padding-bottom:0">
+          <div style="display:flex;justify-content:flex-start">
+            <div class="c-toast">
+              <span class="e">실시간 소식</span>
+              <span class="t">오후 2시 기준 수락산 계곡 만차</span>
+              <span style="font-size:11px;color:var(--spot-color-secondary)">주차 정보</span>
+            </div>
+          </div>
+          <div style="height:14px"></div>
+          <div class="c-sheet">
+            <div class="c-handle"><b></b></div>
+            <div class="c-sheetbody">
+              <div class="c-seg"><span data-on>계곡 탐색</span><span>혼잡도</span></div>
+              <div class="c-card">
+                <div class="row"><span class="t">백운계곡</span><span class="c-badge">NEW</span></div>
+                <span class="d">수심 얕고 그늘 많은 상류 구간, 돗자리 자리 여유</span>
+                <span class="mt">주차장에서 약 320m</span>
+              </div>
+              <div class="c-card">
+                <div class="row"><span class="t">송추계곡</span><span class="c-badge" data-tone="warn">보통</span></div>
+                <span class="d">입구 상가 밀집, 물놀이 구간은 다리 건너편</span>
+                <span class="mt">주차장에서 약 1,120m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="pvcap">시트 radius 16/16/0/0 · 핸들바 36×4 · 세그먼트 h40(내부 h36) · 카드 radius 12 / pad 12 / 간격 8</p>
+      </div>
+    </div>
+
+    <div style="height:16px"></div>
+    <div class="pv" style="display:flex;justify-content:center">
+      <div class="c-gnb">
+        <i data-on aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></i>
+        <i aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 18l5-12 4 7 3-4 4 9z"/></svg></i>
+        <i aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="10" r="3"/><path d="M12 21s-6-5.2-6-10a6 6 0 1112 0c0 4.8-6 10-6 10z" stroke-linejoin="round"/></svg></i>
+        <i aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 10v4h3l6 4V6L7 10H4z"/></svg></i>
+        <i aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" stroke-linecap="round"/></svg></i>
+      </div>
+    </div>
+    <p class="pvcap">GNB 알약 h50 · 아이템 50×50(pad 6) · 아이콘 26–28 · 활성 foreground / 비활성 muted · inset ring + shadow-gnb · 화면 하단 여백은 <code>--gnb-safe-area: 66px</code>로 시트 하단 패딩과 공유</p>
+  </section>
+
+  <section id="map">
+    <h2>지도 팔레트</h2>
+    <p class="sub">MapLibre 스타일 JSON은 UI 토큰과 분리돼 서버에서 <code>/api/map/style/{dark|light}</code>로 내려옵니다. UI와 색을 공유하지 않고, 지도 쪽은 채도를 더 죽인 별도 팔레트를 씁니다.</p>
+
+    <h3>Dark</h3>
+    <div class="strip">
+      <div style="background:#242729;color:#8f959b">배경 242729</div>
+      <div style="background:#1e3143;color:#8fa8bd">물 1e3143</div>
+      <div style="background:#232e1f;color:#8fa387">녹지 232e1f</div>
+      <div style="background:#2b2f33;color:#949aa1">건물 2b2f33</div>
+      <div style="background:#3e414c;color:#a9adb8">소로 3e414c</div>
+      <div style="background:#565963;color:#c2c5cd">간선 565963</div>
+      <div style="background:#696e7f;color:#d6d9e2">고속 696e7f</div>
+      <div style="background:#e3e7eb;color:#3a3f44">라벨 e3e7eb</div>
+    </div>
+    <div class="striplab"><span>라벨 헤일로 #1a1d1f · POI 라벨 #c5c6cb</span><span>도로 케이싱 #15181a</span></div>
+
+    <h3>Light</h3>
+    <div class="strip">
+      <div style="background:#f7f7f7;color:#6b6b6b">배경 f7f7f7</div>
+      <div style="background:#a5d1f2;color:#2f5670">물 a5d1f2</div>
+      <div style="background:#d8ecc5;color:#4c6339">녹지 d8ecc5</div>
+      <div style="background:#ffffff;color:#7a7a7a">건물 ffffff</div>
+      <div style="background:#fdf0b5;color:#7a6f38">간선 fdf0b5</div>
+      <div style="background:#f8d39a;color:#75593a">고속 f8d39a</div>
+      <div style="background:#ecd792;color:#6f5f2e">케이싱 ecd792</div>
+      <div style="background:#333333;color:#d5d5d5">라벨 333333</div>
+    </div>
+    <div class="striplab"><span>라벨 헤일로 #ffffff · POI 라벨 #575b66</span><span>소로는 흰색 #ffffff</span></div>
+
+    <div class="note"><b>계곡 서비스라면 녹지·수계 비중을 올리세요.</b> 이 팔레트는 도심 야경 기준이라 <code>park</code>가 <code>fill-opacity 0.5→0.2</code>로 줄어듭니다. 산·계곡이 주 무대면 반대로 z9~14에서 녹지 불투명도를 높이고, <code>waterway-stream</code> 라인 폭을 키워 물줄기가 먼저 읽히게 하는 게 맞습니다.</div>
+  </section>
+
+  <section id="marker">
+    <h2>마커 체계</h2>
+    <p class="sub">스프라이트 이미지가 아니라 <b>런타임에 SVG를 만들어 <code>map.addImage()</code>로 등록</b>합니다(현재 359개). 테마가 바뀌면 같은 ID로 다시 그려 넣는 구조라, 색만 바꿔 그대로 이식할 수 있습니다.</p>
+
+    <h3>시설 마커 — 원본 9종</h3>
+    <div class="mkgrid">
+      <span class="mk"><b style="background:#1597d1"></b>역·정류장 <code>#1597d1</code></span>
+      <span class="mk"><b style="background:#16a36a"></b>화장실 <code>#16a36a</code></span>
+      <span class="mk"><b style="background:#e58b20"></b>음식 <code>#e58b20</code></span>
+      <span class="mk"><b style="background:#a66b3d"></b>카페 <code>#a66b3d</code></span>
+      <span class="mk"><b style="background:#7b61ff"></b>편의점 <code>#7b61ff</code></span>
+      <span class="mk"><b style="background:#4b5563"></b>주차 <code>#4b5563</code></span>
+      <span class="mk"><b style="background:#6b5dd3"></b>진출입 <code>#6b5dd3</code></span>
+      <span class="mk"><b style="background:#d65a5a"></b>안전 <code>#d65a5a</code></span>
+      <span class="mk"><b style="background:#3d7ab8"></b>기타 <code>#3d7ab8</code></span>
+    </div>
+
+    <h3>3단계 상태 — 따릉이 잔여량에서 그대로 가져올 수 있는 축</h3>
+    <div class="mkgrid">
+      <span class="mk"><b style="background:#2f9e64"></b>여유 <code>#2f9e64</code></span>
+      <span class="mk"><b style="background:#e79b38"></b>보통 <code>#e79b38</code></span>
+      <span class="mk"><b style="background:#d64545"></b>혼잡 <code>#d64545</code></span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">원형 40×40 뷰박스를 80×80으로 렌더(2x), 배경은 라이트 <code>#ffffff</code> / 다크 <code>#aaa</code>, <code>feDropShadow dy .6 blur 1.5 #1c2530 24%</code>. 선택 시 반지름 15→16.</p>
+
+    <h3>겹침 제어 — 클러스터링을 쓰지 않습니다</h3>
+    <p>마커 2,700개를 뿌리면서도 클러스터가 없습니다. 대신 데이터에 <code>mapIconTier</code>·<code>mapLabelTier</code>·<code>mapImportance</code>를 미리 박아두고 표현식으로 거릅니다.</p>
+    <div class="codebox">
+      <div class="bar"><span>declutter without clustering</span></div>
+      <pre>"icon-allow-overlap": true,          // 충돌 배제 끔 — 아이콘은 무조건 그린다
+"icon-ignore-placement": true,
+"symbol-sort-key": ["case", ["get","selected"], -1, ["get","mapImportance"]],
+"text-field": ["step", ["zoom"],
+   "",                                      // ~11.5: 선택된 것만
+   11.5, ["case", ["&lt;=", ["get","mapLabelTier"], 0], name, ""],
+   13,   ["case", ["&lt;=", ["get","mapLabelTier"], 1], name, ""],
+   15.5, name]                              // 15.5+: 전부</pre>
+    </div>
+    <div class="note">계곡 데이터에도 <b>티어 컬럼을 데이터 생성 시점에 굽는</b> 게 핵심입니다. 유명 계곡 = tier 0, 지선 계곡 = 1, 소규모 소(沼)·명소 = 2 식으로. 런타임 클러스터링보다 결과가 예측 가능하고, 줌 단계별 화면이 항상 같습니다.</div>
+  </section>
+
+  <section id="motion">
+    <h2>모션 · 레이아웃 규칙</h2>
+    <div class="cols">
+      <div>
+        <h3>모션</h3>
+        <div class="tw"><table>
+          <thead><tr><th>용도</th><th class="m">duration</th><th class="m">easing</th></tr></thead>
+          <tbody>
+            <tr><td class="use">색·보더 상태 변화</td><td class="m">0.15s</td><td class="m">ease</td></tr>
+            <tr><td class="use">누름 피드백</td><td class="m">0.12s</td><td class="m">ease-out</td></tr>
+            <tr><td class="use">등장/사라짐</td><td class="m">0.18–0.2s</td><td class="m">ease-out</td></tr>
+            <tr><td class="use">시트·오버레이</td><td class="m">0.2s / 0.32s</td><td class="m">cubic-bezier(.22,1,.36,1)</td></tr>
+            <tr><td class="use">시트 스냅·라운드</td><td class="m">0.2s</td><td class="m">cubic-bezier(.28,1,.6,1)</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted);margin-top:10px">opacity와 transform의 duration을 다르게 겁니다(0.2s / 0.32s). 사라질 때 먼저 흐려지고 늦게 이동해서 잔상이 자연스럽습니다.</p>
+      </div>
+      <div>
+        <h3>레이아웃 변수</h3>
+        <div class="tw"><table>
+          <thead><tr><th>변수</th><th>역할</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">--gnb-safe-area</td><td class="use">66px. 시트 콘텐츠 하단 패딩이 이 값을 그대로 씁니다</td></tr>
+            <tr><td class="tok">--keyboard-inset-height</td><td class="use">가상 키보드 높이. 시트가 이만큼 밀려 올라감</td></tr>
+            <tr><td class="tok">--native-safe-area-inset-*</td><td class="use">웹뷰용. 없으면 <code>env(safe-area-inset-*)</code>로 폴백</td></tr>
+            <tr><td class="tok">--sbs-*</td><td class="use">바텀시트 전용 별칭 레이어 — <code>--spot-*</code>를 참조만 함</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted);margin-top:10px"><code>100dvh</code> + <code>viewport-fit=cover</code> + <code>user-scalable=no</code>. 시트는 <code>max(gnb-safe-area, keyboard-inset)</code>으로 하단 인셋을 계산합니다.</p>
+      </div>
+    </div>
+    <div class="note"><b>별칭 레이어가 이 시스템의 진짜 요령입니다.</b> 컴포넌트는 <code>--sbs-surface</code>를 보고, 그게 <code>--spot-color-background</code>를 가리킵니다. 컴포넌트를 딴 프로젝트로 떼어갈 때 별칭 한 줄만 다시 연결하면 됩니다 — 모두의계곡 이식도 이 지점을 노리면 가장 싸게 끝납니다.</div>
+  </section>
+
+  <section id="port">
+    <h2>계곡으로 이식</h2>
+    <p class="sub">뉴트럴·간격·라운드·그림자는 그대로 두고 accent만 교체합니다. spotts의 파랑(#297cff)은 “도심 야간 이벤트”의 색이고, 계곡은 물·이끼 쪽 청록이 주제와 맞습니다.</p>
+
+    <h3>accent 제안</h3>
+    <div class="tw"><table>
+      <thead><tr><th>토큰</th><th>값</th><th>흰 글자 대비</th><th>쓰임</th></tr></thead>
+      <tbody>
+        <tr><td class="tok">primary</td><td><span class="sw" style="background:#0c8b80"></span><span class="m">#0c8b80</span></td><td class="m">4.2 : 1</td><td class="use">CTA·활성 상태. 15px/600 이상에서만</td></tr>
+        <tr><td class="tok">primaryStrong</td><td><span class="sw" style="background:#076a62"></span><span class="m">#076a62</span></td><td class="m">6.5 : 1</td><td class="use">12px 이하 소형 텍스트·아이콘</td></tr>
+        <tr><td class="tok">primaryHover</td><td><span class="sw" style="background:#0a7d73"></span><span class="m">#0a7d73</span></td><td class="m">—</td><td class="use">hover</td></tr>
+        <tr><td class="tok">link (dark)</td><td><span class="sw" style="background:#2fbfb2"></span><span class="m">#2fbfb2</span></td><td class="m">7.8 : 1 (다크 바탕)</td><td class="use">다크에서 링크·강조</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">참고로 원본 <code>#297cff</code>에 흰 글자는 3.9:1로 본문 텍스트 AA(4.5:1)에 못 미칩니다. 위 값은 그보다 낫게 잡았고, 작은 글자에는 <code>primaryStrong</code>을 쓰면 AA를 넘깁니다.</p>
+
+    <h3>복사해서 쓰는 토큰 블록</h3>
+    <div class="codebox">
+      <div class="bar"><span>valley-tokens.css</span><button class="cpy" type="button" data-copy="#tokencss">복사</button></div>
+      <pre id="tokencss">:root{
+  /* neutral — spotts 그대로 (토스 계열) */
+  --vly-color-background:#fff;          --vly-color-backgroundSecondary:#f9fafb;
+  --vly-color-foreground:#191f28;       --vly-color-secondary:#6b7684;
+  --vly-color-muted:#8b95a1;            --vly-color-cardBackground:#f7f8fa;
+  --vly-color-border:#dbdfe4cc;         --vly-color-borderLight:#e9ecefe6;
+  --vly-color-borderHover:#c4cad2e6;
+  --vly-color-gray100:#f2f4f6; --vly-color-gray200:#e5e8eb;
+  --vly-color-gray300:#d1d6db; --vly-color-gray500:#8b95a1;
+  --vly-color-overlay:#0006;   --vly-color-overlaySoft:#0000003d;
+  --vly-color-mapBackground:#eaecef;
+  /* accent — 계곡 */
+  --vly-color-primary:#0c8b80;  --vly-color-primaryHover:#0a7d73;
+  --vly-color-primaryActive:#096f66; --vly-color-primaryStrong:#076a62;
+  --vly-color-onPrimary:#fff;   --vly-color-link:#0c8b80;
+  /* semantic — 혼잡도 3단계와 색을 맞춘다 */
+  --vly-color-success:#15b76d;  --vly-color-warning:#ff9500;
+  --vly-color-danger:#f04452;   --vly-color-info:#0ea5e9;
+
+  --vly-space-xxs:2px; --vly-space-xs:4px;  --vly-space-xsm:6px;
+  --vly-space-sm:8px;  --vly-space-smd:12px; --vly-space-md:16px;
+  --vly-space-lg:24px; --vly-space-xl:32px;  --vly-space-2xl:48px;
+
+  --vly-radius-xs:4px; --vly-radius-sm:6px; --vly-radius-md:8px;
+  --vly-radius-lg:12px; --vly-radius-xl:24px; --vly-radius-full:9999px;
+
+  --vly-font-body:"Pretendard Variable",Pretendard,-apple-system,system-ui,
+                  "Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --vly-fontWeight-regular:400; --vly-fontWeight-medium:500; --vly-fontWeight-semibold:600;
+  --vly-lineHeight-tight:1.25; --vly-lineHeight-normal:1.5; --vly-lineHeight-relaxed:1.75;
+
+  --vly-shadow-sm:0 2px 2px #00000012;
+  --vly-shadow-md:0 4px 8px -4px #00000012,0 16px 24px -8px #0000001a;
+  --vly-shadow-lg:0 1px 1px #0000000a,0 4px 8px -4px #00000012,0 16px 24px -8px #0000001a;
+  --vly-shadow-sheet:0 -1px 4px #0000000a,0 -8px 48px #00000024;
+  --vly-shadow-gnb:0 2px 4px #00000024,0 10px 20px -4px #0000002e,0 28px 56px -12px #0000003d;
+  --vly-shadow-markerPin:0 4px 6px #00000047;
+
+  --vly-z-dropdown:1000; --vly-z-sticky:1100; --vly-z-modal:1300;
+  --vly-z-indicator:1400; --vly-z-overlay:1450; --vly-z-panel:1500;
+  --vly-z-popover:1600;  --vly-z-tooltip:1700;
+
+  --gnb-safe-area:66px;
+}
+:root[data-theme="dark"]{
+  --vly-color-background:#18181c;       --vly-color-backgroundSecondary:#0e0e11;
+  --vly-color-foreground:#f2f4f6;       --vly-color-secondary:#9ea4ad;
+  --vly-color-muted:#6e747f;            --vly-color-cardBackground:#202024;
+  --vly-color-border:#393940b3;         --vly-color-borderLight:#2e2e34e6;
+  --vly-color-borderHover:#4b4b54e6;
+  --vly-color-gray100:#202024; --vly-color-gray200:#26262b;
+  --vly-color-gray300:#303036; --vly-color-gray500:#4b4b54;
+  --vly-color-overlay:#0009;   --vly-color-overlaySoft:#0000005c;
+  --vly-color-mapBackground:#2a2c31;
+  --vly-color-primary:#0c8b80; --vly-color-link:#2fbfb2;
+  --vly-color-success:#37d089; --vly-color-warning:#ffb02e;
+  --vly-color-danger:#ff6b73;  --vly-color-info:#38bdf8;
+  --vly-shadow-sm:0 2px 2px #00000047;
+  --vly-shadow-md:0 4px 8px -4px #00000047,0 16px 24px -8px #0000005c;
+  --vly-shadow-lg:0 1px 1px #0003,0 4px 8px -4px #00000047,0 16px 24px -8px #0000005c;
+  --vly-shadow-sheet:0 -1px 4px #0000003d,0 -8px 48px #0006;
+  --vly-shadow-gnb:0 2px 4px #0006,0 10px 20px -4px #0000007a,0 28px 56px -12px #00000094;
+  --vly-shadow-markerPin:0 4px 6px #0000008c;
+}</pre>
+    </div>
+
+    <h3>도메인 치환표</h3>
+    <div class="tw"><table>
+      <thead><tr><th>spotts</th><th>모두의계곡</th><th>메모</th></tr></thead>
+      <tbody>
+        <tr><td>관람 Spot (58)</td><td>계곡·물놀이 지점</td><td class="use">tier 컬럼 그대로 필요</td></tr>
+        <tr><td>편의시설 (95)</td><td>주차장·화장실·매점·평상·구조대</td><td class="use">마커 9색 재배치</td></tr>
+        <tr><td>따릉이 잔여 3단계</td><td>주차 여유 / 혼잡도</td><td class="use">색·아이콘 그대로 재사용</td></tr>
+        <tr><td>교통 통제 구간</td><td>입산 통제 · 물놀이 금지 구역</td><td class="use">빨강 대시 라인 + control-point</td></tr>
+        <tr><td>불꽃까지 거리</td><td>주차장/정류장까지 거리</td><td class="use">카드 메타 12/400</td></tr>
+        <tr><td>오렌지플레이존 폴리곤</td><td>유료 구역 · 야영 가능 구역</td><td class="use">fill 0.075 / 선택 0.36</td></tr>
+        <tr><td>실시간 소식 SSE</td><td>수위·혼잡 제보 피드</td><td class="use">아이브로우 10/600 danger</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><b>계곡에만 필요한 것 하나.</b> spotts에는 없는 축이 “시간”입니다. 계곡은 계절·시간대(오전 한산 → 오후 만차)가 핵심 정보라, 카드 메타 한 줄과 마커 상태색을 <b>시간축에 연동</b>하는 컴포넌트가 하나 더 필요합니다. 위 3단계 상태색을 그 자리에 쓰면 시스템 안에서 해결됩니다.</div>
+  </section>
+
+  <footer>
+    출처 · 2026-09-01 spotts.kr/firework 라이브 DOM·CSSOM·스타일 JSON 실측. 수치는 모두 computed style 기준이며 추정값은 포함하지 않았습니다.
+  </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var COLORS = [
+    ["background","#ffffff","#18181c","기본 서피스 · 떠 있는 알약 전부"],
+    ["backgroundSecondary","#f9fafb","#0e0e11","한 단 낮은 배경"],
+    ["backgroundOpacity","#ffffffcc","#18181ccc","검색바 반투명 + blur(14px)"],
+    ["foreground","#191f28","#f2f4f6","본문 · 활성 아이콘"],
+    ["secondary","#6b7684","#9ea4ad","카드 설명"],
+    ["muted","#8b95a1","#6e747f","캡션 · 비활성 아이콘"],
+    ["cardBackground","#f7f8fa","#202024","리스트 카드 · 세그먼트 트랙"],
+    ["cardBorder","transparent","transparent","카드는 테두리 없음"],
+    ["border","#dbdfe4cc","#393940b3","기본 구분선 · 시트 핸들바"],
+    ["borderLight","#e9ecefe6","#2e2e34e6","검색바 hairline (0.67px)"],
+    ["borderHover","#c4cad2e6","#4b4b54e6","hover 테두리"],
+    ["gray100","#f2f4f6","#202024","hover 배경"],
+    ["gray200","#e5e8eb","#26262b","—"],
+    ["gray300","#d1d6db","#303036","세그먼트 활성 알약"],
+    ["gray500","#8b95a1","#4b4b54","—"],
+    ["primary","#297cff","#297cff","두 테마 동일"],
+    ["primaryHover","#2776f2","#2776f2","—"],
+    ["primaryActive","#2570e6","#2570e6","—"],
+    ["onPrimary","#ffffff","#ffffff","—"],
+    ["link","#297cff","#4d94ff","다크에서만 밝게"],
+    ["danger","#f04452","#ff6b73","배지 · 통제 라인"],
+    ["dangerHover","#db3a47","#ff8a90","—"],
+    ["onDanger","#ffffff","#ffffff","—"],
+    ["success","#15b76d","#37d089","—"],
+    ["warning","#ff9500","#ffb02e","—"],
+    ["info","#0ea5e9","#38bdf8","—"],
+    ["overlay","#00000066","#00000099","모달 딤"],
+    ["overlaySoft","#0000003d","#0000005c","약한 딤"],
+    ["menuOutline","#0000001a","#ffffff33","메뉴 외곽선"],
+    ["mapBackground","#eaecef","#2a2c31","맵 캔버스 로딩 바탕"]
+  ];
+  var tb = document.querySelector("#colortable tbody");
+  if(tb){
+    COLORS.forEach(function(c){
+      var tr = document.createElement("tr");
+      function cell(v){
+        if(v==="transparent") return '<span class="sw ck"></span><span class="m">transparent</span>';
+        return '<span class="sw" style="background:'+v+'"></span><span class="m">'+v+'</span>';
+      }
+      tr.innerHTML = '<td class="tok">'+c[0]+'</td><td>'+cell(c[1])+'</td><td>'+cell(c[2])+'</td><td class="use">'+c[3]+'</td>';
+      tb.appendChild(tr);
+    });
+  }
+
+  document.querySelectorAll("[data-pvset]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var mode = btn.getAttribute("data-pvset");
+      document.querySelectorAll(".pv").forEach(function(p){ p.setAttribute("data-pv", mode); });
+      document.querySelectorAll("[data-pvset]").forEach(function(b){
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+    });
+  });
+
+  document.querySelectorAll(".cpy").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var el = document.querySelector(btn.getAttribute("data-copy"));
+      if(!el) return;
+      var done = function(){ var o = btn.textContent; btn.textContent = "복사됨"; setTimeout(function(){ btn.textContent = o; }, 1400); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(el.textContent).then(done, function(){});
+      }
+    });
+  });
+})();
+</script>

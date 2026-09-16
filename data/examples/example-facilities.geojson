@@ -1,0 +1,70 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "시설 샘플 — 데이터 모양을 보여주기 위한 예시. 좌표·수치는 실제 측정값이 아님.",
+    "source": "샘플 — 실제 데이터는 현장 검수로 생성",
+    "sourceFile": "data/example-facilities.geojson",
+    "datasetVersion": "2026-09-03.0",
+    "collectedAt": "2026-09-03",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "샘플 1개 계곡(example-valley.geojson)의 시설 4개 — 주차장 2·화장실 1·매점 1"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [127.2623, 37.8343] },
+      "properties": {
+        "id": "sample-parking-upper",
+        "valleyId": "sample",
+        "name": "샘플 상류 주차장",
+        "facilityType": "parking",
+        "capacity": 40,
+        "feeNote": "무료",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [127.2726, 37.8262] },
+      "properties": {
+        "id": "sample-parking-lower",
+        "valleyId": "sample",
+        "name": "샘플 하류 공영주차장",
+        "facilityType": "parking",
+        "capacity": 120,
+        "feeNote": "무료",
+        "operatingHours": "06:00~22:00",
+        "mapIconTier": 0,
+        "mapImportance": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [127.2651, 37.8312] },
+      "properties": {
+        "id": "sample-restroom-1",
+        "valleyId": "sample",
+        "name": "중류 공중화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [127.2668, 37.8296] },
+      "properties": {
+        "id": "sample-store-1",
+        "valleyId": "sample",
+        "name": "계곡 매점",
+        "facilityType": "store",
+        "operatingHours": "09:00~19:00",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    }
+  ]
+}

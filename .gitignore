@@ -1,9 +1,34 @@
 node_modules/
+.expo/
+dist/
+build/
+web-build/
+*.tsbuildinfo
+.DS_Store
+*.log
+.env*.local
+ios/
+android/
+coverage/
+
+# maplibre 워커는 설치된 패키지에서 매번 복사한다 (scripts/sync-maplibre-worker.mjs)
+apps/valley-map/public/maplibre/
+# 계곡 데이터는 루트 data/*.geojson 에서 매번 복사한다 (scripts/sync-valley-data.mjs)
+apps/valley-map/assets/valley/
+
+# 시각 검증 증거 (스크린샷) — 저장소에 담지 않는다
+.proof/
+
+# 서버 SQLite 파일 (S1) — 로컬 캐시, 저장소에 담지 않는다
+server/data/
+
+# 시딩 스크립트 캐시(Overpass·브이월드 응답·Terrarium 타일) — 브이월드 응답은 저장하지 않는다(약관 §19), 나머지도 저장소에 담지 않는다
+scripts/seed/.cache/
+# 사용자가 내려받은 표준데이터 CSV(전국주차장정보 등) — 원본은 data.go.kr, 저장소에 담지 않는다
+data/seed/std/
+
+# Integration evidence and local configuration
+.proof/
 .env
 .env.*
 !.env.example
-.proof/
-dist/
-.expo/
-.DS_Store
-*.log

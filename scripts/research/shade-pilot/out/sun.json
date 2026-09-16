@@ -1,0 +1,772 @@
+[
+ {
+  "date": "2026-07-25",
+  "timeLocal": "10:00",
+  "azimuth": 107.24,
+  "elevation": 51.45,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "10:10",
+  "azimuth": 109.59,
+  "elevation": 53.31,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "10:20",
+  "azimuth": 112.1,
+  "elevation": 55.15,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "10:30",
+  "azimuth": 114.81,
+  "elevation": 56.95,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "10:40",
+  "azimuth": 117.74,
+  "elevation": 58.72,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "10:50",
+  "azimuth": 120.93,
+  "elevation": 60.43,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "11:00",
+  "azimuth": 124.41,
+  "elevation": 62.09,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "11:10",
+  "azimuth": 128.23,
+  "elevation": 63.67,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "11:20",
+  "azimuth": 132.43,
+  "elevation": 65.17,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "11:30",
+  "azimuth": 137.07,
+  "elevation": 66.57,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "11:40",
+  "azimuth": 142.18,
+  "elevation": 67.84,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "11:50",
+  "azimuth": 147.79,
+  "elevation": 68.97,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "12:00",
+  "azimuth": 153.92,
+  "elevation": 69.93,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "12:10",
+  "azimuth": 160.53,
+  "elevation": 70.69,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "12:20",
+  "azimuth": 167.56,
+  "elevation": 71.23,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "12:30",
+  "azimuth": 174.87,
+  "elevation": 71.53,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "12:40",
+  "azimuth": 182.31,
+  "elevation": 71.57,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "12:50",
+  "azimuth": 189.7,
+  "elevation": 71.37,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "13:00",
+  "azimuth": 196.85,
+  "elevation": 70.91,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "13:10",
+  "azimuth": 203.62,
+  "elevation": 70.23,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "13:20",
+  "azimuth": 209.93,
+  "elevation": 69.34,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "13:30",
+  "azimuth": 215.74,
+  "elevation": 68.27,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "13:40",
+  "azimuth": 221.03,
+  "elevation": 67.05,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "13:50",
+  "azimuth": 225.84,
+  "elevation": 65.69,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "14:00",
+  "azimuth": 230.2,
+  "elevation": 64.23,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "14:10",
+  "azimuth": 234.15,
+  "elevation": 62.68,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "14:20",
+  "azimuth": 237.75,
+  "elevation": 61.04,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "14:30",
+  "azimuth": 241.04,
+  "elevation": 59.35,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "14:40",
+  "azimuth": 244.06,
+  "elevation": 57.6,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "14:50",
+  "azimuth": 246.84,
+  "elevation": 55.81,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "15:00",
+  "azimuth": 249.42,
+  "elevation": 53.99,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "15:10",
+  "azimuth": 251.83,
+  "elevation": 52.13,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "15:20",
+  "azimuth": 254.09,
+  "elevation": 50.25,
+  "shadedCellFraction": 0.0001
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "15:30",
+  "azimuth": 256.21,
+  "elevation": 48.35,
+  "shadedCellFraction": 0.0002
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "15:40",
+  "azimuth": 258.23,
+  "elevation": 46.43,
+  "shadedCellFraction": 0.0003
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "15:50",
+  "azimuth": 260.14,
+  "elevation": 44.49,
+  "shadedCellFraction": 0.0004
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "16:00",
+  "azimuth": 261.97,
+  "elevation": 42.55,
+  "shadedCellFraction": 0.001
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "16:10",
+  "azimuth": 263.73,
+  "elevation": 40.6,
+  "shadedCellFraction": 0.002
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "16:20",
+  "azimuth": 265.42,
+  "elevation": 38.64,
+  "shadedCellFraction": 0.0042
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "16:30",
+  "azimuth": 267.06,
+  "elevation": 36.68,
+  "shadedCellFraction": 0.0073
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "16:40",
+  "azimuth": 268.66,
+  "elevation": 34.71,
+  "shadedCellFraction": 0.0133
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "16:50",
+  "azimuth": 270.21,
+  "elevation": 32.74,
+  "shadedCellFraction": 0.0218
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "17:00",
+  "azimuth": 271.73,
+  "elevation": 30.78,
+  "shadedCellFraction": 0.0332
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "17:10",
+  "azimuth": 273.22,
+  "elevation": 28.81,
+  "shadedCellFraction": 0.0471
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "17:20",
+  "azimuth": 274.69,
+  "elevation": 26.85,
+  "shadedCellFraction": 0.0656
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "17:30",
+  "azimuth": 276.14,
+  "elevation": 24.89,
+  "shadedCellFraction": 0.0886
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "17:40",
+  "azimuth": 277.58,
+  "elevation": 22.94,
+  "shadedCellFraction": 0.1143
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "17:50",
+  "azimuth": 279.01,
+  "elevation": 21.0,
+  "shadedCellFraction": 0.1466
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "18:00",
+  "azimuth": 280.43,
+  "elevation": 19.06,
+  "shadedCellFraction": 0.1813
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "18:10",
+  "azimuth": 281.84,
+  "elevation": 17.14,
+  "shadedCellFraction": 0.2243
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "18:20",
+  "azimuth": 283.26,
+  "elevation": 15.22,
+  "shadedCellFraction": 0.2687
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "18:30",
+  "azimuth": 284.68,
+  "elevation": 13.32,
+  "shadedCellFraction": 0.3141
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "18:40",
+  "azimuth": 286.11,
+  "elevation": 11.43,
+  "shadedCellFraction": 0.3583
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "18:50",
+  "azimuth": 287.54,
+  "elevation": 9.56,
+  "shadedCellFraction": 0.4075
+ },
+ {
+  "date": "2026-07-25",
+  "timeLocal": "19:00",
+  "azimuth": 288.99,
+  "elevation": 7.71,
+  "shadedCellFraction": 0.465
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "10:00",
+  "azimuth": 114.37,
+  "elevation": 48.24,
+  "shadedCellFraction": 0.0001
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "10:10",
+  "azimuth": 116.9,
+  "elevation": 50.01,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "10:20",
+  "azimuth": 119.59,
+  "elevation": 51.74,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "10:30",
+  "azimuth": 122.46,
+  "elevation": 53.43,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "10:40",
+  "azimuth": 125.53,
+  "elevation": 55.06,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "10:50",
+  "azimuth": 128.83,
+  "elevation": 56.62,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "11:00",
+  "azimuth": 132.37,
+  "elevation": 58.12,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "11:10",
+  "azimuth": 136.19,
+  "elevation": 59.52,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "11:20",
+  "azimuth": 140.29,
+  "elevation": 60.83,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "11:30",
+  "azimuth": 144.71,
+  "elevation": 62.03,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "11:40",
+  "azimuth": 149.43,
+  "elevation": 63.1,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "11:50",
+  "azimuth": 154.47,
+  "elevation": 64.02,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "12:00",
+  "azimuth": 159.8,
+  "elevation": 64.78,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "12:10",
+  "azimuth": 165.38,
+  "elevation": 65.37,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "12:20",
+  "azimuth": 171.17,
+  "elevation": 65.77,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "12:30",
+  "azimuth": 177.08,
+  "elevation": 65.97,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "12:40",
+  "azimuth": 183.03,
+  "elevation": 65.96,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "12:50",
+  "azimuth": 188.94,
+  "elevation": 65.76,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "13:00",
+  "azimuth": 194.72,
+  "elevation": 65.35,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "13:10",
+  "azimuth": 200.3,
+  "elevation": 64.76,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "13:20",
+  "azimuth": 205.62,
+  "elevation": 63.99,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "13:30",
+  "azimuth": 210.64,
+  "elevation": 63.06,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "13:40",
+  "azimuth": 215.35,
+  "elevation": 61.98,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "13:50",
+  "azimuth": 219.75,
+  "elevation": 60.78,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "14:00",
+  "azimuth": 223.85,
+  "elevation": 59.47,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "14:10",
+  "azimuth": 227.65,
+  "elevation": 58.05,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "14:20",
+  "azimuth": 231.18,
+  "elevation": 56.56,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "14:30",
+  "azimuth": 234.47,
+  "elevation": 54.99,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "14:40",
+  "azimuth": 237.53,
+  "elevation": 53.36,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "14:50",
+  "azimuth": 240.4,
+  "elevation": 51.67,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "15:00",
+  "azimuth": 243.08,
+  "elevation": 49.93,
+  "shadedCellFraction": 0.0
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "15:10",
+  "azimuth": 245.6,
+  "elevation": 48.16,
+  "shadedCellFraction": 0.0001
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "15:20",
+  "azimuth": 247.98,
+  "elevation": 46.35,
+  "shadedCellFraction": 0.0002
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "15:30",
+  "azimuth": 250.23,
+  "elevation": 44.51,
+  "shadedCellFraction": 0.0003
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "15:40",
+  "azimuth": 252.37,
+  "elevation": 42.65,
+  "shadedCellFraction": 0.0006
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "15:50",
+  "azimuth": 254.41,
+  "elevation": 40.76,
+  "shadedCellFraction": 0.0019
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "16:00",
+  "azimuth": 256.37,
+  "elevation": 38.86,
+  "shadedCellFraction": 0.0036
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "16:10",
+  "azimuth": 258.24,
+  "elevation": 36.94,
+  "shadedCellFraction": 0.0068
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "16:20",
+  "azimuth": 260.05,
+  "elevation": 35.0,
+  "shadedCellFraction": 0.0115
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "16:30",
+  "azimuth": 261.8,
+  "elevation": 33.06,
+  "shadedCellFraction": 0.0202
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "16:40",
+  "azimuth": 263.5,
+  "elevation": 31.11,
+  "shadedCellFraction": 0.0304
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "16:50",
+  "azimuth": 265.15,
+  "elevation": 29.15,
+  "shadedCellFraction": 0.0436
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "17:00",
+  "azimuth": 266.77,
+  "elevation": 27.19,
+  "shadedCellFraction": 0.0615
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "17:10",
+  "azimuth": 268.35,
+  "elevation": 25.22,
+  "shadedCellFraction": 0.0835
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "17:20",
+  "azimuth": 269.9,
+  "elevation": 23.26,
+  "shadedCellFraction": 0.1081
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "17:30",
+  "azimuth": 271.43,
+  "elevation": 21.29,
+  "shadedCellFraction": 0.1375
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "17:40",
+  "azimuth": 272.94,
+  "elevation": 19.33,
+  "shadedCellFraction": 0.171
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "17:50",
+  "azimuth": 274.44,
+  "elevation": 17.37,
+  "shadedCellFraction": 0.2121
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "18:00",
+  "azimuth": 275.93,
+  "elevation": 15.42,
+  "shadedCellFraction": 0.2539
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "18:10",
+  "azimuth": 277.41,
+  "elevation": 13.47,
+  "shadedCellFraction": 0.3023
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "18:20",
+  "azimuth": 278.89,
+  "elevation": 11.53,
+  "shadedCellFraction": 0.3477
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "18:30",
+  "azimuth": 280.37,
+  "elevation": 9.6,
+  "shadedCellFraction": 0.3955
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "18:40",
+  "azimuth": 281.85,
+  "elevation": 7.69,
+  "shadedCellFraction": 0.4512
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "18:50",
+  "azimuth": 283.34,
+  "elevation": 5.8,
+  "shadedCellFraction": 0.539
+ },
+ {
+  "date": "2026-08-15",
+  "timeLocal": "19:00",
+  "azimuth": 284.85,
+  "elevation": 3.94,
+  "shadedCellFraction": 0.6853
+ }
+]

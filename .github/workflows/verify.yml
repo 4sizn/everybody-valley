@@ -1,0 +1,41 @@
+name: Verify
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: npm install -g pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: npm ci --prefix design-system
+      - run: pnpm design:build && pnpm design:check
+      - run: git diff --exit-code -- design-system/public packages/ui apps/valley-map/public/moduvalley
+      - run: pnpm verify
+      - run: pnpm build
+        env:
+          EXPO_NO_DOTENV: '1'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: production-web-server
+          path: |
+            apps/valley-map/dist
+            server/dist
+      - run: docker build -f server/Dockerfile -t everybody-valley:ci .
+      - run: |
+          docker run -d --name valley-ci -p 127.0.0.1:8787:8787 -e JOBS_ENABLED=false everybody-valley:ci
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:8787/healthz; then break; fi
+            sleep 1
+          done
+          curl --fail http://127.0.0.1:8787/healthz
+          curl --fail http://127.0.0.1:8787/ > /tmp/valley-home.html
+          grep -q '모두밸리' /tmp/valley-home.html
+          docker logs valley-ci

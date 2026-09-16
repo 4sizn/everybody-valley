@@ -1,0 +1,144 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "왕방계곡 시설 7개 — 표준데이터 주차장 6 · 화장실 0 · OSM 1 · 수기 0. 계곡 점 반경 1.5 km.",
+    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.126267, 37.891335]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000021",
+        "valleyId": "wangbang",
+        "name": "탑동6주차장",
+        "facilityType": "parking",
+        "capacity": 26,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.120831, 37.892763]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000020",
+        "valleyId": "wangbang",
+        "name": "탑동5주차장",
+        "facilityType": "parking",
+        "capacity": 49,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.111932, 37.89577]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000019",
+        "valleyId": "wangbang",
+        "name": "탑동4주차장",
+        "facilityType": "parking",
+        "capacity": 16,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.122164, 37.892075]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000018",
+        "valleyId": "wangbang",
+        "name": "탑동3주차장",
+        "facilityType": "parking",
+        "capacity": 43,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.114341, 37.896529]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000017",
+        "valleyId": "wangbang",
+        "name": "탑동2주차장",
+        "facilityType": "parking",
+        "capacity": 31,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.109349, 37.891901]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000016",
+        "valleyId": "wangbang",
+        "name": "탑동1주차장",
+        "facilityType": "parking",
+        "capacity": 34,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.124643, 37.892222]
+      },
+      "properties": {
+        "id": "wangbang-osm-store-368868204",
+        "valleyId": "wangbang",
+        "name": "바다종합상가",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+{
+ "gridResM": 1,
+ "minAreaM2": 25.0,
+ "corridorHalfM": 200.0,
+ "corridorCellFrac": 0.1056,
+ "byTol": {
+  "0m": {
+   "totalBytes": 33445080,
+   "totalGzipBytes": 3791400,
+   "totalVertices": 1546815,
+   "totalPolygons": 5559,
+   "seconds": 15.1,
+   "byHour": {
+    "10:00": {
+     "polygons": 649,
+     "vertices": 174299,
+     "bytes": 3773941,
+     "gzipBytes": 428411
+    },
+    "11:00": {
+     "polygons": 608,
+     "vertices": 181740,
+     "bytes": 3919000,
+     "gzipBytes": 443285
+    },
+    "12:00": {
+     "polygons": 607,
+     "vertices": 182324,
+     "bytes": 3930900,
+     "gzipBytes": 444460
+    },
+    "13:00": {
+     "polygons": 607,
+     "vertices": 182530,
+     "bytes": 3935274,
+     "gzipBytes": 444974
+    },
+    "14:00": {
+     "polygons": 606,
+     "vertices": 182294,
+     "bytes": 3930145,
+     "gzipBytes": 444422
+    },
+    "15:00": {
+     "polygons": 615,
+     "vertices": 178771,
+     "bytes": 3858930,
+     "gzipBytes": 436475
+    },
+    "16:00": {
+     "polygons": 676,
+     "vertices": 172269,
+     "bytes": 3737950,
+     "gzipBytes": 424110
+    },
+    "17:00": {
+     "polygons": 711,
+     "vertices": 165846,
+     "bytes": 3612368,
+     "gzipBytes": 409453
+    },
+    "18:00": {
+     "polygons": 480,
+     "vertices": 126742,
+     "bytes": 2746572,
+     "gzipBytes": 315810
+    }
+   },
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 607,
+      "vertices": 182521,
+      "bytes": 3877422,
+      "gzipBytes": 444422
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 700,
+       "vertices": 11812,
+       "bytes": 355361,
+       "gzipBytes": 32714
+      },
+      "11:00": {
+       "polygons": 12,
+       "vertices": 188,
+       "bytes": 5826,
+       "gzipBytes": 687
+      },
+      "12:00": {
+       "polygons": 1,
+       "vertices": 7,
+       "bytes": 341,
+       "gzipBytes": 199
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 13,
+       "bytes": 469,
+       "gzipBytes": 213
+      },
+      "15:00": {
+       "polygons": 176,
+       "vertices": 2606,
+       "bytes": 81801,
+       "gzipBytes": 7585
+      },
+      "16:00": {
+       "polygons": 1022,
+       "vertices": 23539,
+       "bytes": 649589,
+       "gzipBytes": 62954
+      },
+      "17:00": {
+       "polygons": 1948,
+       "vertices": 67798,
+       "bytes": 1715076,
+       "gzipBytes": 177615
+      },
+      "18:00": {
+       "polygons": 1970,
+       "vertices": 98109,
+       "bytes": 2348297,
+       "gzipBytes": 251410
+      }
+     },
+     "castTotalBytes": 5156802,
+     "castTotalGzipBytes": 533435,
+     "castTotalVertices": 204072,
+     "totalBytes": 9034224,
+     "totalGzipBytes": 977857,
+     "totalVertices": 386593
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 99,
+      "vertices": 23799,
+      "bytes": 508167,
+      "gzipBytes": 56859
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 96,
+       "vertices": 2192,
+       "bytes": 60686,
+       "gzipBytes": 5791
+      },
+      "11:00": {
+       "polygons": 5,
+       "vertices": 87,
+       "bytes": 2635,
+       "gzipBytes": 409
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 13,
+       "bytes": 469,
+       "gzipBytes": 213
+      },
+      "15:00": {
+       "polygons": 19,
+       "vertices": 283,
+       "bytes": 8892,
+       "gzipBytes": 942
+      },
+      "16:00": {
+       "polygons": 194,
+       "vertices": 4414,
+       "bytes": 122293,
+       "gzipBytes": 11627
+      },
+      "17:00": {
+       "polygons": 320,
+       "vertices": 11440,
+       "bytes": 288013,
+       "gzipBytes": 28731
+      },
+      "18:00": {
+       "polygons": 200,
+       "vertices": 14384,
+       "bytes": 330471,
+       "gzipBytes": 35624
+      }
+     },
+     "castTotalBytes": 813543,
+     "castTotalGzipBytes": 83453,
+     "castTotalVertices": 32813,
+     "totalBytes": 1321710,
+     "totalGzipBytes": 140312,
+     "totalVertices": 56612
+    }
+   }
+  },
+  "1m": {
+   "totalBytes": 12022517,
+   "totalGzipBytes": 1856927,
+   "totalVertices": 515697,
+   "totalPolygons": 5559,
+   "seconds": 13.3,
+   "byHour": {
+    "10:00": {
+     "polygons": 649,
+     "vertices": 61229,
+     "bytes": 1424721,
+     "gzipBytes": 216877
+    },
+    "11:00": {
+     "polygons": 608,
+     "vertices": 56997,
+     "bytes": 1327350,
+     "gzipBytes": 208554
+    },
+    "12:00": {
+     "polygons": 607,
+     "vertices": 56912,
+     "bytes": 1325301,
+     "gzipBytes": 208448
+    },
+    "13:00": {
+     "polygons": 607,
+     "vertices": 56886,
+     "bytes": 1324789,
+     "gzipBytes": 208416
+    },
+    "14:00": {
+     "polygons": 606,
+     "vertices": 56852,
+     "bytes": 1323858,
+     "gzipBytes": 208226
+    },
+    "15:00": {
+     "polygons": 615,
+     "vertices": 58618,
+     "bytes": 1362604,
+     "gzipBytes": 211700
+    },
+    "16:00": {
+     "polygons": 676,
+     "vertices": 60474,
+     "bytes": 1415396,
+     "gzipBytes": 215764
+    },
+    "17:00": {
+     "polygons": 711,
+     "vertices": 58459,
+     "bytes": 1381452,
+     "gzipBytes": 207682
+    },
+    "18:00": {
+     "polygons": 480,
+     "vertices": 49270,
+     "bytes": 1137046,
+     "gzipBytes": 171260
+    }
+   },
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 607,
+      "vertices": 56861,
+      "bytes": 1266611,
+      "gzipBytes": 207891
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 700,
+       "vertices": 6527,
+       "bytes": 245517,
+       "gzipBytes": 24065
+      },
+      "11:00": {
+       "polygons": 12,
+       "vertices": 92,
+       "bytes": 3831,
+       "gzipBytes": 555
+      },
+      "12:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 302,
+       "gzipBytes": 196
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 7,
+       "bytes": 343,
+       "gzipBytes": 204
+      },
+      "15:00": {
+       "polygons": 176,
+       "vertices": 1481,
+       "bytes": 58441,
+       "gzipBytes": 5713
+      },
+      "16:00": {
+       "polygons": 1022,
+       "vertices": 10907,
+       "bytes": 387159,
+       "gzipBytes": 40204
+      },
+      "17:00": {
+       "polygons": 1948,
+       "vertices": 27000,
+       "bytes": 867176,
+       "gzipBytes": 99057
+      },
+      "18:00": {
+       "polygons": 1970,
+       "vertices": 37309,
+       "bytes": 1084949,
+       "gzipBytes": 135826
+      }
+     },
+     "castTotalBytes": 2647760,
+     "castTotalGzipBytes": 305878,
+     "castTotalVertices": 83328,
+     "totalBytes": 3914371,
+     "totalGzipBytes": 513769,
+     "totalVertices": 140189
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 99,
+      "vertices": 5917,
+      "bytes": 136518,
+      "gzipBytes": 23745
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 96,
+       "vertices": 1029,
+       "bytes": 36481,
+       "gzipBytes": 3923
+      },
+      "11:00": {
+       "polygons": 5,
+       "vertices": 41,
+       "bytes": 1675,
+       "gzipBytes": 349
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 7,
+       "bytes": 343,
+       "gzipBytes": 204
+      },
+      "15:00": {
+       "polygons": 19,
+       "vertices": 128,
+       "bytes": 5677,
+       "gzipBytes": 706
+      },
+      "16:00": {
+       "polygons": 194,
+       "vertices": 2038,
+       "bytes": 72878,
+       "gzipBytes": 7708
+      },
+      "17:00": {
+       "polygons": 320,
+       "vertices": 4277,
+       "bytes": 139215,
+       "gzipBytes": 15802
+      },
+      "18:00": {
+       "polygons": 200,
+       "vertices": 4939,
+       "bytes": 134235,
+       "gzipBytes": 18578
+      }
+     },
+     "castTotalBytes": 390588,
+     "castTotalGzipBytes": 47386,
+     "castTotalVertices": 12459,
+     "totalBytes": 527106,
+     "totalGzipBytes": 71131,
+     "totalVertices": 18376
+    }
+   }
+  },
+  "2m": {
+   "totalBytes": 7237288,
+   "totalGzipBytes": 1163490,
+   "totalVertices": 285365,
+   "totalPolygons": 5559,
+   "seconds": 11.9,
+   "byHour": {
+    "10:00": {
+     "polygons": 649,
+     "vertices": 33854,
+     "bytes": 856027,
+     "gzipBytes": 137096
+    },
+    "11:00": {
+     "polygons": 608,
+     "vertices": 31224,
+     "bytes": 791912,
+     "gzipBytes": 129087
+    },
+    "12:00": {
+     "polygons": 607,
+     "vertices": 31147,
+     "bytes": 790027,
+     "gzipBytes": 128806
+    },
+    "13:00": {
+     "polygons": 607,
+     "vertices": 31184,
+     "bytes": 790823,
+     "gzipBytes": 128951
+    },
+    "14:00": {
+     "polygons": 606,
+     "vertices": 31165,
+     "bytes": 790207,
+     "gzipBytes": 128817
+    },
+    "15:00": {
+     "polygons": 615,
+     "vertices": 32035,
+     "bytes": 810304,
+     "gzipBytes": 131270
+    },
+    "16:00": {
+     "polygons": 676,
+     "vertices": 33702,
+     "bytes": 859169,
+     "gzipBytes": 136157
+    },
+    "17:00": {
+     "polygons": 711,
+     "vertices": 33015,
+     "bytes": 852881,
+     "gzipBytes": 132476
+    },
+    "18:00": {
+     "polygons": 480,
+     "vertices": 28039,
+     "bytes": 695938,
+     "gzipBytes": 110830
+    }
+   },
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 607,
+      "vertices": 31162,
+      "bytes": 732714,
+      "gzipBytes": 128485
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 700,
+       "vertices": 4499,
+       "bytes": 203403,
+       "gzipBytes": 19027
+      },
+      "11:00": {
+       "polygons": 12,
+       "vertices": 71,
+       "bytes": 3395,
+       "gzipBytes": 513
+      },
+      "12:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 302,
+       "gzipBytes": 196
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 301,
+       "gzipBytes": 196
+      },
+      "15:00": {
+       "polygons": 176,
+       "vertices": 1010,
+       "bytes": 48644,
+       "gzipBytes": 4611
+      },
+      "16:00": {
+       "polygons": 1022,
+       "vertices": 7122,
+       "bytes": 308504,
+       "gzipBytes": 30006
+      },
+      "17:00": {
+       "polygons": 1948,
+       "vertices": 16664,
+       "bytes": 652334,
+       "gzipBytes": 69317
+      },
+      "18:00": {
+       "polygons": 1970,
+       "vertices": 22303,
+       "bytes": 773172,
+       "gzipBytes": 92112
+      }
+     },
+     "castTotalBytes": 1990097,
+     "castTotalGzipBytes": 216036,
+     "castTotalVertices": 51679,
+     "totalBytes": 2722811,
+     "totalGzipBytes": 344521,
+     "totalVertices": 82841
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 99,
+      "vertices": 2724,
+      "bytes": 70206,
+      "gzipBytes": 12382
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 96,
+       "vertices": 665,
+       "bytes": 28922,
+       "gzipBytes": 2967
+      },
+      "11:00": {
+       "polygons": 5,
+       "vertices": 30,
+       "bytes": 1445,
+       "gzipBytes": 323
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 301,
+       "gzipBytes": 196
+      },
+      "15:00": {
+       "polygons": 19,
+       "vertices": 101,
+       "bytes": 5115,
+       "gzipBytes": 637
+      },
+      "16:00": {
+       "polygons": 194,
+       "vertices": 1319,
+       "bytes": 57916,
+       "gzipBytes": 5769
+      },
+      "17:00": {
+       "polygons": 320,
+       "vertices": 2513,
+       "bytes": 102524,
+       "gzipBytes": 10743
+      },
+      "18:00": {
+       "polygons": 200,
+       "vertices": 2686,
+       "bytes": 87390,
+       "gzipBytes": 11765
+      }
+     },
+     "castTotalBytes": 283697,
+     "castTotalGzipBytes": 32516,
+     "castTotalVertices": 7319,
+     "totalBytes": 353903,
+     "totalGzipBytes": 44898,
+     "totalVertices": 10043
+    }
+   }
+  },
+  "4m": {
+   "totalBytes": 5120235,
+   "totalGzipBytes": 800349,
+   "totalVertices": 183463,
+   "totalPolygons": 5559,
+   "seconds": 11.1,
+   "byHour": {
+    "10:00": {
+     "polygons": 649,
+     "vertices": 21352,
+     "bytes": 596254,
+     "gzipBytes": 93162
+    },
+    "11:00": {
+     "polygons": 608,
+     "vertices": 20445,
+     "bytes": 568015,
+     "gzipBytes": 89628
+    },
+    "12:00": {
+     "polygons": 607,
+     "vertices": 20440,
+     "bytes": 567633,
+     "gzipBytes": 89601
+    },
+    "13:00": {
+     "polygons": 607,
+     "vertices": 20450,
+     "bytes": 567858,
+     "gzipBytes": 89666
+    },
+    "14:00": {
+     "polygons": 606,
+     "vertices": 20429,
+     "bytes": 567194,
+     "gzipBytes": 89581
+    },
+    "15:00": {
+     "polygons": 615,
+     "vertices": 20616,
+     "bytes": 573109,
+     "gzipBytes": 90364
+    },
+    "16:00": {
+     "polygons": 676,
+     "vertices": 21253,
+     "bytes": 600507,
+     "gzipBytes": 92270
+    },
+    "17:00": {
+     "polygons": 711,
+     "vertices": 21071,
+     "bytes": 604653,
+     "gzipBytes": 91235
+    },
+    "18:00": {
+     "polygons": 480,
+     "vertices": 17407,
+     "bytes": 475012,
+     "gzipBytes": 74842
+    }
+   },
+   "split": {
+    "bbox": {
+     "canopy": {
+      "polygons": 607,
+      "vertices": 20458,
+      "bytes": 510365,
+      "gzipBytes": 89299
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 700,
+       "vertices": 3597,
+       "bytes": 184666,
+       "gzipBytes": 16332
+      },
+      "11:00": {
+       "polygons": 12,
+       "vertices": 60,
+       "bytes": 3168,
+       "gzipBytes": 485
+      },
+      "12:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 302,
+       "gzipBytes": 196
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 301,
+       "gzipBytes": 196
+      },
+      "15:00": {
+       "polygons": 176,
+       "vertices": 892,
+       "bytes": 46202,
+       "gzipBytes": 4253
+      },
+      "16:00": {
+       "polygons": 1022,
+       "vertices": 5518,
+       "bytes": 275184,
+       "gzipBytes": 24886
+      },
+      "17:00": {
+       "polygons": 1948,
+       "vertices": 12171,
+       "bytes": 559009,
+       "gzipBytes": 54360
+      },
+      "18:00": {
+       "polygons": 1970,
+       "vertices": 15524,
+       "bytes": 632360,
+       "gzipBytes": 68833
+      }
+     },
+     "castTotalBytes": 1701234,
+     "castTotalGzipBytes": 169599,
+     "castTotalVertices": 37772,
+     "totalBytes": 2211599,
+     "totalGzipBytes": 258898,
+     "totalVertices": 58230
+    },
+    "corridor": {
+     "canopy": {
+      "polygons": 99,
+      "vertices": 1814,
+      "bytes": 51312,
+      "gzipBytes": 8697
+     },
+     "castByHour": {
+      "10:00": {
+       "polygons": 96,
+       "vertices": 499,
+       "bytes": 25473,
+       "gzipBytes": 2498
+      },
+      "11:00": {
+       "polygons": 5,
+       "vertices": 25,
+       "bytes": 1342,
+       "gzipBytes": 310
+      },
+      "12:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "13:00": {
+       "polygons": 0,
+       "vertices": 0,
+       "bytes": 42,
+       "gzipBytes": 58
+      },
+      "14:00": {
+       "polygons": 1,
+       "vertices": 5,
+       "bytes": 301,
+       "gzipBytes": 196
+      },
+      "15:00": {
+       "polygons": 19,
+       "vertices": 95,
+       "bytes": 4990,
+       "gzipBytes": 617
+      },
+      "16:00": {
+       "polygons": 194,
+       "vertices": 1020,
+       "bytes": 51694,
+       "gzipBytes": 4831
+      },
+      "17:00": {
+       "polygons": 320,
+       "vertices": 1866,
+       "bytes": 89075,
+       "gzipBytes": 8515
+      },
+      "18:00": {
+       "polygons": 200,
+       "vertices": 1845,
+       "bytes": 69908,
+       "gzipBytes": 8590
+      }
+     },
+     "castTotalBytes": 242867,
+     "castTotalGzipBytes": 25673,
+     "castTotalVertices": 5355,
+     "totalBytes": 294179,
+     "totalGzipBytes": 34370,
+     "totalVertices": 7169
+    }
+   }
+  }
+ }
+}

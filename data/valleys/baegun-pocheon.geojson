@@ -1,0 +1,75 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "백운계곡(포천시) — 구간 1개. OSM 하천 중심선(이름 없음, way 531287119) 을 계곡 점 기준 상류 2 km·하류 1 km 로 자른 1347 m. 데스크 검수 — 수심·바닥·금지·요금은 manual.csv 로 채운다.",
+    "source": "OSM 하천 중심선(© OpenStreetMap contributors, ODbL) + 브이월드 표준유역 코드 + Terrarium 표고 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 (127.43157829512694, 38.088611055196225) [vworld-search] · 중심선 오프셋 10 m · 표고 393→176 m · 구간 분할 근거 none",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://www.vworld.kr/ (표준유역 lt_c_wkmsbsn 코드 조회 — 기하 저장 없음)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.433398, 38.091211],
+          [127.433292, 38.090641],
+          [127.433048, 38.089797],
+          [127.43282, 38.089451],
+          [127.432137, 38.089067],
+          [127.431414, 38.08862],
+          [127.431022, 38.088323],
+          [127.430716, 38.088061],
+          [127.430386, 38.087588],
+          [127.430129, 38.087179],
+          [127.429705, 38.086623],
+          [127.429397, 38.086408],
+          [127.429059, 38.086328],
+          [127.428435, 38.085978],
+          [127.427746, 38.085697],
+          [127.427245, 38.085346],
+          [127.426987, 38.084885],
+          [127.426806, 38.084403],
+          [127.426665, 38.084166],
+          [127.426198, 38.083869],
+          [127.425683, 38.083635],
+          [127.425016, 38.083456],
+          [127.424435, 38.083358],
+          [127.424228, 38.08329],
+          [127.424147, 38.083103],
+          [127.423881, 38.082938],
+          [127.423603, 38.082809]
+        ]
+      },
+      "properties": {
+        "id": "baegun-pocheon-whole",
+        "valleyId": "baegun-pocheon",
+        "valleyName": "백운계곡",
+        "segment": "whole",
+        "order": 0,
+        "splitBasis": "none",
+        "depth": "adult",
+        "shadeByHour": [0.389, 0.379, 0.376, 0.376, 0.376, 0.377, 0.386, 0.445, 0.722],
+        "canopyCover": 0.376,
+        "shadeRatio": 0.376,
+        "swimBanned": false,
+        "riskNote": "물놀이관리지역(일반) 영평천 — 최대 수심 3 m·평균 2 m",
+        "basinCode": "102206",
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    }
+  ]
+}

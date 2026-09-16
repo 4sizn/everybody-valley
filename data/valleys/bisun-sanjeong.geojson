@@ -1,0 +1,77 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "산정호수 비선폭포 계곡(포천시) — 구간 1개. OSM 하천 중심선(부소천, way 654084359·129015756) 을 계곡 점 기준 상류 2 km·하류 1 km 로 자른 1649 m. 데스크 검수 — 수심·바닥·금지·요금은 manual.csv 로 채운다.",
+    "source": "OSM 하천 중심선(© OpenStreetMap contributors, ODbL) + 브이월드 표준유역 코드 + Terrarium 표고 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-06.0",
+    "collectedAt": "2026-09-06",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 (127.32064685884856, 38.07057838344686) [vworld-search] · 중심선 오프셋 13 m · 표고 227→102 m · 구간 분할 근거 none",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://www.vworld.kr/ (표준유역 lt_c_wkmsbsn 코드 조회 — 기하 저장 없음)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [127.326694, 38.068235],
+          [127.326635, 38.068322],
+          [127.326553, 38.068395],
+          [127.326439, 38.068451],
+          [127.326285, 38.068488],
+          [127.326063, 38.068549],
+          [127.325776, 38.068625],
+          [127.325438, 38.068695],
+          [127.325071, 38.068583],
+          [127.324854, 38.068606],
+          [127.32466, 38.068731],
+          [127.324454, 38.068934],
+          [127.324269, 38.069234],
+          [127.324167, 38.069519],
+          [127.324014, 38.069821],
+          [127.323411, 38.070215],
+          [127.320632, 38.07046],
+          [127.319505, 38.069058],
+          [127.318365, 38.067572],
+          [127.317727, 38.067439],
+          [127.317359, 38.067274],
+          [127.317016, 38.066991],
+          [127.316718, 38.066856],
+          [127.316072, 38.066735],
+          [127.315493, 38.066653],
+          [127.31489, 38.066825],
+          [127.314192, 38.067496],
+          [127.313347, 38.067671],
+          [127.312158, 38.068117]
+        ]
+      },
+      "properties": {
+        "id": "bisun-sanjeong-whole",
+        "valleyId": "bisun-sanjeong",
+        "valleyName": "산정호수 비선폭포 계곡",
+        "segment": "whole",
+        "order": 0,
+        "splitBasis": "none",
+        "shadeByHour": [0.105, 0.102, 0.101, 0.101, 0.101, 0.102, 0.106, 0.112, 0.145],
+        "canopyCover": 0.101,
+        "shadeRatio": 0.101,
+        "accessDistanceM": 169,
+        "accessGradePct": 2.4,
+        "basinCode": "102204",
+        "petAllowed": true,
+        "mapIconTier": 0,
+        "mapLabelTier": 0,
+        "mapImportance": 10
+      }
+    }
+  ]
+}
