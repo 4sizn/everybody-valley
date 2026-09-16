@@ -1,0 +1,21 @@
+{
+  "name": "@moduvalley/ui",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./styles.css": "./index.css"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

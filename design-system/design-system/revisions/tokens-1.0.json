@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "color": {
+    "light": {
+      "canvas": "#F5F7F4",
+      "surface": "#FFFFFF",
+      "surface-subtle": "#EEF3EF",
+      "surface-raised": "#FFFFFF",
+      "text": "#163A2F",
+      "text-secondary": "#52675D",
+      "text-muted": "#607168",
+      "border": "#CFD9D1",
+      "border-strong": "#778F81",
+      "accent": "#246653",
+      "accent-hover": "#1C5544",
+      "accent-pressed": "#174536",
+      "on-accent": "#FFFFFF",
+      "accent-subtle": "#E5F1E9",
+      "danger": "#AD322A",
+      "danger-subtle": "#FCECE9",
+      "caution": "#885615",
+      "caution-subtle": "#FBF1D9",
+      "info": "#27667E",
+      "info-subtle": "#E7F1F7",
+      "focus": "#236AAB",
+      "disabled": "#E9EEEA",
+      "on-disabled": "#68786F",
+      "scrim": "#071F18A8"
+    },
+    "dark": {
+      "canvas": "#101D18",
+      "surface": "#192B23",
+      "surface-subtle": "#22372D",
+      "surface-raised": "#293F33",
+      "text": "#F0F6F1",
+      "text-secondary": "#BECFC3",
+      "text-muted": "#A4B8AA",
+      "border": "#425B4B",
+      "border-strong": "#8FA99A",
+      "accent": "#A6DDC0",
+      "accent-hover": "#BFEBD1",
+      "accent-pressed": "#89CBA8",
+      "on-accent": "#122D20",
+      "accent-subtle": "#294D3A",
+      "danger": "#FFB4A9",
+      "danger-subtle": "#4C2B27",
+      "caution": "#F1CA7C",
+      "caution-subtle": "#41371F",
+      "info": "#A6D6EA",
+      "info-subtle": "#253F4C",
+      "focus": "#9CCEFF",
+      "disabled": "#2D3E33",
+      "on-disabled": "#A4B8AA",
+      "scrim": "#030C08C9"
+    }
+  },
+  "space": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "5": "20px",
+    "6": "24px",
+    "8": "32px",
+    "10": "40px",
+    "12": "48px"
+  },
+  "radius": {
+    "small": "8px",
+    "control": "12px",
+    "card": "16px",
+    "sheet": "24px",
+    "pill": "999px"
+  },
+  "type": {
+    "display": { "size": 32, "lineHeight": 40, "weight": 650 },
+    "page": { "size": 28, "lineHeight": 36, "weight": 650 },
+    "section": { "size": 22, "lineHeight": 30, "weight": 600 },
+    "title": { "size": 18, "lineHeight": 26, "weight": 600 },
+    "body": { "size": 16, "lineHeight": 24, "weight": 400 },
+    "label": { "size": 16, "lineHeight": 24, "weight": 600 },
+    "meta": { "size": 14, "lineHeight": 20, "weight": 400 },
+    "caption": { "size": 12, "lineHeight": 18, "weight": 500 }
+  },
+  "motion": {
+    "press": "120ms",
+    "panel": "220ms",
+    "camera": "300ms",
+    "easing": "cubic-bezier(.2,.8,.2,1)"
+  },
+  "control": {
+    "touch": 48,
+    "button": 52,
+    "input": 52,
+    "icon": 24,
+    "inlineIcon": 20,
+    "screenInset": 16,
+    "gap": 8
+  },
+  "layer": {
+    "base": 0,
+    "mapControls": 10,
+    "sheet": 20,
+    "risk": 30,
+    "dialog": 50,
+    "toast": 60
+  }
+}

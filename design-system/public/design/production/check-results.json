@@ -1,0 +1,123 @@
+{
+  "result": "passed",
+  "checks": [
+    "22 semantic text contrast pairs ≥4.5",
+    "facility destination",
+    "search bypasses filters",
+    "unknown excluded",
+    "empty search result",
+    "report validation"
+  ],
+  "contrast": [
+    {
+      "theme": "light",
+      "pair": "text/surface",
+      "ratio": 17.58
+    },
+    {
+      "theme": "light",
+      "pair": "text-secondary/surface",
+      "ratio": 5.74
+    },
+    {
+      "theme": "light",
+      "pair": "text-muted/surface",
+      "ratio": 4.95
+    },
+    {
+      "theme": "light",
+      "pair": "text/canvas",
+      "ratio": 16.41
+    },
+    {
+      "theme": "light",
+      "pair": "text-secondary/canvas",
+      "ratio": 5.36
+    },
+    {
+      "theme": "light",
+      "pair": "text-muted/canvas",
+      "ratio": 4.62
+    },
+    {
+      "theme": "light",
+      "pair": "on-accent/accent",
+      "ratio": 4.67
+    },
+    {
+      "theme": "light",
+      "pair": "accent-ink/accent-subtle",
+      "ratio": 5.35
+    },
+    {
+      "theme": "light",
+      "pair": "danger/danger-subtle",
+      "ratio": 5.61
+    },
+    {
+      "theme": "light",
+      "pair": "caution/caution-subtle",
+      "ratio": 5.51
+    },
+    {
+      "theme": "light",
+      "pair": "info/info-subtle",
+      "ratio": 5.51
+    },
+    {
+      "theme": "dark",
+      "pair": "text/surface",
+      "ratio": 15.3
+    },
+    {
+      "theme": "dark",
+      "pair": "text-secondary/surface",
+      "ratio": 9.29
+    },
+    {
+      "theme": "dark",
+      "pair": "text-muted/surface",
+      "ratio": 6.65
+    },
+    {
+      "theme": "dark",
+      "pair": "text/canvas",
+      "ratio": 17.02
+    },
+    {
+      "theme": "dark",
+      "pair": "text-secondary/canvas",
+      "ratio": 10.33
+    },
+    {
+      "theme": "dark",
+      "pair": "text-muted/canvas",
+      "ratio": 7.4
+    },
+    {
+      "theme": "dark",
+      "pair": "on-accent/accent",
+      "ratio": 7.41
+    },
+    {
+      "theme": "dark",
+      "pair": "accent-ink/accent-subtle",
+      "ratio": 6.02
+    },
+    {
+      "theme": "dark",
+      "pair": "danger/danger-subtle",
+      "ratio": 7.34
+    },
+    {
+      "theme": "dark",
+      "pair": "caution/caution-subtle",
+      "ratio": 7.53
+    },
+    {
+      "theme": "dark",
+      "pair": "info/info-subtle",
+      "ratio": 7.34
+    }
+  ]
+}
