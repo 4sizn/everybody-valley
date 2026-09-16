@@ -1,6 +1,7 @@
 export * from './admin/index';
 export * from './basemap/index';
 export * from './camera/index';
+export * from './discovery';
 export * from './festival/index';
 export * from './fireworks/index';
 export * from './geo/index';

@@ -51,12 +51,16 @@ export function SettingsDialog({
             </p>
             <p>사진은 서버에서 재인코딩하여 위치 메타데이터를 제거합니다.</p>
             <p className="ev-muted">
+              주간 관심 순위는 계곡 지도 선택으로 집계합니다. 같은 연결의 같은 계곡은 하루 한 번
+              반영하며, 순위 집계용 식별값은 날짜별 해시로 저장하고 최근 7일 범위만 유지합니다.
+            </p>
+            <p className="ev-muted">
               제보의 닉네임·본문·사진·선택한 위치는 공개됩니다. 서버는 수정·삭제 인증을 위한
               비밀번호 해시와 요청 제한·운영을 위한 IP 정보를 저장합니다. 개인정보는 제보에 적지
               마세요.
             </p>
             <Button variant="secondary" onClick={() => setAdminOpen(true)}>
-              제보 운영자 관리
+              서비스 운영자 관리
             </Button>
           </div>
         ) : (

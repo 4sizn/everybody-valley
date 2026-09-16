@@ -53,6 +53,7 @@ docker compose up -d --build
 운영 웹은 같은 출처의 `/api`와 `/uploads`를 사용합니다. SQLite와 사진은 영속 볼륨에 저장합니다. 컨테이너는 기본적으로 로컬 주소에만 바인딩합니다.
 
 - [배포·백업·운영 절차](docs/PRODUCTION.md)
+- [홈 배너·블로그 운영과 관심 순위](docs/CONTENT.md)
 - [기능·환경 이관 대응표](docs/migration/FEATURES.md)
 - [실제 브라우저 검증 기록](docs/migration/VALIDATION.md)
 - [원본/구현 시각 비교](design-qa.md)

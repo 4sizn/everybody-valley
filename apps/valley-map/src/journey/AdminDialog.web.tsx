@@ -2,6 +2,7 @@ import { type ApiAdminFlagSummary, type ApiAdminReport, reportTypeLabel } from '
 import { Alert, Badge, Button, Dialog, EmptyState, Field, Tabs } from '@moduvalley/ui';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createApiClient } from '@/api/createApiClient';
+import { ContentAdmin } from './ContentAdmin.web';
 
 const api = createApiClient();
 
@@ -83,7 +84,7 @@ export function AdminDialog({ open, onClose }: { open: boolean; onClose: () => v
   return (
     <Dialog
       open={open}
-      title={token ? '제보 운영' : '운영자 인증'}
+      title={token ? '서비스 운영' : '운영자 인증'}
       onClose={() => {
         if (!busy) {
           setInput('');
@@ -124,8 +125,8 @@ export function AdminDialog({ open, onClose }: { open: boolean; onClose: () => v
               autoComplete="off"
             />
             <p className="ev-muted">
-              서버가 인증한 운영자만 제보를 숨기거나 복구할 수 있습니다. 인증 정보는 이 페이지를
-              닫으면 사라집니다.
+              인증한 운영자는 홈 콘텐츠를 등록하고 제보를 관리할 수 있습니다. 인증 정보는 이
+              페이지를 닫으면 사라집니다.
             </p>
           </>
         ) : (
@@ -136,58 +137,67 @@ export function AdminDialog({ open, onClose }: { open: boolean; onClose: () => v
               value={tab}
               onChange={setTab}
               options={[
+                { value: 'content', label: '홈 콘텐츠' },
                 { value: 'reports', label: '전체 제보' },
                 { value: 'hidden', label: '숨긴 제보' },
                 { value: 'flags', label: '신고 목록' },
               ]}
             />
-            <Button
-              variant="ghost"
-              loading={busy}
-              onClick={() =>
-                void run(async () => {
-                  await reload(token);
-                })
-              }
-            >
-              목록 새로고침
-            </Button>
-            {!rows.length && (
-              <EmptyState
-                title="표시할 제보가 없습니다"
-                description={
-                  tab === 'hidden' && cursor ? '다음 페이지에도 숨긴 제보가 있을 수 있습니다.' : ''
-                }
-              />
-            )}
-            {rows.map((report) => (
-              <article key={report.id} className="ev-admin-report">
-                <div className="ev-report-meta">
-                  <strong>{reportTypeLabel(report.type)}</strong>
-                  <span>{report.count ? `신고 ${report.count}건` : report.nickname}</span>
-                </div>
-                <p>{report.body}</p>
+            {tab === 'content' ? (
+              <ContentAdmin token={token} />
+            ) : (
+              <>
                 <Button
-                  variant={report.hidden ? 'secondary' : 'danger'}
-                  disabled={busy}
-                  onClick={() => void toggle(report.id, !report.hidden)}
+                  variant="ghost"
+                  loading={busy}
+                  onClick={() =>
+                    void run(async () => {
+                      await reload(token);
+                    })
+                  }
                 >
-                  {report.hidden ? '제보 복구' : '제보 숨기기'}
+                  목록 새로고침
                 </Button>
-              </article>
-            ))}
-            {cursor && tab !== 'flags' && (
-              <Button
-                variant="secondary"
-                loading={busy}
-                onClick={() =>
-                  void run(async () => {
-                    await reload(token, cursor);
-                  })
-                }
-              >
-                이전 제보 더 보기
-              </Button>
+                {!rows.length && (
+                  <EmptyState
+                    title="표시할 제보가 없습니다"
+                    description={
+                      tab === 'hidden' && cursor
+                        ? '다음 페이지에도 숨긴 제보가 있을 수 있습니다.'
+                        : ''
+                    }
+                  />
+                )}
+                {rows.map((report) => (
+                  <article key={report.id} className="ev-admin-report">
+                    <div className="ev-report-meta">
+                      <strong>{reportTypeLabel(report.type)}</strong>
+                      <span>{report.count ? `신고 ${report.count}건` : report.nickname}</span>
+                    </div>
+                    <p>{report.body}</p>
+                    <Button
+                      variant={report.hidden ? 'secondary' : 'danger'}
+                      disabled={busy}
+                      onClick={() => void toggle(report.id, !report.hidden)}
+                    >
+                      {report.hidden ? '제보 복구' : '제보 숨기기'}
+                    </Button>
+                  </article>
+                ))}
+                {cursor && tab !== 'flags' && (
+                  <Button
+                    variant="secondary"
+                    loading={busy}
+                    onClick={() =>
+                      void run(async () => {
+                        await reload(token, cursor);
+                      })
+                    }
+                  >
+                    이전 제보 더 보기
+                  </Button>
+                )}
+              </>
             )}
           </>
         )}

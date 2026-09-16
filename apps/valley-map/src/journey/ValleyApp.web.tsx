@@ -26,8 +26,10 @@ import {
 } from '@moduvalley/ui';
 import '@moduvalley/ui/styles.css';
 import { useEffect, useRef, useState } from 'react';
+import { resolveApiBase } from '@/api/createApiClient';
 import { PARSED } from '@/session/valleySource';
 import { useTheme } from '@/theme/ThemeProvider';
+import { BlogSection, DiscoveryHome, useDiscovery } from './Discovery.web';
 import { FieldMap } from './FieldMap.web';
 import { journeySearch, type Place, parseJourneyLink, placeForValley } from './journey';
 import { type JourneyNavigation, Navigation } from './Navigation.web';
@@ -46,6 +48,7 @@ const filterIcons: Record<FilterChipKey, IconName> = {
 
 export function ValleyApp() {
   const theme = useTheme();
+  const discovery = useDiscovery();
   const navigation = useRef<JourneyNavigation>({
     url: typeof window === 'undefined' ? '/' : window.location.href,
     guard: null,
@@ -61,6 +64,18 @@ export function ValleyApp() {
   const scroll = useRef<HTMLDivElement>(null);
   const scrollPosition = useRef(0);
   const [link, setLink] = useState(initial);
+  const selectedValleyId = place?.valley.id;
+  useEffect(() => {
+    if (!selectedValleyId) return;
+    void fetch(
+      `${resolveApiBase()}/api/discovery/interest/${encodeURIComponent(selectedValleyId)}`,
+      { method: 'POST' },
+    )
+      .then((r) => {
+        if (r.ok) discovery.refresh();
+      })
+      .catch(() => {});
+  }, [selectedValleyId, discovery.refresh]);
   useEffect(() => {
     const restored = parseJourneyLink(window.location.search, valleys);
     setPlace(restored.place);
@@ -119,6 +134,7 @@ export function ValleyApp() {
               place={place}
               initialSheet={link.sheet}
               initialHour={link.hour}
+              discovery={discovery}
               onPlace={setPlace}
               onLeave={leave}
               onSafety={() => setDialog('safety')}
@@ -217,6 +233,11 @@ export function ValleyApp() {
                       선택하면 {candidate.valley.name}{' '}
                       {segmentPositionLabel(candidate.segment.position)} 지도를 엽니다.
                     </p>
+                    <BlogSection
+                      discovery={discovery}
+                      valleys={valleys}
+                      valley={candidate.valley}
+                    />
                   </div>
                   <footer className="ev-cta">
                     <Button icon="map" onClick={() => choose(candidate)}>
@@ -299,26 +320,21 @@ export function ValleyApp() {
                           />
                         )}
                       </>
+                    ) : page === 'home' ? (
+                      <DiscoveryHome
+                        discovery={discovery}
+                        valleys={valleys}
+                        onPreview={preview}
+                        onExplore={() => {
+                          setPage('explore');
+                          if (scroll.current) scroll.current.scrollTop = 0;
+                        }}
+                        onSafety={() => setDialog('safety')}
+                      />
                     ) : (
                       <>
-                        {page === 'home' && (
-                          <div className="weekly-card">
-                            <div className="weekly-tag">
-                              <Icon name="calendar-days" size={16} /> 방문 전 안내
-                            </div>
-                            <h2>이번 주, 방문 전 확인하세요</h2>
-                            <p>현장 통제 · 이용 구간 · 기상 안내</p>
-                            <button
-                              type="button"
-                              className="weekly-link"
-                              onClick={() => setDialog('safety')}
-                            >
-                              방문 전 확인사항 <Icon name="chevron-right" size={20} />
-                            </button>
-                          </div>
-                        )}
                         <div className="app-section-heading">
-                          <h2>{page === 'home' ? '어떤 계곡을 찾으세요?' : '계곡 찾기'}</h2>
+                          <h2>계곡 찾기</h2>
                         </div>
                         <div className="app-chip-scroll">
                           {FILTER_CHIPS.map((f) => (
@@ -341,37 +357,21 @@ export function ValleyApp() {
                         </div>
                         <div className="app-section-heading">
                           <h2>{filters.size ? '조건에 맞는 계곡' : '둘러볼 계곡'}</h2>
-                          {page === 'home' && !filters.size ? (
-                            <button
-                              type="button"
-                              className="ev-all-valleys"
-                              onClick={() => {
-                                setPage('explore');
-                                scrollPosition.current = 0;
-                                if (scroll.current) scroll.current.scrollTop = 0;
-                              }}
-                            >
-                              전체 {visible.length}곳 보기
-                            </button>
-                          ) : (
-                            <span>{visible.length}곳</span>
-                          )}
+                          <span>{visible.length}곳</span>
                         </div>
                         {!!filters.size && (
                           <p className="ev-muted">미확인 조건은 결과에서 제외됩니다.</p>
                         )}
                         <div className="app-list">
-                          {(page === 'home' && !filters.size ? visible.slice(0, 3) : visible).map(
-                            (v) => (
-                              <ValleyCard
-                                key={v.id}
-                                name={v.name}
-                                region={`${v.segments.length}개 구간 · 주변 시설 ${v.facilities.length}곳`}
-                                description="구간별 그늘과 주변 시설 살펴보기"
-                                onClick={() => preview(v)}
-                              />
-                            ),
-                          )}
+                          {visible.map((v) => (
+                            <ValleyCard
+                              key={v.id}
+                              name={v.name}
+                              region={`${v.segments.length}개 구간 · 주변 시설 ${v.facilities.length}곳`}
+                              description="구간별 그늘과 주변 시설 살펴보기"
+                              onClick={() => preview(v)}
+                            />
+                          ))}
                         </div>
                         {!visible.length && (
                           <EmptyState

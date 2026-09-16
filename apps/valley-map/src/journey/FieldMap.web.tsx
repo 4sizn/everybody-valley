@@ -36,6 +36,7 @@ import { resolveApiBase } from '@/api/createApiClient';
 import { directionsUrl } from '@/components/valley/directions';
 import { SessionProvider, useAppState, useSession, useSessionRestart } from '@/session';
 import { PARSED, VALLEY_SOURCE } from '@/session/valleySource';
+import { BlogSection, type DiscoveryState } from './Discovery.web';
 import { journeySearch, type Place } from './journey';
 import { Navigation } from './Navigation.web';
 import { Reports } from './Reports.web';
@@ -45,6 +46,7 @@ type Props = {
   place: Place;
   initialSheet: SheetSnap;
   initialHour: number;
+  discovery: DiscoveryState;
   onPlace: (place: Place) => void;
   onLeave: () => void;
   onSafety: () => void;
@@ -82,6 +84,7 @@ function MapChrome({
   place,
   initialSheet,
   initialHour,
+  discovery,
   onPlace,
   onLeave,
   onSafety,
@@ -425,6 +428,7 @@ function MapChrome({
               options={[
                 { value: 'segment', label: '구간 정보' },
                 { value: 'facilities', label: '주변 시설' },
+                { value: 'blogs', label: '방문 후기' },
                 { value: 'rain', label: '강우' },
                 { value: 'reports', label: '현장 제보' },
               ]}
@@ -575,6 +579,9 @@ function MapChrome({
             )}
             {tab === 'reports' && (
               <Reports place={place} compose={composer} onCompose={setComposer} risk={risk} />
+            )}
+            {tab === 'blogs' && (
+              <BlogSection discovery={discovery} valleys={[place.valley]} valley={place.valley} />
             )}
           </div>
         </MapSheet>

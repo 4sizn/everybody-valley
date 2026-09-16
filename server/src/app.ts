@@ -24,6 +24,7 @@ import { adminRoutes } from './http/routes/admin';
 import { alertsRoutes } from './http/routes/alerts';
 import { awsRoutes } from './http/routes/aws';
 import { basinsRoutes } from './http/routes/basins';
+import { discoveryAdminRoutes, discoveryRoutes } from './http/routes/discovery';
 import { eventsRoutes } from './http/routes/events';
 import { healthRoutes } from './http/routes/healthz';
 import { hydroRoutes } from './http/routes/hydro';
@@ -151,6 +152,13 @@ export function createApp(deps: AppDeps): Hono {
   );
   app.route('/uploads', uploadsRoutes(config.uploadsDir));
   app.route('/api/events', eventsRoutes(hub));
+  const discovery = {
+    db: deps.db,
+    knownValleyIds: deps.knownValleyIds ?? loadValleyIds(config.valleysDir),
+    now,
+    trustProxy: config.trustProxy,
+  };
+  app.route('/api/discovery', discoveryRoutes(discovery));
 
   // 관리자 API(OPS1) — 전용 레이트리밋(토큰 추측 방어) 다음 인증. `ADMIN_TOKEN` 미설정이면
   // `adminAuth` 가 인증 이전에 404 로 막아 관리자 API 가 없는 것처럼 군다.
@@ -164,6 +172,7 @@ export function createApp(deps: AppDeps): Hono {
     }),
   );
   app.use('/api/admin/*', adminAuth({ token: config.adminToken }));
+  app.route('/api/admin/discovery', discoveryAdminRoutes(discovery));
   app.route('/api/admin', adminRoutes({ repos, logger: logger.child('admin') }));
 
   if (config.webDir) {
