@@ -25,6 +25,7 @@ export {
   validateReportDraft,
 } from './Report';
 export {
+  clampReportCoordinate,
   formatReportCoordinate,
   isReportCoordinateInRange,
   isValidReportCoordinatePair,

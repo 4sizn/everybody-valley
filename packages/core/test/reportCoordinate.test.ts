@@ -4,6 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import { LngLat } from '../src/domain/geo/LngLat';
 import {
+  clampReportCoordinate,
   formatReportCoordinate,
   isReportCoordinateInRange,
   isValidReportCoordinatePair,
@@ -90,5 +91,26 @@ describe('formatReportCoordinate / reportCoordinateCopyText', () => {
     expect(reportCoordinateCopyText('조무락골', undefined, 37.983412, 127.460591)).toBe(
       '조무락골\n37.983412, 127.460591',
     );
+  });
+});
+
+describe('clampReportCoordinate', () => {
+  const centerline = [LngLat.of(127.46, 37.98), LngLat.of(127.47, 37.99)];
+
+  it('반경 안이면 그대로 둔다', () => {
+    const point = LngLat.of(127.465, 37.985);
+    expect(clampReportCoordinate(point, centerline)).toBe(point);
+  });
+
+  it('반경 밖이면 가장 가까운 중심선 정점으로 되돌린다', () => {
+    const far = LngLat.of(127.6, 37.99);
+    const clamped = clampReportCoordinate(far, centerline);
+    expect(clamped).toBe(centerline[1]);
+    expect(isWithinReportCoordinateRadius(clamped, centerline)).toBe(true);
+  });
+
+  it('중심선을 모르면 되돌릴 곳이 없다', () => {
+    const point = LngLat.of(127.6, 37.99);
+    expect(clampReportCoordinate(point, [])).toBe(point);
   });
 });

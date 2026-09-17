@@ -11,7 +11,7 @@
  * 서버만 할 수 있다 — 이 파일은 그 중심선을 **받아서** 판정하는 순수 함수만 준다
  * (파일을 읽는 일은 `server/src/valleys.ts` 의 몫).
  */
-import { distanceToPolyline } from '../geo/Distance';
+import { distanceToPolyline, equirectangularDistance } from '../geo/Distance';
 import type { LngLat } from '../geo/LngLat';
 
 /**
@@ -86,4 +86,32 @@ export function reportCoordinateCopyText(
       ? valleyName
       : `${valleyName} ${segmentLabel}`;
   return `${firstLine}\n${formatReportCoordinate(lat, lng)}`;
+}
+
+/**
+ * 반경 밖 지점을 다시 허용 영역 안으로 끌어온다 — 피커가 너무 멀리 끌렸을 때 되돌릴 자리.
+ * 반경 안이거나 중심선을 모르면 그대로 돌려준다(되돌릴 곳이 없다).
+ *
+ * ponytail: 수선의 발이 아니라 **가장 가까운 중심선 정점**으로 보낸다. 정점 간격이
+ * 실데이터에서 중앙값 26m·최대 167m 라 최악 ~83m 어긋나지만, 목적은 "허용 영역 안으로
+ * 되돌리기" 라 정점이면 충분하다(정점은 중심선 위라 거리 0). 더 정확한 자리가 필요해지면
+ * `Distance.ts` 의 `originToSegmentMeters` 를 수선의 발을 돌려주도록 바꿔 쓴다.
+ */
+export function clampReportCoordinate(
+  point: LngLat,
+  centerline: readonly LngLat[],
+  maxDistanceM: number = REPORT_COORDINATE_MAX_DISTANCE_M,
+): LngLat {
+  if (centerline.length === 0) return point;
+  if (isWithinReportCoordinateRadius(point, centerline, maxDistanceM)) return point;
+  let nearest = centerline[0] as LngLat;
+  let nearestMeters = equirectangularDistance(point, nearest).meters;
+  for (const vertex of centerline) {
+    const meters = equirectangularDistance(point, vertex).meters;
+    if (meters < nearestMeters) {
+      nearest = vertex;
+      nearestMeters = meters;
+    }
+  }
+  return nearest;
 }

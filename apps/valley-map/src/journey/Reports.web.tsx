@@ -1,13 +1,19 @@
 import {
   type ApiReport,
   type ApiReportPhotoInput,
+  formatReportCoordinate,
+  isWithinReportCoordinateRadius,
   LngLat,
   REPORT_BODY_MAX_LENGTH,
+  REPORT_COORDINATE_MAX_DISTANCE_M,
   REPORT_PHOTO_MAX_BYTES,
   REPORT_TYPES,
   type ReportType,
+  reportCoordinateCopyText,
   reportRelativeTimeLabel,
   reportTypeLabel,
+  segmentPositionLabel,
+  type Valley,
   validateReportDraft,
 } from '@modu-valley/core';
 import {
@@ -30,6 +36,70 @@ import type { Place } from './journey';
 import { Navigation } from './Navigation.web';
 
 const api = createApiClient();
+
+/** 판정에 쓰는 중심선 — 서버(`loadValleyCenterlines`)가 보는 첫 LineString 과 같은 것.
+ * 지금 계곡 33개 모두 LineString 이 하나라 첫 구간 경로가 곧 그 중심선이다(실측).
+ * 한 계곡이 구간 여럿으로 쪼개지면 여기서 모든 구간 경로를 이어야 한다.
+ * 모르면 빈 배열이고, 그때는 아무것도 판정하지 않는다(서버가 거절한다). */
+function centerlineOf(valley: Valley | undefined): readonly LngLat[] {
+  return valley?.segments[0]?.path ?? [];
+}
+
+/** 제보 좌표가 놓일 수 있는 영역 밖인가 — 중심선에서 3km 밖(F5d 해석 4). */
+function outOfRange(point: LngLat | null, valley: Valley | undefined): boolean {
+  const centerline = centerlineOf(valley);
+  if (point === null || centerline.length === 0) return false;
+  return !isWithinReportCoordinateRadius(point, centerline);
+}
+
+/** 구간 이름만 — "중류"(복사 문자열 첫 줄이 계곡명과 따로 받는 조각, F5d 계약). */
+function segmentLabelOf(
+  valley: Valley | undefined,
+  segmentId: string | null | undefined,
+): string | undefined {
+  const segment = valley?.segments.find((s) => s.id === segmentId);
+  return segment === undefined ? undefined : segmentPositionLabel(segment.position);
+}
+
+/** 피커·좌표 줄이 함께 읽는 한 줄 — "조무락골 중류". */
+function contextLabelOf(valley: Valley | undefined, segmentId: string | null | undefined): string {
+  if (valley === undefined) return '';
+  const label = segmentLabelOf(valley, segmentId);
+  return label === undefined ? valley.name : `${valley.name} ${label}`;
+}
+
+const RADIUS_KM = REPORT_COORDINATE_MAX_DISTANCE_M / 1000;
+
+/** 좌표를 보여주는 자리가 모두 쓰는 한 줄 — "조무락골 중류 · 37.983412, 127.460591". */
+function CoordinateLine({
+  valley,
+  segmentId,
+  point,
+  prefix,
+}: {
+  valley: Valley | undefined;
+  segmentId: string | null | undefined;
+  point: LngLat;
+  prefix?: string;
+}) {
+  return (
+    <p>
+      {prefix}
+      {contextLabelOf(valley, segmentId)} · {formatReportCoordinate(point.lat, point.lng)}
+    </p>
+  );
+}
+
+/** 피커 아래 한 줄 — 영역 밖이면 왜 쓸 수 없는지, 안이면 어디까지 되는지. */
+function RadiusNotice({ point, valley }: { point: LngLat | null; valley: Valley | undefined }) {
+  return outOfRange(point, valley) ? (
+    <Alert status="error" title="이 계곡에서 너무 먼 지점입니다">
+      계곡 중심선에서 {RADIUS_KM}km 안의 지점만 등록할 수 있습니다.
+    </Alert>
+  ) : (
+    <p className="ev-muted">계곡 중심선에서 {RADIUS_KM}km 안까지 지정할 수 있습니다.</p>
+  );
+}
 
 type Props = { place: Place; compose: boolean; onCompose: (open: boolean) => void; risk: Status };
 export function Reports({ place, compose, onCompose, risk }: Props) {
@@ -339,9 +409,7 @@ function ReportComposer({
           </Button>
           {location && (
             <>
-              <p>
-                {location.lat.toFixed(6)}, {location.lng.toFixed(6)}
-              </p>
+              <CoordinateLine valley={place.valley} segmentId={place.segment.id} point={location} />
               <Button variant="ghost" disabled={busy} onClick={() => setLocation(null)}>
                 위치 지우기
               </Button>
@@ -391,7 +459,7 @@ function ReportComposer({
               취소
             </Button>
             <Button
-              disabled={!picked}
+              disabled={!picked || outOfRange(picked, place.valley)}
               onClick={() => {
                 setLocation(picked);
                 setPicking(false);
@@ -406,13 +474,13 @@ function ReportComposer({
           <ReportLocationPicker
             initialCenter={location ?? place.segment.midpoint()}
             onChange={setPicked}
+            limit={centerlineOf(place.valley)}
           />
         )}
         {picked && (
-          <p>
-            {picked.lat.toFixed(6)}, {picked.lng.toFixed(6)}
-          </p>
+          <CoordinateLine valley={place.valley} segmentId={place.segment.id} point={picked} />
         )}
+        <RadiusNotice point={picked} valley={place.valley} />
       </Dialog>
       <Dialog
         open={confirm}
@@ -469,9 +537,10 @@ export function ReportDetail({
   const [type, setType] = useState(report.type);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
-  const [location, setLocation] = useState<LngLat | null>(
-    report.lat !== undefined && report.lng !== undefined ? LngLat.of(report.lng, report.lat) : null,
-  );
+  /** 저장된 공개 지점 — 표시·복사와 위치 수정 초기값이 같은 값을 읽는다. */
+  const published =
+    report.lat !== undefined && report.lng !== undefined ? LngLat.of(report.lng, report.lat) : null;
+  const [location, setLocation] = useState<LngLat | null>(published);
   const [picked, setPicked] = useState<LngLat | null>(null);
   const [picking, setPicking] = useState(false);
   const locked = useRef(false);
@@ -578,9 +647,7 @@ export function ReportDetail({
               )}
               {location && (
                 <>
-                  <p>
-                    {location.lat.toFixed(6)}, {location.lng.toFixed(6)}
-                  </p>
+                  <CoordinateLine valley={valley} segmentId={report.segmentId} point={location} />
                   <Button variant="ghost" disabled={busy} onClick={() => setLocation(null)}>
                     공개 위치 지우기
                   </Button>
@@ -595,17 +662,27 @@ export function ReportDetail({
               <img key={p.id} src={reportPhotoUrl(p.url)} alt={`현장 제보 사진 ${i + 1}`} />
             ))}
           </div>
-          {report.lat !== undefined && report.lng !== undefined && (
+          {published && (
             <>
-              <p>
-                공개 지점: {report.lat.toFixed(6)}, {report.lng.toFixed(6)}
-              </p>
+              <CoordinateLine
+                valley={valley}
+                segmentId={report.segmentId}
+                point={published}
+                prefix="공개 지점: "
+              />
               <Button
                 variant="ghost"
                 icon="copy"
                 onClick={() => {
                   void navigator.clipboard
-                    .writeText(`${report.lat?.toFixed(6)}, ${report.lng?.toFixed(6)}`)
+                    .writeText(
+                      reportCoordinateCopyText(
+                        valley?.name ?? '',
+                        segmentLabelOf(valley, report.segmentId),
+                        published.lat,
+                        published.lng,
+                      ),
+                    )
                     .then(() => setMessage('좌표를 복사했습니다.'))
                     .catch(() =>
                       setMessage('복사하지 못했습니다. 좌표를 직접 선택해 복사해주세요.'),
@@ -654,7 +731,7 @@ export function ReportDetail({
               취소
             </Button>
             <Button
-              disabled={!picked}
+              disabled={!picked || outOfRange(picked, valley)}
               onClick={() => {
                 setLocation(picked);
                 setPicking(false);
@@ -666,8 +743,14 @@ export function ReportDetail({
         }
       >
         {picking && valley && (
-          <ReportLocationPicker initialCenter={location ?? valley.center()} onChange={setPicked} />
+          <ReportLocationPicker
+            initialCenter={location ?? valley.center()}
+            onChange={setPicked}
+            limit={centerlineOf(valley)}
+          />
         )}
+        {picked && <CoordinateLine valley={valley} segmentId={report.segmentId} point={picked} />}
+        <RadiusNotice point={picked} valley={valley} />
       </Dialog>
     </>
   );
