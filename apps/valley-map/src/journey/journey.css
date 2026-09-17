@@ -439,11 +439,20 @@
   max-width: 90%;
 }
 .ev-hero-dots {
+  /* 배너가 많으면 줄바꿈으로 덜렁거리는 두 번째 줄이 생긴다 — 한 줄로 두고 가로로 흐르게 한다. */
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 2px;
-  justify-content: center;
+  justify-content: safe center;
   margin-top: 8px;
+  scrollbar-width: none;
+}
+.ev-hero-dots::-webkit-scrollbar {
+  display: none;
+}
+.ev-hero-dots button {
+  flex: 0 0 auto;
 }
 .ev-hero-dots button {
   width: 12px;
@@ -461,7 +470,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--mv-text-secondary);
-  opacity: 0.3;
+  opacity: 0.45;
 }
 .ev-hero-dots button[aria-current="true"]::before {
   background: var(--mv-accent-ink);

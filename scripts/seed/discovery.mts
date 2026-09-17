@@ -25,7 +25,9 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadEnvLocal, SEED_DIR, todayKst } from './env.mts';
+import { type Keys, loadEnvLocal, loadKeys, SEED_DIR, todayKst } from './env.mts';
+import { distanceM } from './geo.mts';
+import { cached, fetchJson, sleep } from './http.mts';
 import { log, warn } from './log.mts';
 
 interface SeedValley {
@@ -40,7 +42,7 @@ interface SeedValley {
 }
 interface Story {
   /** 어떤 항목에서 왔는지 — 로그로만 쓰고 등록 본문에는 넣지 않는다. */
-  matched?: string;
+  matched?: string | undefined;
   id: string;
   kind: 'banner';
   valleyId: string;
@@ -70,12 +72,11 @@ const HERO_TEXT = 150;
 const COMMONS_RADIUS_M = 4000;
 /** 등록 간격(ms). `ADMIN_RATE_LIMIT_PER_MIN` 기본 20 보다 여유를 둔다. */
 const POST_GAP_MS = 3200;
-/** 출처 호출 간격(ms). Commons 는 이보다 빠르면 429 를 낸다. */
+/** 출처 호출 간격(ms). Commons 는 이보다 빠르면 429 를 낸다(실측 2026-09-17). */
 const HOST_GAP_MS = 1500;
 /** Wikimedia 는 사람이 읽을 수 있는 User-Agent 를 요구한다(없으면 403). 헤더는 ASCII 만 된다. */
 const WIKI_UA = 'everybody-valley-seed/1.0 (home content seeding; contact: repo maintainer)';
 
-const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 const clamp = (text: string, max: number): string =>
   text.length <= max ? text : `${text.slice(0, max - 1).trimEnd()}…`;
 /** TourAPI overview 에는 `<br>` 과 실체참조가 섞여 있다. */
@@ -127,21 +128,15 @@ async function imageLoads(url: string): Promise<boolean> {
   return false;
 }
 
-/** 출처별 마지막 호출 시각 — Commons 는 연속 질의에 429 를 준다(실측 2026-09-17). */
-const lastCall = new Map<string, number>();
-async function getJson<T>(url: string, ua?: string): Promise<T> {
-  const host = new URL(url).host;
-  for (const retryWait of [0, 5_000, 20_000]) {
-    if (retryWait) await sleep(retryWait);
-    const gap = (lastCall.get(host) ?? 0) + HOST_GAP_MS - Date.now();
-    if (gap > 0) await sleep(gap);
-    lastCall.set(host, Date.now());
-    const response = await fetch(url, ua ? { headers: { 'User-Agent': ua } } : undefined);
-    if (response.ok) return (await response.json()) as T;
-    if (response.status !== 429 && response.status < 500)
-      throw new Error(`HTTP ${response.status} ${host}`);
-  }
-  throw new Error(`HTTP 429/5xx ${host} — 재시도 후에도 실패`);
+/**
+ * 응답을 캐시에 두고 공용 `http.mts` 로 부른다 — 시딩을 여러 번 돌려도 TourAPI 일일 한도
+ * (1,000건/기능)를 다시 쓰지 않고, 오류 메시지에서 키를 가려 준다. 캐시 키에는 인증키를 넣지
+ * 않는다. 새 자료를 받으려면 `scripts/seed/.cache/discovery/` 를 지운다.
+ */
+async function getJson<T>(cacheKey: string, url: string, keys: Keys, ua?: string): Promise<T> {
+  return cached(`discovery/${cacheKey}.json`, () =>
+    fetchJson<T>(url, keys, HOST_GAP_MS, ua ? { headers: { 'User-Agent': ua } } : undefined),
+  );
 }
 
 // ── 출처 1: 한국관광공사 TourAPI (KorService2) ───────────────────────────────────
@@ -169,17 +164,15 @@ function tourItems(body: unknown): TourItem[] {
     ?.items?.item;
   return Array.isArray(item) ? (item as TourItem[]) : item ? [item as TourItem] : [];
 }
-/** 좌표가 이 거리 안이면 같은 계곡으로 본다(km). 관광지 좌표는 골짜기 입구를 가리킨다. */
-const TOUR_MAX_KM = 8;
-const distanceKm = (lat1: number, lng1: number, lat2: number, lng2: number): number =>
-  Math.hypot((lat2 - lat1) * 111, (lng2 - lng1) * 111 * Math.cos((lat1 * Math.PI) / 180));
+/** 좌표가 이 거리 안이면 같은 계곡으로 본다(m). 관광지 좌표는 골짜기 입구를 가리킨다. */
+const TOUR_MAX_M = 8000;
 
 /**
  * 이름으로 찾고 좌표로 확인한다. 좌표 주변 목록만 훑으면 `명지계곡` 처럼 이름이 정확히 같은
  * 항목도 반경·페이지 밖으로 밀려 놓치고, 반대로 이름만 믿으면 다른 지역의 동명 계곡이 붙는다.
  * `valleys.json` 의 `query` 에 이미 검색어(대안은 `|` 로 구분)가 들어 있어 그것을 쓴다.
  */
-async function fromTour(valley: SeedValley, key: string): Promise<Story | null> {
+async function fromTour(valley: SeedValley, keys: Keys, key: string): Promise<Story | null> {
   // `계곡`·괄호를 떼면 관광공사가 쓰는 이름(`소요산`, `사나사`)에 걸린다. 거리 검증이 동명이지를 막는다.
   const bare = valley.name
     .replace(/\(.*?\)/g, '')
@@ -190,30 +183,36 @@ async function fromTour(valley: SeedValley, key: string): Promise<Story | null> 
   ]
     .filter((k) => k.length >= 2)
     .slice(0, 6);
-  let best: { item: TourItem; typeRank: number; km: number } | null = null;
+  let best: { item: TourItem; typeRank: number; away: number } | null = null;
   for (const keyword of keywords) {
     const found = tourItems(
       await getJson(
+        `tour-keyword-${valley.id}-${encodeURIComponent(keyword)}`,
         tourUrl('searchKeyword2', key, { keyword, numOfRows: '30', pageNo: '1', arrange: 'A' }),
+        keys,
       ),
     );
     for (const item of found) {
       const lat = Number(item.mapy);
       const lng = Number(item.mapx);
       if (!item.contentid || !(item.firstimage || item.firstimage2) || !lat || !lng) continue;
-      const km = distanceKm(valley.lat, valley.lng, lat, lng);
-      if (km > TOUR_MAX_KM) continue;
+      const away = distanceM([valley.lng, valley.lat], [lng, lat]);
+      if (away > TOUR_MAX_M) continue;
       // 관광지(12)가 축제·식당·숙소보다 계곡 자체에 가깝다.
       const typeRank = item.contenttypeid === '12' ? 0 : 1;
-      if (!best || typeRank < best.typeRank || (typeRank === best.typeRank && km < best.km))
-        best = { item, typeRank, km };
+      if (!best || typeRank < best.typeRank || (typeRank === best.typeRank && away < best.away))
+        best = { item, typeRank, away };
     }
     if (best?.typeRank === 0) break;
   }
   if (!best) return null;
   const { item } = best;
   const detail = tourItems(
-    await getJson(tourUrl('detailCommon2', key, { contentId: item.contentid ?? '' })),
+    await getJson(
+      `tour-detail-${item.contentid}`,
+      tourUrl('detailCommon2', key, { contentId: item.contentid ?? '' }),
+      keys,
+    ),
   )[0];
   const image = (detail?.firstimage || item.firstimage || item.firstimage2 || '').replace(
     /^http:/,
@@ -261,7 +260,7 @@ interface CommonsPage {
     extmetadata?: Record<string, { value?: string }>;
   }[];
 }
-async function fromCommons(valley: SeedValley): Promise<Story | null> {
+async function fromCommons(valley: SeedValley, keys: Keys): Promise<Story | null> {
   const query = new URLSearchParams({
     action: 'query',
     format: 'json',
@@ -275,7 +274,9 @@ async function fromCommons(valley: SeedValley): Promise<Story | null> {
     iiurlwidth: '1600',
   });
   const body = await getJson<{ query?: { pages?: Record<string, CommonsPage> } }>(
+    `commons-${valley.id}`,
     `https://commons.wikimedia.org/w/api.php?${query}`,
+    keys,
     WIKI_UA,
   );
   for (const page of Object.values(body.query?.pages ?? {})) {
@@ -303,7 +304,8 @@ async function fromCommons(valley: SeedValley): Promise<Story | null> {
       ),
       imageUrl: image,
       imageCredit: clamp(`${author} / Wikimedia Commons (${plain(license)})`, MAX.imageCredit),
-      url: info.descriptionurl?.startsWith('https://') ? info.descriptionurl : '',
+      // 일반 배너는 링크를 비워 둔다 — 누르면 연결 계곡 미리보기가 열린다(docs/CONTENT.md).
+      url: '',
       author: clamp(author, MAX.author),
       publishedOn: taken ?? todayKst(),
       startsOn: todayKst(),
@@ -322,11 +324,14 @@ const flag = (name: string): string | undefined => {
   return at >= 0 ? argv[at + 1] : undefined;
 };
 const apply = argv.includes('--apply');
+/** 이미 등록된 콘텐츠를 덮어쓴다. 운영자가 어드민에서 고친 소개문·공개 여부가 날아간다. */
+const overwrite = argv.includes('--overwrite');
 const only = flag('valley');
 const sources = (flag('source') ?? 'tour,commons').split(',');
 
+const keys = loadKeys();
 const env = { ...loadEnvLocal(), ...process.env } as Record<string, string | undefined>;
-const tourKey = env['DATA_GO_KR_KEY_ENCODING'] ?? env['DATA_GO_KR_KEY_DECODING'];
+const tourKey = keys.dataGoKr;
 const apiBase = (env['API_BASE'] ?? 'http://localhost:8787').replace(/\/$/, '');
 const adminToken = env['ADMIN_TOKEN'];
 
@@ -338,13 +343,20 @@ if (valleys.length === 0) throw new Error(`알 수 없는 계곡: ${only}`);
 if (sources.includes('tour') && !tourKey)
   warn('DATA_GO_KR_KEY_ENCODING 이 없어 TourAPI 를 건너뛴다 — Commons 만 쓴다.');
 
+/** 출처 이름 → 그 출처에서 한 장 만드는 함수. 키가 없는 출처는 빠진다. */
+const finders: Record<string, (valley: SeedValley) => Promise<Story | null>> = {
+  ...(tourKey ? { tour: (valley: SeedValley) => fromTour(valley, keys, tourKey) } : {}),
+  commons: (valley: SeedValley) => fromCommons(valley, keys),
+};
+
 const collected: Story[] = [];
 for (const valley of valleys) {
   let story: Story | null = null;
   for (const source of sources) {
+    const find = finders[source];
+    if (!find) continue;
     try {
-      if (source === 'tour' && tourKey) story = await fromTour(valley, tourKey);
-      else if (source === 'commons') story = await fromCommons(valley);
+      story = await find(valley);
     } catch (error) {
       warn(`${valley.id}: ${source} 조회 실패 — ${error instanceof Error ? error.message : error}`);
     }
@@ -370,13 +382,32 @@ if (!apply) {
   process.exit(0);
 }
 if (!adminToken) throw new Error('ADMIN_TOKEN 이 없어 등록할 수 없다.');
+const auth = { authorization: `Bearer ${adminToken}` };
+
+/**
+ * 이미 등록된 id 는 건너뛴다. id 가 `<계곡>-<출처>` 로 고정이라 그냥 보내면 서버가 덮어쓰고,
+ * 운영자가 어드민에서 고친 소개문과 비공개 설정이 조용히 되돌아간다. 새로 받으려면
+ * `--overwrite` 를 명시한다.
+ */
+const existing = new Set<string>();
+if (!overwrite) {
+  const response = await fetch(`${apiBase}/api/admin/discovery`, { headers: auth });
+  if (!response.ok) throw new Error(`등록 목록 조회 실패 HTTP ${response.status}`);
+  for (const story of ((await response.json()) as { stories: { id: string }[] }).stories)
+    existing.add(story.id);
+}
 
 let saved = 0;
+let kept = 0;
 for (const story of collected) {
+  if (existing.has(story.id)) {
+    kept += 1;
+    continue;
+  }
   if (saved > 0) await sleep(POST_GAP_MS);
   const response = await fetch(`${apiBase}/api/admin/discovery`, {
     method: 'POST',
-    headers: { authorization: `Bearer ${adminToken}`, 'content-type': 'application/json' },
+    headers: { ...auth, 'content-type': 'application/json' },
     body: JSON.stringify({ ...story, matched: undefined }),
   });
   if (!response.ok) {
@@ -385,4 +416,6 @@ for (const story of collected) {
   }
   saved += 1;
 }
-log(`등록 ${saved}개. 앱 홈과 해당 계곡 미리보기에서 확인한다.`);
+log(
+  `등록 ${saved}개${kept ? `, 이미 있어 건너뜀 ${kept}개` : ''}. 앱 홈과 해당 계곡 미리보기에서 확인한다.`,
+);

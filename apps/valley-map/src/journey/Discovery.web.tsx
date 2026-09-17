@@ -2,7 +2,13 @@ import type { DiscoveryFeed, DiscoveryStory, Valley } from '@modu-valley/core';
 import { Alert, Button, Icon } from '@moduvalley/ui';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { resolveApiBase } from '@/api/createApiClient';
-import { DRAG_SLOP_PX, HERO_ROTATE_MS, nextSlideLeft, snappedLeft } from './heroSlider';
+import {
+  CLICK_AFTER_DRAG_MS,
+  DRAG_SLOP_PX,
+  HERO_ROTATE_MS,
+  nextSlideLeft,
+  snappedLeft,
+} from './heroSlider';
 
 export function useDiscovery() {
   const [feed, setFeed] = useState<DiscoveryFeed | null>(null);
@@ -189,13 +195,13 @@ export function BlogSection({
  */
 function HeroSlide({
   banner,
-  position,
+  slideLabel,
   target,
   onPreview,
   onExplore,
 }: {
   banner?: DiscoveryStory | undefined;
-  position?: string | undefined;
+  slideLabel?: string | undefined;
   target?: Valley | undefined;
   onPreview?: ((v: Valley) => void) | undefined;
   onExplore: () => void;
@@ -204,7 +210,7 @@ function HeroSlide({
     <section
       className={`ev-home-hero ${banner ? 'ev-home-hero--image' : ''}`}
       aria-roledescription={banner ? '슬라이드' : undefined}
-      aria-label={banner ? `${position} ${banner.title}` : '이번 주 계곡 안내'}
+      aria-label={banner ? `${slideLabel} ${banner.title}` : '이번 주 계곡 안내'}
     >
       {banner && <StoryImage key={banner.imageUrl} story={banner} />}
       <div className="ev-home-hero-copy">
@@ -251,7 +257,8 @@ function HeroSlide({
  * - 손가락 스와이프는 브라우저의 가로 스크롤이 그냥 해 준다.
  * - 마우스는 스크롤 컨테이너를 끌 수 없어서 포인터로 직접 끌어 준다. 끄는 동안은 스냅을
  *   껐다가 손을 뗄 때 가장 가까운 슬라이드로 맞춘다.
- * - 6초마다 자동으로 넘기고, 사용자가 한 번이라도 직접 넘기면 멈춘다. 키보드는 아래 점 버튼으로 고른다.
+ * - 6초마다 자동으로 넘기고, 사용자가 직접 넘기면 멈춘다. 멈추는 기준은 **넘기는 동작**이다 —
+ *   히어로의 버튼을 그냥 누르는 것으로는 멈추지 않는다.
  * - 탭이 뒤에 있을 때와 동작 줄이기(`prefers-reduced-motion`)에서는 자동으로 넘기지 않는다.
  *
  * 멈춤·드래그는 리액트 합성 이벤트가 아니라 트랙의 네이티브 이벤트로 잡는다 — 실제 스와이프는
@@ -273,8 +280,8 @@ function useHeroRotation(count: number) {
     };
     let dragFrom: number | null = null;
     let dragScroll = 0;
+    let draggedAt = 0;
     const down = (event: PointerEvent) => {
-      stop();
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
       dragFrom = event.clientX;
       dragScroll = track.scrollLeft;
@@ -287,33 +294,37 @@ function useHeroRotation(count: number) {
     };
     const move = (event: PointerEvent) => {
       if (dragFrom === null) return;
+      // 누른 채로 움직였다 = 넘기는 동작이다. 그냥 누르기만 한 것은 멈춤 사유가 아니다.
+      if (Math.abs(event.clientX - dragFrom) > DRAG_SLOP_PX) stop();
       track.scrollLeft = dragScroll - (event.clientX - dragFrom);
     };
     const up = (event: PointerEvent) => {
       if (dragFrom === null) return;
-      const dragged = Math.abs(event.clientX - dragFrom) > DRAG_SLOP_PX;
+      if (Math.abs(event.clientX - dragFrom) > DRAG_SLOP_PX) draggedAt = Date.now();
       dragFrom = null;
       track.style.scrollSnapType = '';
       track.scrollTo({
         left: snappedLeft(track.scrollLeft, track.clientWidth),
         behavior: 'smooth',
       });
-      // 끌고 나서 손을 떼는 자리에 버튼이 있으면 눌리지 않게 그 한 번만 막는다.
-      if (dragged)
-        track.addEventListener(
-          'click',
-          (click) => {
-            click.preventDefault();
-            click.stopPropagation();
-          },
-          { capture: true, once: true },
-        );
     };
+    // 끌고 나서 손을 떼는 자리에 버튼이 있으면 그 클릭만 막는다. 한 번 쓰는 리스너를 그때그때
+    // 달면 클릭이 따라오지 않을 때 남아서 다음 클릭을 잡아먹는다 — 시각으로 판단한다.
+    const swallowDragClick = (click: MouseEvent) => {
+      if (Date.now() - draggedAt > CLICK_AFTER_DRAG_MS) return;
+      draggedAt = 0;
+      click.preventDefault();
+      click.stopPropagation();
+    };
+    // 손가락 스와이프는 스크롤이라 pointermove 가 오지 않는다.
+    const touchMove = () => stop();
     track.addEventListener('scroll', follow, { passive: true });
     track.addEventListener('pointerdown', down);
     track.addEventListener('pointermove', move);
     track.addEventListener('pointerup', up);
     track.addEventListener('pointercancel', up);
+    track.addEventListener('click', swallowDragClick, { capture: true });
+    track.addEventListener('touchmove', touchMove, { passive: true });
     track.addEventListener('wheel', stop, { passive: true });
     track.addEventListener('keydown', stop);
     const rotates = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -333,16 +344,23 @@ function useHeroRotation(count: number) {
       track.removeEventListener('pointermove', move);
       track.removeEventListener('pointerup', up);
       track.removeEventListener('pointercancel', up);
+      track.removeEventListener('click', swallowDragClick, { capture: true });
+      track.removeEventListener('touchmove', touchMove);
       track.removeEventListener('wheel', stop);
       track.removeEventListener('keydown', stop);
     };
   }, [count]);
+  // 점이 한 줄로 흐르니, 자동으로 넘어간 뒤 지금 점이 화면 밖이면 안으로 끌어온다.
+  const dotsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    dotsRef.current?.children[index]?.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }, [index]);
   const goTo = useCallback((slide: number) => {
     stopped.current = true;
     const track = ref.current;
     if (track) track.scrollTo({ left: slide * track.clientWidth, behavior: 'smooth' });
   }, []);
-  return { ref, index, goTo };
+  return { ref, dotsRef, index, goTo };
 }
 
 export function DiscoveryHome({
@@ -375,7 +393,7 @@ export function DiscoveryHome({
             <HeroSlide
               key={banner.id}
               banner={banner}
-              position={`${i + 1} / ${banners.length}`}
+              slideLabel={`${i + 1} / ${banners.length}`}
               target={valleys.find((v) => v.id === banner.valleyId)}
               onPreview={onPreview}
               onExplore={onExplore}
@@ -386,7 +404,7 @@ export function DiscoveryHome({
       {banners.length > 1 && (
         /* ponytail: 배너가 30장이면 점도 30개라 하나가 12 px 폭이다 — 권장 터치 크기(24 px)보다
            좁다. 공개 배너를 8장 안쪽으로 두면 점을 24 px 로 키울 수 있다. */
-        <div className="ev-hero-dots">
+        <div className="ev-hero-dots" ref={slider.dotsRef}>
           {banners.map((b, i) => (
             <button
               key={b.id}

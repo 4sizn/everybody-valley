@@ -23,6 +23,9 @@ export function nextSlideLeft(scrollLeft: number, width: number, count: number):
 /** 이만큼 넘게 끌었으면 클릭이 아니라 슬라이드 넘김으로 본다(px). */
 export const DRAG_SLOP_PX = 8;
 
+/** 끌기를 끝낸 뒤 이 시간 안에 오는 클릭은 끌기의 잔상으로 본다(ms). */
+export const CLICK_AFTER_DRAG_MS = 250;
+
 /**
  * 가장 가까운 슬라이드 경계(px). 마우스로 끌면 스냅을 잠시 끄기 때문에, 손을 뗄 때 직접
  * 맞춰 줘야 한다.
