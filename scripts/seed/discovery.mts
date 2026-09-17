@@ -44,7 +44,7 @@ interface Story {
   /** 어떤 항목에서 왔는지 — 로그로만 쓰고 등록 본문에는 넣지 않는다. */
   matched?: string | undefined;
   id: string;
-  kind: 'banner';
+  kind: 'banner' | 'blog';
   valleyId: string;
   title: string;
   description: string;
@@ -150,6 +150,13 @@ interface TourItem {
   mapy?: string;
   modifiedtime?: string;
 }
+/** `detailCommon2` 가 돌려주는 칸 중 쓰는 것만. */
+interface TourDetail extends TourItem {
+  overview?: string;
+  /** `<a href="...">...</a>` 형태로 온다. */
+  homepage?: string;
+  addr1?: string;
+}
 const tourUrl = (operation: string, key: string, params: Record<string, string>): string => {
   const query = new URLSearchParams({
     MobileOS: 'ETC',
@@ -172,7 +179,12 @@ const TOUR_MAX_M = 8000;
  * 항목도 반경·페이지 밖으로 밀려 놓치고, 반대로 이름만 믿으면 다른 지역의 동명 계곡이 붙는다.
  * `valleys.json` 의 `query` 에 이미 검색어(대안은 `|` 로 구분)가 들어 있어 그것을 쓴다.
  */
-async function fromTour(valley: SeedValley, keys: Keys, key: string): Promise<Story | null> {
+async function fromTour(
+  valley: SeedValley,
+  keys: Keys,
+  key: string,
+  out?: { detail?: TourDetail | undefined },
+): Promise<Story | null> {
   // `계곡`·괄호를 떼면 관광공사가 쓰는 이름(`소요산`, `사나사`)에 걸린다. 거리 검증이 동명이지를 막는다.
   const bare = valley.name
     .replace(/\(.*?\)/g, '')
@@ -214,6 +226,7 @@ async function fromTour(valley: SeedValley, keys: Keys, key: string): Promise<St
       keys,
     ),
   )[0];
+  if (out) out.detail = detail as TourDetail | undefined;
   const image = (detail?.firstimage || item.firstimage || item.firstimage2 || '').replace(
     /^http:/,
     'https:',
@@ -243,6 +256,43 @@ async function fromTour(valley: SeedValley, keys: Keys, key: string): Promise<St
     endsOn: addDays(todayKst(), SHOW_DAYS),
     sponsored: false,
     enabled: true,
+  };
+}
+
+/**
+ * TourAPI `homepage` 에서 첫 https 주소만 꺼낸다 — 값이 `<a href=...>표시문구</a>` 라
+ * 그대로 저장하면 앱이 태그를 링크로 쓴다. 표시문구 쪽 주소는 잘려 있어 href 를 쓴다.
+ */
+function homepageUrl(html: string): string | null {
+  const href = html.match(/href=["'](https:\/\/[^"']+)["']/i)?.[1];
+  const bare = href ?? plain(html).match(/https:\/\/\S+/)?.[0];
+  return bare ? bare.replace(/[),.]+$/, '') : null;
+}
+
+/**
+ * 계곡 안내 글(`kind: 'blog'`). 방문기가 아니다 — 가 보지 않은 글을 방문 후기로 올리면
+ * 읽는 사람이 실제 경험담으로 오해한다(`docs/CONTENT.md` "임의 예시 글을 운영 데이터로
+ * 채우지 않는다"). 그래서 작성자는 편집팀이고, 소개는 관광정보 개요를 정리한 안내문이며,
+ * 링크는 지자체·관리기관 공식 페이지다. 실제 방문 후기는 운영자가 원문 링크로 등록한다.
+ */
+async function guideFromTour(valley: SeedValley, keys: Keys, key: string): Promise<Story | null> {
+  const out: { detail?: TourDetail | undefined } = {};
+  const banner = await fromTour(valley, keys, key, out);
+  const link = homepageUrl(out.detail?.homepage ?? '');
+  if (!banner || !link) return null;
+  const overview = summarize(out.detail?.overview ?? '', 170);
+  const city = out.detail?.addr1?.split(' ').slice(0, 2).join(' ') ?? valley.region;
+  return {
+    ...banner,
+    id: `${valley.id}-guide`,
+    kind: 'blog',
+    title: clamp(`${valley.name} 가기 전에 — ${valley.region} 계곡 안내`, MAX.title),
+    description: clamp(
+      `${overview ? `${overview} ` : ''}그늘과 주차장·화장실 위치는 지도에서 보고, 가는 길과 운영 안내는 ${city} 공식 관광 페이지 원문에서 확인한다. 비가 온 뒤에는 물이 불어나니 현장 통제 안내를 먼저 본다.`,
+      MAX.description,
+    ),
+    url: clamp(link, MAX.url),
+    author: clamp('모두밸리 편집팀 (공개 자료 정리)', MAX.author),
   };
 }
 
@@ -328,6 +378,10 @@ const apply = argv.includes('--apply');
 const overwrite = argv.includes('--overwrite');
 const only = flag('valley');
 const sources = (flag('source') ?? 'tour,commons').split(',');
+/** `banner` 는 홈 히어로, `blog` 는 계곡 안내 글(BLOG & GUIDE). 안내 글은 원문 링크가 있어야 해서 TourAPI 만 쓴다. */
+const kind = (flag('kind') ?? 'banner') as 'banner' | 'blog';
+if (kind !== 'banner' && kind !== 'blog') throw new Error(`알 수 없는 --kind: ${kind}`);
+const label = kind === 'blog' ? '안내 글' : '배너';
 
 const keys = loadKeys();
 const env = { ...loadEnvLocal(), ...process.env } as Record<string, string | undefined>;
@@ -344,10 +398,14 @@ if (sources.includes('tour') && !tourKey)
   warn('DATA_GO_KR_KEY_ENCODING 이 없어 TourAPI 를 건너뛴다 — Commons 만 쓴다.');
 
 /** 출처 이름 → 그 출처에서 한 장 만드는 함수. 키가 없는 출처는 빠진다. */
-const finders: Record<string, (valley: SeedValley) => Promise<Story | null>> = {
-  ...(tourKey ? { tour: (valley: SeedValley) => fromTour(valley, keys, tourKey) } : {}),
-  commons: (valley: SeedValley) => fromCommons(valley, keys),
-};
+const finders: Record<string, (valley: SeedValley) => Promise<Story | null>> =
+  kind === 'blog'
+    ? // 안내 글은 공식 관광 페이지 링크가 필수라 Commons(사진만 있음)에서는 만들지 않는다.
+      { ...(tourKey ? { tour: (valley: SeedValley) => guideFromTour(valley, keys, tourKey) } : {}) }
+    : {
+        ...(tourKey ? { tour: (valley: SeedValley) => fromTour(valley, keys, tourKey) } : {}),
+        commons: (valley: SeedValley) => fromCommons(valley, keys),
+      };
 
 const collected: Story[] = [];
 for (const valley of valleys) {
@@ -376,7 +434,7 @@ for (const valley of valleys) {
   );
 }
 
-log(`\n모은 배너 ${collected.length}개 / 계곡 ${valleys.length}곳`);
+log(`\n모은 ${label} ${collected.length}개 / 계곡 ${valleys.length}곳`);
 if (!apply) {
   log('등록하지 않았다. 확인했으면 --apply 를 붙여 다시 실행한다.');
   process.exit(0);
