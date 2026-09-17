@@ -39,17 +39,22 @@ export function loadEnvLocal(): Record<string, string> {
 export interface Keys {
   /** 브이월드 개발키. 없으면 하천망 비교·유역 조회를 건너뛴다. */
   readonly vworld: string | undefined;
+  /** 공공데이터포털 인증키(Encoding). 없으면 관광정보 시딩을 건너뛴다. */
+  readonly dataGoKr: string | undefined;
 }
 
 export function loadKeys(): Keys {
   const env = loadEnvLocal();
-  return { vworld: env['VWORLD_API_KEY'] };
+  return {
+    vworld: env['VWORLD_API_KEY'],
+    dataGoKr: env['DATA_GO_KR_KEY_ENCODING'] ?? env['DATA_GO_KR_KEY_DECODING'],
+  };
 }
 
 /** 오류 메시지·URL 에 키가 섞여 나가지 않도록 가린다. */
 export function redact(text: string, keys: Keys): string {
   let out = text;
-  for (const key of [keys.vworld]) if (key) out = out.split(key).join('<KEY>');
+  for (const key of [keys.vworld, keys.dataGoKr]) if (key) out = out.split(key).join('<KEY>');
   return out;
 }
 
