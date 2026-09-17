@@ -31,7 +31,14 @@ import { PARSED } from '@/session/valleySource';
 import { useTheme } from '@/theme/ThemeProvider';
 import { BlogSection, DiscoveryHome, useDiscovery } from './Discovery.web';
 import { FieldMap } from './FieldMap.web';
-import { journeySearch, type Place, parseJourneyLink, placeForValley } from './journey';
+import {
+  isStoriesUrl,
+  journeySearch,
+  type Place,
+  parseJourneyLink,
+  placeForValley,
+  STORIES_SEARCH,
+} from './journey';
 import { type JourneyNavigation, Navigation } from './Navigation.web';
 import { SettingsDialog } from './SettingsDialog.web';
 import './reference.css';
@@ -57,8 +64,9 @@ export function ValleyApp() {
   const [initial] = useState(() => parseJourneyLink('', valleys));
   const [place, setPlace] = useState<Place | null>(initial.place);
   const [candidate, setCandidate] = useState<Place | null>(null);
-  const [page, setPage] = useState<'home' | 'explore'>(initial.place ? 'explore' : 'home');
+  const [page, setPage] = useState<'home' | 'explore' | 'blog'>(initial.place ? 'explore' : 'home');
   const [query, setQuery] = useState('');
+  const [storyValley, setStoryValley] = useState<string | null>(null);
   const [filters, setFilters] = useState<ReadonlySet<FilterChipKey>>(new Set());
   const [dialog, setDialog] = useState<'settings' | 'safety' | null>(null);
   const scroll = useRef<HTMLDivElement>(null);
@@ -81,6 +89,7 @@ export function ValleyApp() {
     setPlace(restored.place);
     setLink(restored);
     if (restored.place) setPage('explore');
+    else if (isStoriesUrl(window.location.search)) setPage('blog');
     const pop = () => {
       const target = window.location.href;
       const next = parseJourneyLink(window.location.search, valleys);
@@ -90,6 +99,8 @@ export function ValleyApp() {
         setPlace(next.place);
         setCandidate(null);
         setLink(next);
+        // 주소가 화면을 정한다 — 뒤로가기로 목록에 되돌아오거나 홈으로 빠져나온다.
+        if (!next.place) setPage(isStoriesUrl(window.location.search) ? 'blog' : 'home');
       };
       if (navigation.current.guard) {
         window.history.pushState(null, '', navigation.current.url);
@@ -109,6 +120,20 @@ export function ValleyApp() {
     remember();
     setCandidate(placeForValley(valley));
   };
+  /** 목록은 홈 아래 화면이다 — 탭을 만들지 않고 주소만 남겨 뒤로가기·공유·새로고침이 살아 있게 한다. */
+  const openStories = () => {
+    remember();
+    setPage('blog');
+    if (scroll.current) scroll.current.scrollTop = 0;
+    window.history.pushState(null, '', STORIES_SEARCH);
+    navigation.current.url = window.location.href;
+  };
+  const closeStories = () => {
+    setPage('home');
+    setStoryValley(null);
+    window.history.pushState(null, '', window.location.pathname);
+    navigation.current.url = window.location.href;
+  };
   const choose = (next: Place) => {
     remember();
     setPlace(next);
@@ -123,6 +148,9 @@ export function ValleyApp() {
     window.history.pushState(null, '', window.location.pathname);
     navigation.current.url = window.location.href;
   };
+  const storyValleys = valleys.filter((v) =>
+    discovery.feed?.stories.some((s) => s.kind === 'blog' && s.valleyId === v.id),
+  );
   const results = query.trim() ? searchCatalog(valleys, query) : [];
   const visible = filterValleys(valleys, filters).valleys;
   return (
@@ -260,14 +288,17 @@ export function ValleyApp() {
                       onClick={() => setDialog('settings')}
                     />
                   </header>
-                  <div className="app-search">
-                    <SearchField
-                      value={query}
-                      onChange={setQuery}
-                      onClear={() => setQuery('')}
-                      {...(query ? { onBack: () => setQuery('') } : {})}
-                    />
-                  </div>
+                  {/* 검색은 홈·계곡 찾기의 도구다. 이야기 목록은 제 페이지라 검색 줄을 비운다. */}
+                  {page !== 'blog' && (
+                    <div className="app-search">
+                      <SearchField
+                        value={query}
+                        onChange={setQuery}
+                        onClear={() => setQuery('')}
+                        {...(query ? { onBack: () => setQuery('') } : {})}
+                      />
+                    </div>
+                  )}
                   <div className="app-scroll" ref={scroll}>
                     {!PARSED.ok ? (
                       <Alert status="error" title="계곡 자료를 불러오지 못했습니다">
@@ -330,7 +361,48 @@ export function ValleyApp() {
                           if (scroll.current) scroll.current.scrollTop = 0;
                         }}
                         onSafety={() => setDialog('safety')}
+                        onBlogs={openStories}
                       />
+                    ) : page === 'blog' ? (
+                      <>
+                        <header className="app-page-header ev-subpage-header">
+                          <IconButton
+                            label="홈으로 돌아가기"
+                            icon="arrow-left"
+                            onClick={closeStories}
+                          />
+                          <div>
+                            <nav className="ev-crumb" aria-label="현재 위치">
+                              <button type="button" onClick={closeStories}>
+                                홈
+                              </button>
+                              <Icon name="chevron-right" size={14} />
+                              <span aria-current="page">계곡 이야기</span>
+                            </nav>
+                            <h1>계곡 이야기</h1>
+                          </div>
+                        </header>
+                        <div className="app-chip-scroll">
+                          <Chip selected={!storyValley} onClick={() => setStoryValley(null)}>
+                            전체
+                          </Chip>
+                          {storyValleys.map((v) => (
+                            <Chip
+                              key={v.id}
+                              selected={storyValley === v.id}
+                              onClick={() => setStoryValley(v.id)}
+                            >
+                              {v.name}
+                            </Chip>
+                          ))}
+                        </div>
+                        <BlogSection
+                          discovery={discovery}
+                          valleys={valleys}
+                          onValley={preview}
+                          {...(storyValley ? { only: storyValley } : {})}
+                        />
+                      </>
                     ) : (
                       <>
                         <div className="app-section-heading">

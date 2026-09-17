@@ -112,21 +112,36 @@ function BlogCard({
     </article>
   );
 }
+/** 홈에 두는 안내 글 수. 나머지는 전체 목록에서 본다 — 홈이 글 목록으로 길어지지 않게. */
+const HOME_BLOG_COUNT = 3;
+
 export function BlogSection({
   discovery,
   valleys,
   valley,
   onValley,
+  limit,
+  onMore,
+  only,
 }: {
   discovery: DiscoveryState;
   valleys: readonly Valley[];
   valley?: Valley;
   onValley?: (valley: Valley) => void;
+  /** 홈처럼 자리가 좁은 곳에서 보여줄 개수. 나머지는 `onMore` 로 넘긴다. */
+  limit?: number;
+  onMore?: () => void;
+  /** 이 계곡의 글만 남긴다. 제목·안내문은 그대로 둔다(목록 화면의 계곡 고르개). */
+  only?: string;
 }) {
   const posts =
     discovery.feed?.stories.filter(
-      (s) => s.kind === 'blog' && (!valley || s.valleyId === valley.id),
+      (s) =>
+        s.kind === 'blog' &&
+        (!valley || s.valleyId === valley.id) &&
+        (!only || s.valleyId === only),
     ) ?? [];
+  const shown = limit ? posts.slice(0, limit) : posts;
   return (
     <section
       className="ev-editorial-section"
@@ -137,7 +152,13 @@ export function BlogSection({
           <span className="ev-eyebrow">BLOG & GUIDE</span>
           <h2>{valley ? '다녀온 사람들의 이야기' : '계곡을 먼저 만나보세요'}</h2>
         </div>
-        {!!posts.length && <span>{posts.length}편</span>}
+        {onMore && posts.length > shown.length ? (
+          <button className="ev-all-valleys" type="button" onClick={onMore}>
+            전체 {posts.length}편 <Icon name="chevron-right" size={16} />
+          </button>
+        ) : (
+          !!posts.length && <span>{posts.length}편</span>
+        )}
       </div>
       <p className="ev-muted">
         {valley
@@ -156,7 +177,7 @@ export function BlogSection({
         </p>
       ) : posts.length ? (
         <div className="ev-blog-grid">
-          {posts.map((s) => (
+          {shown.map((s) => (
             <BlogCard
               key={`${s.id}:${s.imageUrl}`}
               story={s}
@@ -369,12 +390,14 @@ export function DiscoveryHome({
   onPreview,
   onExplore,
   onSafety,
+  onBlogs,
 }: {
   discovery: DiscoveryState;
   valleys: readonly Valley[];
   onPreview: (v: Valley) => void;
   onExplore: () => void;
   onSafety: () => void;
+  onBlogs: () => void;
 }) {
   const banners = discovery.feed?.stories.filter((s) => s.kind === 'banner') ?? [];
   const slider = useHeroRotation(banners.length);
@@ -471,7 +494,13 @@ export function DiscoveryHome({
           </div>
         )}
       </section>
-      <BlogSection discovery={discovery} valleys={valleys} onValley={onPreview} />
+      <BlogSection
+        discovery={discovery}
+        valleys={valleys}
+        onValley={onPreview}
+        limit={HOME_BLOG_COUNT}
+        onMore={onBlogs}
+      />
       <button type="button" className="safety-row" onClick={onSafety}>
         <Icon name="shield-check" />
         <span>

@@ -854,3 +854,27 @@
     display: none;
   }
 }
+
+/* 홈 아래 화면(계곡 이야기) — 탭이 아니라 홈에서 들어간다. 위치를 빵 부스러기로 보여 준다. */
+.ev-subpage-header h1 {
+  margin: 0;
+}
+.ev-crumb {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--mv-text-muted);
+}
+.ev-crumb button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mv-accent-ink);
+  font: inherit;
+  cursor: pointer;
+}
+.ev-crumb span {
+  color: var(--mv-text-secondary);
+}

@@ -33,3 +33,11 @@ export function journeySearch(place: Place | null, sheet: SheetSnap, hour: numbe
 export function placeForValley(valley: Valley, segment = valley.segments[0]): Place | null {
   return segment ? { valley, segment } : null;
 }
+
+/** 홈 아래 "계곡 이야기" 목록의 주소. 탭이 아니라 홈에서 들어가는 화면이라 주소만 남긴다. */
+export const STORIES_SEARCH = '?page=stories';
+
+/** 지금 주소가 그 목록인가. 계곡이 함께 있으면 지도가 먼저다(`parseJourneyLink`). */
+export function isStoriesUrl(search: string): boolean {
+  return new URLSearchParams(search).get('page') === 'stories';
+}
