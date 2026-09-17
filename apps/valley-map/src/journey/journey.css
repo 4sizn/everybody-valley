@@ -336,7 +336,26 @@
   gap: 32px;
   padding-bottom: 16px;
 }
+/* 히어로 슬라이더 — 스크롤 스냅이 슬라이드 이동을 맡는다(캐러셀 라이브러리 없음). */
+.ev-hero-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  border-radius: 20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.ev-hero-slider:active {
+  cursor: grabbing;
+}
+.ev-hero-slider::-webkit-scrollbar {
+  display: none;
+}
 .ev-home-hero {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
   min-height: 310px;
   position: relative;
   overflow: hidden;
@@ -387,6 +406,11 @@
   line-height: 22px;
   margin-bottom: 20px;
   max-width: 38ch;
+  /* 히어로는 사진이 주인공이다 — 긴 소개문은 세 줄에서 자른다. */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .ev-home-hero .ev-hero-cta {
   display: inline-flex;
@@ -414,26 +438,35 @@
   border-radius: 4px;
   max-width: 90%;
 }
-.ev-banner-pagination {
+.ev-hero-dots {
   display: flex;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 2px;
   justify-content: center;
-  margin-top: -26px;
+  margin-top: 8px;
 }
-.ev-banner-pagination button {
-  min-width: 44px;
-  min-height: 44px;
+.ev-hero-dots button {
+  width: 12px;
+  height: 24px;
+  padding: 0;
   border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--mv-text-secondary);
+  background: none;
   cursor: pointer;
+  display: grid;
+  place-items: center;
 }
-.ev-banner-pagination button[aria-pressed="true"] {
-  color: var(--mv-accent-ink);
-  font-weight: 750;
-  text-decoration: underline;
-  text-underline-offset: 5px;
+.ev-hero-dots button::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mv-text-secondary);
+  opacity: 0.3;
+}
+.ev-hero-dots button[aria-current="true"]::before {
+  background: var(--mv-accent-ink);
+  opacity: 1;
+  transform: scale(1.35);
 }
 .ev-editorial-section {
   min-width: 0;
