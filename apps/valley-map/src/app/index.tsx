@@ -1,20 +1,14 @@
 /**
- * `/` — 계곡 화면 (기본). F1 MVP-1.
+ * `/` — 네이티브 셸. 화면은 서버가 주는 웹 앱(`ValleyApp`)을 WebView 로 띄운다.
  *
- * 지도에 구간(선)·시설(점)이 그려지고, 시트에 구간 카드가 나오며, 카드 ↔ 지도
- * 선택이 양방향으로 이어진다. 데이터는 서버 없이 정적 GeoJSON —
- * `session/valleySource.ts` 가 번들된 계곡 합본(SD1, 시딩 전엔 샘플)을 읽어 저장소로 만든다.
+ * 계곡 화면의 기능은 웹에서 먼저 자란다(README "현재 출시 검증 대상: 모바일/데스크톱 웹").
+ * 네이티브 원본 화면(`components/shell/MapScreen`)은 지우지 않고 그대로 두었다 — 이 파일에서
+ * 다시 불러오면 예전 화면으로 돌아간다.
+ *
+ * 주소는 서버 주소와 같다. 서버가 `/api` 와 웹을 같은 출처에서 서빙한다(`docs/PRODUCTION.md`).
  */
-import { VALLEY_INITIAL_VIEW } from '@modu-valley/core';
-import { MapScreen } from '@/components/shell/MapScreen';
-import { VALLEY_INITIAL_CENTER, VALLEY_SOURCE } from '@/session/valleySource';
+import { WebShell } from '@/components/shell/WebShell';
 
 export default function ValleyScreen() {
-  return (
-    <MapScreen
-      source={VALLEY_SOURCE}
-      initialCenter={VALLEY_INITIAL_CENTER}
-      initialView={VALLEY_INITIAL_VIEW}
-    />
-  );
+  return <WebShell />;
 }
