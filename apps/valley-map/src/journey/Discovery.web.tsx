@@ -1,7 +1,8 @@
 import type { DiscoveryFeed, DiscoveryStory, Valley } from '@modu-valley/core';
 import { Alert, Button, Icon } from '@moduvalley/ui';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { resolveApiBase } from '@/api/createApiClient';
+import { DRAG_SLOP_PX, HERO_ROTATE_MS, nextSlideLeft, snappedLeft } from './heroSlider';
 
 export function useDiscovery() {
   const [feed, setFeed] = useState<DiscoveryFeed | null>(null);
@@ -183,6 +184,167 @@ export function BlogSection({
     </section>
   );
 }
+/**
+ * 히어로 한 장. 배너가 없으면 안내 문구만 있는 같은 모양의 한 장을 그린다.
+ */
+function HeroSlide({
+  banner,
+  position,
+  target,
+  onPreview,
+  onExplore,
+}: {
+  banner?: DiscoveryStory | undefined;
+  position?: string | undefined;
+  target?: Valley | undefined;
+  onPreview?: ((v: Valley) => void) | undefined;
+  onExplore: () => void;
+}) {
+  return (
+    <section
+      className={`ev-home-hero ${banner ? 'ev-home-hero--image' : ''}`}
+      aria-roledescription={banner ? '슬라이드' : undefined}
+      aria-label={banner ? `${position} ${banner.title}` : '이번 주 계곡 안내'}
+    >
+      {banner && <StoryImage key={banner.imageUrl} story={banner} />}
+      <div className="ev-home-hero-copy">
+        <span className="ev-hero-tag">
+          {banner?.sponsored ? `광고 · ${banner.author}` : '이번 주 계곡 이야기'}
+        </span>
+        <h2>
+          {banner?.title ?? (
+            <>
+              물소리 따라,
+              <br />
+              이번 주의 계곡
+            </>
+          )}
+        </h2>
+        <p>
+          {banner?.description ??
+            '계곡의 풍경부터 주변 명소까지. 떠나기 전에, 여기서 먼저 만나보세요.'}
+        </p>
+        {banner?.url ? (
+          <a className="ev-hero-cta" href={banner.url} target="_blank" rel="noopener noreferrer">
+            {banner.sponsored ? '광고 자세히 보기' : '이야기 읽기'}{' '}
+            <Icon name="navigation" size={18} />
+          </a>
+        ) : (
+          <button
+            className="ev-hero-cta"
+            type="button"
+            onClick={() => (target && onPreview ? onPreview(target) : onExplore())}
+          >
+            {target ? `${target.name} 살펴보기` : '나에게 맞는 계곡 찾기'}
+            <Icon name="chevron-right" size={18} />
+          </button>
+        )}
+      </div>
+      {banner && <span className="ev-hero-credit">사진 · {banner.imageCredit}</span>}
+    </section>
+  );
+}
+
+/**
+ * 히어로 슬라이더 조작 전부.
+ *
+ * - 손가락 스와이프는 브라우저의 가로 스크롤이 그냥 해 준다.
+ * - 마우스는 스크롤 컨테이너를 끌 수 없어서 포인터로 직접 끌어 준다. 끄는 동안은 스냅을
+ *   껐다가 손을 뗄 때 가장 가까운 슬라이드로 맞춘다.
+ * - 6초마다 자동으로 넘기고, 사용자가 한 번이라도 직접 넘기면 멈춘다. 키보드는 아래 점 버튼으로 고른다.
+ * - 탭이 뒤에 있을 때와 동작 줄이기(`prefers-reduced-motion`)에서는 자동으로 넘기지 않는다.
+ *
+ * 멈춤·드래그는 리액트 합성 이벤트가 아니라 트랙의 네이티브 이벤트로 잡는다 — 실제 스와이프는
+ * 스크롤이라 합성 이벤트를 거치지 않는다.
+ */
+function useHeroRotation(count: number) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+  const stopped = useRef(false);
+  useEffect(() => {
+    const track = ref.current;
+    if (!track || count < 2) return;
+    const stop = () => {
+      stopped.current = true;
+    };
+    // 점 표시는 스크롤 위치에서 읽는다. 같은 값이면 리액트가 다시 그리지 않는다.
+    const follow = () => {
+      if (track.clientWidth > 0) setIndex(Math.round(track.scrollLeft / track.clientWidth));
+    };
+    let dragFrom: number | null = null;
+    let dragScroll = 0;
+    const down = (event: PointerEvent) => {
+      stop();
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      dragFrom = event.clientX;
+      dragScroll = track.scrollLeft;
+      track.style.scrollSnapType = 'none';
+      try {
+        track.setPointerCapture(event.pointerId);
+      } catch {
+        // 포인터가 이미 사라진 경우다. 캡처 없이도 트랙 위에서는 끌린다.
+      }
+    };
+    const move = (event: PointerEvent) => {
+      if (dragFrom === null) return;
+      track.scrollLeft = dragScroll - (event.clientX - dragFrom);
+    };
+    const up = (event: PointerEvent) => {
+      if (dragFrom === null) return;
+      const dragged = Math.abs(event.clientX - dragFrom) > DRAG_SLOP_PX;
+      dragFrom = null;
+      track.style.scrollSnapType = '';
+      track.scrollTo({
+        left: snappedLeft(track.scrollLeft, track.clientWidth),
+        behavior: 'smooth',
+      });
+      // 끌고 나서 손을 떼는 자리에 버튼이 있으면 눌리지 않게 그 한 번만 막는다.
+      if (dragged)
+        track.addEventListener(
+          'click',
+          (click) => {
+            click.preventDefault();
+            click.stopPropagation();
+          },
+          { capture: true, once: true },
+        );
+    };
+    track.addEventListener('scroll', follow, { passive: true });
+    track.addEventListener('pointerdown', down);
+    track.addEventListener('pointermove', move);
+    track.addEventListener('pointerup', up);
+    track.addEventListener('pointercancel', up);
+    track.addEventListener('wheel', stop, { passive: true });
+    track.addEventListener('keydown', stop);
+    const rotates = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timer = rotates
+      ? window.setInterval(() => {
+          if (stopped.current || document.hidden) return;
+          track.scrollTo({
+            left: nextSlideLeft(track.scrollLeft, track.clientWidth, count),
+            behavior: 'smooth',
+          });
+        }, HERO_ROTATE_MS)
+      : undefined;
+    return () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      track.removeEventListener('scroll', follow);
+      track.removeEventListener('pointerdown', down);
+      track.removeEventListener('pointermove', move);
+      track.removeEventListener('pointerup', up);
+      track.removeEventListener('pointercancel', up);
+      track.removeEventListener('wheel', stop);
+      track.removeEventListener('keydown', stop);
+    };
+  }, [count]);
+  const goTo = useCallback((slide: number) => {
+    stopped.current = true;
+    const track = ref.current;
+    if (track) track.scrollTo({ left: slide * track.clientWidth, behavior: 'smooth' });
+  }, []);
+  return { ref, index, goTo };
+}
+
 export function DiscoveryHome({
   discovery,
   valleys,
@@ -197,65 +359,44 @@ export function DiscoveryHome({
   onSafety: () => void;
 }) {
   const banners = discovery.feed?.stories.filter((s) => s.kind === 'banner') ?? [];
-  const [index, setIndex] = useState(0);
-  const banner = banners[index % banners.length];
-  const target = valleys.find((v) => v.id === banner?.valleyId);
+  const slider = useHeroRotation(banners.length);
   return (
     <div className="ev-home-content">
       <section
-        className={`ev-home-hero ${banner ? 'ev-home-hero--image' : ''}`}
-        aria-label="이번 주 계곡 안내"
+        className="ev-hero-slider"
+        ref={slider.ref}
+        aria-roledescription="캐러셀"
+        aria-label="이번 주 계곡 안내 — 좌우로 넘기거나 아래 점으로 고르세요"
       >
-        {banner && <StoryImage key={banner.imageUrl} story={banner} />}
-        <div className="ev-home-hero-copy">
-          <span className="ev-hero-tag">
-            {banner?.sponsored ? `광고 · ${banner.author}` : '이번 주 계곡 이야기'}
-          </span>
-          <h2>
-            {banner?.title ?? (
-              <>
-                물소리 따라,
-                <br />
-                이번 주의 계곡
-              </>
-            )}
-          </h2>
-          <p>
-            {banner?.description ??
-              '계곡의 풍경부터 주변 명소까지. 떠나기 전에, 여기서 먼저 만나보세요.'}
-          </p>
-          {banner?.url ? (
-            <a className="ev-hero-cta" href={banner.url} target="_blank" rel="noopener noreferrer">
-              {banner.sponsored ? '광고 자세히 보기' : '이야기 읽기'}{' '}
-              <Icon name="navigation" size={18} />
-            </a>
-          ) : (
-            <button
-              className="ev-hero-cta"
-              type="button"
-              onClick={() => (target ? onPreview(target) : onExplore())}
-            >
-              {target ? `${target.name} 살펴보기` : '나에게 맞는 계곡 찾기'}
-              <Icon name="chevron-right" size={18} />
-            </button>
-          )}
-        </div>
-        {banner && <span className="ev-hero-credit">사진 · {banner.imageCredit}</span>}
+        {banners.length === 0 ? (
+          <HeroSlide onExplore={onExplore} />
+        ) : (
+          banners.map((banner, i) => (
+            <HeroSlide
+              key={banner.id}
+              banner={banner}
+              position={`${i + 1} / ${banners.length}`}
+              target={valleys.find((v) => v.id === banner.valleyId)}
+              onPreview={onPreview}
+              onExplore={onExplore}
+            />
+          ))
+        )}
       </section>
       {banners.length > 1 && (
-        <nav className="ev-banner-pagination" aria-label="주간 배너 선택">
+        /* ponytail: 배너가 30장이면 점도 30개라 하나가 12 px 폭이다 — 권장 터치 크기(24 px)보다
+           좁다. 공개 배너를 8장 안쪽으로 두면 점을 24 px 로 키울 수 있다. */
+        <div className="ev-hero-dots">
           {banners.map((b, i) => (
             <button
-              type="button"
               key={b.id}
+              type="button"
               aria-label={`${i + 1}번 배너: ${b.title}`}
-              aria-pressed={index % banners.length === i}
-              onClick={() => setIndex(i)}
-            >
-              {i + 1}
-            </button>
+              aria-current={i === slider.index}
+              onClick={() => slider.goTo(i)}
+            />
           ))}
-        </nav>
+        </div>
       )}
       <section className="ev-editorial-section" aria-label="주간 관심 계곡 순위">
         <div className="app-section-heading">
