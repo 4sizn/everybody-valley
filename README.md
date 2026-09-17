@@ -5,7 +5,7 @@
 - **UI/UX 기준:** `design-system/` → `packages/ui/` → `apps/valley-map/src/journey/`.
 - **기능 기준:** 기존 `packages/core`, MapLibre web/native 어댑터, `server`, 계곡·시설·그늘 데이터.
 - **현재 출시 검증 대상:** 모바일/데스크톱 웹. 네이티브 원본과 환경은 보존했으며 원본의 네이티브 미구현 항목은 [기능 대응표](docs/migration/FEATURES.md)에 구분했습니다.
-- 원본 저장소와 비밀키·운영 DB는 수정하거나 복사하지 않았습니다.
+- 원본 저장소와 운영 DB는 수정하지 않았습니다. 사용자 요청으로 연결한 VWorld 키는 Git에서 제외한 서버 환경 파일에만 보관합니다.
 
 ## 실행
 
