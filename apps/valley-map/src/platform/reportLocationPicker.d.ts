@@ -19,6 +19,11 @@ export type ReportLocationPickerProps = {
   readonly initialCenter: LngLat;
   /** 십자선 아래 지점이 바뀔 때마다(드래그 중에도) 알린다. */
   readonly onChange: (point: LngLat) => void;
+  /**
+   * 지정할 수 있는 영역의 기준 — 그 계곡 중심선(F5d 반경 3km). 주면 그 밖으로 끌었을 때
+   * 지도가 허용 영역 안으로 되돌아온다. 없으면 되돌리지 않는다.
+   */
+  readonly limit?: readonly LngLat[];
 };
 
 export declare function ReportLocationPicker(props: ReportLocationPickerProps): JSX.Element;

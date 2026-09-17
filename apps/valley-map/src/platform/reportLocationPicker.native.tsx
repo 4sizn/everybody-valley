@@ -16,6 +16,8 @@ export const REPORT_LOCATION_PICKER_SUPPORTED = false;
 export type ReportLocationPickerProps = {
   readonly initialCenter: LngLat;
   readonly onChange: (point: LngLat) => void;
+  /** web 만 쓴다(허용 영역 밖에서 되돌리기) — 자리표시자는 받기만 한다. */
+  readonly limit?: readonly LngLat[];
 };
 
 export function ReportLocationPicker(_props: ReportLocationPickerProps) {

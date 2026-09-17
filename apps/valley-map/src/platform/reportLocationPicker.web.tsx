@@ -20,6 +20,8 @@
 import {
   CancellationTokenSource,
   ConsoleLogger,
+  cameraCommand,
+  clampReportCoordinate,
   type LngLat,
   type Logger,
   MAX_PITCH,
@@ -38,6 +40,11 @@ export const REPORT_LOCATION_PICKER_SUPPORTED = true;
 export type ReportLocationPickerProps = {
   readonly initialCenter: LngLat;
   readonly onChange: (point: LngLat) => void;
+  /**
+   * 지정할 수 있는 영역의 기준 — 그 계곡 중심선(F5d 반경 3km). 주면 그 밖으로 끌었을 때
+   * 지도를 허용 영역 안으로 되돌린다. 비어 있거나 없으면 되돌리지 않는다(서버가 거절한다).
+   */
+  readonly limit?: readonly LngLat[];
 };
 
 /* 피커는 좌표를 집는 화면이라 **정북 고정**이다 — web 정책이 핀치 회전을 켜도
@@ -54,11 +61,25 @@ const PICKER_GESTURES = {
 /** 이 시간 안에 `initialize()` 가 끝나지 않으면 멈춘 것으로 본다(위 "알려진 한계" 참고). */
 const INIT_TIMEOUT_MS = 8000;
 
+/**
+ * 허용 영역 밖으로 끌린 지도를 되돌리기까지 기다리는 시간.
+ * ponytail: 드래그가 끝났는지 알려주는 이벤트가 포트에 없어 "마지막 카메라 변화 뒤 조용해지면"
+ * 으로 대신한다 — 끄는 도중에 카메라를 잡아채면 제스처와 싸운다. 포트에 `camera-idle` 이
+ * 생기면 그 이벤트로 바꾼다.
+ */
+const SNAP_DELAY_MS = 250;
+/** 되돌리는 이동 — 짧은 직선 보간. 사용자가 "튕겨 나왔다"고 읽을 만큼은 보여야 한다. */
+const SNAP_TRANSITION = { motion: 'ease', durationMs: 400, essential: true } as const;
+
 const logger: Logger = new ConsoleLogger('valley').child('report-location-picker');
 
 type EngineStatus = 'loading' | 'ready' | 'error';
 
-export function ReportLocationPicker({ initialCenter, onChange }: ReportLocationPickerProps) {
+export function ReportLocationPicker({
+  initialCenter,
+  onChange,
+  limit,
+}: ReportLocationPickerProps) {
   const { mode: styleMode } = useTheme();
   const themed = useThemedStyles();
   const [host, setHost] = useState<MapHostHandle | null>(null);
@@ -70,6 +91,8 @@ export function ReportLocationPicker({ initialCenter, onChange }: ReportLocation
   const initialCenterRef = useRef(initialCenter);
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
+  const limitRef = useRef(limit);
+  limitRef.current = limit;
 
   // `attempt` 는 값을 읽지 않고 재시도 버튼이 새 엔진을 만들게 하는 신호로만 쓴다.
   // biome-ignore lint/correctness/useExhaustiveDependencies: 위 설명 참고
@@ -86,8 +109,17 @@ export function ReportLocationPicker({ initialCenter, onChange }: ReportLocation
     });
     const lifetime = new CancellationTokenSource();
     let settled = false;
+    let snapTimer: ReturnType<typeof setTimeout> | undefined;
     const subscription = engine.events.on('camera-change', (pose) => {
       onChangeRef.current(pose.center);
+      const centerline = limitRef.current;
+      clearTimeout(snapTimer);
+      if (centerline === undefined || centerline.length === 0) return;
+      const clamped = clampReportCoordinate(pose.center, centerline);
+      if (clamped === pose.center) return; // 허용 영역 안 — 되돌릴 것이 없다.
+      snapTimer = setTimeout(() => {
+        void engine.moveCamera(cameraCommand({ center: clamped }, SNAP_TRANSITION), lifetime.token);
+      }, SNAP_DELAY_MS);
     });
     const timeout = setTimeout(() => {
       if (settled) return;
@@ -115,6 +147,7 @@ export function ReportLocationPicker({ initialCenter, onChange }: ReportLocation
     });
     return () => {
       clearTimeout(timeout);
+      clearTimeout(snapTimer);
       subscription.dispose();
       lifetime.cancel('report-location-picker-unmount');
       lifetime.dispose();
