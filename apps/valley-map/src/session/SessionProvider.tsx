@@ -103,7 +103,7 @@ export function SessionProvider({
     if (host === null || !themeReady) return;
 
     /* 어댑터의 `launchSite` 는 "지도 최초 중심 + 불꽃 발사 원점" 이다. 계곡 장면은
-       불꽃을 끄고 시작하므로 원점은 무의미하고 최초 중심만 남는다.
+       불꽃 레이어를 만들지 않으므로 원점은 무의미하고 최초 중심만 남는다.
        지형(C10)은 계곡 장면만 — festival 의 스타일은 이전과 같아야 한다(CLAUDE.md 보존). */
     const engine = createMapEngine({
       host,
@@ -111,6 +111,7 @@ export function SessionProvider({
       initialView,
       styleMode,
       terrain: source.scene === 'valley',
+      fireworks: source.scene === 'festival',
       logger: rootLogger,
     });
     const next = new MapSession({

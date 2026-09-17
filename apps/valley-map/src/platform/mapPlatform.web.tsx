@@ -60,6 +60,7 @@ export type CreateMapEngineOptions = {
   readonly styleMode: MapStyleMode;
   /** 지형(DEM + 고도색·음영기복)을 스타일에 얹는가 — 계곡 장면만. festival 은 소스도 늘지 않는다. */
   readonly terrain: boolean;
+  readonly fireworks?: boolean;
   readonly logger: Logger;
 };
 
@@ -80,6 +81,7 @@ export function createMapEngine(options: CreateMapEngineOptions): MapEnginePort 
     initialView: options.initialView,
     styleMode: options.styleMode,
     terrain: options.terrain,
+    fireworks: options.fireworks === true,
     logger: options.logger,
     // 개발용 강제 장애(C7) — 정상 빌드는 undefined 라 스타일이 그대로다.
     ...(BASEMAP_ORIGIN_OVERRIDE === undefined

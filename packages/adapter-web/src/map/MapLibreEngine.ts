@@ -121,6 +121,8 @@ export type MapLibreEngineOptions = {
    * 장면 판단은 스타일 구성 시점에 한 번이다 — 레이어를 뒤에 명령형으로 얹지 않는다.
    */
   readonly terrain?: boolean;
+  /** 불꽃 데모에서만 명시적으로 켠다. 일반 지도에는 파티클 레이어를 만들지 않는다. */
+  readonly fireworks?: boolean;
   /** 초기 투영. 데모와 같은 적응형 globe 가 기본. */
   readonly projection?: ProjectionMode;
   /** 불꽃 난수원. 결정적 재현이 필요한 테스트에서 주입한다. */
@@ -141,7 +143,7 @@ export type MapLibreEngineOptions = {
 };
 
 export class MapLibreEngine extends MapEnginePort {
-  override readonly capabilities = MAPLIBRE_CAPABILITIES;
+  override readonly capabilities: MapCapabilities;
 
   readonly #options: MapLibreEngineOptions;
   readonly #logger: Logger;
@@ -170,6 +172,7 @@ export class MapLibreEngine extends MapEnginePort {
 
   constructor(options: MapLibreEngineOptions) {
     super();
+    this.capabilities = { ...MAPLIBRE_CAPABILITIES, particleLayer: options.fireworks === true };
     this.#options = options;
     this.#logger = options.logger.child('maplibre');
     this.#emitter = new Emitter<MapEngineEvents>(this.#logger);
@@ -590,7 +593,7 @@ export class MapLibreEngine extends MapEnginePort {
     // `preventDefault()` 로 표시한 클릭을 여기서 걸러 낸다(데모와 동일).
     this.#wireBackgroundPress(map);
 
-    return this.#installFireworks(map);
+    return this.#options.fireworks === true ? this.#installFireworks(map) : ok();
   }
 
   /**
