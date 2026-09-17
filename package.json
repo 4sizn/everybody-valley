@@ -30,6 +30,7 @@
     "server:start": "pnpm --filter @modu-valley/server start",
     "server:test": "pnpm --filter @modu-valley/server test",
     "seed:shelters": "tsx scripts/seed/shelters.mts",
+    "seed:discovery": "tsx scripts/seed/discovery.mts",
     "design:check": "npm --prefix design-system test",
     "design:build": "npm --prefix design-system run build && node scripts/sync-design.mjs",
     "build": "pnpm --filter valley-map build:web && pnpm server:build",
