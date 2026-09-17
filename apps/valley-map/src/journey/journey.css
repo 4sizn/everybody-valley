@@ -750,8 +750,8 @@
   overflow-wrap: anywhere;
 }
 
-/* 그늘 시각 트랙 — modu-valley `ShadeHourTrack` 과 같은 치수·색.
-   값은 그 앱(LIGHT_COLORS/DARK_COLORS, SIZES.reportHeight)에서 그대로 옮겼다. */
+/* 그늘 시각 트랙 — modu-valley `ShadeHourTrack` 과 같은 치수.
+   색은 이 앱의 테마 토큰을 쓴다 — 트랙만 OS 설정을 따라가면 흰 테마에서 혼자 어두워진다. */
 .ev-shade-track {
   position: absolute;
   bottom: 230px;
@@ -762,11 +762,16 @@
   gap: 4px;
   height: 48px;
   padding: 0 8px;
-  background: #f5f6f8;
+  background: var(--mv-surface);
   border-radius: 9999px;
   box-shadow:
     rgba(0, 0, 0, 0.06) 0 1px 1px,
     rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+.mv-system[data-theme="dark"] .ev-shade-track {
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 1px 1px,
+    rgba(0, 0, 0, 0.28) 0 4px 12px;
 }
 .ev-shade-track .ev-shade-arrow {
   flex: none;
@@ -775,7 +780,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: #4b525c;
+  color: var(--mv-text-secondary);
   font-size: 20px;
   font-weight: 500;
   line-height: 22px;
@@ -802,29 +807,29 @@
   padding: 0;
   border: 0;
   background: none;
-  color: #666d78;
+  color: var(--mv-text-muted);
   font-size: 11px;
   font-weight: 500;
   cursor: pointer;
 }
 .ev-shade-track .ev-shade-tick--on {
-  color: #1a1b1f;
+  color: var(--mv-text);
   font-weight: 700;
 }
 .ev-shade-dot {
   width: 6px;
   height: 6px;
   border-radius: 3px;
-  background: rgba(26, 27, 31, 0.16);
+  background: var(--mv-border-strong);
 }
 .ev-shade-track .ev-shade-tick--on .ev-shade-dot {
-  background: #297cff;
+  background: var(--mv-accent);
 }
 .ev-shade-time {
   flex: none;
   min-width: 40px;
   margin: 0 6px;
-  color: #1a1b1f;
+  color: var(--mv-text);
   font-size: 13px;
   font-weight: 600;
   text-align: right;
@@ -847,28 +852,5 @@
   }
   .ev-shade-time {
     display: none;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .ev-shade-track {
-    background: #18181c;
-    box-shadow:
-      rgba(0, 0, 0, 0.2) 0 1px 1px,
-      rgba(0, 0, 0, 0.28) 0 4px 12px;
-  }
-  .ev-shade-track .ev-shade-arrow {
-    color: #9ea4ad;
-  }
-  .ev-shade-track .ev-shade-tick {
-    color: #6e747f;
-  }
-  .ev-shade-track .ev-shade-tick--on {
-    color: #f2f4f6;
-  }
-  .ev-shade-dot {
-    background: rgba(57, 57, 64, 0.7);
-  }
-  .ev-shade-time {
-    color: #f2f4f6;
   }
 }
