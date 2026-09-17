@@ -101,6 +101,7 @@ export {
   flowStepAt,
   toFlowFeatureCollection,
 } from './flowLayers';
+export { LAND_OWNERSHIP_COLORS } from './landLayers';
 export {
   type FeatureLayerSet,
   findLayerSetBySource,

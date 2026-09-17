@@ -37,6 +37,7 @@ import { SessionProvider, useAppState, useSession, useSessionRestart } from '@/s
 import { PARSED, VALLEY_SOURCE } from '@/session/valleySource';
 import { BlogSection, type DiscoveryState } from './Discovery.web';
 import { journeySearch, type Place } from './journey';
+import { LandLegend, type LandStatus } from './LandLegend.web';
 import { Navigation } from './Navigation.web';
 import { Reports } from './Reports.web';
 import { useWeather } from './useWeather';
@@ -99,7 +100,7 @@ function MapChrome({
   const [overlay, setOverlay] = useState<'shade' | 'land' | null>(null);
   const [hour, setHour] = useState(initialHour);
   const [composer, setComposer] = useState(false);
-  const [landStatus, setLandStatus] = useState('');
+  const [landStatus, setLandStatus] = useState<LandStatus>('loading');
   const [landRetry, setLandRetry] = useState(0);
   const [top, setTop] = useState(180);
   const [directions, setDirections] = useState(false);
@@ -200,7 +201,7 @@ function MapChrome({
     session.setLandParcels([]);
     if (overlay !== 'land' || status !== 'ready') return;
     const controller = new AbortController();
-    setLandStatus('토지소유 정보 불러오는 중…');
+    setLandStatus('loading');
     void landRetry;
     void fetch(`${resolveApiBase()}/api/land/${encodeURIComponent(place.valley.id)}`, {
       signal: controller.signal,
@@ -218,14 +219,10 @@ function MapChrome({
         });
         if (controller.signal.aborted) return;
         session.setLandParcels(parcels);
-        setLandStatus(
-          parcels.length
-            ? `토지 경계 ${parcels.length}개${data.partial ? ' · 일부만 조회됨' : ''}`
-            : '조회된 경계 없음 · 사유지가 없다는 뜻은 아닙니다.',
-        );
+        setLandStatus(parcels.length ? (data.partial ? 'partial' : 'ready') : 'empty');
       })
       .catch(() => {
-        if (!controller.signal.aborted) setLandStatus('토지 정보를 불러오지 못했습니다.');
+        if (!controller.signal.aborted) setLandStatus('error');
       });
     return () => {
       controller.abort();
@@ -359,17 +356,7 @@ function MapChrome({
         </div>
       )}
       {overlay === 'land' && sheet === 'peek' && (
-        <div className="ev-map-detail">
-          <p>{landStatus}</p>
-          <p className="ev-muted">
-            주황: 개인 · 황토: 법인 · 파랑: 국공유지 · 회색: 미확인
-            <br />
-            소유구분은 출입 허가를 뜻하지 않습니다.
-          </p>
-          <Button variant="ghost" onClick={() => setLandRetry((v) => v + 1)}>
-            토지 조회 재시도
-          </Button>
-        </div>
+        <LandLegend status={landStatus} onRetry={() => setLandRetry((v) => v + 1)} />
       )}
       <div ref={sheetRef}>
         <MapSheet

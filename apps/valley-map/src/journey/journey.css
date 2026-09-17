@@ -231,6 +231,59 @@
   padding: 0;
   border: 0;
 }
+.ev-land-legend {
+  position: absolute;
+  bottom: 166px;
+  left: max(12px, calc((100vw - 560px) / 2 + 12px));
+  width: min(400px, calc(100vw - 84px));
+  padding: 8px 10px;
+  background: var(--mv-surface);
+  border: 1px solid var(--mv-border);
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 18px;
+}
+.ev-land-legend ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ev-land-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.ev-land-swatch {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 1px dashed;
+  border-radius: 3px;
+}
+.ev-land-note {
+  margin: 6px 0 0;
+  color: var(--mv-text-secondary);
+  line-height: 16px;
+}
+.ev-land-status {
+  margin: 0;
+}
+.ev-land-status + ul {
+  margin-top: 6px;
+}
+.ev-land-legend .mv-button {
+  margin-top: 4px;
+  min-height: 44px;
+}
+@media (max-width: 591px) {
+  .ev-land-legend ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .ev-map .mv-map-sheet--peek h3 {
   margin-bottom: 0;
 }
