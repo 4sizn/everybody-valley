@@ -229,6 +229,7 @@
 }
 .ev-map-detail .mv-time-picker {
   padding: 0;
+  border: 0;
 }
 .ev-map .mv-map-sheet--peek h3 {
   margin-bottom: 0;
