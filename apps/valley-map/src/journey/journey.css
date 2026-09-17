@@ -707,3 +707,84 @@
   margin: 0;
   overflow-wrap: anywhere;
 }
+
+/* 그늘 시각 트랙 — 정시 9개 눈금 알약. 지도를 덜 가리게 토지 범례와 같은 높이·좌측 정렬. */
+.ev-shade-track {
+  position: absolute;
+  bottom: 230px;
+  left: max(12px, calc((100vw - 560px) / 2 + 12px));
+  width: min(400px, calc(100vw - 84px));
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 44px;
+  padding: 0 6px;
+  background: var(--mv-surface);
+  border: 1px solid var(--mv-border);
+  border-radius: 999px;
+}
+.ev-shade-arrow {
+  flex: none;
+  width: 28px;
+  height: 40px;
+  border: 0;
+  background: none;
+  color: var(--mv-text-secondary);
+  font-size: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.ev-shade-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.ev-shade-ticks {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  min-width: 0;
+}
+.ev-shade-tick {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mv-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ev-shade-tick--on {
+  color: var(--mv-text);
+  font-weight: 700;
+}
+.ev-shade-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--mv-border-strong);
+}
+.ev-shade-tick--on .ev-shade-dot {
+  background: var(--mv-accent);
+}
+.ev-shade-time {
+  flex: none;
+  min-width: 40px;
+  margin: 0 4px;
+  color: var(--mv-text);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+/* 좁은 폭: 굵은 눈금이 이미 시각을 말한다 — 우측 HH:00 을 뺀다. */
+@media (max-width: 591px) {
+  .ev-shade-time {
+    display: none;
+  }
+}

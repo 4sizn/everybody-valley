@@ -28,7 +28,6 @@ import {
   Metric,
   type Status,
   Tabs,
-  TimePicker,
 } from '@moduvalley/ui';
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { resolveApiBase } from '@/api/createApiClient';
@@ -40,6 +39,7 @@ import { journeySearch, type Place } from './journey';
 import { LandLegend, type LandStatus } from './LandLegend.web';
 import { Navigation } from './Navigation.web';
 import { Reports } from './Reports.web';
+import { ShadeHourTrack } from './ShadeHourTrack.web';
 import { useWeather } from './useWeather';
 
 type Props = {
@@ -346,14 +346,7 @@ function MapChrome({
         </div>
       ) : null}
       {overlay === 'shade' && sheet === 'peek' && (
-        <div className="ev-map-detail">
-          <TimePicker
-            value={hour}
-            onChange={setHour}
-            date={shade?.metadata.representativeDate ?? '그늘 자료 없음'}
-          />
-          <p className="ev-muted">지형·수관 기반 추정 · 현장과 다를 수 있습니다.</p>
-        </div>
+        <ShadeHourTrack value={hour} onChange={setHour} />
       )}
       {overlay === 'land' && sheet === 'peek' && (
         <LandLegend status={landStatus} onRetry={() => setLandRetry((v) => v + 1)} />
