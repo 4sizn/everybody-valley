@@ -23,6 +23,7 @@
     "@modu-valley/adapter-web": "workspace:*",
     "@modu-valley/core": "workspace:*",
     "@modu-valley/map-style": "workspace:*",
+    "@moduvalley/ui": "workspace:*",
     "@react-native-async-storage/async-storage": "^3.1.1",
     "expo": "~57.0.19",
     "expo-constants": "~57.0.17",
@@ -38,7 +39,7 @@
     "react-native-screens": "~4.26.0",
     "react-native-svg": "15.15.5",
     "react-native-web": "~0.21.0",
-    "@moduvalley/ui": "workspace:*"
+    "react-native-webview": "13.16.1"
   },
   "devDependencies": {
     "@types/react": "~19.2.2",

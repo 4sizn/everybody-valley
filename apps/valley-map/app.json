@@ -10,7 +10,14 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.valleymap"
+      "bundleIdentifier": "com.anonymous.valleymap",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        },
+        "NSLocalNetworkUsageDescription": "같은 Wi-Fi 의 개발 서버에서 계곡 화면을 받아옵니다.",
+        "NSLocationWhenInUseUsageDescription": "지도를 현재 위치로 맞추고 가까운 계곡을 찾는 데 씁니다."
+      }
     },
     "android": {
       "predictiveBackGestureEnabled": false,
