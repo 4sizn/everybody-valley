@@ -8,7 +8,12 @@ import {
   Valley,
 } from '@modu-valley/core';
 import { describe, expect, it } from 'vitest';
-import { journeySearch, parseJourneyLink } from '../src/journey/journey';
+import {
+  isStoriesUrl,
+  journeySearch,
+  parseJourneyLink,
+  STORIES_SEARCH,
+} from '../src/journey/journey';
 
 const id = toValleyId('test-valley');
 const segment = new Segment({
@@ -62,5 +67,18 @@ describe('journey deep links', () => {
     const url = journeySearch(restored.place, restored.sheet, restored.hour);
     expect(url).not.toMatch(/lat|lng|password|draft|secret|private/);
     expect(journeySearch(null, 'full', 14)).toBe('');
+  });
+});
+
+describe('stories page link', () => {
+  it('only reads the stories page from its own parameter', () => {
+    expect(isStoriesUrl(STORIES_SEARCH)).toBe(true);
+    expect(isStoriesUrl('?page=stories&valley=test-valley')).toBe(true);
+    expect(isStoriesUrl('')).toBe(false);
+    expect(isStoriesUrl('?page=home')).toBe(false);
+    expect(isStoriesUrl('?stories=1')).toBe(false);
+  });
+  it('keeps the map link free of the page parameter', () => {
+    expect(journeySearch({ valley, segment }, 'peek', 14)).not.toContain('page=');
   });
 });
