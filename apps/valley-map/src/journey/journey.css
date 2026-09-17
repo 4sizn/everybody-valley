@@ -280,6 +280,9 @@
   min-height: 44px;
 }
 @media (max-width: 591px) {
+  .ev-land-legend {
+    bottom: 230px;
+  }
   .ev-land-legend ul {
     grid-template-columns: repeat(2, 1fr);
   }
