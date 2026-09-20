@@ -54,6 +54,16 @@ const filterIcons: Record<FilterChipKey, IconName> = {
   shadeMany: 'tree-pine',
 };
 
+/** 미리보기 주차장 한 줄 — 물가 800 m 안이면 거리, 그 밖에만 있으면 "가는 길에", 없으면 등록 없음. */
+function parkingLabel(valley: Valley): string {
+  const around = valley.facilitiesAround();
+  const near = around.nearby.find((f) => f.facility.facilityType === 'parking');
+  if (near) return `물가에서 ${near.distance.format()}`;
+  const far = around.onTheWay.find((f) => f.facility.facilityType === 'parking');
+  if (far) return `가는 길에 ${far.distance.format()}`;
+  return '등록 없음';
+}
+
 export function ValleyApp() {
   const theme = useTheme();
   const discovery = useDiscovery();
@@ -214,11 +224,7 @@ export function ValleyApp() {
                         />
                         <Metric
                           label="주차장"
-                          value={
-                            candidate.valley.facilitiesOf('parking').length
-                              ? '위치 정보 있음'
-                              : '미확인'
-                          }
+                          value={parkingLabel(candidate.valley)}
                           icon="square-parking"
                         />
                         <Metric

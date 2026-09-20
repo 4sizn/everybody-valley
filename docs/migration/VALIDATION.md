@@ -117,3 +117,10 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 - 백필 `server/scripts/backfill-daily-temps.mts`: 매분자료는 `stn=0` 이라 한 호출이 전체 지점을 담아 지점별로 돌 필요가 없다. 창 크기 실측 — 하루 창 504, 6시간 창 4개 중 1개 504, 1시간 창도 간헐 504 → 3시간 창으로 시작해 실패하면 반으로 쪼갠다(바닥 30분). 9/19 시험: 724지점, 실패 창 1(14:30–14:59, 낮이라 tmin 영향 없음). 9/1~9/20 전체는 백그라운드로 돌렸다.
 - API허브 ASOS 일자료(`kma_sfcdd3`)·AWS 시간자료(`awsh.php`)는 **활용신청 미완**(403). 신청하면 백필이 창 수십 개로 줄어든다 — 사용자 로그인 세션이 필요해 이번엔 매분자료로 했다.
 - 7곳 재시딩(`FACILITY_RADIUS_M` 1500→3000, `pnpm seed:build --valley …`): 공식 Overpass 는 429, kumi 미러는 504 가 잦아 `OVERPASS_ENDPOINT=https://maps.mail.ru/osm/tools/overpass/api/interpreter` 로 재시도. 재빌드 중심선은 기존 파일과 좌표 27점 전부 동일(백운 확인) — 계곡 파일은 흔들리지 않는다.
+
+## 7곳 재시딩·칩 기준 재정의 (2026-09-21)
+
+- `FACILITY_RADIUS_M` 1500→3000 으로 백운·백둔리·청학동·도마치·동막·조무락·명지 재시딩(`pnpm seed:build --valley …`, Overpass 는 공식 429·kumi 504 라 `maps.mail.ru` 미러). 시설 3·3·13·3·5·0·0. 중심선은 7곳 전부 기존 좌표와 동일, 계곡 파일 변화는 백운·도마치 `accessDistanceM`/`accessGradePct`(주차장이 생겨 계산)만.
+- 회귀 방어 테스트 `filterChips.test.ts` 가 깨졌다(화장실 19→23, 주차장+무료 5→6). 규칙대로 멈춰 보고했고 사용자 결정 **B → A**: 칩의 "시설이 있다" 를 `Valley.facilitiesAround().nearby`(물가 300 m, 주차장 800 m)로 바꾸고, 그 정의로 다시 잰 값(화장실 14 · 주차장 15 · 주차장+그늘 5 · 주차장+무료 4, 나머지 동일)을 새 기준선으로 박았다. 1.4 km 밖 휴게소 화장실로 "화장실 있음" 이 켜지지 않게 하려는 것. 미리보기 주차장 지표도 같은 정의("물가에서 63m" / "가는 길에 1.1km" / "등록 없음").
+- 단풍 예측 버그: 회귀 x 가 인덱스라 백필이 9/1~3·9/19~21 만 찬 시계열을 "6일에 6℃ 하락" 으로 읽어 9/24 물들기로 예측했다. 날짜 차이·달력 14일 창으로 고치고 테스트 2건 추가(빈 날 시계열 → 예측 없음, 창 안 결손 → 조밀 시계열과 같은 예측). 서버 재빌드 뒤 `/api/foliage` 예측 null 확인.
+- 캡처 `.proof/facilities/domachi-390.png`(주변 0곳 + 요약 줄 + 가는 길에 3), `preview-parking-domachi.png`, `preview-parking-yongchu-gapyeong.png`.

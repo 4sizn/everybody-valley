@@ -1,10 +1,15 @@
 /**
  * 조건 필터 칩(N1) 테스트 — SD1 실데이터 30계곡의 실측 개수를 박아 둔다.
  *
- * `docs/TODO.md` N1 절의 표(화장실 19·주차장 18·무료 10·야영 7·그늘 많음 8,
- * 조합 주차장+그늘 6·주차장+무료 5·주차장+무료+그늘 1·주차장+무료+야영 0)와
+ * `docs/TODO.md` N1 절의 표(화장실 14·주차장 15·무료 10·야영 7·그늘 많음 8,
+ * 조합 주차장+그늘 5·주차장+무료 4·주차장+무료+그늘 1·주차장+무료+야영 0)와
  * 같은 값이어야 한다. 다르게 나오면 시딩 데이터가 바뀐 것이고, 이 시험이
  * 먼저 깨져야 한다.
+ *
+ * 2026-09-21 기준선 재측정: "시설이 있다" 가 계곡 점 1.5 km 안 존재 → **물가(중심선) 300 m 안,
+ * 주차장 800 m** (`Valley.facilitiesAround().nearby`) 로 바뀌어 화장실 19→14 · 주차장 18→15 ·
+ * 주차장+그늘 6→5 · 주차장+무료 5→4. 같은 날 7곳 재시딩(시딩 반경 3 km)도 있었지만 새 정의에선
+ * 그 시설들(1 km 밖)이 칩을 켜지 않는다. 사용자 결정 A.
  *
  * 그늘 많음(8/30)은 N5 카드 배지(`shadeTags(segment).amount === 'many'`, 종일
  * 평균 ≥ 0.5)와 **같은 술어**다 — 처음엔 수관 비율(`canopyCover`) 기준으로
@@ -86,18 +91,18 @@ describe('filterChips — SD1 실측', () => {
     expect(sd1.length).toBe(30);
   });
 
-  it('칩 단독 개수 — 화장실 19 · 주차장 18 · 무료 10 · 야영 7 · 그늘 많음 8', () => {
+  it('칩 단독 개수 — 화장실 14 · 주차장 15 · 무료 10 · 야영 7 · 그늘 많음 8', () => {
     const counts = filterChipMatchCounts(sd1, selectionOf());
-    expect(counts.get('restroom')).toBe(19);
-    expect(counts.get('parking')).toBe(18);
+    expect(counts.get('restroom')).toBe(14);
+    expect(counts.get('parking')).toBe(15);
     expect(counts.get('freeAccess')).toBe(10);
     expect(counts.get('camping')).toBe(7);
     expect(counts.get('shadeMany')).toBe(8);
   });
 
-  it('AND 조합 — 주차장+그늘 6 · 주차장+무료 5 · 주차장+무료+그늘 1 · 주차장+무료+야영 0', () => {
-    expect(filterValleys(sd1, selectionOf('parking', 'shadeMany')).valleys).toHaveLength(6);
-    expect(filterValleys(sd1, selectionOf('parking', 'freeAccess')).valleys).toHaveLength(5);
+  it('AND 조합 — 주차장+그늘 5 · 주차장+무료 4 · 주차장+무료+그늘 1 · 주차장+무료+야영 0', () => {
+    expect(filterValleys(sd1, selectionOf('parking', 'shadeMany')).valleys).toHaveLength(5);
+    expect(filterValleys(sd1, selectionOf('parking', 'freeAccess')).valleys).toHaveLength(4);
     expect(
       filterValleys(sd1, selectionOf('parking', 'freeAccess', 'shadeMany')).valleys,
     ).toHaveLength(1);
@@ -111,10 +116,10 @@ describe('filterChips — SD1 실측', () => {
   it('칩 배지 개수는 다른 칩의 현재 선택을 반영한다(결정 (b))', () => {
     // 주차장을 이미 선택한 상태에서 그늘·무료 배지가 보여야 하는 값 — 위 조합과 같다.
     const withParking = filterChipMatchCounts(sd1, selectionOf('parking'));
-    expect(withParking.get('shadeMany')).toBe(6);
-    expect(withParking.get('freeAccess')).toBe(5);
+    expect(withParking.get('shadeMany')).toBe(5);
+    expect(withParking.get('freeAccess')).toBe(4);
     // 이미 선택된 칩 자신의 배지는 그 선택을 유지한 개수(=주차장 단독 개수).
-    expect(withParking.get('parking')).toBe(18);
+    expect(withParking.get('parking')).toBe(15);
   });
 
   it('정보가 없어 제외된 계곡 수 — 무료 15(30−15) · 야영 21(30−9)', () => {

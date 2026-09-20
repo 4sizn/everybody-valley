@@ -42,8 +42,13 @@ export type FilterChipDefinition = {
   readonly matches: (valley: Valley) => boolean | undefined;
 };
 
+/**
+ * "있다" 는 계곡 주변에 있다는 뜻이다 — `Valley.facilitiesAround().nearby`(중심선 300 m, 주차장·
+ * 진입로·역은 800 m). 시딩 반경(계곡 점 3 km) 안에만 있는 시설은 칩을 켜지 않는다: 1.4 km 밖
+ * 휴게소 화장실로 "화장실 있음" 이 되면 칩이 거짓말을 한다(2026-09-21 재시딩 때 확정).
+ */
 function hasFacility(type: FacilityType): (valley: Valley) => boolean {
-  return (valley) => valley.facilitiesOf(type).length > 0;
+  return (valley) => valley.facilitiesAround().nearby.some((f) => f.facility.facilityType === type);
 }
 
 /**

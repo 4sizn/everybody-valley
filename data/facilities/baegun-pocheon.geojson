@@ -2,16 +2,67 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "백운계곡 시설 0개 — 표준데이터 주차장 0 · 화장실 0 · OSM 0 · 수기 0. 계곡 점 반경 1.5 km.",
+    "description": "백운계곡 시설 3개 — 표준데이터 주차장 0 · 화장실 2 · OSM 1 · 수기 0. 계곡 점 반경 3 km.",
     "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-21.0",
+    "collectedAt": "2026-09-21",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
-    "sources": ["https://www.openstreetmap.org/copyright"]
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
   },
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.44829, 38.095569]
+      },
+      "properties": {
+        "id": "baegun-pocheon-std-r-24231",
+        "valleyId": "baegun-pocheon",
+        "name": "옥녀탕휴게소",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.448529, 38.093567]
+      },
+      "properties": {
+        "id": "baegun-pocheon-std-r-24232",
+        "valleyId": "baegun-pocheon",
+        "name": "윤나리휴게소",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.410042, 38.072372]
+      },
+      "properties": {
+        "id": "baegun-pocheon-osm-parking-8874511829",
+        "valleyId": "baegun-pocheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    }
+  ]
 }

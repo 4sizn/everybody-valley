@@ -118,12 +118,21 @@ function findPeakStart(days: readonly FoliageDay[], turningStart: string): strin
   return null;
 }
 
-/** 최근 14일 최저기온의 최소제곱 직선. 기울기(°C/일)와 마지막 날 예측값. */
+/**
+ * 최근 14일(달력 기준) 최저기온의 최소제곱 직선. 기울기(°C/일)와 마지막 날 예측값.
+ * x 는 인덱스가 아니라 **날짜 차이**다 — 백필이 덜 된 시계열은 날이 빠져 있고, 인덱스로
+ * 재면 3주 간격의 하락을 하루 간격으로 착각해 첫 단풍을 며칠 뒤로 예측한다(2026-09-21 실측).
+ * 창 안에 5일 미만이면 예측하지 않는다.
+ */
 function trend(days: readonly FoliageDay[]): { slope: number; last: number } | null {
-  const recent = days.slice(-FOLIAGE_FORECAST_LOOKBACK_DAYS);
+  const lastDay = days.at(-1)?.day;
+  if (lastDay === undefined) return null;
+  const since = addDays(lastDay, -(FOLIAGE_FORECAST_LOOKBACK_DAYS - 1));
+  const recent = days.filter((d) => d.day >= since);
   if (recent.length < 5) return null;
   const n = recent.length;
-  const xs = recent.map((_, i) => i);
+  const first = recent[0] as FoliageDay;
+  const xs = recent.map((d) => daysBetween(first.day, d.day));
   const ys = recent.map((d) => d.tminC);
   const mx = xs.reduce((a, b) => a + b, 0) / n;
   const my = ys.reduce((a, b) => a + b, 0) / n;
@@ -135,7 +144,7 @@ function trend(days: readonly FoliageDay[]): { slope: number; last: number } | n
   }
   if (sxx === 0) return null;
   const slope = sxy / sxx;
-  return { slope, last: my + slope * (n - 1 - mx) };
+  return { slope, last: my + slope * ((xs[n - 1] as number) - mx) };
 }
 
 export function evaluateFoliage(input: EvaluateFoliageInput): FoliageState {

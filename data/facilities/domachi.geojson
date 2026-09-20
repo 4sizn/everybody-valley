@@ -2,16 +2,68 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "도마치계곡 시설 0개 — 표준데이터 주차장 0 · 화장실 0 · OSM 0 · 수기 0. 계곡 점 반경 1.5 km.",
+    "description": "도마치계곡 시설 3개 — 표준데이터 주차장 1 · 화장실 0 · OSM 2 · 수기 0. 계곡 점 반경 3 km.",
     "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-21.0",
+    "collectedAt": "2026-09-21",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
-    "sources": ["https://www.openstreetmap.org/copyright"]
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)"
+    ]
   },
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.442674, 38.018721]
+      },
+      "properties": {
+        "id": "domachi-std-p-239-2-000009",
+        "valleyId": "domachi",
+        "name": "적목리 공영주차장",
+        "facilityType": "parking",
+        "capacity": 52,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.441551, 38.016113]
+      },
+      "properties": {
+        "id": "domachi-osm-parking-8725182602",
+        "valleyId": "domachi",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.441597, 38.016228]
+      },
+      "properties": {
+        "id": "domachi-osm-restroom-8725222142",
+        "valleyId": "domachi",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    }
+  ]
 }

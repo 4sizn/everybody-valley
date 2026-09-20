@@ -2,16 +2,100 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "동막골계곡 시설 0개 — 표준데이터 주차장 0 · 화장실 0 · OSM 0 · 수기 0. 계곡 점 반경 1.5 km.",
+    "description": "동막골계곡 시설 5개 — 표준데이터 주차장 0 · 화장실 4 · OSM 1 · 수기 0. 계곡 점 반경 3 km.",
     "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-21.0",
+    "collectedAt": "2026-09-21",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
-    "sources": ["https://www.openstreetmap.org/copyright"]
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
   },
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.125567, 38.122338]
+      },
+      "properties": {
+        "id": "dongmak-std-r-22740",
+        "valleyId": "dongmak",
+        "name": "에너지공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085728, 38.087089]
+      },
+      "properties": {
+        "id": "dongmak-std-r-25754",
+        "valleyId": "dongmak",
+        "name": "동막리 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.079745, 38.107125]
+      },
+      "properties": {
+        "id": "dongmak-std-r-25757",
+        "valleyId": "dongmak",
+        "name": "수레울 아트홀1",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.079745, 38.107125]
+      },
+      "properties": {
+        "id": "dongmak-std-r-25758",
+        "valleyId": "dongmak",
+        "name": "공설운동장 야외",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.079831, 38.101145]
+      },
+      "properties": {
+        "id": "dongmak-osm-store-7632349203",
+        "valleyId": "dongmak",
+        "name": "GS25",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    }
+  ]
 }

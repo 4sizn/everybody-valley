@@ -35,6 +35,29 @@ describe('evaluateFoliage', () => {
     expect(s.forecast.peak).toBe('2026-10-14');
   });
 
+  it('날이 빠진 시계열 — 3주 전 값은 14일 창 밖, 최근 3일만으로는 예측하지 않는다', () => {
+    // 9/1~9/3(20℃대) + 9/19~9/21(14℃대). 인덱스로 재면 6칸에 6℃ 하락 → 며칠 뒤 5℃ 로 오판.
+    const days = [
+      ...series('2026-09-01', [21, 20.5, 20]),
+      ...series('2026-09-19', [14.2, 13.9, 14]),
+    ];
+    const s = evaluateFoliage({ days, today: '2026-09-21' });
+    expect(s.stage).toBe('green');
+    expect(s.forecast).toEqual({ turning: null, peak: null });
+  });
+
+  it('창 안에 빠진 날이 있어도 날짜 차이로 기울기를 잰다', () => {
+    // 하루 0.5℃ 하강인데 9/13·9/14 가 빠짐 — 결과는 빈 날 없을 때와 같아야 한다.
+    const dense = series(
+      '2026-09-10',
+      Array.from({ length: 14 }, (_, i) => 15 - i * 0.5),
+    );
+    const sparse = dense.filter((d) => d.day !== '2026-09-13' && d.day !== '2026-09-14');
+    expect(evaluateFoliage({ days: sparse, today: '2026-09-23' }).forecast).toEqual(
+      evaluateFoliage({ days: dense, today: '2026-09-23' }).forecast,
+    );
+  });
+
   it('찬 날 하루짜리 한파는 첫 단풍이 아니다', () => {
     const days = series('2026-10-01', [12, 4, 12, 12, 12, 12, 12, 12]);
     expect(evaluateFoliage({ days, today: '2026-10-08' }).stage).toBe('green');

@@ -43,6 +43,8 @@ export type ValleyProps = {
 };
 
 export class Valley {
+  #around: FacilitiesAround | undefined;
+
   readonly id: ValleyId;
   readonly name: string;
   /** 상류→하류 순. */
@@ -161,6 +163,12 @@ export class Valley {
    * 넘는 식당까지 섞여 있다 — 표시 계층이 이 규칙으로 갈라 보여준다. 두 묶음 모두 가까운 순.
    */
   facilitiesAround(): FacilitiesAround {
+    if (this.#around) return this.#around;
+    this.#around = this.#computeFacilitiesAround();
+    return this.#around;
+  }
+
+  #computeFacilitiesAround(): FacilitiesAround {
     const line = this.segments.flatMap((segment) => segment.path);
     const nearby: FacilityAtDistance[] = [];
     const onTheWay: FacilityAtDistance[] = [];

@@ -17,7 +17,7 @@ import { SEED_DIR, STD_DIR } from './env.mts';
 import { distanceM, type Position, projectOnLine, round6 } from './geo.mts';
 import type { OsmPoi } from './overpass.mts';
 
-export const FACILITY_RADIUS_M = 1500;
+export const FACILITY_RADIUS_M = 3000;
 /** 표준데이터 주차장과 OSM 주차장을 같은 것으로 보는 거리(m). */
 const DEDUPE_M = 50;
 

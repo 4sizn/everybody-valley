@@ -533,7 +533,7 @@ function MapChrome({
               )}
               {tab === 'facilities' && (
                 <>
-                  {around.nearby.length > 0 && (
+                  {place.valley.facilities.length > 0 && (
                     <p className="ev-muted">{facilitySummary(around.nearby)}</p>
                   )}
                   {FACILITY_TYPES.map((type) => {
