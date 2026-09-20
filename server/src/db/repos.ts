@@ -751,10 +751,96 @@ export class ReportsRepo {
   }
 }
 
+interface DailyTempRow {
+  kind: StationKind;
+  code: string;
+  day_kst: string;
+  tmin_c: number;
+  tmax_c: number;
+  samples: number;
+}
+
+export interface DailyTempRecord {
+  readonly kind: StationKind;
+  readonly code: string;
+  /** KST `YYYY-MM-DD`. */
+  readonly day: string;
+  readonly tminC: number;
+  readonly tmaxC: number;
+  readonly samples: number;
+}
+
+const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
+/** ISO UTC → KST 날짜. */
+export function kstDayOf(iso: string): string {
+  return new Date(new Date(iso).getTime() + KST_OFFSET_MS).toISOString().slice(0, 10);
+}
+
+/**
+ * 관측소별 일 최저·최고기온(단풍 판정 재료). AWS 매분 행의 `extra.ta` 를 KST 날짜로 접는다 —
+ * 폴러가 10분 창을 매 분 다시 읽으므로 같은 날 행은 MIN/MAX 로 합친다(같은 값을 여러 번
+ * 세더라도 결과는 같다). 기온이 결측(`null`)인 행은 건너뛴다.
+ */
+export class DailyTempsRepo {
+  readonly #db: Db;
+  constructor(db: Db) {
+    this.#db = db;
+  }
+
+  fold(rows: readonly ObservationRecord[], now: string): number {
+    const stmt = this.#db.prepare(
+      `INSERT INTO daily_temps (kind, code, day_kst, tmin_c, tmax_c, samples, updated_at)
+       VALUES (@kind, @code, @day_kst, @ta, @ta, 1, @updated_at)
+       ON CONFLICT (kind, code, day_kst) DO UPDATE SET
+         tmin_c = MIN(tmin_c, excluded.tmin_c), tmax_c = MAX(tmax_c, excluded.tmax_c),
+         samples = samples + 1, updated_at = excluded.updated_at`,
+    );
+    let n = 0;
+    this.#db.transaction(() => {
+      for (const o of rows) {
+        const ta = o.extra?.['ta'];
+        if (typeof ta !== 'number') continue;
+        stmt.run({
+          kind: o.kind,
+          code: o.code,
+          day_kst: kstDayOf(o.observedAt),
+          ta,
+          updated_at: now,
+        });
+        n += 1;
+      }
+    })();
+    return n;
+  }
+
+  /** 한 관측소의 `sinceDay`(포함) 이후 일별 값, 오래된 → 최신. */
+  series(kind: StationKind, code: string, sinceDay: string): DailyTempRecord[] {
+    const rows = this.#db
+      .prepare(
+        'SELECT * FROM daily_temps WHERE kind = ? AND code = ? AND day_kst >= ? ORDER BY day_kst',
+      )
+      .all(kind, code, sinceDay) as DailyTempRow[];
+    return rows.map((r) => ({
+      kind: r.kind,
+      code: r.code,
+      day: r.day_kst,
+      tminC: r.tmin_c,
+      tmaxC: r.tmax_c,
+      samples: r.samples,
+    }));
+  }
+
+  /** `day_kst < beforeDay` 를 지운다(보존 120일). */
+  prune(beforeDay: string): number {
+    return this.#db.prepare('DELETE FROM daily_temps WHERE day_kst < ?').run(beforeDay).changes;
+  }
+}
+
 export interface Repos {
   readonly stations: StationsRepo;
   readonly observations: ObservationsRepo;
   readonly latest: LatestRepo;
+  readonly dailyTemps: DailyTempsRepo;
   readonly basins: BasinsRepo;
   readonly alerts: AlertsRepo;
   readonly reports: ReportsRepo;
@@ -766,6 +852,7 @@ export function createRepos(db: Db): Repos {
     stations: new StationsRepo(db),
     observations: new ObservationsRepo(db),
     latest: new LatestRepo(db),
+    dailyTemps: new DailyTempsRepo(db),
     basins: new BasinsRepo(db),
     alerts: new AlertsRepo(db),
     reports: new ReportsRepo(db),

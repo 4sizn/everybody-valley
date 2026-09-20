@@ -48,6 +48,18 @@ export {
   toggleFilterChip,
 } from './filterChips';
 export {
+  addDays as addFoliageDays,
+  type EvaluateFoliageInput,
+  evaluateFoliage,
+  FOLIAGE_COLD_TMIN_C,
+  FOLIAGE_STAGES,
+  type FoliageConfidence,
+  type FoliageDay,
+  type FoliageStage,
+  type FoliageState,
+  foliageStageLabel,
+} from './foliage';
+export {
   type BasinCode,
   type FacilityId,
   type SegmentId,

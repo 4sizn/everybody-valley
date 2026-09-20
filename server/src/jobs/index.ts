@@ -69,7 +69,13 @@ export function createJobs(deps: JobsDeps): Jobs {
         ...common,
         name: 'aws',
         intervalMs: config.awsIntervalMs,
-        run: createAwsRun({ key: config.kmaKey, http, repos, hub }),
+        run: createAwsRun({
+          key: config.kmaKey,
+          http,
+          repos,
+          hub,
+          intervalMs: config.awsIntervalMs,
+        }),
       }),
     );
   } else {

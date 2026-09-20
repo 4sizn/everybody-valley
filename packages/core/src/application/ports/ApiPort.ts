@@ -97,6 +97,27 @@ export type ApiAlert = {
   readonly lastObservedAt: ApiIsoDateTime | null;
 };
 
+/** 계곡 하나의 단풍 상태 — 서버 `GET /api/foliage`. 단계·날짜 뜻은 core `evaluateFoliage`. */
+export type ApiFoliage = {
+  readonly valleyId: string;
+  readonly stage: 'green' | 'turning' | 'peak' | 'falling' | 'dormant';
+  readonly confidence: 'observed' | 'estimated' | 'none';
+  /** KST `YYYY-MM-DD`. */
+  readonly lastDay: string | null;
+  readonly coldDays: number;
+  readonly turningStart: string | null;
+  readonly peakStart: string | null;
+  readonly fallingStart: string | null;
+  readonly forecast: { readonly turning: string | null; readonly peak: string | null };
+  /** 판정에 쓴 기상청 AWS 관측소. */
+  readonly stations: readonly {
+    readonly code: string;
+    readonly name: string;
+    readonly elevationM: number | null;
+    readonly distanceKm: number;
+  }[];
+};
+
 /**
  * 제보 하나(F5). `segmentId` 는 구간을 특정하지 않은 제보면 `null`. `passwordHash` 는 절대 담지 않는다
  * — 이 DTO 는 삭제·수정 인증 뒤가 아니라 목록·상세 응답 전부에 그대로 나간다.
@@ -247,6 +268,10 @@ export abstract class ApiPort {
   abstract basinAt(point: LngLat): ApiResult<ApiBasinLookup | null>;
   /** 계곡 30개 전부의 현재 경보 상태(F3b). */
   abstract alerts(): ApiResult<readonly ApiAlert[]>;
+  /** 계곡 전부의 단풍 진행 상태(가을). 기본 구현은 미구현 오류 — `FetchApiClient` 가 덮는다. */
+  foliage(): ApiResult<readonly ApiFoliage[]> {
+    return notImplemented('foliage');
+  }
   /**
    * SSE 구독. 어댑터가 이벤트 스트림을 지원하지 않는 런타임이면 아무 이벤트도 오지 않는 `Disposable` 을 돌려준다
    * — 호출자는 `hydroLatest` 폴링으로 대신할 수 있다.

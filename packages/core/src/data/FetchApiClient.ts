@@ -22,6 +22,7 @@ import {
   type ApiBasinLookup,
   type ApiEvent,
   type ApiEventChannel,
+  type ApiFoliage,
   type ApiHealth,
   type ApiLatest,
   ApiPort,
@@ -132,6 +133,11 @@ export class FetchApiClient extends ApiPort {
   async alerts(): ApiResult<readonly ApiAlert[]> {
     const r = await this.#getJson<{ alerts: readonly ApiAlert[] }>('/api/alerts');
     return r.ok ? ok(r.value.alerts) : r;
+  }
+
+  override async foliage(): ApiResult<readonly ApiFoliage[]> {
+    const r = await this.#getJson<{ foliage: readonly ApiFoliage[] }>('/api/foliage');
+    return r.ok ? ok(r.value.foliage) : r;
   }
 
   override async reports(query: ApiReportsQuery = {}): ApiResult<ApiReportPage> {

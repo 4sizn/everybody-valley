@@ -90,3 +90,12 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 - 캡처는 `.proof/hero/`: `home-390-hero.png`, `home-390-slide2.png`, `home-360-hero.png`, `home-1440-hero.png`.
 - 재현: `pnpm seed:discovery` 로 표 확인 → `API_BASE`·`ADMIN_TOKEN` 지정해 `--apply` → 8081 홈에서 점·끌기·자동 넘김 확인. 응답 캐시는 `scripts/seed/.cache/discovery/`.
 - 블로그 카드는 여전히 0건이다. 네이버 검색 API 키가 없어 운영자가 원문 링크를 직접 등록해야 한다. 홈 블로그 구역은 "준비 중" 상태로 남는다.
+
+## 단풍 진행 상태 (2026-09-20)
+
+- 기상청 AWS 매분자료의 기온(TA)을 KST 일 최저·최고로 접어 `daily_temps`(120일 보존)에 쌓고, 계곡 중심선 가운데 점에서 15 km 안 AWS 최대 3곳의 일별 중앙값으로 core `evaluateFoliage` 가 단계를 낸다. 문턱: 일 최저 5℃ 이하 = 찬 날, 7일 창에 3일 → 물들기 시작, 찬 날 누적 10일 또는 14일 뒤 → 절정, 절정 뒤 첫 서리(0℃) 또는 12일 뒤 → 낙엽, 14일 더 → 종료. 아직 초록이면 최근 14일 최저기온 회귀로 5℃ 도달일을 예측한다.
+- `GET /api/foliage` 는 외부 호출 없이 DB 만 읽는다(캐시 300 s). 계곡 미리보기 "방문 전 확인할 정보" 에 `단풍` 지표 1개, 9/15~11/30 에만 보인다. 자료 없으면 "자료 없음".
+- 테스트: core `foliage.test.ts` 9건(문턱), server `foliage.test.ts` 2건(접기·관측소 선택·중앙값·라우트), 앱 `useFoliage.test.ts` 5건(문장·시즌 경계).
+- 실측: 로컬 서버(격리 DB, `JOBS_ENABLED=false`)에 용추계곡 15 km 안 가짜 AWS 3곳과 9/7~9/20 하루 0.5℃ 씩 내려가는 최저기온을 넣어 `/api/foliage` 가 `forecast.turning=2026-09-29`, `peak=2026-10-13` 을 내고, 미리보기에 "9/29 물들기 · 10/13 절정 예상" 이 뜨는 것을 390×844·360×740 에서 확인. 캡처 `.proof/foliage/preview-390.png`, `preview-360.png`.
+- 함정: Expo 57 은 `apps/valley-map/.env.local` 을 번들 안 가상 모듈(`expo/virtual/env`)로 넣어 `EXPO_NO_DOTENV=1` 로도 덮어쓸 수 없다. 로컬 API 주소를 바꾸려면 그 파일을 고치고 `--clear` 로 재시작한다.
+- 한계(후속): 관측소 표고를 계곡 표고로 보정하지 않는다(DEM 중심선 표고 → -0.65℃/100 m). `KMA_APIHUB_KEY` 가 있는 운영 서버에서만 실제 값이 쌓이며, 배포 시점 이전 날짜는 비어 있어 첫 시즌은 판정이 늦게 시작한다(ASOS 일자료 백필은 미구현). 국립수목원 지역 예측과의 대조는 시즌 지나며 한다.

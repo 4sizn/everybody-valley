@@ -41,6 +41,7 @@ import {
 } from './journey';
 import { type JourneyNavigation, Navigation } from './Navigation.web';
 import { SettingsDialog } from './SettingsDialog.web';
+import { useFoliage } from './useFoliage';
 import './reference.css';
 import './journey.css';
 
@@ -64,6 +65,7 @@ export function ValleyApp() {
   const [initial] = useState(() => parseJourneyLink('', valleys));
   const [place, setPlace] = useState<Place | null>(initial.place);
   const [candidate, setCandidate] = useState<Place | null>(null);
+  const foliage = useFoliage(candidate?.valley.id ?? '');
   const [page, setPage] = useState<'home' | 'explore' | 'blog'>(initial.place ? 'explore' : 'home');
   const [query, setQuery] = useState('');
   const [storyValley, setStoryValley] = useState<string | null>(null);
@@ -230,6 +232,13 @@ export function ValleyApp() {
                           }
                           icon="tent"
                         />
+                        {foliage.inSeason && (
+                          <Metric
+                            label="단풍"
+                            value={foliage.line ?? '자료 없음'}
+                            icon="tree-pine"
+                          />
+                        )}
                       </div>
                     </Card>
                     <section>

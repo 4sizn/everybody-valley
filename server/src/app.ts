@@ -26,6 +26,7 @@ import { awsRoutes } from './http/routes/aws';
 import { basinsRoutes } from './http/routes/basins';
 import { discoveryAdminRoutes, discoveryRoutes } from './http/routes/discovery';
 import { eventsRoutes } from './http/routes/events';
+import { foliageRoutes } from './http/routes/foliage';
 import { healthRoutes } from './http/routes/healthz';
 import { hydroRoutes } from './http/routes/hydro';
 import { landRoutes } from './http/routes/land';
@@ -103,14 +104,8 @@ export function createApp(deps: AppDeps): Hono {
       now,
     }),
   );
-  app.route(
-    '/api/land',
-    landRoutes(
-      vworld,
-      deps.valleyCenterlines ?? loadValleyCenterlines(config.valleysDir),
-      deps.fetch,
-    ),
-  );
+  const valleyCenterlines = deps.valleyCenterlines ?? loadValleyCenterlines(config.valleysDir);
+  app.route('/api/land', landRoutes(vworld, valleyCenterlines, deps.fetch));
   app.route(
     '/api/vworld',
     vworldRoutes({
@@ -129,13 +124,17 @@ export function createApp(deps: AppDeps): Hono {
   );
   app.route('/api/alerts', alertsRoutes({ repos, ...(deps.now ? { now: deps.now } : {}) }));
   app.route(
+    '/api/foliage',
+    foliageRoutes({ repos, valleyCenterlines, ...(deps.now ? { now: deps.now } : {}) }),
+  );
+  app.route(
     '/api/reports',
     reportsRoutes({
       repos,
       hub,
       uploadsDir: config.uploadsDir,
       knownValleyIds: deps.knownValleyIds ?? loadValleyIds(config.valleysDir),
-      valleyCenterlines: deps.valleyCenterlines ?? loadValleyCenterlines(config.valleysDir),
+      valleyCenterlines,
       logger: logger.child('reports'),
       trustProxy: config.trustProxy,
       rateLimiter:
