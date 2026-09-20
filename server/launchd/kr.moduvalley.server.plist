@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  로컬 운영 서버(8788) 상주화 — macOS launchd 사용자 에이전트.
+  로그인하면 뜨고(RunAtLoad), 죽으면 다시 띄운다(KeepAlive). Docker 데몬(colima)이 늘 떠 있지
+  않은 이 맥에서는 compose 보다 이쪽이 맞다. 경로는 이 기기 기준이다 — 다른 기기는 세 곳
+  (WorkingDirectory · WEB_DIR · 로그)을 고친다. 키는 저장소 루트 .env.local 에서 서버가 읽는다.
+
+  설치:  cp server/launchd/kr.moduvalley.server.plist ~/Library/LaunchAgents/
+         launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/kr.moduvalley.server.plist
+  재시작(새 빌드 반영): launchctl kickstart -k gui/$(id -u)/kr.moduvalley.server
+  해제:  launchctl bootout gui/$(id -u)/kr.moduvalley.server
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>kr.moduvalley.server</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>-c</string>
+    <string>cd /Users/hsshin/Documents/ChatGPT/everybody-valley/server &amp;&amp; exec /opt/homebrew/bin/node dist/index.mjs</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/bin:/bin</string>
+    <key>HOST</key>
+    <string>0.0.0.0</string>
+    <key>PORT</key>
+    <string>8788</string>
+    <key>NODE_ENV</key>
+    <string>production</string>
+    <key>JOBS_ENABLED</key>
+    <string>true</string>
+    <key>WEB_DIR</key>
+    <string>/Users/hsshin/Documents/ChatGPT/everybody-valley/apps/valley-map/dist</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/hsshin/Library/Logs/moduvalley/server-8788.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/hsshin/Library/Logs/moduvalley/server-8788.log</string>
+</dict>
+</plist>
