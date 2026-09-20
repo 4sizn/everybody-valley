@@ -98,7 +98,7 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 - 테스트: core `foliage.test.ts` 9건(문턱), server `foliage.test.ts` 2건(접기·관측소 선택·중앙값·라우트), 앱 `useFoliage.test.ts` 5건(문장·시즌 경계).
 - 실측: 로컬 서버(격리 DB, `JOBS_ENABLED=false`)에 용추계곡 15 km 안 가짜 AWS 3곳과 9/7~9/20 하루 0.5℃ 씩 내려가는 최저기온을 넣어 `/api/foliage` 가 `forecast.turning=2026-09-29`, `peak=2026-10-13` 을 내고, 미리보기에 "9/29 물들기 · 10/13 절정 예상" 이 뜨는 것을 390×844·360×740 에서 확인. 캡처 `.proof/foliage/preview-390.png`, `preview-360.png`.
 - 함정: Expo 57 은 `apps/valley-map/.env.local` 을 번들 안 가상 모듈(`expo/virtual/env`)로 넣어 `EXPO_NO_DOTENV=1` 로도 덮어쓸 수 없다. 로컬 API 주소를 바꾸려면 그 파일을 고치고 `--clear` 로 재시작한다.
-- 한계(후속): 관측소 표고를 계곡 표고로 보정하지 않는다(DEM 중심선 표고 → -0.65℃/100 m). `KMA_APIHUB_KEY` 가 있는 운영 서버에서만 실제 값이 쌓이며, 배포 시점 이전 날짜는 비어 있어 첫 시즌은 판정이 늦게 시작한다(ASOS 일자료 백필은 미구현). 국립수목원 지역 예측과의 대조는 시즌 지나며 한다.
+- 한계(후속): 관측소 표고를 계곡 표고로 보정하지 않는다(DEM 중심선 표고 → -0.65℃/100 m). `KMA_APIHUB_KEY` 가 있는 운영 서버에서만 실제 값이 쌓이며, 배포 시점 이전 날짜는 `pnpm server:backfill -- --from 20260901 --to 20260920` 으로 채운다(아래 2026-09-21 항). 국립수목원 지역 예측과의 대조는 시즌 지나며 한다.
 
 ## 주변 시설 탭 — 중심선 기준·종류별 묶음 (2026-09-20)
 
@@ -109,3 +109,11 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 - 테스트: core `facilitiesAround.test.ts` 3건(300/800 m 경계, 선 중간 거리, 요약 문장).
 - 같은 종류가 30 m 안이면 한 행으로 접는다(`FACILITY_SAME_SPOT_M`, `alsoHere`): 연인산 탐방안내소 화장실 3건 → "외 2곳 같은 자리". 시설 아이콘은 UI 라이브러리(`design-system/src/design-system/components.jsx` `FACILITY_ICONS`)가 종류 라벨로 고른다 — 정자·쉼터 `house`, 안전시설 `shield-check`, 진입로 `navigation`, 역 `map`, 식당·카페·매점 `banknote`, 그 외 `info`. `pnpm design:build` 로 `packages/ui` 동기화, `design:check` 통과.
 - 시설 0개 계곡 7곳: `pnpm seed:std` 로 표준데이터를 다시 받아 중심선 3 km 안을 찍어 보니 백운(화장실 2, 1.35 km) · 백둔리(화장실 3·주차장 2, 1.2 km~) · 청학동(주차장 6, 1.3 km~) · 도마치(적목리 공영주차장 1.36 km) · 동막(화장실 6·주차장 1, 1.6 km~)에 공식 시설이 있다. 조무락·명지는 3 km 안에도 없다. 지금 시딩 반경(계곡 점 1.5 km)에 안 걸려 빠진 것 — `FACILITY_RADIUS_M` 을 늘려 `pnpm seed:build --valley …` 로 다시 만들어야 하는데, 빌드는 `VWORLD_API_KEY` 없이는 유역 코드를 건너뛰므로 키 있는 환경에서 돌린다. 이번엔 데이터 파일을 손대지 않았다.
+
+## 단풍 백필·운영 서버 재기동 (2026-09-21)
+
+- 키는 발급하지 않았다 — `modu-valley/.env.local` 의 `KMA_APIHUB_KEY`·`HRFCO_API_KEY` 를 이 저장소 `.env.local`(gitignore)로 옮겼다. 라이브 확인: AWS 매분자료 10분 창 8,096행·`#7777END`·TA 컬럼 정상, `stn_inf` 200.
+- 8788 을 새 빌드로 교체(`EXPO_NO_DOTENV=1 pnpm build` → `node dist/index.mjs`, env 동일 + `JOBS_ENABLED=true`). 적용 전 `server/data/valley.db.bak-20260920-2339` 백업, 마이그레이션 7 적용. 첫 틱에 aws 8,096행 → `daily_temps` 717지점. nohup 이라 재부팅에 죽는다(상주화는 후속).
+- 백필 `server/scripts/backfill-daily-temps.mts`: 매분자료는 `stn=0` 이라 한 호출이 전체 지점을 담아 지점별로 돌 필요가 없다. 창 크기 실측 — 하루 창 504, 6시간 창 4개 중 1개 504, 1시간 창도 간헐 504 → 3시간 창으로 시작해 실패하면 반으로 쪼갠다(바닥 30분). 9/19 시험: 724지점, 실패 창 1(14:30–14:59, 낮이라 tmin 영향 없음). 9/1~9/20 전체는 백그라운드로 돌렸다.
+- API허브 ASOS 일자료(`kma_sfcdd3`)·AWS 시간자료(`awsh.php`)는 **활용신청 미완**(403). 신청하면 백필이 창 수십 개로 줄어든다 — 사용자 로그인 세션이 필요해 이번엔 매분자료로 했다.
+- 7곳 재시딩(`FACILITY_RADIUS_M` 1500→3000, `pnpm seed:build --valley …`): 공식 Overpass 는 429, kumi 미러는 504 가 잦아 `OVERPASS_ENDPOINT=https://maps.mail.ru/osm/tools/overpass/api/interpreter` 로 재시도. 재빌드 중심선은 기존 파일과 좌표 27점 전부 동일(백운 확인) — 계곡 파일은 흔들리지 않는다.

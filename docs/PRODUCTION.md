@@ -34,6 +34,8 @@ docker compose logs --tail=80 app
 
 키 발급/출처 목록은 [API_KEYS.md](API_KEYS.md). 서버만 비밀키를 읽는다. 현재 런타임 설정이 실제로 쓰는 이름은 `VWORLD_API_KEY`, `HRFCO_API_KEY`(없으면 `_LOCAL`), `KMA_APIHUB_KEY`, `DATA_GO_KR_KEY_ENCODING/DECODING`이다. VWorld 운영키를 발급받았다면 런타임의 `VWORLD_API_KEY`에 넣는다.
 
+단풍 판정(`/api/foliage`)은 AWS 폴러가 접는 일 최저기온 `daily_temps`(120일 보존)를 쓴다. `KMA_APIHUB_KEY`와 `JOBS_ENABLED=true`가 있어야 쌓이고, 서버를 새로 올린 시즌 초에는 `pnpm server:backfill -- --from 20260901 --to <어제>`로 지난 날짜를 채운다(전체 지점 한 호출, 하루 8~30창, 같은 DB를 쓰는 서버가 떠 있어도 된다). 다시 돌려도 안전하다.
+
 토지 조회 `/api/land/:valleyId`는 `VWORLD_API_KEY`가 없으면 `503 vworld_key_missing`을 반환한다. 로컬 서버는 루트 `.env.local`, 8086 미리보기 컨테이너는 `--env-file .env.preview.local`로 키와 `VWORLD_DOMAIN`을 읽는다. 두 파일은 Git에서 제외한다. 환경 파일 수정 후 로컬 서버를 재시작하거나 컨테이너를 같은 데이터 볼륨으로 재생성해야 반영된다. `/healthz`의 `keys.vworld: true`와 실제 토지 API의 `200` 응답을 모두 확인한다. 키 값은 클라이언트 코드나 `EXPO_PUBLIC_*`에 넣지 않는다.
 
 `JOBS_ENABLED=false`는 격리된 UI 검증용이다. 운영은 true로 두고 `/healthz`의 키 존재 여부와 `lastPoll`, 실제 관측시각을 확인한다. 관측소가 연결되지 않은 계곡이나 지연 자료를 안전하다고 표시하지 않는다. 키 없이 수행한 로컬 검증은 실관측 검증이 아니다.
