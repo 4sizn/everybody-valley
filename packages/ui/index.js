@@ -241,8 +241,19 @@ function ValleyCard({
     /* @__PURE__ */ React.createElement(Icon, { name: "chevron-right", size: 20 })
   );
 }
+var FACILITY_ICONS = {
+  "\uD654\uC7A5\uC2E4": "toilet",
+  "\uC8FC\uCC28\uC7A5": "square-parking",
+  "\uC815\uC790\xB7\uC27C\uD130": "house",
+  "\uC548\uC804\uC2DC\uC124": "shield-check",
+  "\uC9C4\uC785\uB85C": "navigation",
+  "\uC5ED\xB7\uC815\uB958\uC7A5": "map",
+  "\uC2DD\uB2F9": "banknote",
+  "\uCE74\uD398": "banknote",
+  "\uB9E4\uC810": "banknote"
+};
 function FacilityRow({ name, type, valley, onClick }) {
-  return /* @__PURE__ */ React.createElement("button", { type: "button", className: "mv-facility", onClick }, /* @__PURE__ */ React.createElement("span", { className: "mv-facility-symbol" }, /* @__PURE__ */ React.createElement(Icon, { name: type === "\uD654\uC7A5\uC2E4" ? "toilet" : "square-parking" })), /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("strong", null, name), /* @__PURE__ */ React.createElement("small", null, valley, " \xB7 ", type)), /* @__PURE__ */ React.createElement(Icon, { name: "chevron-right", size: 20 }));
+  return /* @__PURE__ */ React.createElement("button", { type: "button", className: "mv-facility", onClick }, /* @__PURE__ */ React.createElement("span", { className: "mv-facility-symbol" }, /* @__PURE__ */ React.createElement(Icon, { name: FACILITY_ICONS[type] ?? "info" })), /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("strong", null, name), /* @__PURE__ */ React.createElement("small", null, valley, " \xB7 ", type)), /* @__PURE__ */ React.createElement(Icon, { name: "chevron-right", size: 20 }));
 }
 function Metric({ label, value, icon }) {
   return /* @__PURE__ */ React.createElement("div", { className: "mv-metric" }, icon ? /* @__PURE__ */ React.createElement(Icon, { name: icon, size: 20 }) : /* @__PURE__ */ React.createElement("span", { "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, label), /* @__PURE__ */ React.createElement("strong", null, value));

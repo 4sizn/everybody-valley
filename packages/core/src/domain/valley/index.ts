@@ -34,6 +34,7 @@ export {
   type FacilityType,
   facilityTypeLabel,
 } from './Facility';
+export { facilitySummary } from './facilitySummary';
 export {
   type ChipOutcome,
   evaluateFilterChips,
@@ -158,6 +159,9 @@ export {
   type WaterLevelStage,
 } from './UpstreamAlert';
 export {
+  FACILITY_ACCESS_NEARBY_M,
+  FACILITY_NEARBY_M,
+  type FacilitiesAround,
   type FacilityAtDistance,
   type NearestFacility,
   Valley,

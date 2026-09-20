@@ -4,6 +4,9 @@ import {
   bedLabel,
   clampShadeHourIndex,
   depthLabel,
+  FACILITY_NEARBY_M,
+  FACILITY_TYPES,
+  facilitySummary,
   facilityTypeLabel,
   InMemoryValleyRepository,
   type LandParcel,
@@ -249,6 +252,7 @@ function MapChrome({
     if (place.facility) setOverlay(null);
   }, [place.facility]);
   const title = place.facility?.name ?? place.valley.name;
+  const around = useMemo(() => place.valley.facilitiesAround(), [place.valley]);
   const destination = place.facility?.position ?? place.segment.midpoint();
   const shade = state.valleyShade?.get(place.valley.id);
   return (
@@ -360,7 +364,7 @@ function MapChrome({
           subtitle={
             place.facility
               ? `${facilityTypeLabel(place.facility.facilityType)} · ${place.valley.name}`
-              : `${segmentPositionLabel(place.segment.position)} · 주변 시설 ${place.valley.facilities.length}곳`
+              : `${segmentPositionLabel(place.segment.position)} · 주변 시설 ${around.nearby.length}곳`
           }
           actions={
             alert?.level === 'evacuate' ? (
@@ -529,22 +533,59 @@ function MapChrome({
               )}
               {tab === 'facilities' && (
                 <>
-                  {place.valley
-                    .facilitiesByDistance(place.segment.midpoint())
-                    .map(({ facility, distance }) => (
-                      <div key={facility.id}>
+                  {around.nearby.length > 0 && (
+                    <p className="ev-muted">{facilitySummary(around.nearby)}</p>
+                  )}
+                  {FACILITY_TYPES.map((type) => {
+                    const items = around.nearby.filter((f) => f.facility.facilityType === type);
+                    if (items.length === 0) return null;
+                    return (
+                      <section key={type} aria-label={facilityTypeLabel(type)}>
+                        <h4>
+                          {facilityTypeLabel(type)} {items.length}
+                        </h4>
+                        {items.map(({ facility, distance, alsoHere }) => (
+                          <FacilityRow
+                            key={facility.id}
+                            name={
+                              alsoHere?.length
+                                ? `${facility.name} 외 ${alsoHere.length}곳 같은 자리`
+                                : facility.name
+                            }
+                            type={facilityTypeLabel(type)}
+                            valley={
+                              facility.operatingHours
+                                ? `물가에서 ${distance.format()} · ${facility.operatingHours}`
+                                : `물가에서 ${distance.format()}`
+                            }
+                            onClick={() => void select({ ...place, facility })}
+                          />
+                        ))}
+                      </section>
+                    );
+                  })}
+                  {around.onTheWay.length > 0 && (
+                    <section aria-label="가는 길에">
+                      <h4>가는 길에 · 물가에서 {FACILITY_NEARBY_M} m 밖</h4>
+                      {around.onTheWay.map(({ facility, distance, alsoHere }) => (
                         <FacilityRow
-                          name={facility.name}
+                          key={facility.id}
+                          name={
+                            alsoHere?.length
+                              ? `${facility.name} 외 ${alsoHere.length}곳 같은 자리`
+                              : facility.name
+                          }
                           type={facilityTypeLabel(facility.facilityType)}
-                          valley={`${place.valley.name} · 직선 ${distance.format()}`}
+                          valley={`물가에서 ${distance.format()}`}
                           onClick={() => void select({ ...place, facility })}
                         />
-                      </div>
-                    ))}
+                      ))}
+                    </section>
+                  )}
                   {!place.valley.facilities.length && (
                     <EmptyState
                       title="등록된 시설이 없어요"
-                      description="시설 없음과 위치 정보 미확인은 다릅니다. 현장 안내를 확인하세요."
+                      description="주차장·화장실 표준데이터와 OSM 을 조회했지만 없었습니다. 등록 없음이 현장에 없음은 아닙니다 — 현장 안내를 확인하세요."
                     />
                   )}
                 </>

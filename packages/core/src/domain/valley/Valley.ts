@@ -11,7 +11,7 @@
  */
 import { ValleyError } from '../../shared/errors';
 import { err, ok, type Result } from '../../shared/result';
-import type { Distance } from '../geo/Distance';
+import { type Distance, distanceToPolyline } from '../geo/Distance';
 import { LngLat } from '../geo/LngLat';
 import type { Facility, FacilityType } from './Facility';
 import type { BasinCode, FacilityId, SegmentId, ValleyId } from './ids';
@@ -155,6 +155,31 @@ export class Valley {
   }
 
   /**
+   * 시설을 "계곡 주변"과 "가는 길에"로 나눈다 — 거리는 계곡 점이 아니라 **중심선까지**(물가에서
+   * 얼마나 떨어졐나). 주변 = 300 m 안, 주차장·진입로·역은 800 m(차 대고 걸어오는 거리).
+   * 시딩은 계곡 점 반경 1.5 km 원으로 긁어 와서(`scripts/seed/facilities.mts`) 물가에서 1 km
+   * 넘는 식당까지 섞여 있다 — 표시 계층이 이 규칙으로 갈라 보여준다. 두 묶음 모두 가까운 순.
+   */
+  facilitiesAround(): FacilitiesAround {
+    const line = this.segments.flatMap((segment) => segment.path);
+    const nearby: FacilityAtDistance[] = [];
+    const onTheWay: FacilityAtDistance[] = [];
+    for (const facility of this.facilities) {
+      const distance = distanceToPolyline(facility.position, line);
+      const limit = FACILITY_ACCESS_TYPES.has(facility.facilityType)
+        ? FACILITY_ACCESS_NEARBY_M
+        : FACILITY_NEARBY_M;
+      (distance.meters <= limit ? nearby : onTheWay).push({ facility, distance });
+    }
+    const byDistance = (a: FacilityAtDistance, b: FacilityAtDistance) =>
+      a.distance.meters - b.distance.meters;
+    return {
+      nearby: collapseSameSpot(nearby.sort(byDistance)),
+      onTheWay: collapseSameSpot(onTheWay.sort(byDistance)),
+    };
+  }
+
+  /**
    * 계곡 전체가 보이는 중심 — 모든 구간 좌표의 경계 상자 가운데.
    *
    * 평균(무게중심)이 아닌 이유: 굽이가 많은 쪽에 점이 몰리면 평균이 그쪽으로
@@ -189,8 +214,42 @@ function deriveBasin(sortedSegments: readonly Segment[]): ValleyBasin | undefine
 }
 
 /** 기준점과의 거리를 곁들인 시설. */
+/** 중심선에서 이 거리 안이면 "계곡 주변". */
+export const FACILITY_NEARBY_M = 300;
+/** 주차장·진입로·역은 걸어오는 거리라 더 넉넉하게. */
+export const FACILITY_ACCESS_NEARBY_M = 800;
+const FACILITY_ACCESS_TYPES: ReadonlySet<FacilityType> = new Set(['parking', 'access', 'station']);
+
+export type FacilitiesAround = {
+  readonly nearby: readonly FacilityAtDistance[];
+  readonly onTheWay: readonly FacilityAtDistance[];
+};
+
+/**
+ * 같은 종류가 이 거리 안에 겹치면 한 행으로 접는다 — 표준데이터는 건물 하나(탐방안내소)에
+ * 화장실 행을 3개 낸다(같은 좌표, 다른 이름). 가까운 순으로 받아 첫 것을 대표로 두고 나머지는
+ * `alsoHere` 에 붙인다.
+ */
+export const FACILITY_SAME_SPOT_M = 30;
+
+function collapseSameSpot(sorted: readonly FacilityAtDistance[]): FacilityAtDistance[] {
+  const out: FacilityAtDistance[] = [];
+  for (const item of sorted) {
+    const head = out.find(
+      (h) =>
+        h.facility.facilityType === item.facility.facilityType &&
+        h.facility.distanceFrom(item.facility.position).meters <= FACILITY_SAME_SPOT_M,
+    );
+    if (head) (head.alsoHere as Facility[]).push(item.facility);
+    else out.push({ ...item, alsoHere: [] });
+  }
+  return out;
+}
+
 export type FacilityAtDistance = {
   readonly facility: Facility;
   readonly distance: Distance;
+  /** 같은 자리(30 m 안)의 같은 종류 시설. `facilitiesAround` 만 채운다. */
+  readonly alsoHere?: readonly Facility[];
 };
 export type NearestFacility = FacilityAtDistance;

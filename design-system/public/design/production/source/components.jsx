@@ -293,11 +293,24 @@ export function ValleyCard({
     </button>
   );
 }
+/** 시설 종류 라벨 → 아이콘. 없는 종류는 `info`(주차장 아이콘을 빌려 쓰지 않는다). */
+const FACILITY_ICONS = {
+  "화장실": "toilet",
+  "주차장": "square-parking",
+  "정자·쉼터": "house",
+  "안전시설": "shield-check",
+  "진입로": "navigation",
+  "역·정류장": "map",
+  "식당": "banknote",
+  "카페": "banknote",
+  "매점": "banknote",
+};
+
 export function FacilityRow({ name, type, valley, onClick }) {
   return (
     <button type="button" className="mv-facility" onClick={onClick}>
       <span className="mv-facility-symbol">
-        <Icon name={type === "화장실" ? "toilet" : "square-parking"} />
+        <Icon name={FACILITY_ICONS[type] ?? "info"} />
       </span>
       <span>
         <strong>{name}</strong>

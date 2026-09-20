@@ -99,3 +99,13 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 - 실측: 로컬 서버(격리 DB, `JOBS_ENABLED=false`)에 용추계곡 15 km 안 가짜 AWS 3곳과 9/7~9/20 하루 0.5℃ 씩 내려가는 최저기온을 넣어 `/api/foliage` 가 `forecast.turning=2026-09-29`, `peak=2026-10-13` 을 내고, 미리보기에 "9/29 물들기 · 10/13 절정 예상" 이 뜨는 것을 390×844·360×740 에서 확인. 캡처 `.proof/foliage/preview-390.png`, `preview-360.png`.
 - 함정: Expo 57 은 `apps/valley-map/.env.local` 을 번들 안 가상 모듈(`expo/virtual/env`)로 넣어 `EXPO_NO_DOTENV=1` 로도 덮어쓸 수 없다. 로컬 API 주소를 바꾸려면 그 파일을 고치고 `--clear` 로 재시작한다.
 - 한계(후속): 관측소 표고를 계곡 표고로 보정하지 않는다(DEM 중심선 표고 → -0.65℃/100 m). `KMA_APIHUB_KEY` 가 있는 운영 서버에서만 실제 값이 쌓이며, 배포 시점 이전 날짜는 비어 있어 첫 시즌은 판정이 늦게 시작한다(ASOS 일자료 백필은 미구현). 국립수목원 지역 예측과의 대조는 시즌 지나며 한다.
+
+## 주변 시설 탭 — 중심선 기준·종류별 묶음 (2026-09-20)
+
+- 시딩은 계곡 점 반경 1.5 km 원(`scripts/seed/facilities.mts`)이라 물가에서 1 km 넘는 식당까지 섞여 있었다(전체 376개 중 중심선 500 m 밖 168개, 1 km 밖 36개). 데이터는 그대로 두고 core `Valley.facilitiesAround()` 가 **중심선까지 거리** 300 m(주차장·진입로·역은 800 m)로 "주변"과 "가는 길에"를 가른다.
+- 시설 탭 맨 위 요약 한 줄(`facilitySummary`): 종류별 개수, 주차장은 가장 가까운 거리, 화장실·주차장은 없어도 "없음", 끝에 "쓰레기는 되가져가기". 종류별 묶음(h4) 안은 가까운 순, 행 부제는 "물가에서 N m · 운영시간". 시트 부제 "주변 시설 N곳" 도 주변 개수로.
+- OSM 실측(용추계곡 중심선 300 m, 2026-09-20): 공공시설 태그(waste_basket·recycling·drinking_water·playground·life_ring·toilets 등) 전부 **0건**, 정자 1·안내판 1·이름 없는 공원 1만. 쓰레기통·놀이터는 OSM 으로 못 채운다 — 수기·지자체 데이터만 길. 그래서 시설 유형 추가는 하지 않았다.
+- 용추계곡: 10개 → 주변 6(주차장 3·화장실 2·정자 1) / 가는 길에 4(탐방안내소 3건 같은 좌표·식당 1). 390×844 상단·스크롤, 360×740 "가는 길에" 캡처 `.proof/facilities/`.
+- 테스트: core `facilitiesAround.test.ts` 3건(300/800 m 경계, 선 중간 거리, 요약 문장).
+- 같은 종류가 30 m 안이면 한 행으로 접는다(`FACILITY_SAME_SPOT_M`, `alsoHere`): 연인산 탐방안내소 화장실 3건 → "외 2곳 같은 자리". 시설 아이콘은 UI 라이브러리(`design-system/src/design-system/components.jsx` `FACILITY_ICONS`)가 종류 라벨로 고른다 — 정자·쉼터 `house`, 안전시설 `shield-check`, 진입로 `navigation`, 역 `map`, 식당·카페·매점 `banknote`, 그 외 `info`. `pnpm design:build` 로 `packages/ui` 동기화, `design:check` 통과.
+- 시설 0개 계곡 7곳: `pnpm seed:std` 로 표준데이터를 다시 받아 중심선 3 km 안을 찍어 보니 백운(화장실 2, 1.35 km) · 백둔리(화장실 3·주차장 2, 1.2 km~) · 청학동(주차장 6, 1.3 km~) · 도마치(적목리 공영주차장 1.36 km) · 동막(화장실 6·주차장 1, 1.6 km~)에 공식 시설이 있다. 조무락·명지는 3 km 안에도 없다. 지금 시딩 반경(계곡 점 1.5 km)에 안 걸려 빠진 것 — `FACILITY_RADIUS_M` 을 늘려 `pnpm seed:build --valley …` 로 다시 만들어야 하는데, 빌드는 `VWORLD_API_KEY` 없이는 유역 코드를 건너뛰므로 키 있는 환경에서 돌린다. 이번엔 데이터 파일을 손대지 않았다.
