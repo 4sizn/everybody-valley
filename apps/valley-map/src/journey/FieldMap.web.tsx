@@ -31,7 +31,7 @@ import {
 } from '@moduvalley/ui';
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { resolveApiBase } from '@/api/createApiClient';
-import { directionsUrl } from '@/components/valley/directions';
+import { DIRECTIONS_PROVIDERS } from '@/components/valley/directions';
 import { SessionProvider, useAppState, useSession, useSessionRestart } from '@/session';
 import { PARSED, VALLEY_SOURCE } from '@/session/valleySource';
 import { BlogSection, type DiscoveryState } from './Discovery.web';
@@ -641,19 +641,24 @@ function MapChrome({
         open={directions}
         onClose={() => setDirections(false)}
         title={place.facility ? '시설 길찾기' : '선택 구간 길찾기'}
-        footer={
+        footer={DIRECTIONS_PROVIDERS.map((provider, index) => (
           <Button
-            onClick={() => window.open(directionsUrl(destination), '_blank', 'noopener,noreferrer')}
+            key={provider.id}
+            variant={index === 0 ? 'primary' : 'secondary'}
+            aria-label={`길찾기 · ${provider.name}`}
+            onClick={() =>
+              window.open(provider.url(destination, title), '_blank', 'noopener,noreferrer')
+            }
           >
-            외부 지도 열기
+            {provider.label}
           </Button>
-        }
+        ))}
       >
         <h3>{title}</h3>
         <p>
           {destination.lat.toFixed(6)}, {destination.lng.toFixed(6)}
         </p>
-        <p>표시한 목적지를 외부 지도에 전달합니다. 도착지 주변 통제와 실제 진입로를 확인하세요.</p>
+        <p>사용할 지도 앱을 고르세요. 도착지 주변 통제와 실제 진입로를 확인하세요.</p>
       </Dialog>
     </div>
   );
