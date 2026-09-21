@@ -36,7 +36,7 @@ import { uploadsRoutes } from './http/routes/uploads';
 import { vworldRoutes } from './http/routes/vworld';
 import type { Redactor } from './logging/redact';
 import { createSourceHttp, type SourceHttp } from './sources/http';
-import { loadValleyCenterlines, loadValleyIds } from './valleys';
+import { loadValleyCenterlines, loadValleyElevations, loadValleyIds } from './valleys';
 
 export interface AppDeps {
   readonly config: ServerConfig;
@@ -126,7 +126,12 @@ export function createApp(deps: AppDeps): Hono {
   app.route('/api/alerts', alertsRoutes({ repos, ...(deps.now ? { now: deps.now } : {}) }));
   app.route(
     '/api/foliage',
-    foliageRoutes({ repos, valleyCenterlines, ...(deps.now ? { now: deps.now } : {}) }),
+    foliageRoutes({
+      repos,
+      valleyCenterlines,
+      valleyElevations: loadValleyElevations(config.valleysDir),
+      ...(deps.now ? { now: deps.now } : {}),
+    }),
   );
   app.route(
     '/api/access',

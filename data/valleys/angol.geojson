@@ -98,7 +98,8 @@
         "basinCode": "101808",
         "mapIconTier": 0,
         "mapLabelTier": 0,
-        "mapImportance": 10
+        "mapImportance": 10,
+        "elevationM": 169
       }
     }
   ]

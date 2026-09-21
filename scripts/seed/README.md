@@ -15,6 +15,7 @@ pnpm seed:build                         # 30개 자동 채움 → data/valleys·
 pnpm seed:build --valley baegun-pocheon # 일부만
 pnpm seed:build --shade                 # 쓰기 뒤 P1 그늘 파이프라인을 계곡별로(계곡당 ~35 s, 첫 실행은 자산 다운로드)
 pnpm seed:build --only-shade            # 파일은 두고 그늘만
+pnpm seed:elevation [--valley id] [--dry] # 중심선 표고 중앙값(Terrarium) → data/valleys/*.geojson `elevationM` (단풍 기온 보정)
 pnpm seed:std                           # (e) 표준데이터 CSV 내려받기 → data/seed/std/
 pnpm seed:safemap [--dry-run]           # (d) 생활안전지도 물놀이관리지역 → manual.csv 의 swimBanned·riskNote·depth (공식 출처)
 ```

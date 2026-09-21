@@ -127,12 +127,15 @@ export type ApiFoliage = {
   readonly peakStart: string | null;
   readonly fallingStart: string | null;
   readonly forecast: { readonly turning: string | null; readonly peak: string | null };
-  /** 판정에 쓴 기상청 AWS 관측소. */
+  /** 계곡 중심선 표고(m). 없으면 보정 없이 판정한 것. */
+  readonly elevationM?: number | null;
+  /** 판정에 쓴 기상청 AWS 관측소. `correctionC` 는 계곡 표고로 옮기며 더한 값(℃). */
   readonly stations: readonly {
     readonly code: string;
     readonly name: string;
     readonly elevationM: number | null;
     readonly distanceKm: number;
+    readonly correctionC?: number;
   }[];
 };
 

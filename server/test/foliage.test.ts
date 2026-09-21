@@ -153,3 +153,46 @@ describe('GET /api/foliage', () => {
     expect(island).toMatchObject({ stage: 'green', confidence: 'none', stations: [] });
   });
 });
+
+describe('GET /api/foliage — 표고 보정', () => {
+  it('계곡 표고를 알면 관측소 최저기온을 −0.65℃/100 m 로 옮겨 판정한다', async () => {
+    const line = [LngLat.of(127.0, 37.7), LngLat.of(127.01, 37.71)];
+    repos.stations.upsertMany(
+      [
+        {
+          kind: 'aws',
+          code: 'L',
+          name: '평지',
+          agency: null,
+          lng: 127.0,
+          lat: 37.71,
+          elevationM: 50,
+          attrs: null,
+          suspicious: false,
+        },
+      ],
+      NOW,
+    );
+    // 평지 7℃ × 15일 — 보정 없으면 찬 날 0(초록). 계곡 450 m 면 −2.6℃ → 4.4℃, 찬 날 15 → 절정.
+    for (let i = 0; i < 15; i += 1) {
+      const day = `2026-10-${String(5 + i).padStart(2, '0')}`;
+      repos.dailyTemps.fold([T(`${day}T12:00:00.000Z`, 'L', 7)], NOW);
+    }
+    const build = (valleyElevations?: Map<string, number>) =>
+      foliageRoutes({
+        repos,
+        valleyCenterlines: new Map([['v', line]]),
+        ...(valleyElevations ? { valleyElevations } : {}),
+        now: () => Date.parse(NOW),
+      });
+    type Body = {
+      foliage: { stage: string; elevationM: number | null; stations: { correctionC: number }[] }[];
+    };
+    const plain = (await (await build().request('/')).json()) as Body;
+    expect(plain.foliage[0]).toMatchObject({ stage: 'green', elevationM: null });
+    expect(plain.foliage[0]?.stations[0]?.correctionC).toBe(0);
+    const corrected = (await (await build(new Map([['v', 450]])).request('/')).json()) as Body;
+    expect(corrected.foliage[0]).toMatchObject({ stage: 'peak', elevationM: 450 });
+    expect(corrected.foliage[0]?.stations[0]?.correctionC).toBe(-2.6);
+  });
+});

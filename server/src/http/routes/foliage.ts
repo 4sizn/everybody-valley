@@ -6,9 +6,10 @@
  * 관측소 선택은 `foliage/stations.ts`(중심선 가운데 점 15 km 안 AWS 최대 3곳). 같은 날 값이
  * 여럿이면 중앙값.
  *
- * ponytail: 관측소 표고를 계곡 표고로 보정하지 않는다(계곡 표고 자료가 아직 없다). 산지 AWS 가
- * 가까이 있으면 그 값이 곧 계곡 값에 가깝고, 평지 관측소만 잡히면 실제보다 따뜻하게(늦게)
- * 나온다 — DEM 에서 중심선 표고를 뽑아 -0.65℃/100 m 를 적용하는 것이 다음 단계.
+ * 표고 보정: 관측소 최저기온을 계곡 중심선 표고(`seed:elevation`, feature `elevationM`)로 옮긴다 —
+ * T계곡 = T관측소 − 0.0065 × (표고계곡 − 표고관측소). 평지 관측소(남이섬 40 m)로 산간 계곡(용추
+ * 400 m)을 재면 2.3℃ 따뜻하게 나와 첫 단풍이 늦게 잡히던 것을 바로잡는다. 계곡 표고나 관측소
+ * 표고가 없으면 그 짝은 보정 없이 쓴다.
  */
 import { evaluateFoliage, type FoliageDay, type LngLat } from '@modu-valley/core';
 import { Hono } from 'hono';
@@ -19,8 +20,13 @@ import { pickFoliageStations } from '../../foliage/stations';
 export interface FoliageRouteDeps {
   readonly repos: Repos;
   readonly valleyCenterlines: ReadonlyMap<string, readonly LngLat[]>;
+  /** 계곡 id → 중심선 표고 중앙값(m). 없는 계곡은 보정하지 않는다. */
+  readonly valleyElevations?: ReadonlyMap<string, number>;
   readonly now?: () => number;
 }
+
+/** 표준 기온 감률(℃/m). 습윤 대기 평균 −6.5 ℃/km. */
+export const LAPSE_C_PER_M = 0.0065;
 
 /** 판정에 넣는 일수. 첫 단풍 판정은 9월 초부터의 이력이 있어야 한다. */
 export const FOLIAGE_LOOKBACK_DAYS = 100;
@@ -42,12 +48,21 @@ export function foliageRoutes(deps: FoliageRouteDeps, cacheSec = 300): Hono {
     const stationsByValley = pickFoliageStations(deps.repos, deps.valleyCenterlines);
 
     const foliage = [...stationsByValley.entries()].map(([valleyId, stations]) => {
+      const elevationM = deps.valleyElevations?.get(valleyId) ?? null;
       const byDay = new Map<string, number[]>();
-      for (const s of stations) {
+      const corrected = stations.map((s) => {
+        const correctionC =
+          elevationM !== null && s.elevationM !== null
+            ? Math.round(-LAPSE_C_PER_M * (elevationM - s.elevationM) * 10) / 10
+            : 0;
+        return { ...s, correctionC };
+      });
+      for (const s of corrected) {
         for (const d of deps.repos.dailyTemps.series('aws', s.code, since)) {
+          const t = Math.round((d.tminC + s.correctionC) * 10) / 10;
           const list = byDay.get(d.day);
-          if (list) list.push(d.tminC);
-          else byDay.set(d.day, [d.tminC]);
+          if (list) list.push(t);
+          else byDay.set(d.day, [t]);
         }
       }
       const days: FoliageDay[] = [...byDay.entries()]
@@ -55,7 +70,7 @@ export function foliageRoutes(deps: FoliageRouteDeps, cacheSec = 300): Hono {
         .map(([day, values]) => ({ day, tminC: median(values) }));
 
       const state = evaluateFoliage({ days, today });
-      return { valleyId, ...state, stations };
+      return { valleyId, ...state, elevationM, stations: corrected };
     });
 
     c.header('cache-control', `public, max-age=${cacheSec}`);

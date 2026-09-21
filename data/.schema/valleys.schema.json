@@ -177,6 +177,10 @@
           "type": "number",
           "description": "접근로 평균 경사(%). DEM 산출"
         },
+        "elevationM": {
+          "type": "integer",
+          "description": "계곡 중심선 표고 중앙값(m). Terrarium 산출(seed:elevation). 단풍 기온 보정용."
+        },
         "accessDifficulty": {
           "enum": ["easy", "moderate", "hard"],
           "description": "easy = 유모차 가능, hard = 계단·급경사"

@@ -73,7 +73,8 @@
         "freeAccess": true,
         "mapIconTier": 0,
         "mapLabelTier": 0,
-        "mapImportance": 10
+        "mapImportance": 10,
+        "elevationM": 238
       }
     }
   ]

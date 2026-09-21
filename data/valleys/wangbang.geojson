@@ -109,7 +109,8 @@
         "basinCode": "102213",
         "mapIconTier": 0,
         "mapLabelTier": 0,
-        "mapImportance": 10
+        "mapImportance": 10,
+        "elevationM": 177
       }
     }
   ]

@@ -50,3 +50,23 @@ function readCenterline(file: string): readonly LngLat[] {
     return [];
   }
 }
+
+/**
+ * 계곡 id → 중심선 표고 중앙값(m, `seed:elevation` 이 첫 feature 속성 `elevationM` 으로 쓴다).
+ * 없으면 그 계곡은 빠진다 — 단풍 기온 보정은 표고를 모르면 하지 않는다.
+ */
+export function loadValleyElevations(dir: string): ReadonlyMap<string, number> {
+  const out = new Map<string, number>();
+  for (const { id, file } of valleyFiles(dir)) {
+    try {
+      const parsed = JSON.parse(fs.readFileSync(file, 'utf8')) as {
+        readonly features?: readonly { readonly properties?: { readonly elevationM?: unknown } }[];
+      };
+      const e = parsed.features?.[0]?.properties?.elevationM;
+      if (typeof e === 'number' && Number.isFinite(e)) out.set(id, e);
+    } catch {
+      // 파일 하나가 깨졌다고 전체를 막지 않는다 — 그 계곡만 보정 없이 간다.
+    }
+  }
+  return out;
+}

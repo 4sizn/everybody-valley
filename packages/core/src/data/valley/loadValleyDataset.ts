@@ -411,6 +411,7 @@ function parseSegmentFeature(feature: JsonRecord, path: string): Result<Segment,
   const shadeRatio = props.optionalNumber('shadeRatio', { min: 0, max: 1 });
   const accessDistanceM = props.optionalNumber('accessDistanceM', { integer: true, min: 0 });
   const accessGradePct = props.optionalNumber('accessGradePct');
+  const elevationM = props.optionalNumber('elevationM', { integer: true });
   const accessDifficulty = props.optionalEnum('accessDifficulty', ACCESS_DIFFICULTIES);
 
   const swimBanned = props.optionalBoolean('swimBanned');
@@ -443,6 +444,7 @@ function parseSegmentFeature(feature: JsonRecord, path: string): Result<Segment,
         ...optional('shadeRatio', shadeRatio),
         ...optional('accessDistanceM', accessDistanceM),
         ...optional('accessGradePct', accessGradePct),
+        ...optional('elevationM', elevationM),
         ...optional('accessDifficulty', accessDifficulty),
         ...optional('swimBanned', swimBanned),
         ...optional('riskNote', riskNote),

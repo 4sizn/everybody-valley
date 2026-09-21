@@ -150,6 +150,8 @@ export type SegmentProps = {
   /** 접근로 평균 경사(%). DEM 산출. */
   readonly accessGradePct?: number;
   readonly accessDifficulty?: AccessDifficulty;
+  /** 계곡 중심선 표고 중앙값(m). Terrarium 산출(`seed:elevation`). 단풍 기온 보정 재료. */
+  readonly elevationM?: number;
 
   /** 행안부 물놀이관리지역 금지 구역인가. */
   readonly swimBanned?: boolean;
@@ -187,6 +189,7 @@ export class Segment {
   readonly accessDistanceM: number | undefined;
   readonly accessGradePct: number | undefined;
   readonly accessDifficulty: AccessDifficulty | undefined;
+  readonly elevationM: number | undefined;
 
   readonly swimBanned: boolean | undefined;
   readonly riskNote: string | undefined;
@@ -222,6 +225,7 @@ export class Segment {
     this.accessDistanceM = props.accessDistanceM;
     this.accessGradePct = props.accessGradePct;
     this.accessDifficulty = props.accessDifficulty;
+    this.elevationM = props.elevationM;
 
     this.swimBanned = props.swimBanned;
     this.riskNote = props.riskNote;

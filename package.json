@@ -36,7 +36,8 @@
     "build": "pnpm --filter valley-map build:web && pnpm server:build",
     "native:prebuild": "pnpm --filter valley-map prebuild",
     "server:backfill": "pnpm --filter @modu-valley/server exec tsx scripts/backfill-daily-temps.mts",
-    "seed:access": "tsx scripts/seed/access.mts"
+    "seed:access": "tsx scripts/seed/access.mts",
+    "seed:elevation": "tsx scripts/seed/elevation-valleys.mts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.11",

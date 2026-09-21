@@ -99,7 +99,8 @@
         "mapImportance": 10,
         "shadeByHour": [0.502, 0.498, 0.497, 0.497, 0.497, 0.498, 0.505, 0.54, 0.871],
         "canopyCover": 0.497,
-        "shadeRatio": 0.497
+        "shadeRatio": 0.497,
+        "elevationM": 214
       }
     }
   ]
