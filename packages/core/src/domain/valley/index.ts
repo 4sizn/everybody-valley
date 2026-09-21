@@ -1,4 +1,16 @@
 export {
+  ACCESS_BASES,
+  ACCESS_KINDS,
+  ACCESS_STATUSES,
+  type AccessBasis,
+  type AccessControl,
+  type AccessKind,
+  type AccessState,
+  type AccessStatus,
+  accessStatusLabel,
+  evaluateAccess,
+} from './access';
+export {
   CROWD_SOURCES,
   CROWD_STATUSES,
   CrowdSnapshot,

@@ -1,0 +1,20 @@
+{
+  "tag": "jungbu-2025",
+  "agency": "중부지방산림청",
+  "sourceUrl": "https://fao.forest.go.kr/kfsweb/cop/bbs/selectBoardArticle.do?nttId=3202988&bbsId=BBSMSTR_1031&mn=NKFS_04_01_01",
+  "sourceFile": "jungbu2025.xlsx",
+  "seasons": [
+    {
+      "from": "2025-01-24",
+      "to": "2025-05-15"
+    },
+    {
+      "from": "2025-11-01",
+      "to": "2025-12-15"
+    }
+  ],
+  "sheets": {
+    "areas": "산불조심기간 입산통제구역",
+    "trails": "등산로 개방·폐쇄 구분내역"
+  }
+}

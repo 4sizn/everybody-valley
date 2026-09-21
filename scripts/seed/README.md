@@ -19,6 +19,17 @@ pnpm seed:std                           # (e) 표준데이터 CSV 내려받기 �
 pnpm seed:safemap [--dry-run]           # (d) 생활안전지도 물놀이관리지역 → manual.csv 의 swimBanned·riskNote·depth (공식 출처)
 ```
 
+```sh
+python3 scripts/seed/access-xlsx.py --xlsx <고시 xlsx> --tag jungbu-2025 --agency 중부지방산림청 --url <고시 URL> \
+    --season 2025-01-24:2025-05-15 --season 2025-11-01:2025-12-15   # 입산통제 고시 xlsx → data/seed/access/<tag>/
+pnpm seed:access --tag jungbu-2025 [--probe 3] [--dry]              # 필지 지번 → 브이월드 PNU·폴리곤 → 계곡 교차 → data/access/<tag>.json
+```
+
+**입산통제(계곡 기준)** — 지방산림청 고시 첨부 xlsx 의 통제구역·등산로 필지 지번을 브이월드로 폴리곤화해 계곡 중심선 300 m 버퍼와
+겹치는 계곡에 `closed-area` / `trail-open` / `trail-closed` 기록을 붙인다(basis `parcel`). 리·산 이름 대조는 하지 않는다 — 폴리곤이 없는
+지자체 고시는 후속. 브이월드 폴리곤은 저장·캐시하지 않고 PNU 만 남긴다(약관 §19). 통제 기간은 `meta.json` 의 `seasons`. 결과 파일에는
+계곡 id·기간·PNU·거리만 있다. `--probe N` 은 지역 필터를 무시하고 앞 N 필지로 브이월드 경로만 점검한다(파일을 쓰지 않는다).
+
 키는 저장소 루트 `.env.local` 의 `VWORLD_API_KEY`(유역 코드·하천망 비교). 없으면 그 단계만 건너뛴다. 값은 로그·오류에 찍히지 않는다.
 응답 캐시는 `scripts/seed/.cache/`(gitignore) — Overpass·Terrarium 만 저장하고, **브이월드 응답은 통계·코드만 남긴다**(약관 §19).
 캐시를 지우면 다시 받는다(Overpass 는 요청 간 1 s, 브이월드 100 ms 이상 간격).
