@@ -41,6 +41,7 @@ import {
 } from './journey';
 import { type JourneyNavigation, Navigation } from './Navigation.web';
 import { SettingsDialog } from './SettingsDialog.web';
+import { useAccess } from './useAccess';
 import { useFoliage } from './useFoliage';
 import './reference.css';
 import './journey.css';
@@ -76,6 +77,7 @@ export function ValleyApp() {
   const [place, setPlace] = useState<Place | null>(initial.place);
   const [candidate, setCandidate] = useState<Place | null>(null);
   const foliage = useFoliage(candidate?.valley.id ?? '');
+  const access = useAccess(candidate?.valley.id ?? '');
   const [page, setPage] = useState<'home' | 'explore' | 'blog'>(initial.place ? 'explore' : 'home');
   const [query, setQuery] = useState('');
   const [storyValley, setStoryValley] = useState<string | null>(null);
@@ -243,6 +245,13 @@ export function ValleyApp() {
                             label="단풍"
                             value={foliage.line ?? '자료 없음'}
                             icon="tree-pine"
+                          />
+                        )}
+                        {access.line && (
+                          <Metric
+                            label="입산"
+                            value={access.line}
+                            icon={access.status === 'closed' ? 'triangle-alert' : 'shield-check'}
                           />
                         )}
                       </div>

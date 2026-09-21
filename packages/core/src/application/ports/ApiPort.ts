@@ -97,6 +97,24 @@ export type ApiAlert = {
   readonly lastObservedAt: ApiIsoDateTime | null;
 };
 
+/** 계곡 하나의 출입 통제 상태 — 서버 `GET /api/access`. 뜻은 core `evaluateAccess`. */
+export type ApiAccessControl = {
+  readonly valleyId: string;
+  readonly kind: 'closed-area' | 'trail-closed' | 'trail-open';
+  readonly from: string;
+  readonly to: string;
+  readonly basis: 'parcel' | 'ri' | 'trail';
+  readonly agency: string;
+  readonly sourceUrl: string;
+  readonly note?: string;
+};
+export type ApiAccess = {
+  readonly valleyId: string;
+  readonly status: 'closed' | 'trail-open' | 'open' | 'unknown';
+  readonly control: ApiAccessControl | null;
+  readonly upcoming: ApiAccessControl | null;
+};
+
 /** 계곡 하나의 단풍 상태 — 서버 `GET /api/foliage`. 단계·날짜 뜻은 core `evaluateFoliage`. */
 export type ApiFoliage = {
   readonly valleyId: string;
@@ -271,6 +289,10 @@ export abstract class ApiPort {
   /** 계곡 전부의 단풍 진행 상태(가을). 기본 구현은 미구현 오류 — `FetchApiClient` 가 덮는다. */
   foliage(): ApiResult<readonly ApiFoliage[]> {
     return notImplemented('foliage');
+  }
+  /** 계곡 전부의 출입 통제 상태. 기본 구현은 미구현 오류 — `FetchApiClient` 가 덮는다. */
+  access(): ApiResult<readonly ApiAccess[]> {
+    return notImplemented('access');
   }
   /**
    * SSE 구독. 어댑터가 이벤트 스트림을 지원하지 않는 런타임이면 아무 이벤트도 오지 않는 `Disposable` 을 돌려준다

@@ -44,6 +44,8 @@ export interface ServerConfig {
   readonly uploadsDir: string;
   /** `valleyId` 검증용 — `data/valleys/*.geojson` 파일 이름(확장자 제외)이 유효한 계곡 id 다. */
   readonly valleysDir: string;
+  /** 계곡 출입 통제 기록(`pnpm seed:access` 산출) 디렉터리. */
+  readonly accessDir: string;
   /** IP 당 10분 제보 작성 한도(F5a 결정 (h)). */
   readonly reportsRateLimitPer10Min: number;
   /** IP 당 하루 제보 작성 한도. */
@@ -150,6 +152,7 @@ export function loadConfig({ serverDir, env }: LoadConfigOptions): ServerConfig 
     basinsWfsUrl: nonEmpty(env['BASINS_WFS_URL']),
     uploadsDir: env['UPLOADS_DIR'] ?? path.join(serverDir, 'data', 'uploads'),
     valleysDir: env['VALLEYS_DIR'] ?? path.join(path.resolve(serverDir, '..'), 'data', 'valleys'),
+    accessDir: env['ACCESS_DIR'] ?? path.join(path.resolve(serverDir, '..'), 'data', 'access'),
     reportsRateLimitPer10Min: intOf(env['REPORTS_RATE_LIMIT_PER_10MIN'], 3),
     reportsRateLimitPerDay: intOf(env['REPORTS_RATE_LIMIT_PER_DAY'], 20),
     adminToken: nonEmpty(env['ADMIN_TOKEN']),

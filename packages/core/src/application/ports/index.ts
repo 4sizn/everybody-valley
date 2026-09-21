@@ -1,6 +1,8 @@
 export {
   API_EVENT_CHANNELS,
   API_STATION_KINDS,
+  type ApiAccess,
+  type ApiAccessControl,
   type ApiAdminFlagSummary,
   type ApiAdminReport,
   type ApiAdminReportPage,

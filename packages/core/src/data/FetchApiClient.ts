@@ -14,6 +14,7 @@
  */
 
 import {
+  type ApiAccess,
   type ApiAdminFlagSummary,
   type ApiAdminReport,
   type ApiAdminReportPage,
@@ -138,6 +139,11 @@ export class FetchApiClient extends ApiPort {
   override async foliage(): ApiResult<readonly ApiFoliage[]> {
     const r = await this.#getJson<{ foliage: readonly ApiFoliage[] }>('/api/foliage');
     return r.ok ? ok(r.value.foliage) : r;
+  }
+
+  override async access(): ApiResult<readonly ApiAccess[]> {
+    const r = await this.#getJson<{ access: readonly ApiAccess[] }>('/api/access');
+    return r.ok ? ok(r.value.access) : r;
   }
 
   override async reports(query: ApiReportsQuery = {}): ApiResult<ApiReportPage> {

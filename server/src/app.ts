@@ -20,6 +20,7 @@ import {
   TieredRateLimiter,
 } from './http/rateLimit';
 import { requestLog } from './http/requestLog';
+import { accessRoutes } from './http/routes/access';
 import { adminRoutes } from './http/routes/admin';
 import { alertsRoutes } from './http/routes/alerts';
 import { awsRoutes } from './http/routes/aws';
@@ -126,6 +127,14 @@ export function createApp(deps: AppDeps): Hono {
   app.route(
     '/api/foliage',
     foliageRoutes({ repos, valleyCenterlines, ...(deps.now ? { now: deps.now } : {}) }),
+  );
+  app.route(
+    '/api/access',
+    accessRoutes({
+      accessDir: config.accessDir,
+      valleyIds: new Set(valleyCenterlines.keys()),
+      ...(deps.now ? { now: deps.now } : {}),
+    }),
   );
   app.route(
     '/api/reports',
