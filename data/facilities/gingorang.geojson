@@ -2,19 +2,20 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "긴고랑계곡 주변 시설 — 공공데이터포털 표준데이터 화장실·주차장. 위치는 제공 좌표, 현장 미확인. 정자·쉼터 1곳 추가(OSM shelter/pavilion, 중심선 250 m 안).",
-    "source": "전국공중화장실정보·전국주차장정보 표준데이터",
-    "sourceFile": "scripts/research/gingorang/trace.mts (SD3) — pnpm seed:build 자동 매칭을 사람이 검토해 되돌림",
-    "datasetVersion": "2026-09-09.0",
-    "collectedAt": "2026-09-08",
+    "description": "긴고랑계곡 시설 167개 — 표준데이터 주차장 3 · 화장실 16 · 쓰레기통·놀이터 5 · OSM 142 · 수기 1. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m 전수 검토 — 계곡 특유 시설(트레일헤드 주차장·화장실) 없음",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
-      "https://www.data.go.kr/data/15012892/standard.do",
-      "https://www.data.go.kr/data/15012896/standard.do"
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012890/standard.do (전국도시공원정보표준데이터 유희시설, 공공누리 1유형)"
     ]
   },
   "features": [
@@ -22,32 +23,906 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.09104, 37.558858]
+        "coordinates": [127.089122, 37.573352]
       },
       "properties": {
-        "id": "gingorang-std-restroom",
+        "id": "gingorang-std-p-106-2-000006",
         "valleyId": "gingorang",
-        "name": "긴고랑어린이공원",
-        "facilityType": "restroom",
-        "mapIconTier": 1,
-        "mapImportance": 10,
-        "operatingHours": "연중무휴"
+        "name": "용마폭포",
+        "facilityType": "parking",
+        "capacity": 119,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.0928443, 37.5529341]
+        "coordinates": [127.08912, 37.573354]
       },
       "properties": {
-        "id": "gingorang-std-parking",
+        "id": "gingorang-std-r-28387",
         "valleyId": "gingorang",
-        "name": "구의2동 주택가공동 주차장",
+        "name": "용마폭포공원1",
+        "facilityType": "restroom",
+        "operatingHours": "00:00~24:00",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092066, 37.556798]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29056",
+        "valleyId": "gingorang",
+        "name": "해오름공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09104, 37.558858]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29285",
+        "valleyId": "gingorang",
+        "name": "긴고랑어린이공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091019, 37.55888]
+      },
+      "properties": {
+        "id": "gingorang-std-park-1932",
+        "valleyId": "gingorang",
+        "name": "긴고랑공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092185, 37.556785]
+      },
+      "properties": {
+        "id": "gingorang-std-park-1934",
+        "valleyId": "gingorang",
+        "name": "해오름공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086924, 37.568608]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8026623185",
+        "valleyId": "gingorang",
+        "name": "그린마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087064, 37.567864]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8026632485",
+        "valleyId": "gingorang",
+        "name": "용곡하이퍼마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087222, 37.563357]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-8398939846",
+        "valleyId": "gingorang",
+        "name": "채선당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086944, 37.56468]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-8398939875",
+        "valleyId": "gingorang",
+        "name": "가마솥도가니탕 장수옥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087024, 37.571875]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-10141310651",
+        "valleyId": "gingorang",
+        "name": "주차장",
         "facilityType": "parking",
         "mapIconTier": 0,
-        "mapImportance": 10,
-        "feeNote": "유료"
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088431, 37.575233]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-10178109027",
+        "valleyId": "gingorang",
+        "name": "금와왕돈까스",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088389, 37.575236]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-10178109028",
+        "valleyId": "gingorang",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087617, 37.561087]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074367691",
+        "valleyId": "gingorang",
+        "name": "BHC치킨 아차산점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087817, 37.563682]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074390434",
+        "valleyId": "gingorang",
+        "name": "호화반점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089163, 37.558752]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074431061",
+        "valleyId": "gingorang",
+        "name": "쌍둥이네식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087001, 37.564184]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074557210",
+        "valleyId": "gingorang",
+        "name": "기영이 숯불두마리치킨 광진중곡점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089638, 37.558229]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074583298",
+        "valleyId": "gingorang",
+        "name": "떡메마을 김밥촌",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091478, 37.558525]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074634580",
+        "valleyId": "gingorang",
+        "name": "새싹분식",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090598, 37.557615]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074659715",
+        "valleyId": "gingorang",
+        "name": "미래푸드",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088281, 37.56379]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13172347183",
+        "valleyId": "gingorang",
+        "name": "숙이카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088033, 37.563756]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13173228632",
+        "valleyId": "gingorang",
+        "name": "아지트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087594, 37.565188]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13173228646",
+        "valleyId": "gingorang",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088957, 37.559565]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851763947",
+        "valleyId": "gingorang",
+        "name": "기가버거",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088345, 37.563424]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851763948",
+        "valleyId": "gingorang",
+        "name": "장주연의라이스볼중곡점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088321, 37.562281]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851763998",
+        "valleyId": "gingorang",
+        "name": "꾸노네",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086876, 37.562291]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851763999",
+        "valleyId": "gingorang",
+        "name": "마장동 고기집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087454, 37.561983]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764001",
+        "valleyId": "gingorang",
+        "name": "수경수제만두",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 47
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092166, 37.556232]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764052",
+        "valleyId": "gingorang",
+        "name": "샌드맘",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 48
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088634, 37.558511]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764085",
+        "valleyId": "gingorang",
+        "name": "산해진미",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.097688, 37.55563]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764108",
+        "valleyId": "gingorang",
+        "name": "서민닭갈비서민곱창",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09129, 37.557163]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764111",
+        "valleyId": "gingorang",
+        "name": "본가대구탕.뽈찜.탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089843, 37.557516]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764113",
+        "valleyId": "gingorang",
+        "name": "양평민물",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093439, 37.557405]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764114",
+        "valleyId": "gingorang",
+        "name": "신성마라탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 53
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09211, 37.557849]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851766064",
+        "valleyId": "gingorang",
+        "name": "동네식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 54
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.095801, 37.561046]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851766097",
+        "valleyId": "gingorang",
+        "name": "춘향",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.095801, 37.561046]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13851766101",
+        "valleyId": "gingorang",
+        "name": "정",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 56
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088508, 37.561723]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851766108",
+        "valleyId": "gingorang",
+        "name": "고공 중곡점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 57
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091986, 37.558774]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851766133",
+        "valleyId": "gingorang",
+        "name": "바이오푸드(주)광진지점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 58
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091556, 37.559104]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851766134",
+        "valleyId": "gingorang",
+        "name": "라운지카페",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 59
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090851, 37.558661]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851766135",
+        "valleyId": "gingorang",
+        "name": "유심빵집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 60
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092943, 37.558751]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911615973",
+        "valleyId": "gingorang",
+        "name": "CU 중곡긴고랑로점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 61
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090938, 37.558629]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911615975",
+        "valleyId": "gingorang",
+        "name": "GS25 중곡긴고랑점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087606, 37.561254]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616025",
+        "valleyId": "gingorang",
+        "name": "CU 중곡무니점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 63
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093646, 37.557421]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616072",
+        "valleyId": "gingorang",
+        "name": "이마트24 중곡아차산점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.094766, 37.559715]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616100",
+        "valleyId": "gingorang",
+        "name": "GS25 gs25광진마루점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092756, 37.577871]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112423445",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089062, 37.575739]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112474155",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089479, 37.57622]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112474159",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089966, 37.576628]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112474161",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090472, 37.576876]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112474162",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087144, 37.565319]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1350598652",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087186, 37.566338]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1350598665",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087324, 37.565871]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1350598666",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089471, 37.568215]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1427805549",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088658, 37.564014]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1433184799",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088944, 37.562322]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1433184811",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08813, 37.564579]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1433184819",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087792, 37.565131]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1433303414",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087072, 37.564837]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1433303448",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     },
     {
@@ -62,7 +937,1619 @@
         "name": "정자(용마산정)",
         "facilityType": "shelter",
         "mapIconTier": 1,
-        "mapImportance": 0.4
+        "mapImportance": 80
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088094, 37.566475]
+      },
+      "properties": {
+        "id": "gingorang-osm-playground-1350598684",
+        "valleyId": "gingorang",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 81
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09104, 37.558858]
+      },
+      "properties": {
+        "id": "gingorang-std-restroom",
+        "valleyId": "gingorang",
+        "name": "긴고랑어린이공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 82
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090869, 37.556768]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764106",
+        "valleyId": "gingorang",
+        "name": "일품불백",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 83
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.0877, 37.559557]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-7908012685",
+        "valleyId": "gingorang",
+        "name": "청진동해장국         24시간영업",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 84
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086732, 37.563042]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764048",
+        "valleyId": "gingorang",
+        "name": "휘경홍어",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088068, 37.558864]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074788557",
+        "valleyId": "gingorang",
+        "name": "쭈꾸미구이",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 86
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086493, 37.567356]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-8398939850",
+        "valleyId": "gingorang",
+        "name": "유일설렁탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090106, 37.557007]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764110",
+        "valleyId": "gingorang",
+        "name": "혜성풍천장어",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 88
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087405, 37.559737]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-7908010785",
+        "valleyId": "gingorang",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 89
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086402, 37.570955]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911612729",
+        "valleyId": "gingorang",
+        "name": "GS25 용마산타워점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 90
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091283, 37.556322]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764084",
+        "valleyId": "gingorang",
+        "name": "라도유황오리",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 91
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08638, 37.568908]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074783374",
+        "valleyId": "gingorang",
+        "name": "이빠이하루",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 92
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086364, 37.56959]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764022",
+        "valleyId": "gingorang",
+        "name": "진우식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 93
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086391, 37.567849]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13851764028",
+        "valleyId": "gingorang",
+        "name": "마가렛",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 94
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086316, 37.568362]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8026828985",
+        "valleyId": "gingorang",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 95
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.094458, 37.578611]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1235284779",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087176, 37.559805]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074369236",
+        "valleyId": "gingorang",
+        "name": "사계절김밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 97
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086435, 37.563918]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764041",
+        "valleyId": "gingorang",
+        "name": "대중관",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 98
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087041, 37.559986]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-12073453296",
+        "valleyId": "gingorang",
+        "name": "커피홍당무",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088954, 37.557578]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-8139791817",
+        "valleyId": "gingorang",
+        "name": "남원식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092354, 37.555699]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8026505286",
+        "valleyId": "gingorang",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 101
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093785, 37.555334]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764058",
+        "valleyId": "gingorang",
+        "name": "푸른솔",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 102
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086331, 37.56451]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-10725986441",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093079, 37.55545]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-8026505288",
+        "valleyId": "gingorang",
+        "name": "병천순대족발",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 104
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087313, 37.559333]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-935004220",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093799, 37.578679]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1235284851",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08752, 37.558975]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-8139968717",
+        "valleyId": "gingorang",
+        "name": "seven monkey's coffee",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 107
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.095143, 37.55507]
+      },
+      "properties": {
+        "id": "gingorang-std-park-1925",
+        "valleyId": "gingorang",
+        "name": "산마루공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 108
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088453, 37.576234]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112423515",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086267, 37.56183]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616013",
+        "valleyId": "gingorang",
+        "name": "CU 중곡오거리점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 110
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088832, 37.557458]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8139049317",
+        "valleyId": "gingorang",
+        "name": "은혜식품",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 111
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086192, 37.565395]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-10725986369",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085949, 37.56759]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851763988",
+        "valleyId": "gingorang",
+        "name": "용마골",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 113
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088051, 37.55808]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764013",
+        "valleyId": "gingorang",
+        "name": "완미족발아차산점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 114
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087179, 37.559154]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616068",
+        "valleyId": "gingorang",
+        "name": "CU 중곡베스트점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 115
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085865, 37.570015]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616049",
+        "valleyId": "gingorang",
+        "name": "이마트24 중곡용마로점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 116
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087542, 37.558584]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764011",
+        "valleyId": "gingorang",
+        "name": "송하두부마을",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 117
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085996, 37.563333]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-12074768155",
+        "valleyId": "gingorang",
+        "name": "엠비에프(MBF)",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 118
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086544, 37.560164]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851763962",
+        "valleyId": "gingorang",
+        "name": "외할머니 해장국",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 119
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085804, 37.569327]
+      },
+      "properties": {
+        "id": "gingorang-osm-food-13851764023",
+        "valleyId": "gingorang",
+        "name": "코지(COZY)",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 120
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090935, 37.555927]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8138785217",
+        "valleyId": "gingorang",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 121
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.094913, 37.579035]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1235284780",
+        "valleyId": "gingorang",
+        "name": "경비실",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089821, 37.556515]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8138789118",
+        "valleyId": "gingorang",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 123
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087752, 37.557998]
+      },
+      "properties": {
+        "id": "gingorang-osm-bin-13888845910",
+        "valleyId": "gingorang",
+        "name": "재활용 수거함",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 124
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088559, 37.576915]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-10177594918",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089934, 37.577846]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112423478",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089031, 37.577355]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112423503",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09317, 37.554881]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-8026512885",
+        "valleyId": "gingorang",
+        "name": "소망할인마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 128
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.095713, 37.579322]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-1101775050",
+        "valleyId": "gingorang",
+        "name": "매점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 129
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085409, 37.568362]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-12074304959",
+        "valleyId": "gingorang",
+        "name": "하이엔드 AI 로봇카페 엠브이랩",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 130
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085335, 37.571897]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911614094",
+        "valleyId": "gingorang",
+        "name": "GS25 면목퍼스트점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 131
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087889, 37.576722]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1473893428",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08533, 37.572534]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-10141310074",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091258, 37.578906]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911614926",
+        "valleyId": "gingorang",
+        "name": "CU 면목새롬점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 134
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092215, 37.579216]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-10170762913",
+        "valleyId": "gingorang",
+        "name": "진흥마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 135
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089151, 37.577947]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-10177594688",
+        "valleyId": "gingorang",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 136
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085927, 37.574768]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-7829070585",
+        "valleyId": "gingorang",
+        "name": "하나슈퍼",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 137
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087296, 37.557581]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911615976",
+        "valleyId": "gingorang",
+        "name": "GS25 광진용마점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 138
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084896, 37.570964]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13851765685",
+        "valleyId": "gingorang",
+        "name": "여정",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 139
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.085069, 37.561968]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-4629814419",
+        "valleyId": "gingorang",
+        "name": "GS25 편의점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 140
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084911, 37.565878]
+      },
+      "properties": {
+        "id": "gingorang-std-park-1904",
+        "valleyId": "gingorang",
+        "name": "중곡역소공원(가칭) 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 141
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084684, 37.569919]
+      },
+      "properties": {
+        "id": "gingorang-std-p-104-2-000012",
+        "valleyId": "gingorang",
+        "name": "중곡3동 마을공원 공영주차장",
+        "facilityType": "parking",
+        "capacity": 162,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084664, 37.569879]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29283",
+        "valleyId": "gingorang",
+        "name": "중곡3마을공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 143
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084763, 37.566293]
+      },
+      "properties": {
+        "id": "gingorang-osm-store-13911616029",
+        "valleyId": "gingorang",
+        "name": "GS25 중곡메디컬점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 144
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093347, 37.579777]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-10170408470",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084879, 37.57312]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1108373977",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087291, 37.576959]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1473893439",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.095212, 37.580063]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-11830295097",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 148
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084634, 37.564996]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-10725986332",
+        "valleyId": "gingorang",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 149
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.100971, 37.554491]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-9534964352",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 150
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084505, 37.56557]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-10725986341",
+        "valleyId": "gingorang",
+        "name": "쥬씨",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 151
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084629, 37.573793]
+      },
+      "properties": {
+        "id": "gingorang-std-r-20156",
+        "valleyId": "gingorang",
+        "name": "용마산",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 152
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084163, 37.572782]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-11826595289",
+        "valleyId": "gingorang",
+        "name": "샵포레스트",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 153
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084063, 37.564036]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-10725986502",
+        "valleyId": "gingorang",
+        "name": "단비스튜디오",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 154
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.093843, 37.580782]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1111655634",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090982, 37.580178]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-1112327050",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.083993, 37.559563]
+      },
+      "properties": {
+        "id": "gingorang-std-park-1933",
+        "valleyId": "gingorang",
+        "name": "한마음공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 157
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.083252, 37.572689]
+      },
+      "properties": {
+        "id": "gingorang-osm-parking-899200770",
+        "valleyId": "gingorang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 4,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092844, 37.552934]
+      },
+      "properties": {
+        "id": "gingorang-std-p-104-2-000013",
+        "valleyId": "gingorang",
+        "name": "구의2동 주택가공동 주차장",
+        "facilityType": "parking",
+        "capacity": 90,
+        "feeNote": "유료",
+        "operatingHours": "09:00~18:00",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.090923, 37.580614]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-10176257599",
+        "valleyId": "gingorang",
+        "name": "헤르헤르",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 160
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08289, 37.569299]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13851764908",
+        "valleyId": "gingorang",
+        "name": "어우동",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 161
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.091662, 37.58092]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-10176257792",
+        "valleyId": "gingorang",
+        "name": "안방다방",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 162
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.082842, 37.562917]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13851765963",
+        "valleyId": "gingorang",
+        "name": "카페트윈즈(Cafe twins)",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 163
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08248, 37.571359]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-12074771500",
+        "valleyId": "gingorang",
+        "name": "몽실",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 164
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088347, 37.580071]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-11682001282",
+        "valleyId": "gingorang",
+        "name": "메가MGC커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 165
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087442, 37.579615]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-11676539077",
+        "valleyId": "gingorang",
+        "name": "커피볶는꾼",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 166
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086876, 37.579374]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-11676539109",
+        "valleyId": "gingorang",
+        "name": "투썸플레이스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 167
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.100259, 37.552302]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-10948388666",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "feeNote": "무료",
+        "mapIconTier": 1,
+        "mapImportance": 168
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092749, 37.552095]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-12074589480",
+        "valleyId": "gingorang",
+        "name": "크로플덕오리아가씨 아차산점",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 169
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.082069, 37.564529]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-12074636098",
+        "valleyId": "gingorang",
+        "name": "차차",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 170
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.081781, 37.571418]
+      },
+      "properties": {
+        "id": "gingorang-osm-cafe-13851765701",
+        "valleyId": "gingorang",
+        "name": "다영호프",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 171
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.081897, 37.565535]
+      },
+      "properties": {
+        "id": "gingorang-std-r-20155",
+        "valleyId": "gingorang",
+        "name": "중  곡",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 172
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.081701, 37.563835]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29277",
+        "valleyId": "gingorang",
+        "name": "중곡제일골목시장",
+        "facilityType": "restroom",
+        "operatingHours": "(평일)08:00~20:00+(주말)08:00~20:00+(공휴일)08:00~20:00",
+        "mapIconTier": 1,
+        "mapImportance": 173
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.110119, 37.560176]
+      },
+      "properties": {
+        "id": "gingorang-std-r-1361",
+        "valleyId": "gingorang",
+        "name": "고구려대장간마을",
+        "facilityType": "restroom",
+        "operatingHours": "(평일)09:00~18:00+(주말)09:00~18:00+(공휴일)09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 174
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.100526, 37.55159]
+      },
+      "properties": {
+        "id": "gingorang-std-r-13867",
+        "valleyId": "gingorang",
+        "name": "아차산생태공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 175
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.080251, 37.568437]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29058",
+        "valleyId": "gingorang",
+        "name": "배나무터공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 176
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.086314, 37.580966]
+      },
+      "properties": {
+        "id": "gingorang-std-r-20104",
+        "valleyId": "gingorang",
+        "name": "사가정",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 177
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.088818, 37.551593]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29280",
+        "valleyId": "gingorang",
+        "name": "어린이대공원후문",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 178
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.079956, 37.572838]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-13041427406",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 179
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087363, 37.551959]
+      },
+      "properties": {
+        "id": "gingorang-std-r-21264",
+        "valleyId": "gingorang",
+        "name": "아차산",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 180
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.101045, 37.583839]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-1422982334",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 181
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.079025, 37.57483]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-12642240077",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 182
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.078212, 37.567878]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29057",
+        "valleyId": "gingorang",
+        "name": "중랑천제방2",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 183
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.078725, 37.576264]
+      },
+      "properties": {
+        "id": "gingorang-osm-restroom-5282497821",
+        "valleyId": "gingorang",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 184
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.077239, 37.566509]
+      },
+      "properties": {
+        "id": "gingorang-std-r-29059",
+        "valleyId": "gingorang",
+        "name": "중랑천제방1",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 185
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.114856, 37.563694]
+      },
+      "properties": {
+        "id": "gingorang-std-r-1391",
+        "valleyId": "gingorang",
+        "name": "아천주유소",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 186
       }
     }
   ]

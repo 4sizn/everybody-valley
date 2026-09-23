@@ -63,7 +63,7 @@ const WATERWAY_RADIUS_M = 2000;
 /**
  * 중심선을 손으로 만든 계곡 — `seed:build` 가 덮어쓰면 안 된다. 긴고랑(SD3)은 OSM 에 하천이 없어
  * Terrarium DEM 최소비용경로로 근사했는데, 2026-09-23 전체 재시딩이 934 m 떨어진 184 m 도랑을 중심선으로
- * 잡아 덮어쓴 적이 있다(HEAD 에서 되살림). 여기 있는 계곡은 건너뛴다.
+ * 잡아 덮어쓴 적이 있다(HEAD 에서 되살림). 여기 있는 계곡은 구간 파일을 두고 **시설만** 다시 만든다.
  */
 const HAND_BUILT_CENTERLINE = new Set(['gingorang']);
 /** 정자 조회 반경(중심선 버퍼) — `SHELTER_MAX_FROM_LINE_M` 보다 조금 넉넉하게. */
@@ -162,51 +162,37 @@ async function accessOf(
   };
 }
 
-async function buildValley(
-  valley: SeedValley,
-  context: {
-    keys: ReturnType<typeof loadKeys>;
-    stdParking: readonly FacilityRecord[];
-    stdRestrooms: readonly FacilityRecord[];
-    /** 쓰레기통·놀이터 표준데이터 전체 행 — 중심선이 나온 뒤 `stdNearLine` 으로 자른다. */
-    stdBins: readonly import('./facilities.mts').StdParkingRow[];
-    stdPlaygrounds: readonly import('./facilities.mts').StdParkingRow[];
-    stdParkPlaygrounds: readonly import('./facilities.mts').StdParkingRow[];
-    manualFacilities: readonly FacilityRecord[];
-    manual: readonly import('./manual.mts').ManualEntry[];
-    splits: readonly SplitRow[] | undefined;
-  },
-): Promise<ValleyOutput | undefined> {
-  const center: Position = [valley.lng, valley.lat];
-  const ways = await fetchWaterways(valley.id, center, WATERWAY_RADIUS_M, context.keys);
-  const centerline = await buildCenterline(ways, center, context.keys);
-  if (centerline === undefined) {
-    warn(
-      `${valley.id}: 반경 ${WATERWAY_RADIUS_M} m 에 OSM 하천 way 가 없다 — 좌표열을 만들 수 없어 건너뜀`,
-    );
-    return undefined;
-  }
-  if (centerline.flipped) warn(`${valley.id}: OSM 방향과 표고가 어긋나 상·하류를 뒤집었다`);
+type BuildContext = {
+  keys: ReturnType<typeof loadKeys>;
+  stdParking: readonly FacilityRecord[];
+  stdRestrooms: readonly FacilityRecord[];
+  /** 쓰레기통·놀이터 표준데이터 전체 행 — 중심선이 나온 뒤 `stdNearLine` 으로 자른다. */
+  stdBins: readonly import('./facilities.mts').StdParkingRow[];
+  stdPlaygrounds: readonly import('./facilities.mts').StdParkingRow[];
+  stdParkPlaygrounds: readonly import('./facilities.mts').StdParkingRow[];
+  manualFacilities: readonly FacilityRecord[];
+  manual: readonly import('./manual.mts').ManualEntry[];
+  splits: readonly SplitRow[] | undefined;
+};
 
+/**
+ * 한 계곡의 시설 — 표준데이터(계곡 점 반경) + 중심선 기준 종류들(정자·쓰레기통·놀이터) + OSM + 수기,
+ * 합치고 멀리 있는 것을 자른 결과. 수기 중심선 계곡(`HAND_BUILT_CENTERLINE`)도 이 함수만 다시 돈다.
+ */
+async function collectFacilities(
+  valley: SeedValley,
+  center: Position,
+  line: readonly Position[],
+  context: BuildContext,
+): Promise<FacilityRecord[]> {
   const pois = await fetchAmenities(valley.id, center, FACILITY_RADIUS_M, context.keys);
   /* 정자·쉼터(2026-09-08)는 계곡 점 반경이 아니라 **중심선 버퍼**로 받는다 — 물가에 앉는 자리라
      계곡을 벗어나면 남의 동네 공원 정자다. 규칙과 거리 기준은 `facilities.mts` 가 소유하고
      `pnpm seed:shelters`(기존 파일에 덧붙이는 스크립트)도 같은 함수를 쓴다. */
-  const shelterPois = await fetchShelters(
-    valley.id,
-    centerline.path,
-    SHELTER_FETCH_RADIUS_M,
-    context.keys,
-  );
+  const shelterPois = await fetchShelters(valley.id, line, SHELTER_FETCH_RADIUS_M, context.keys);
   /* 쓰레기통·놀이터(2026-09-23)도 중심선 기준 — `EXTRA_MAX_FROM_LINE_M`. 표준데이터 3종 + OSM. */
-  const extraPois = await fetchExtras(
-    valley.id,
-    centerline.path,
-    EXTRA_MAX_FROM_LINE_M,
-    context.keys,
-  );
-  const line = centerline.path;
-  const facilities = trimFarFacilities(
+  const extraPois = await fetchExtras(valley.id, line, EXTRA_MAX_FROM_LINE_M, context.keys);
+  return trimFarFacilities(
     mergeFacilities(
       [
         ...context.stdParking,
@@ -224,6 +210,24 @@ async function buildValley(
     ),
     line,
   );
+}
+
+async function buildValley(
+  valley: SeedValley,
+  context: BuildContext,
+): Promise<ValleyOutput | undefined> {
+  const center: Position = [valley.lng, valley.lat];
+  const ways = await fetchWaterways(valley.id, center, WATERWAY_RADIUS_M, context.keys);
+  const centerline = await buildCenterline(ways, center, context.keys);
+  if (centerline === undefined) {
+    warn(
+      `${valley.id}: 반경 ${WATERWAY_RADIUS_M} m 에 OSM 하천 way 가 없다 — 좌표열을 만들 수 없어 건너뜀`,
+    );
+    return undefined;
+  }
+  if (centerline.flipped) warn(`${valley.id}: OSM 방향과 표고가 어긋나 상·하류를 뒤집었다`);
+
+  const facilities = await collectFacilities(valley, center, centerline.path, context);
 
   const existing = existingSegmentProps(
     readExisting(path.join(VALLEYS_DIR, `${valley.id}.geojson`)),
@@ -329,7 +333,7 @@ function segmentMetadata(
 }
 
 function facilityMetadata(
-  output: ValleyOutput,
+  output: Pick<ValleyOutput, 'valley' | 'facilities'>,
   dates: { version: string; collectedAt: string },
 ): Json {
   const { valley, facilities } = output;
@@ -506,15 +510,10 @@ async function main(): Promise<void> {
 
   const outputs: ValleyOutput[] = [];
   const missing: SeedValley[] = [];
+  const handBuilt: { valley: SeedValley; facilities: FacilityRecord[]; existing: Json }[] = [];
   for (const valley of valleys) {
-    if (HAND_BUILT_CENTERLINE.has(valley.id)) {
-      warn(
-        `${valley.id}: 수기 중심선(SD3) — seed:build 가 덮어쓰지 않는다. 시설·봉우리는 별도 스크립트로`,
-      );
-      continue;
-    }
     const center: Position = [valley.lng, valley.lat];
-    const output = await buildValley(valley, {
+    const context: BuildContext = {
       keys,
       stdParking: stdWithin(stdParkingRows, center, valley.id, 'parking'),
       stdRestrooms: stdWithin(stdRestroomRows, center, valley.id, 'restroom'),
@@ -524,7 +523,24 @@ async function main(): Promise<void> {
       manualFacilities: manualFacilities.byValley.get(valley.id) ?? [],
       manual: manual.byValley.get(valley.id) ?? [],
       splits: splits.byValley.get(valley.id),
-    });
+    };
+    if (HAND_BUILT_CENTERLINE.has(valley.id)) {
+      // 구간 파일은 그대로 두고, 그 중심선으로 시설만 다시 만든다.
+      const existingValley = readExisting(path.join(VALLEYS_DIR, `${valley.id}.geojson`));
+      if (existingValley === undefined) {
+        warn(`${valley.id}: 수기 중심선 계곡인데 data/valleys 파일이 없다 — 건너뜀`);
+        missing.push(valley);
+        continue;
+      }
+      const line = ((existingValley['features'] as Json[]) ?? []).flatMap(
+        (feature) => (feature['geometry'] as Json)['coordinates'] as Position[],
+      );
+      const facilities = await collectFacilities(valley, center, line, context);
+      handBuilt.push({ valley, facilities, existing: existingValley });
+      log(`${valley.id.padEnd(18)} 수기 중심선 유지 · 시설 ${facilities.length}`);
+      continue;
+    }
+    const output = await buildValley(valley, context);
     if (output === undefined) {
       missing.push(valley);
       continue;
@@ -538,49 +554,74 @@ async function main(): Promise<void> {
 
   // 검증 — 쓰기 전에 30세트를 core 로더로 한 번에.
   const dates = { version: `${todayKst()}.0`, collectedAt: todayKst() };
-  const bundle = {
-    metadata: { ...segmentMetadata(outputs[0] as ValleyOutput, dates), description: '검증용' },
-    collections: outputs.map((output) =>
-      collectionOf(segmentMetadata(output, dates), output.segments),
-    ),
-  };
-  const facilityBundle = {
-    metadata: bundle.metadata,
-    collections: outputs.map((output) =>
-      collectionOf(
-        facilityMetadata(output, dates),
-        output.facilities.map((facility, index) =>
-          toFacilityFeature(facility, facility.facilityType === 'parking' ? 5 : 20 + index),
-        ),
-      ),
-    ),
-  };
-  const validated = loadValleyBundle(bundle, facilityBundle);
-  if (!validated.ok) {
-    throw new Error(
-      `스키마 검증 실패: ${validated.error.message} (${JSON.stringify(validated.error.context)})`,
-    );
-  }
-
   let written = 0;
-  for (const output of outputs) {
-    const id = output.valley.id;
-    if (
-      writeCollection(path.join(VALLEYS_DIR, `${id}.geojson`), (d) =>
-        collectionOf(segmentMetadata(output, d), output.segments),
-      )
-    )
-      written += 1;
-    if (
-      writeCollection(path.join(FACILITIES_DIR, `${id}.geojson`), (d) =>
+  let validatedValleys = 0;
+  let validatedSegments = 0;
+  if (outputs.length > 0) {
+    const bundle = {
+      metadata: { ...segmentMetadata(outputs[0] as ValleyOutput, dates), description: '검증용' },
+      collections: outputs.map((output) =>
+        collectionOf(segmentMetadata(output, dates), output.segments),
+      ),
+    };
+    const facilityBundle = {
+      metadata: bundle.metadata,
+      collections: outputs.map((output) =>
         collectionOf(
-          facilityMetadata(output, d),
+          facilityMetadata(output, dates),
           output.facilities.map((facility, index) =>
             toFacilityFeature(facility, facility.facilityType === 'parking' ? 5 : 20 + index),
           ),
         ),
+      ),
+    };
+    const validated = loadValleyBundle(bundle, facilityBundle);
+    if (!validated.ok) {
+      throw new Error(
+        `스키마 검증 실패: ${validated.error.message} (${JSON.stringify(validated.error.context)})`,
+      );
+    }
+
+    for (const output of outputs) {
+      const id = output.valley.id;
+      if (
+        writeCollection(path.join(VALLEYS_DIR, `${id}.geojson`), (d) =>
+          collectionOf(segmentMetadata(output, d), output.segments),
+        )
       )
-    )
+        written += 1;
+      if (
+        writeCollection(path.join(FACILITIES_DIR, `${id}.geojson`), (d) =>
+          collectionOf(
+            facilityMetadata(output, d),
+            output.facilities.map((facility, index) =>
+              toFacilityFeature(facility, facility.facilityType === 'parking' ? 5 : 20 + index),
+            ),
+          ),
+        )
+      )
+        written += 1;
+    }
+    validatedValleys = validated.value.valleys.length;
+    validatedSegments = validated.value.valleys.reduce(
+      (sum, valley) => sum + valley.segments.length,
+      0,
+    );
+  }
+  for (const item of handBuilt) {
+    const features = (d: { version: string; collectedAt: string }) =>
+      collectionOf(
+        facilityMetadata(item, d),
+        item.facilities.map((facility, index) =>
+          toFacilityFeature(facility, facility.facilityType === 'parking' ? 5 : 20 + index),
+        ),
+      );
+    const check = loadValleyBundle(
+      { metadata: item.existing['metadata'], collections: [item.existing] },
+      { metadata: item.existing['metadata'], collections: [features(dates)] },
+    );
+    if (!check.ok) throw new Error(`${item.valley.id} 시설 검증 실패: ${check.error.message}`);
+    if (writeCollection(path.join(FACILITIES_DIR, `${item.valley.id}.geojson`), features))
       written += 1;
   }
   const templateRows = refreshManualTemplate(outputs);
@@ -590,7 +631,7 @@ async function main(): Promise<void> {
   );
   log('');
   log(
-    `계곡 ${outputs.length}/${valleys.length} · 파일 ${written}개 갱신 · 검증 통과(${validated.value.valleys.length} 계곡, 구간 ${validated.value.valleys.reduce((sum, valley) => sum + valley.segments.length, 0)}) · manual.csv 템플릿 행 +${templateRows} (채워진 값 ${manual.filled})`,
+    `계곡 ${outputs.length + handBuilt.length}/${valleys.length} · 파일 ${written}개 갱신 · 검증 통과(${validatedValleys + handBuilt.length} 계곡, 구간 ${validatedSegments}) · manual.csv 템플릿 행 +${templateRows} (채워진 값 ${manual.filled})`,
   );
   if (missing.length > 0) warn(`건너뜀: ${missing.map((valley) => valley.id).join(', ')}`);
   log(`→ ${path.join(SEED_DIR, 'build-report.md')}`);

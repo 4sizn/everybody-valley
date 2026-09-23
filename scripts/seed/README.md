@@ -12,7 +12,7 @@ TypeScript(`.mts`, `tsx` 실행). `pnpm verify` 의 biome 검사를 받는다(`c
 ```sh
 pnpm seed:compare                       # (b) 출처 비교표 → data/seed/source-comparison.{json,md}
 pnpm seed:build                         # 30개 자동 채움 → data/valleys·facilities, data/seed/build-report.md, manual.csv 템플릿 보충
-pnpm seed:build --valley baegun-pocheon # 일부만
+pnpm seed:build --valley baegun-pocheon # 일부만 (긴고랑처럼 중심선을 손으로 만든 계곡은 구간 파일을 두고 시설만 갱신 — build.mts HAND_BUILT_CENTERLINE)
 pnpm seed:build --shade                 # 쓰기 뒤 P1 그늘 파이프라인을 계곡별로(계곡당 ~35 s, 첫 실행은 자산 다운로드)
 pnpm seed:build --only-shade            # 파일은 두고 그늘만
 pnpm seed:elevation [--valley id] [--dry] # 중심선 표고 중앙값(Terrarium) → data/valleys/*.geojson `elevationM` (단풍 기온 보정)

@@ -173,18 +173,30 @@ describe('searchCatalog — 합성 fixture', () => {
 });
 
 describe('searchCatalog — SD1 실측', () => {
-  it('"긴고랑로" 는 결과 0 — 도로명이라 계곡명("긴고랑계곡")과 부분일치하지 않는다', () => {
-    // SD3(2026-09-08)로 긴고랑계곡을 목록에 추가한 뒤에도 이 질의는 여전히 0건이 맞다 —
-    // "긴고랑로" 는 "긴고랑계곡" 의 부분 문자열이 아니다("로" ≠ "계곡"). 아래 테스트가
-    // "긴고랑"·"긴고랑계곡" 은 실제로 찾아낸다는 것을 보여 대조한다.
-    expect(searchCatalog(sd1, '긴고랑로')).toEqual([]);
+  it('"긴고랑로" 는 계곡을 찾지 않는다 — 도로명이라 계곡명("긴고랑계곡")과 부분일치하지 않는다', () => {
+    // SD3(2026-09-08)로 긴고랑계곡을 목록에 추가한 뒤에도 계곡은 안 잡히는 게 맞다 —
+    // "긴고랑로" 는 "긴고랑계곡" 의 부분 문자열이 아니다("로" ≠ "계곡"). 2026-09-23 긴고랑 시설을
+    // 3 km 반경으로 다시 받은 뒤로는 도로명이 이름에 든 편의점("CU 중곡긴고랑로점")이 시설 결과로
+    // 잡힌다 — 그건 검색이 맞게 동작한 것이라 계곡 결과 없음만 고정한다.
+    const results = searchCatalog(sd1, '긴고랑로');
+    expect(results.some((r) => r.kind === 'valley')).toBe(false);
+    for (const result of results) {
+      if (result.kind === 'facility') expect(result.facility.name).toContain('긴고랑로');
+    }
   });
 
-  it('"긴고랑" 은 계곡과 공식 화장실을 함께 찾는다', () => {
+  it('"긴고랑" 은 계곡을 맨 앞에, 공식 화장실(긴고랑어린이공원)을 함께 찾는다', () => {
     const results = searchCatalog(sd1, '긴고랑');
-    expect(results).toHaveLength(2);
+    expect(results.length).toBeGreaterThanOrEqual(2);
     expect(results[0]).toMatchObject({ kind: 'valley', valley: { name: '긴고랑계곡' } });
-    expect(results[1]).toMatchObject({ kind: 'facility', facility: { name: '긴고랑어린이공원' } });
+    expect(
+      results.some(
+        (r) =>
+          r.kind === 'facility' &&
+          r.facility.name === '긴고랑어린이공원' &&
+          r.facility.facilityType === 'restroom',
+      ),
+    ).toBe(true);
   });
 
   it('"백운" 은 계곡명 매치를 찾는다', () => {
