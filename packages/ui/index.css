@@ -990,7 +990,7 @@ textarea.mv-input {
   height: calc(100% - var(--mv-sheet-top, 180px));
 }
 .mv-sheet-handle {
-  height: 22px;
+  height: 28px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1012,6 +1012,9 @@ textarea.mv-input {
   justify-content: space-between;
   padding: 4px 16px 10px;
   flex-shrink: 0;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .mv-map-sheet h3 {
   font-size: 22px;

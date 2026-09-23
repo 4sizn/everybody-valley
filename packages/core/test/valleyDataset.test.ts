@@ -438,9 +438,9 @@ describe('시설 컬렉션', () => {
     expect(dataset.value.valleys[0]?.facilities).toEqual([]);
   });
 
-  it('식당(food)은 파싱은 통과하되 결과에서 빠진다', () => {
+  it.each(['food', 'cafe'])('%s 는 파싱은 통과하되 결과에서 빠진다', (hidden) => {
     const raw = facilitiesFixture();
-    raw.features[1].properties.facilityType = 'food';
+    raw.features[1].properties.facilityType = hidden;
     const parsed = parseFacilityCollection(raw);
     expect(parsed.ok).toBe(true);
     if (parsed.ok) expect(parsed.value.facilities.map((f) => f.facilityType)).toEqual(['parking']);

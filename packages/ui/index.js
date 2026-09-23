@@ -414,21 +414,51 @@ function MapSheet({
 }) {
   const sheet = useRef(null);
   const drag = useRef(null);
+  const settling = useRef(false);
+  useEffect(() => {
+    if (!settling.current || !sheet.current) return;
+    settling.current = false;
+    sheet.current.style.height = "";
+  }, [state]);
   const snapHeights = () => {
     const full = (sheet.current?.offsetParent?.clientHeight ?? 0) - topInset;
     return { peek: 158, half: Math.min(440, full), full };
+  };
+  const beginDrag = (e) => {
+    const el = sheet.current;
+    if (!el || e.target.closest("button")) return;
+    drag.current = { y: e.clientY, height: el.getBoundingClientRect().height };
+    el.classList.add("mv-map-sheet--dragging");
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+  const moveDrag = (e) => {
+    const el = sheet.current;
+    if (!drag.current || !el) return;
+    const { peek, full } = snapHeights();
+    const next = drag.current.height - (e.clientY - drag.current.y);
+    el.style.height = `${Math.max(peek, Math.min(full, next))}px`;
   };
   const endDrag = () => {
     const el = sheet.current;
     if (!drag.current || !el) return;
     const height = el.getBoundingClientRect().height;
     drag.current = null;
-    el.style.height = "";
     el.classList.remove("mv-map-sheet--dragging");
     const [nearest] = Object.entries(snapHeights()).sort(
       (a, b) => Math.abs(a[1] - height) - Math.abs(b[1] - height)
     );
-    if (nearest && nearest[0] !== state) onChange(nearest[0]);
+    if (nearest && nearest[0] !== state) {
+      settling.current = true;
+      onChange(nearest[0]);
+    } else {
+      el.style.height = "";
+    }
+  };
+  const dragHandlers = {
+    onPointerDown: beginDrag,
+    onPointerMove: moveDrag,
+    onPointerUp: endDrag,
+    onPointerCancel: endDrag
   };
   return /* @__PURE__ */ React.createElement(
     "section",
@@ -438,30 +468,8 @@ function MapSheet({
       style: { "--mv-sheet-top": `${topInset}px` },
       "aria-label": "\uC120\uD0DD \uC7A5\uC18C \uC815\uBCF4"
     },
-    /* @__PURE__ */ React.createElement(
-      "div",
-      {
-        className: "mv-sheet-handle",
-        onPointerDown: (e) => {
-          const el = sheet.current;
-          if (!el) return;
-          drag.current = { y: e.clientY, height: el.getBoundingClientRect().height };
-          el.classList.add("mv-map-sheet--dragging");
-          e.currentTarget.setPointerCapture(e.pointerId);
-        },
-        onPointerMove: (e) => {
-          const el = sheet.current;
-          if (!drag.current || !el) return;
-          const { peek, full } = snapHeights();
-          const next = drag.current.height - (e.clientY - drag.current.y);
-          el.style.height = `${Math.max(peek, Math.min(full, next))}px`;
-        },
-        onPointerUp: endDrag,
-        onPointerCancel: endDrag
-      },
-      /* @__PURE__ */ React.createElement("span", null)
-    ),
-    /* @__PURE__ */ React.createElement("header", null, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", null, title), /* @__PURE__ */ React.createElement("p", null, subtitle)), /* @__PURE__ */ React.createElement(
+    /* @__PURE__ */ React.createElement("div", { className: "mv-sheet-handle", ...dragHandlers }, /* @__PURE__ */ React.createElement("span", null)),
+    /* @__PURE__ */ React.createElement("header", { ...dragHandlers }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", null, title), /* @__PURE__ */ React.createElement("p", null, subtitle)), /* @__PURE__ */ React.createElement(
       IconButton,
       {
         label: state === "peek" ? "\uC815\uBCF4 \uD3BC\uCE58\uAE30" : "\uC9C0\uB3C4 \uD06C\uAC8C \uBCF4\uAE30",

@@ -92,9 +92,9 @@ export const FACILITY_GLYPHS: Readonly<Record<FacilityType, string>> = {
   // P
   parking:
     '<path d="M8 19V5h5.5a4 4 0 0 1 0 8H8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>',
-  // 사람(머리 + 몸통)
+  // 변기(lucide `toilet`) — 사람 모양은 화장실로 읽히지 않았다(사용자 2026-09-23)
   restroom:
-    '<circle cx="12" cy="5.5" r="2.2" fill="currentColor"/><path d="M8.5 10.5h7l-1.2 5H14v4h-4v-4H9.7z" fill="currentColor"/>',
+    '<path d="M7 12h13a1 1 0 0 1 1 1 5 5 0 0 1-5 5h-.598a.5.5 0 0 0-.424.765l1.544 2.47a.5.5 0 0 1-.424.765H5.402a.5.5 0 0 1-.424-.765L7 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18a5 5 0 0 1-5-5V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
   // 포크 + 나이프
   food: '<path d="M7 3v7M5 3v4.5a2 2 0 0 0 4 0V3M7 10v11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 3c-2 2-2.5 5-2.5 8h2.5v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
   // 컵(손잡이 + 김)

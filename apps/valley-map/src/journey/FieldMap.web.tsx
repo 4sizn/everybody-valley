@@ -394,12 +394,19 @@ function MapChrome({
               </>
             ) : place.facility ? (
               <>
+                {/* 셋이 글자로는 한 줄에 안 들어간다 — 길찾기만 글자, 나머지는 아이콘(사용자 요청 2026-09-23). */}
                 <Button icon="navigation" onClick={() => setDirections(true)}>
                   길찾기
                 </Button>
-                <Button variant="secondary" icon="map" onClick={backToValley}>
-                  계곡으로 돌아가기
-                </Button>
+                <IconButton label="계곡으로 돌아가기" icon="map" onClick={backToValley} />
+                <IconButton
+                  label="위치 이동"
+                  icon="locate-fixed"
+                  onClick={() => {
+                    setSheet('peek');
+                    void session.recenterSelection();
+                  }}
+                />
               </>
             ) : (
               <>

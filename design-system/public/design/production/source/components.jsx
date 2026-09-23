@@ -549,22 +549,55 @@ export function MapSheet({
   const sheet = useRef(null);
   // 끌기 시작 시점의 손가락 y 와 시트 높이. 끌리는 동안 높이가 손가락을 바로 따라간다.
   const drag = useRef(null);
+  // 손을 뗀 뒤 새 상태 클래스가 적용될 때까지 인라인 높이를 유지한다 — 먼저 지우면 옛
+  // 높이로 한 프레임 튀었다가 전환되어 "씹히는" 느낌이 난다.
+  const settling = useRef(false);
+  useEffect(() => {
+    if (!settling.current || !sheet.current) return;
+    settling.current = false;
+    sheet.current.style.height = "";
+  }, [state]);
   const snapHeights = () => {
     // 시트는 absolute 라 offsetParent 가 지도 영역이다(부모 div 는 높이 0).
     const full = (sheet.current?.offsetParent?.clientHeight ?? 0) - topInset;
     return { peek: 158, half: Math.min(440, full), full };
+  };
+  const beginDrag = (e) => {
+    const el = sheet.current;
+    // 헤더 안의 버튼은 버튼으로 남긴다.
+    if (!el || e.target.closest("button")) return;
+    drag.current = { y: e.clientY, height: el.getBoundingClientRect().height };
+    el.classList.add("mv-map-sheet--dragging");
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+  const moveDrag = (e) => {
+    const el = sheet.current;
+    if (!drag.current || !el) return;
+    const { peek, full } = snapHeights();
+    const next = drag.current.height - (e.clientY - drag.current.y);
+    el.style.height = `${Math.max(peek, Math.min(full, next))}px`;
   };
   const endDrag = () => {
     const el = sheet.current;
     if (!drag.current || !el) return;
     const height = el.getBoundingClientRect().height;
     drag.current = null;
-    el.style.height = "";
     el.classList.remove("mv-map-sheet--dragging");
     const [nearest] = Object.entries(snapHeights()).sort(
       (a, b) => Math.abs(a[1] - height) - Math.abs(b[1] - height),
     );
-    if (nearest && nearest[0] !== state) onChange(nearest[0]);
+    if (nearest && nearest[0] !== state) {
+      settling.current = true;
+      onChange(nearest[0]);
+    } else {
+      el.style.height = "";
+    }
+  };
+  const dragHandlers = {
+    onPointerDown: beginDrag,
+    onPointerMove: moveDrag,
+    onPointerUp: endDrag,
+    onPointerCancel: endDrag,
   };
   return (
     <section
@@ -573,28 +606,10 @@ export function MapSheet({
       style={{ "--mv-sheet-top": `${topInset}px` }}
       aria-label="선택 장소 정보"
     >
-      <div
-        className="mv-sheet-handle"
-        onPointerDown={(e) => {
-          const el = sheet.current;
-          if (!el) return;
-          drag.current = { y: e.clientY, height: el.getBoundingClientRect().height };
-          el.classList.add("mv-map-sheet--dragging");
-          e.currentTarget.setPointerCapture(e.pointerId);
-        }}
-        onPointerMove={(e) => {
-          const el = sheet.current;
-          if (!drag.current || !el) return;
-          const { peek, full } = snapHeights();
-          const next = drag.current.height - (e.clientY - drag.current.y);
-          el.style.height = `${Math.max(peek, Math.min(full, next))}px`;
-        }}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
-      >
+      <div className="mv-sheet-handle" {...dragHandlers}>
         <span />
       </div>
-      <header>
+      <header {...dragHandlers}>
         <div>
           <h3>{title}</h3>
           <p>{subtitle}</p>
