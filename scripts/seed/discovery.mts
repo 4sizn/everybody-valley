@@ -18,6 +18,7 @@
  *   pnpm seed:discovery --apply                  # 실제로 등록한다
  *   pnpm seed:discovery --source commons         # 출처 하나만
  *   pnpm seed:discovery --valley eobi --apply
+ *   pnpm seed:discovery --kind spot --apply       # 계곡 주변 명소("즐길 거리" 탭), TourAPI 만
  *   API_BASE=https://app.example.com pnpm seed:discovery --apply
  *
  * 토큰은 `.env.local` 의 `ADMIN_TOKEN` 또는 환경변수에서 읽고 로그에 싣지 않는다.
@@ -44,7 +45,7 @@ interface Story {
   /** 어떤 항목에서 왔는지 — 로그로만 쓰고 등록 본문에는 넣지 않는다. */
   matched?: string | undefined;
   id: string;
-  kind: 'banner' | 'blog';
+  kind: 'banner' | 'blog' | 'tip' | 'spot';
   valleyId: string;
   title: string;
   description: string;
@@ -149,6 +150,7 @@ interface TourItem {
   mapx?: string;
   mapy?: string;
   modifiedtime?: string;
+  addr1?: string;
 }
 /** `detailCommon2` 가 돌려주는 칸 중 쓰는 것만. */
 interface TourDetail extends TourItem {
@@ -257,6 +259,87 @@ async function fromTour(
     sponsored: false,
     enabled: true,
   };
+}
+
+// ── 주변 명소(`kind: 'spot'`) ─────────────────────────────────────────────────
+/** 명소 검색 반경(m). 시설 시딩(3 km)과 같다 — 걸어서·차로 잠깐 들를 거리. */
+const SPOT_RADIUS_M = 3000;
+/** 계곡당 명소 수. 탭이 목록으로 길어지지 않게. 운영자가 어드민에서 더 넣거나 비공개로 뺀다. */
+const SPOT_MAX = 6;
+/** TourAPI contenttypeid → 사람 말. 식당(39)·숙소(32)는 시설·광고 영역이라 넣지 않는다. */
+const SPOT_TYPES: Record<string, string> = { '12': '관광지', '14': '문화시설', '28': '레포츠' };
+
+/**
+ * 계곡 주변 명소. 좌표 반경 목록(`locationBasedList2`, 거리순)에서 관광지·문화시설·레포츠만
+ * 골라 가까운 순 `SPOT_MAX` 곳. 계곡 자체(이름이 같은 항목)는 뺀다 — 그건 배너다.
+ * 소개는 관광정보 개요를 따로 부르지 않고 종류·주소·거리로 짓는다(계곡당 호출 3번으로 끝).
+ * 링크는 공식 상세 페이지 주소가 API 에 없어 카카오맵 검색으로 둔다 — 운영자가 바꿀 수 있다.
+ */
+async function spotsFromTour(valley: SeedValley, keys: Keys, key: string): Promise<Story[]> {
+  const bare = valley.name
+    .replace(/\(.*?\)/g, '')
+    .replace(/계곡|폭포/g, '')
+    .trim();
+  const seen = new Set<string>();
+  const found: { item: TourItem; away: number }[] = [];
+  for (const contentTypeId of Object.keys(SPOT_TYPES)) {
+    const items = tourItems(
+      await getJson(
+        `tour-spots-${valley.id}-${contentTypeId}`,
+        tourUrl('locationBasedList2', key, {
+          mapX: String(valley.lng),
+          mapY: String(valley.lat),
+          radius: String(SPOT_RADIUS_M),
+          contentTypeId,
+          numOfRows: '20',
+          pageNo: '1',
+          arrange: 'E',
+        }),
+        keys,
+      ),
+    );
+    for (const item of items) {
+      const lat = Number(item.mapy);
+      const lng = Number(item.mapx);
+      const title = (item.title ?? '').trim();
+      if (!item.contentid || !title || !lat || !lng || seen.has(item.contentid)) continue;
+      if (title.includes(bare) || /계곡|폭포/.test(title)) continue;
+      seen.add(item.contentid);
+      found.push({ item, away: distanceM([valley.lng, valley.lat], [lng, lat]) });
+    }
+  }
+  return found
+    .sort((a, b) => a.away - b.away)
+    .slice(0, SPOT_MAX)
+    .map(({ item, away }) => {
+      const title = (item.title ?? '').trim();
+      const image = (item.firstimage || item.firstimage2 || '').replace(/^http:/, 'https:');
+      const type = SPOT_TYPES[item.contenttypeid ?? ''] ?? '명소';
+      const km = away >= 950 ? `${(away / 1000).toFixed(1)} km` : `${Math.round(away / 50) * 50} m`;
+      const published = (item.modifiedtime ?? '').slice(0, 8);
+      return {
+        matched: title,
+        id: `${valley.id}-spot-${item.contentid}`,
+        kind: 'spot' as const,
+        valleyId: valley.id,
+        title: clamp(title, MAX.title),
+        description: clamp(
+          `${type} · ${item.addr1?.trim() || valley.region} · 계곡에서 약 ${km}. 한국관광공사 관광정보 자료.`,
+          MAX.description,
+        ),
+        imageUrl: image,
+        imageCredit: image ? '한국관광공사 (공공누리 제1유형)' : '',
+        url: `https://map.kakao.com/link/search/${encodeURIComponent(title)}`,
+        author: '한국관광공사',
+        publishedOn: /^\d{8}$/.test(published)
+          ? `${published.slice(0, 4)}-${published.slice(4, 6)}-${published.slice(6, 8)}`
+          : todayKst(),
+        startsOn: todayKst(),
+        endsOn: addDays(todayKst(), SHOW_DAYS),
+        sponsored: false,
+        enabled: true,
+      };
+    });
 }
 
 /**
@@ -378,10 +461,14 @@ const apply = argv.includes('--apply');
 const overwrite = argv.includes('--overwrite');
 const only = flag('valley');
 const sources = (flag('source') ?? 'tour,commons').split(',');
-/** `banner` 는 홈 히어로, `blog` 는 계곡 안내 글(BLOG & GUIDE). 안내 글은 원문 링크가 있어야 해서 TourAPI 만 쓴다. */
-const kind = (flag('kind') ?? 'banner') as 'banner' | 'blog';
-if (kind !== 'banner' && kind !== 'blog') throw new Error(`알 수 없는 --kind: ${kind}`);
-const label = kind === 'blog' ? '안내 글' : '배너';
+/**
+ * `banner` 는 홈 히어로, `blog` 는 계곡 안내 글(BLOG & GUIDE), `spot` 은 주변 명소("즐길 거리" 탭).
+ * 안내 글·명소는 TourAPI 만 쓴다(Commons 는 사진만 있다). 팁(`tip`)은 편집 글이라 시딩하지 않는다.
+ */
+const kind = (flag('kind') ?? 'banner') as 'banner' | 'blog' | 'spot';
+if (kind !== 'banner' && kind !== 'blog' && kind !== 'spot')
+  throw new Error(`알 수 없는 --kind: ${kind}`);
+const label = { banner: '배너', blog: '안내 글', spot: '명소' }[kind];
 
 const keys = loadKeys();
 const env = { ...loadEnvLocal(), ...process.env } as Record<string, string | undefined>;
@@ -397,41 +484,62 @@ if (valleys.length === 0) throw new Error(`알 수 없는 계곡: ${only}`);
 if (sources.includes('tour') && !tourKey)
   warn('DATA_GO_KR_KEY_ENCODING 이 없어 TourAPI 를 건너뛴다 — Commons 만 쓴다.');
 
-/** 출처 이름 → 그 출처에서 한 장 만드는 함수. 키가 없는 출처는 빠진다. */
-const finders: Record<string, (valley: SeedValley) => Promise<Story | null>> =
+/** 출처 이름 → 그 출처에서 만드는 함수. 배너·안내 글은 계곡당 한 장, 명소는 여럿. 키가 없는 출처는 빠진다. */
+const one =
+  (find: (valley: SeedValley) => Promise<Story | null>) =>
+  async (valley: SeedValley): Promise<Story[]> => {
+    const story = await find(valley);
+    return story ? [story] : [];
+  };
+const finders: Record<string, (valley: SeedValley) => Promise<Story[]>> =
   kind === 'blog'
     ? // 안내 글은 공식 관광 페이지 링크가 필수라 Commons(사진만 있음)에서는 만들지 않는다.
-      { ...(tourKey ? { tour: (valley: SeedValley) => guideFromTour(valley, keys, tourKey) } : {}) }
-    : {
-        ...(tourKey ? { tour: (valley: SeedValley) => fromTour(valley, keys, tourKey) } : {}),
-        commons: (valley: SeedValley) => fromCommons(valley, keys),
-      };
+      {
+        ...(tourKey ? { tour: one((valley) => guideFromTour(valley, keys, tourKey)) } : {}),
+      }
+    : kind === 'spot'
+      ? {
+          ...(tourKey
+            ? { tour: (valley: SeedValley) => spotsFromTour(valley, keys, tourKey) }
+            : {}),
+        }
+      : {
+          ...(tourKey ? { tour: one((valley) => fromTour(valley, keys, tourKey)) } : {}),
+          commons: one((valley) => fromCommons(valley, keys)),
+        };
 
 const collected: Story[] = [];
 for (const valley of valleys) {
-  let story: Story | null = null;
+  let stories: Story[] = [];
   for (const source of sources) {
     const find = finders[source];
     if (!find) continue;
     try {
-      story = await find(valley);
+      stories = await find(valley);
     } catch (error) {
       warn(`${valley.id}: ${source} 조회 실패 — ${error instanceof Error ? error.message : error}`);
     }
-    if (story) break;
+    if (stories.length) break;
   }
-  if (!story) {
+  if (!stories.length) {
     log(`${valley.id.padEnd(18)}${valley.name.padEnd(20)}— 쓸 수 있는 자료 없음`);
     continue;
   }
-  if (!(await imageLoads(story.imageUrl))) {
-    log(`${valley.id.padEnd(18)}${valley.name.padEnd(20)}— 사진이 열리지 않아 건너뜀`);
-    continue;
+  for (const story of stories) {
+    if (story.imageUrl && !(await imageLoads(story.imageUrl))) {
+      // 명소는 글이 주인공이라 사진만 비운다. 배너·안내 글은 사진이 없으면 자리가 비어 건너뛴다.
+      if (story.kind !== 'spot') {
+        log(`${valley.id.padEnd(18)}${valley.name.padEnd(20)}— 사진이 열리지 않아 건너뜀`);
+        continue;
+      }
+      story.imageUrl = '';
+      story.imageCredit = '';
+    }
+    collected.push(story);
+    log(
+      `${valley.id.padEnd(18)}${valley.name.padEnd(20)}${(story.id.split('-').pop() ?? '').padEnd(8)}${(story.matched ?? '').padEnd(26)}${story.imageCredit}`,
+    );
   }
-  collected.push(story);
-  log(
-    `${valley.id.padEnd(18)}${valley.name.padEnd(20)}${(story.id.split('-').pop() ?? '').padEnd(8)}${(story.matched ?? '').padEnd(26)}${story.imageCredit}`,
-  );
 }
 
 log(`\n모은 ${label} ${collected.length}개 / 계곡 ${valleys.length}곳`);

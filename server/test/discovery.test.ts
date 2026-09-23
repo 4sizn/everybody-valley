@@ -67,6 +67,19 @@ const select = (v = 'wonhyo', ip = '203.0.113.1') =>
     headers: { 'x-forwarded-for': ip },
   });
 describe('운영 콘텐츠', () => {
+  it('팁·명소는 사진·링크 없이 등록되고, 사진이 있으면 출처가 필수다', async () => {
+    const tip = { id: 'tip-1', kind: 'tip' as const, imageUrl: '', imageCredit: '', url: '' };
+    expect((await save(tip)).status).toBe(201);
+    expect(
+      (await save({ ...tip, id: 'tip-2', imageUrl: 'https://images.example.com/a.jpg' })).status,
+    ).toBe(400);
+    expect((await save({ ...tip, id: 'tip-3', imageCredit: '출처만' })).status).toBe(400);
+    expect((await save({ ...tip, id: 'spot-1', kind: 'spot' })).status).toBe(201);
+    // 블로그·배너는 예전 그대로 사진 필수.
+    expect((await save({ id: 'blog-2', imageUrl: '', imageCredit: '' })).status).toBe(400);
+    expect((await save({ id: 'x', kind: 'guide' as never })).status).toBe(400);
+    expect((await feed()).stories.map((s) => s.kind).sort()).toEqual(['spot', 'tip']);
+  });
   it('읽기/쓰기/삭제 모두 기존 관리자 인증을 요구한다', async () => {
     for (const method of ['GET', 'POST', 'DELETE'])
       expect(

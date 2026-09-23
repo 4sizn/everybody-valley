@@ -32,6 +32,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 import { BlogSection, DiscoveryHome, useDiscovery } from './Discovery.web';
 import { FieldMap } from './FieldMap.web';
 import { FoliageLeaf } from './FoliageLeaf.web';
+import { FunSection } from './Fun.web';
 import {
   isStoriesUrl,
   journeySearch,
@@ -287,6 +288,7 @@ export function ValleyApp() {
                       선택하면 {candidate.valley.name}{' '}
                       {segmentPositionLabel(candidate.segment.position)} 지도를 엽니다.
                     </p>
+                    <FunSection discovery={discovery} valley={candidate.valley} />
                     <BlogSection
                       discovery={discovery}
                       valleys={valleys}

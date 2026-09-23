@@ -34,6 +34,8 @@ export type ValleyProps = {
   readonly name: string;
   readonly segments: readonly Segment[];
   readonly facilities?: readonly Facility[];
+  /** 지도·시설 목록에는 내지 않는 먹거리(식당·카페). "즐길 거리" 탭만 읽는다. */
+  readonly eateries?: readonly Facility[];
   /** 이 계곡 파일의 검수 수준(SD1 (g)). 계곡별 파일 `metadata.verified` 에서 온다. */
   readonly verified?: Verification;
   /** 표준유역. 생략하면 구간의 `basinCode` 로 유도한다(가장 상류 구간). */
@@ -50,6 +52,8 @@ export class Valley {
   /** 상류→하류 순. */
   readonly segments: readonly Segment[];
   readonly facilities: readonly Facility[];
+  /** 식당·카페. 핀·검색·집계에서 빠지고 `eateriesAround()` 로만 본다. */
+  readonly eateries: readonly Facility[];
   /** 검수 수준. 모르면(샘플·옛 파일) `undefined` — 배지를 붙이지 않는다. */
   readonly verified: Verification | undefined;
   /** 표준유역. 구간에 `basinCode` 가 하나도 없으면 `undefined`. */
@@ -65,6 +69,7 @@ export class Valley {
     this.name = props.name;
     this.segments = [...props.segments].sort((a, b) => a.order - b.order);
     this.facilities = props.facilities ?? [];
+    this.eateries = props.eateries ?? [];
     this.verified = props.verified;
     this.basin = props.basin ?? deriveBasin(this.segments);
     this.alertCapability = props.alertCapability;
@@ -86,7 +91,8 @@ export class Valley {
     }
     const stray =
       props.segments.find((segment) => segment.valleyId !== props.id) ??
-      props.facilities?.find((facility) => facility.valleyId !== props.id);
+      props.facilities?.find((facility) => facility.valleyId !== props.id) ??
+      props.eateries?.find((facility) => facility.valleyId !== props.id);
     if (stray !== undefined) {
       return err(
         new ValleyError(
@@ -166,6 +172,19 @@ export class Valley {
     if (this.#around) return this.#around;
     this.#around = this.#computeFacilitiesAround();
     return this.#around;
+  }
+
+  /**
+   * 먹거리(식당·카페)를 물가에서 가까운 순으로. "즐길 거리" 탭의 재료 — 시딩이 3 km 원으로
+   * 긁어 와 도심 계곡은 수백 곳이라 표현 계층이 앞의 몇 곳만 보여준다.
+   */
+  eateriesAround(): readonly FacilityAtDistance[] {
+    const line = this.segments.flatMap((segment) => segment.path);
+    return collapseSameSpot(
+      this.eateries
+        .map((facility) => ({ facility, distance: distanceToPolyline(facility.position, line) }))
+        .sort((a, b) => a.distance.meters - b.distance.meters),
+    );
   }
 
   #computeFacilitiesAround(): FacilitiesAround {

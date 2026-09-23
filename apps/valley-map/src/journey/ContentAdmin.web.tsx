@@ -1,10 +1,18 @@
-import type { DiscoveryStory } from '@modu-valley/core';
+import type { DiscoveryKind, DiscoveryStory } from '@modu-valley/core';
 import { Alert, Button, Field } from '@moduvalley/ui';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { resolveApiBase } from '@/api/createApiClient';
 import { PARSED } from '@/session/valleySource';
 
 const valleys = PARSED.ok ? PARSED.value.valleys : [];
+const KIND_LABELS: Record<DiscoveryKind, string> = {
+  banner: '배너',
+  blog: '블로그',
+  tip: '즐기기 팁',
+  spot: '주변 명소',
+};
+/** 팁·명소는 글이 주인공이라 사진·링크를 비울 수 있다(서버 `parseStory` 와 같은 규칙). */
+const imageOptional = (kind: DiscoveryKind) => kind === 'tip' || kind === 'spot';
 const emptyStory = (): DiscoveryStory => {
   const date = new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10);
   return {
@@ -106,10 +114,12 @@ export function ContentAdmin({ token }: { token: string }) {
               콘텐츠 종류
               <select
                 value={draft.kind}
-                onChange={(e) => setDraft({ ...draft, kind: e.target.value as 'blog' | 'banner' })}
+                onChange={(e) => setDraft({ ...draft, kind: e.target.value as DiscoveryKind })}
               >
                 <option value="banner">주간 안내·광고 배너</option>
                 <option value="blog">블로그 방문 후기</option>
+                <option value="tip">즐기기 팁 (즐길 거리 탭)</option>
+                <option value="spot">주변 명소 (즐길 거리 탭)</option>
               </select>
             </label>
             <label className="ev-admin-select">
@@ -159,13 +169,13 @@ export function ContentAdmin({ token }: { token: string }) {
             <Field
               label="썸네일·배너 이미지 주소"
               type="url"
-              required
+              required={!imageOptional(draft.kind)}
               value={draft.imageUrl}
               onChange={(e) => setDraft({ ...draft, imageUrl: e.target.value })}
             />
             <Field
               label="이미지 출처·권리자"
-              required
+              required={!imageOptional(draft.kind) || !!draft.imageUrl}
               maxLength={160}
               value={draft.imageCredit}
               onChange={(e) => setDraft({ ...draft, imageCredit: e.target.value })}
@@ -239,7 +249,7 @@ export function ContentAdmin({ token }: { token: string }) {
             <article className="ev-admin-report" key={s.id}>
               <strong>{s.title}</strong>
               <p className="ev-muted">
-                {s.kind === 'banner' ? '배너' : '블로그'} · {s.enabled ? '공개 설정' : '비공개'}
+                {KIND_LABELS[s.kind]} · {s.enabled ? '공개 설정' : '비공개'}
                 {s.sponsored ? ' · 광고' : ''}
                 <br />
                 {s.startsOn} ~ {s.endsOn}

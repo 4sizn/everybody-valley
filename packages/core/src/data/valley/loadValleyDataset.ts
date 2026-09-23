@@ -69,20 +69,18 @@ export function parseSegmentCollection(raw: unknown): Result<SegmentCollection, 
 }
 
 /**
- * 아직 보여주지 않는 시설 종류(사용자 결정 2026-09-23: 식당은 제외, 카페는 "아직 아니야").
- * 데이터·스키마는 그대로 두고 파싱 직후 한 번 걸러 목록·검색·핀·집계가 같이 사라지게 한다.
- * 다시 켤 때는 이 집합에서 빼면 된다.
+ * 지도·시설 목록에 내지 않는 시설 종류(사용자 결정 2026-09-23: 식당은 제외, 카페는 "아직 아니야").
+ * 데이터·스키마는 그대로 두고 `groupIntoValleys` 가 `Valley.eateries` 로 갈라 담는다 —
+ * `Valley.facilities` 만 읽는 목록·검색·핀·집계에서는 같이 사라지고, "즐길 거리" 탭만
+ * `eateriesAround()` 로 본다. 핀으로 되돌릴 때는 이 집합에서 빼면 된다.
  */
 export const HIDDEN_FACILITY_TYPES: ReadonlySet<FacilityType> = new Set(['food', 'cafe']);
 
-/**
- * `facilities.geojson` — 시설 Point 컬렉션. 스키마 `$defs.facilityCollection`.
- * 파일 로더와 합본 로더가 모두 이 함수를 지나며 `HIDDEN_FACILITY_TYPES` 를 걸러낸다.
- */
+/** `facilities.geojson` — 시설 Point 컬렉션. 스키마 `$defs.facilityCollection`. */
 export function parseFacilityCollection(raw: unknown): Result<FacilityCollection, ValleyDataError> {
   return parseCollection(raw, parseFacilityFeature, (metadata, facilities) => ({
     metadata,
-    facilities: facilities.filter((facility) => !HIDDEN_FACILITY_TYPES.has(facility.facilityType)),
+    facilities,
   }));
 }
 
@@ -272,11 +270,13 @@ export function groupIntoValleys(
   const valleys: Valley[] = [];
   for (const [valleyId, valleySegments] of segmentsByValley.value) {
     const verified = verifiedByValley.get(valleyId);
+    const all = facilitiesByValley.value.get(valleyId) ?? [];
     const valley = Valley.create({
       id: valleyId,
       name: (valleySegments[0] as Segment).valleyName,
       segments: valleySegments,
-      facilities: facilitiesByValley.value.get(valleyId) ?? [],
+      facilities: all.filter((facility) => !HIDDEN_FACILITY_TYPES.has(facility.facilityType)),
+      eateries: all.filter((facility) => HIDDEN_FACILITY_TYPES.has(facility.facilityType)),
       ...(verified === undefined ? {} : { verified }),
     });
     if (!valley.ok) return valley;

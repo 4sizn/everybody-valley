@@ -41,6 +41,7 @@ import { SessionProvider, useAppState, useSession, useSessionRestart } from '@/s
 import { PARSED, VALLEY_SOURCE } from '@/session/valleySource';
 import { BlogSection, type DiscoveryState } from './Discovery.web';
 import { FoliageLeaf } from './FoliageLeaf.web';
+import { FunSection } from './Fun.web';
 import { journeySearch, type Place } from './journey';
 import { LandLegend, type LandStatus } from './LandLegend.web';
 import { Navigation } from './Navigation.web';
@@ -471,6 +472,7 @@ function MapChrome({
                 options={[
                   { value: 'segment', label: '구간 정보' },
                   { value: 'facilities', label: '주변 시설' },
+                  { value: 'fun', label: '즐길 거리' },
                   { value: 'blogs', label: '방문 후기' },
                   { value: 'rain', label: '강우' },
                   { value: 'reports', label: '현장 제보' },
@@ -661,6 +663,7 @@ function MapChrome({
               {tab === 'reports' && (
                 <Reports place={place} compose={composer} onCompose={setComposer} risk={risk} />
               )}
+              {tab === 'fun' && <FunSection discovery={discovery} valley={place.valley} />}
               {tab === 'blogs' && (
                 <BlogSection discovery={discovery} valleys={[place.valley]} valley={place.valley} />
               )}

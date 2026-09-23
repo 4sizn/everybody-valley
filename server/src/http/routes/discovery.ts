@@ -1,5 +1,5 @@
 import { createHmac, randomBytes, randomUUID } from 'node:crypto';
-import type { DiscoveryFeed, DiscoveryStory } from '@modu-valley/core';
+import { DISCOVERY_KINDS, type DiscoveryFeed, type DiscoveryStory } from '@modu-valley/core';
 import { Hono } from 'hono';
 import { bodyLimit } from 'hono/body-limit';
 import type { Db } from '../../db/Database';
@@ -30,9 +30,11 @@ function parseStory(input: unknown, valleys: ReadonlySet<string>): DiscoveryStor
   if (!input || typeof input !== 'object') return null;
   const p = input as Record<string, unknown>;
   const s = (key: string) => (typeof p[key] === 'string' ? p[key].trim() : '');
+  const kind = DISCOVERY_KINDS.find((k) => k === p['kind']);
+  if (!kind) return null;
   const story: DiscoveryStory = {
     id: s('id') || randomUUID(),
-    kind: p['kind'] === 'banner' ? 'banner' : 'blog',
+    kind,
     valleyId: s('valleyId'),
     title: s('title'),
     description: s('description'),
@@ -46,12 +48,7 @@ function parseStory(input: unknown, valleys: ReadonlySet<string>): DiscoveryStor
     sponsored: p['sponsored'] === true,
     enabled: p['enabled'] === true,
   };
-  if (
-    !['banner', 'blog'].includes(String(p['kind'])) ||
-    !/^[a-zA-Z0-9-]{1,64}$/.test(story.id) ||
-    !valleys.has(story.valleyId)
-  )
-    return null;
+  if (!/^[a-zA-Z0-9-]{1,64}$/.test(story.id) || !valleys.has(story.valleyId)) return null;
   if (
     !story.title ||
     story.title.length > 100 ||
@@ -61,7 +58,12 @@ function parseStory(input: unknown, valleys: ReadonlySet<string>): DiscoveryStor
     story.imageCredit.length > 160
   )
     return null;
-  if (!publicUrl(story.imageUrl) || story.imageUrl.length > 2000 || !story.imageCredit) return null;
+  // 팁·명소는 사진 없이도 올린다(글이 주인공). 사진이 있으면 출처는 언제나 필수다.
+  const imageOptional = story.kind === 'tip' || story.kind === 'spot';
+  if (story.imageUrl || !imageOptional) {
+    if (!publicUrl(story.imageUrl) || story.imageUrl.length > 2000 || !story.imageCredit)
+      return null;
+  } else if (story.imageCredit) return null;
   if (
     (story.kind === 'blog' || story.sponsored || story.url) &&
     (!publicUrl(story.url) || story.url.length > 2000)

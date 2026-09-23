@@ -438,12 +438,15 @@ describe('시설 컬렉션', () => {
     expect(dataset.value.valleys[0]?.facilities).toEqual([]);
   });
 
-  it.each(['food', 'cafe'])('%s 는 파싱은 통과하되 결과에서 빠진다', (hidden) => {
+  it.each(['food', 'cafe'])('%s 는 시설 목록에서 빠지고 eateries 로 간다', (hidden) => {
     const raw = facilitiesFixture();
     raw.features[1].properties.facilityType = hidden;
-    const parsed = parseFacilityCollection(raw);
-    expect(parsed.ok).toBe(true);
-    if (parsed.ok) expect(parsed.value.facilities.map((f) => f.facilityType)).toEqual(['parking']);
+    const dataset = loadValleyDataset(example(), raw);
+    if (!dataset.ok) throw dataset.error;
+    const valley = dataset.value.valleys[0];
+    expect(valley?.facilities.map((f) => f.facilityType)).toEqual(['parking']);
+    expect(valley?.eateries.map((f) => f.facilityType)).toEqual([hidden]);
+    expect(valley?.eateriesAround()[0]?.facility.facilityType).toBe(hidden);
   });
 
   it('facilityType 은 9종 enum — convenience 는 실패', () => {
