@@ -412,10 +412,28 @@ function MapSheet({
   actions,
   topInset = 180
 }) {
-  const start = useRef(null);
+  const sheet = useRef(null);
+  const drag = useRef(null);
+  const snapHeights = () => {
+    const full = (sheet.current?.offsetParent?.clientHeight ?? 0) - topInset;
+    return { peek: 158, half: Math.min(440, full), full };
+  };
+  const endDrag = () => {
+    const el = sheet.current;
+    if (!drag.current || !el) return;
+    const height = el.getBoundingClientRect().height;
+    drag.current = null;
+    el.style.height = "";
+    el.classList.remove("mv-map-sheet--dragging");
+    const [nearest] = Object.entries(snapHeights()).sort(
+      (a, b) => Math.abs(a[1] - height) - Math.abs(b[1] - height)
+    );
+    if (nearest && nearest[0] !== state) onChange(nearest[0]);
+  };
   return /* @__PURE__ */ React.createElement(
     "section",
     {
+      ref: sheet,
       className: `mv-map-sheet mv-map-sheet--${state}`,
       style: { "--mv-sheet-top": `${topInset}px` },
       "aria-label": "\uC120\uD0DD \uC7A5\uC18C \uC815\uBCF4"
@@ -425,20 +443,21 @@ function MapSheet({
       {
         className: "mv-sheet-handle",
         onPointerDown: (e) => {
-          start.current = e.clientY;
+          const el = sheet.current;
+          if (!el) return;
+          drag.current = { y: e.clientY, height: el.getBoundingClientRect().height };
+          el.classList.add("mv-map-sheet--dragging");
           e.currentTarget.setPointerCapture(e.pointerId);
         },
-        onPointerUp: (e) => {
-          if (start.current === null) return;
-          const delta = e.clientY - start.current;
-          const states = ["peek", "half", "full"], i = states.indexOf(state);
-          if (Math.abs(delta) > 24)
-            onChange(
-              states[Math.max(0, Math.min(2, i + (delta < 0 ? 1 : -1)))]
-            );
-          start.current = null;
+        onPointerMove: (e) => {
+          const el = sheet.current;
+          if (!drag.current || !el) return;
+          const { peek, full } = snapHeights();
+          const next = drag.current.height - (e.clientY - drag.current.y);
+          el.style.height = `${Math.max(peek, Math.min(full, next))}px`;
         },
-        onPointerCancel: () => start.current = null
+        onPointerUp: endDrag,
+        onPointerCancel: endDrag
       },
       /* @__PURE__ */ React.createElement("span", null)
     ),

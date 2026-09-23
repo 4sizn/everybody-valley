@@ -438,6 +438,14 @@ describe('시설 컬렉션', () => {
     expect(dataset.value.valleys[0]?.facilities).toEqual([]);
   });
 
+  it('식당(food)은 파싱은 통과하되 결과에서 빠진다', () => {
+    const raw = facilitiesFixture();
+    raw.features[1].properties.facilityType = 'food';
+    const parsed = parseFacilityCollection(raw);
+    expect(parsed.ok).toBe(true);
+    if (parsed.ok) expect(parsed.value.facilities.map((f) => f.facilityType)).toEqual(['parking']);
+  });
+
   it('facilityType 은 9종 enum — convenience 는 실패', () => {
     const raw = facilitiesFixture();
     raw.features[1].properties.facilityType = 'convenience';

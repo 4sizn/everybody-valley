@@ -7,6 +7,7 @@ import {
   DRAG_SLOP_PX,
   HERO_ROTATE_MS,
   nextSlideLeft,
+  pickHeroBanners,
   snappedLeft,
 } from './heroSlider';
 
@@ -212,44 +213,53 @@ export function BlogSection({
   );
 }
 /**
- * 히어로 한 장. 배너가 없으면 안내 문구만 있는 같은 모양의 한 장을 그린다.
+ * 히어로 한 장. 배너가 없으면 **출시 안내** 한 장을 같은 모양으로 그린다 — 첫 출시라 슬라이드
+ * 첫 장은 항상 이 안내다(사용자 요청 2026-09-23).
  */
 function HeroSlide({
   banner,
   slideLabel,
   target,
+  valleyCount,
   onPreview,
   onExplore,
 }: {
   banner?: DiscoveryStory | undefined;
   slideLabel?: string | undefined;
   target?: Valley | undefined;
+  valleyCount?: number | undefined;
   onPreview?: ((v: Valley) => void) | undefined;
   onExplore: () => void;
 }) {
   return (
     <section
       className={`ev-home-hero ${banner ? 'ev-home-hero--image' : ''}`}
-      aria-roledescription={banner ? '슬라이드' : undefined}
-      aria-label={banner ? `${slideLabel} ${banner.title}` : '이번 주 계곡 안내'}
+      aria-roledescription="슬라이드"
+      aria-label={
+        banner ? `${slideLabel} ${banner.title}` : `${slideLabel ?? ''} 모두밸리 출시 안내`
+      }
     >
       {banner && <StoryImage key={banner.imageUrl} story={banner} />}
       <div className="ev-home-hero-copy">
         <span className="ev-hero-tag">
-          {banner?.sponsored ? `광고 · ${banner.author}` : '이번 주 계곡 이야기'}
+          {banner
+            ? banner.sponsored
+              ? `광고 · ${banner.author}`
+              : '이번 주 계곡 이야기'
+            : '광고 · 모두밸리'}
         </span>
         <h2>
           {banner?.title ?? (
             <>
-              물소리 따라,
+              모두밸리가
               <br />
-              이번 주의 계곡
+              문을 열었어요
             </>
           )}
         </h2>
         <p>
           {banner?.description ??
-            '계곡의 풍경부터 주변 명소까지. 떠나기 전에, 여기서 먼저 만나보세요.'}
+            `계곡 ${valleyCount ?? ''}곳의 그늘·시설·안전 정보를 한곳에서. 떠나기 전에 여기서 먼저 확인하세요.`}
         </p>
         {banner?.url ? (
           <a className="ev-hero-cta" href={banner.url} target="_blank" rel="noopener noreferrer">
@@ -262,7 +272,7 @@ function HeroSlide({
             type="button"
             onClick={() => (target && onPreview ? onPreview(target) : onExplore())}
           >
-            {target ? `${target.name} 살펴보기` : '나에게 맞는 계곡 찾기'}
+            {target ? `${target.name} 살펴보기` : '계곡 둘러보기'}
             <Icon name="chevron-right" size={18} />
           </button>
         )}
@@ -399,8 +409,10 @@ export function DiscoveryHome({
   onSafety: () => void;
   onBlogs: () => void;
 }) {
-  const banners = discovery.feed?.stories.filter((s) => s.kind === 'banner') ?? [];
-  const slider = useHeroRotation(banners.length);
+  // 첫 장은 출시 안내, 그 뒤로 공개 배너 최대 7장 — 점 8개면 하나가 24 px 이상이다.
+  const banners = pickHeroBanners(discovery.feed?.stories);
+  const total = banners.length + 1;
+  const slider = useHeroRotation(total);
   return (
     <div className="ev-home-content">
       <section
@@ -409,32 +421,33 @@ export function DiscoveryHome({
         aria-roledescription="캐러셀"
         aria-label="이번 주 계곡 안내 — 좌우로 넘기거나 아래 점으로 고르세요"
       >
-        {banners.length === 0 ? (
-          <HeroSlide onExplore={onExplore} />
-        ) : (
-          banners.map((banner, i) => (
-            <HeroSlide
-              key={banner.id}
-              banner={banner}
-              slideLabel={`${i + 1} / ${banners.length}`}
-              target={valleys.find((v) => v.id === banner.valleyId)}
-              onPreview={onPreview}
-              onExplore={onExplore}
-            />
-          ))
-        )}
+        <HeroSlide slideLabel={`1 / ${total}`} valleyCount={valleys.length} onExplore={onExplore} />
+        {banners.map((banner, i) => (
+          <HeroSlide
+            key={banner.id}
+            banner={banner}
+            slideLabel={`${i + 2} / ${total}`}
+            target={valleys.find((v) => v.id === banner.valleyId)}
+            onPreview={onPreview}
+            onExplore={onExplore}
+          />
+        ))}
       </section>
-      {banners.length > 1 && (
-        /* ponytail: 배너가 30장이면 점도 30개라 하나가 12 px 폭이다 — 권장 터치 크기(24 px)보다
-           좁다. 공개 배너를 8장 안쪽으로 두면 점을 24 px 로 키울 수 있다. */
+      {total > 1 && (
         <div className="ev-hero-dots" ref={slider.dotsRef}>
+          <button
+            type="button"
+            aria-label="1번 배너: 모두밸리 출시 안내"
+            aria-current={slider.index === 0}
+            onClick={() => slider.goTo(0)}
+          />
           {banners.map((b, i) => (
             <button
               key={b.id}
               type="button"
-              aria-label={`${i + 1}번 배너: ${b.title}`}
-              aria-current={i === slider.index}
-              onClick={() => slider.goTo(i)}
+              aria-label={`${i + 2}번 배너: ${b.title}`}
+              aria-current={i + 1 === slider.index}
+              onClick={() => slider.goTo(i + 1)}
             />
           ))}
         </div>

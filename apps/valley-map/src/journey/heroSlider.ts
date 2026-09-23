@@ -5,8 +5,18 @@
  * 스와이프는 브라우저의 가로 스크롤 그대로이고, 자동 넘김만 다음 위치를 계산해 스크롤한다.
  */
 
-/** 자동 넘김 간격(ms). */
-export const HERO_ROTATE_MS = 6000;
+/** 자동 넘김 간격(ms). 6초에서 5초 더 늘렸다(사용자 요청 2026-09-23). */
+export const HERO_ROTATE_MS = 11000;
+
+/** 홈에 올리는 "이번 주 계곡 이야기" 최대 장수(사용자 요청 2026-09-23 "max 7개"). */
+export const HERO_MAX_STORIES = 7;
+
+/** 홈 히어로에 올릴 배너 — 공개 배너 중 앞의 `HERO_MAX_STORIES` 장. 출시 안내 한 장은 앱이 앞에 붙인다. */
+export function pickHeroBanners<T extends { readonly kind: string }>(
+  stories: readonly T[] | undefined,
+): T[] {
+  return (stories ?? []).filter((s) => s.kind === 'banner').slice(0, HERO_MAX_STORIES);
+}
 
 /**
  * 다음 슬라이드의 스크롤 위치(px). 마지막 다음은 처음으로 돌아온다.

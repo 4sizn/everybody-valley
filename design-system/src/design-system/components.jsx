@@ -546,9 +546,29 @@ export function MapSheet({
   actions,
   topInset = 180,
 }) {
-  const start = useRef(null);
+  const sheet = useRef(null);
+  // 끌기 시작 시점의 손가락 y 와 시트 높이. 끌리는 동안 높이가 손가락을 바로 따라간다.
+  const drag = useRef(null);
+  const snapHeights = () => {
+    // 시트는 absolute 라 offsetParent 가 지도 영역이다(부모 div 는 높이 0).
+    const full = (sheet.current?.offsetParent?.clientHeight ?? 0) - topInset;
+    return { peek: 158, half: Math.min(440, full), full };
+  };
+  const endDrag = () => {
+    const el = sheet.current;
+    if (!drag.current || !el) return;
+    const height = el.getBoundingClientRect().height;
+    drag.current = null;
+    el.style.height = "";
+    el.classList.remove("mv-map-sheet--dragging");
+    const [nearest] = Object.entries(snapHeights()).sort(
+      (a, b) => Math.abs(a[1] - height) - Math.abs(b[1] - height),
+    );
+    if (nearest && nearest[0] !== state) onChange(nearest[0]);
+  };
   return (
     <section
+      ref={sheet}
       className={`mv-map-sheet mv-map-sheet--${state}`}
       style={{ "--mv-sheet-top": `${topInset}px` }}
       aria-label="선택 장소 정보"
@@ -556,21 +576,21 @@ export function MapSheet({
       <div
         className="mv-sheet-handle"
         onPointerDown={(e) => {
-          start.current = e.clientY;
+          const el = sheet.current;
+          if (!el) return;
+          drag.current = { y: e.clientY, height: el.getBoundingClientRect().height };
+          el.classList.add("mv-map-sheet--dragging");
           e.currentTarget.setPointerCapture(e.pointerId);
         }}
-        onPointerUp={(e) => {
-          if (start.current === null) return;
-          const delta = e.clientY - start.current;
-          const states = ["peek", "half", "full"],
-            i = states.indexOf(state);
-          if (Math.abs(delta) > 24)
-            onChange(
-              states[Math.max(0, Math.min(2, i + (delta < 0 ? 1 : -1)))],
-            );
-          start.current = null;
+        onPointerMove={(e) => {
+          const el = sheet.current;
+          if (!drag.current || !el) return;
+          const { peek, full } = snapHeights();
+          const next = drag.current.height - (e.clientY - drag.current.y);
+          el.style.height = `${Math.max(peek, Math.min(full, next))}px`;
         }}
-        onPointerCancel={() => (start.current = null)}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
       >
         <span />
       </div>

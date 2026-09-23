@@ -1,6 +1,11 @@
 /** 홈 히어로 자동 넘김 위치 계산 — 마지막에서 처음으로 돌아오는지, 스냅 도중 값도 버티는지. */
 import { describe, expect, it } from 'vitest';
-import { nextSlideLeft, snappedLeft } from '../src/journey/heroSlider';
+import {
+  HERO_MAX_STORIES,
+  nextSlideLeft,
+  pickHeroBanners,
+  snappedLeft,
+} from '../src/journey/heroSlider';
 
 describe('nextSlideLeft', () => {
   it('다음 슬라이드로 폭만큼 이동한다', () => {
@@ -31,5 +36,21 @@ describe('snappedLeft', () => {
   });
   it('폭을 모르면 0', () => {
     expect(snappedLeft(300, 0)).toBe(0);
+  });
+});
+
+describe('pickHeroBanners', () => {
+  const story = (id: number, kind: 'banner' | 'blog') => ({ id, kind });
+  it('배너만, 최대 7장', () => {
+    const stories = [
+      story(0, 'blog'),
+      ...Array.from({ length: 9 }, (_, i) => story(i + 1, 'banner')),
+    ];
+    const picked = pickHeroBanners(stories);
+    expect(picked).toHaveLength(HERO_MAX_STORIES);
+    expect(picked.map((s) => s.id)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  });
+  it('피드가 없으면 빈 배열', () => {
+    expect(pickHeroBanners(undefined)).toEqual([]);
   });
 });

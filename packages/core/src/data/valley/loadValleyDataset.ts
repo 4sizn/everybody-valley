@@ -68,11 +68,17 @@ export function parseSegmentCollection(raw: unknown): Result<SegmentCollection, 
   }));
 }
 
-/** `facilities.geojson` — 시설 Point 컬렉션. 스키마 `$defs.facilityCollection`. */
+/**
+ * `facilities.geojson` — 시설 Point 컬렉션. 스키마 `$defs.facilityCollection`.
+ *
+ * 식당(`food`)은 정보에 보여주지 않는다(사용자 결정 2026-09-23). 데이터·스키마는 그대로 두고
+ * 파싱 직후 한 번 걸러 목록·검색·핀·집계가 같이 사라지게 한다. 파일 로더와 합본 로더가
+ * 모두 이 함수를 지난다.
+ */
 export function parseFacilityCollection(raw: unknown): Result<FacilityCollection, ValleyDataError> {
   return parseCollection(raw, parseFacilityFeature, (metadata, facilities) => ({
     metadata,
-    facilities,
+    facilities: facilities.filter((facility) => facility.facilityType !== 'food'),
   }));
 }
 
