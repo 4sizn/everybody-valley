@@ -160,3 +160,11 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 
 - `ValleyCard` 에 `accessory` 슬롯(이름 오른쪽, 화살표 앞)을 추가하고 `pnpm design:build` 로 `packages/ui` 동기화. 계곡 찾기 목록·검색 결과 카드에 `FoliageLeaf`(잎 색 = 기상청 계절관측 단계), 지도 화면 구간 정보 탭에 잎 + 한 줄. `useFoliageStages()` 가 `/api/foliage` 한 번으로 33곳 단계를 받는다(시즌 밖이면 잎 없음).
 - 실측(8091, 8788 API): 목록 카드 33개 · 잎 33개 · fill 전부 `#2E7D32`(단풍 전). 캡처 `.proof/foliage/list-leaves-390.png`, `map-leaf-390.png`.
+
+## 조무락골·명지계곡 시설 좌표 결정 (2026-09-23)
+
+- 두 계곡은 3 km 안에 표준데이터·OSM 시설이 하나도 없어 시설 0개였다. 공식 출처를 뒤져 보니 가평군 문화관광 페이지가 둘 다 **"주차시설 없음"**(명지는 "단, 명지산 주차장 이용 가능")이라 주차장은 등록하지 않는다. 브이월드 장소검색의 "명지산주차장" POI(도대리 240-1)는 명지 중심선에서 6.2 km — 계곡 주변 시설이 아니라 제외.
+- 등록한 것: 가평군 교통안내 "가평터미널–용수동 종점 행 33-4번 버스"의 종점 정류장을 `station` 으로 `data/seed/facilities-manual.csv` 에 두 계곡 각각 추가. 좌표는 브이월드 장소검색 버스정류장 POI "용수동종점"(적목리 516-2, 127.437583 37.98685). 명지 중심선에서 21 m, 조무락 중심선에서 1,069 m — 조무락은 `FACILITY_ACCESS_NEARBY_M`(800 m) 밖이라 앱에서 "가는 길에 · 물가에서 300 m 밖" 묶음으로 보인다(같은 골짜기 하류 정류장이니 의도한 표시).
+- `pnpm seed:build --valley jomurak --valley myeongji` 로 재시딩. 구간 파일은 변화 없음(중심선·유역 동일). `build.mts` 가 재실행 때 옮기는 키에 `elevationM` 을 추가(`CARRIED_KEYS`) — 이전엔 그늘 3키만 옮겨서 재시딩이 `seed:elevation` 결과를 지웠을 것이다. 재시딩 뒤 표고 463 m(조무락)·389 m(명지) 유지 확인.
+- 화면 확인(운영 빌드 8788, 390 px): 명지 시설 탭 "주차장 없음 · 화장실 없음 · 역·정류장 1 · 쓰레기는 되가져가기" + 용수동 종점 물가에서 21 m. 조무락 "주변 시설 0곳" + 가는 길에 1.1 km. `.proof/facilities/map-facilities-{myeongji,jomurak}-station.png`.
+- 남은 빈칸: 쓰레기통·놀이터는 공공 데이터가 없다. 가평군에 계곡별 시설 자료를 요청하거나 현장 좌표를 받아야 채운다.

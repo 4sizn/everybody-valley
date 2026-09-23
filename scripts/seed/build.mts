@@ -55,8 +55,8 @@ const STD_PARKING_ATTRIBUTION =
   'https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)';
 const STD_RESTROOM_ATTRIBUTION =
   'https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)';
-/** 그늘 파이프라인이 역기입하는 키 — 재실행 때 기존 파일에서 그대로 옮긴다. */
-const SHADE_KEYS = ['shadeByHour', 'canopyCover', 'shadeRatio'] as const;
+/** 다른 파이프라인이 역기입하는 키(그늘 `--shade`, 표고 `seed:elevation`) — 재실행 때 기존 파일에서 그대로 옮긴다. */
+const CARRIED_KEYS = ['shadeByHour', 'canopyCover', 'shadeRatio', 'elevationM'] as const;
 /** 접근 거리·경사를 계산하는 주차장 최대 거리(m). 이보다 멀면 "이 구간의 주차장"이 아니다. */
 const ACCESS_MAX_M = 3000;
 
@@ -200,7 +200,8 @@ async function buildValley(
       order,
       splitBasis: piece.splitBasis,
     };
-    for (const key of SHADE_KEYS) if (previous[key] !== undefined) properties[key] = previous[key];
+    for (const key of CARRIED_KEYS)
+      if (previous[key] !== undefined) properties[key] = previous[key];
     if (access !== undefined) {
       properties['accessDistanceM'] = access.accessDistanceM;
       properties['accessGradePct'] = access.accessGradePct;
