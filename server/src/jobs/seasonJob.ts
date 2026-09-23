@@ -34,21 +34,36 @@ export function createSeasonRun(deps: SeasonJobDeps): () => Promise<JobRunResult
     const year = kst.slice(0, 4);
     const today = kst.slice(0, 8);
     let rows = 0;
-    let status = 200;
-    for (const ssn of SSN_IDS) {
-      const res = await deps.http.text(seasonObsUrl(deps.key, `${year}0101`, today, ssn));
-      status = Math.max(status, res.status);
-      rows += deps.repos.seasonObs.upsertMany(parseSeasonObs(res.body), nowIso);
-    }
     let norms = 0;
-    if (normFetchedOnDay !== today) {
-      for (const ssn of SSN_IDS) {
-        const res = await deps.http.text(seasonNormUrl(deps.key, ssn));
+    let status = 200;
+    const errors: string[] = [];
+    // 호출 4건 중 하나가 늦거나(API허브 504) 실패해도 나머지는 살린다 — 연 자료라 다음 틱에 메워진다.
+    for (const ssn of SSN_IDS) {
+      try {
+        const res = await deps.http.text(seasonObsUrl(deps.key, `${year}0101`, today, ssn));
         status = Math.max(status, res.status);
-        norms += deps.repos.seasonNorm.upsertMany(parseSeasonNorm(res.body), nowIso);
+        rows += deps.repos.seasonObs.upsertMany(parseSeasonObs(res.body), nowIso);
+      } catch (error) {
+        errors.push(error instanceof Error ? error.message : String(error));
       }
-      normFetchedOnDay = today;
     }
-    return { rows, status, detail: { year, norms } };
+    if (normFetchedOnDay !== today) {
+      let normOk = true;
+      for (const ssn of SSN_IDS) {
+        try {
+          const res = await deps.http.text(seasonNormUrl(deps.key, ssn));
+          status = Math.max(status, res.status);
+          norms += deps.repos.seasonNorm.upsertMany(parseSeasonNorm(res.body), nowIso);
+        } catch (error) {
+          normOk = false;
+          errors.push(error instanceof Error ? error.message : String(error));
+        }
+      }
+      if (normOk) normFetchedOnDay = today;
+    }
+    if (errors.length === SSN_IDS.length * 2 || (errors.length > 0 && rows + norms === 0)) {
+      throw new Error(errors.join(' | '));
+    }
+    return { rows, status, detail: { year, norms, partialErrors: errors.length } };
   };
 }

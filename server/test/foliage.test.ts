@@ -8,6 +8,9 @@ import { type Db, openDatabase } from '../src/db/Database';
 import { runMigrations } from '../src/db/migrate';
 import { createRepos, type Repos } from '../src/db/repos';
 import { foliageRoutes } from '../src/http/routes/foliage';
+import { createSeasonRun } from '../src/jobs/seasonJob';
+import { identityRedactor } from '../src/logging/redact';
+import { createSourceHttp } from '../src/sources/http';
 import { parseSeasonNorm, parseSeasonObs } from '../src/sources/kmaSeason';
 
 const MIGRATIONS = path.resolve(import.meta.dirname, '../migrations');
@@ -41,10 +44,14 @@ describe('parseSeasonObs / parseSeasonNorm', () => {
       { stn: '98', tm: '2026-10-29', ssnId: 302, ssnMd: 302 },
     ]);
   });
-  it('평년은 월일만 남긴다', () => {
-    expect(parseSeasonNorm('98 302 301 1020\n2011 98 20111031 302 302\n')).toEqual([
-      { stn: '98', ssnId: 302, ssnMd: 301, mmdd: '10-20' },
-      { stn: '98', ssnId: 302, ssnMd: 302, mmdd: '10-31' },
+  it('평년 ST STN MM DD SSN_ID SSN_MD → MM-DD', () => {
+    expect(
+      parseSeasonNorm(
+        '# ST,  STN,  MM,  DD, SSN_ID, SSN_MD,=\n 2021,  98,  10,  21,    302,    301,=\n 2021, 102,  11,   5,    302,    302,=\n',
+      ),
+    ).toEqual([
+      { stn: '98', ssnId: 302, ssnMd: 301, mmdd: '10-21' },
+      { stn: '102', ssnId: 302, ssnMd: 302, mmdd: '11-05' },
     ]);
   });
 });
@@ -105,5 +112,35 @@ describe('GET /api/foliage', () => {
     expect(soyo?.stations.map((s) => s.code)).toEqual(['98']);
     const island = body.foliage.find((f) => f.valleyId === 'island');
     expect(island).toMatchObject({ stage: 'green', confidence: 'none', stations: [] });
+  });
+});
+
+describe('season job', () => {
+  it('관측·평년 호출 중 하나가 실패해도 나머지는 적재하고, 전부 실패하면 던진다', async () => {
+    const OBS = '# YY, STN, TM, SSN_ID, SSN_MD\n 2026,  98,  2026-10-18,   302,   301,\n';
+    const NORM = '# ST, STN, MM, DD, SSN_ID, SSN_MD,=\n 2021,  98,  10,  21,    302,    301,=\n';
+    let failNorm = true;
+    const fetchImpl: typeof fetch = async (input) => {
+      const url = String(input);
+      if (url.includes('sfc_ssn_norm')) {
+        return failNorm ? new Response('gateway', { status: 504 }) : new Response(NORM);
+      }
+      return new Response(url.includes('ssn=302') ? OBS : '# empty\n');
+    };
+    const http = createSourceHttp({ fetch: fetchImpl, redact: identityRedactor });
+    const run = createSeasonRun({
+      key: 'K',
+      http,
+      repos,
+      now: () => Date.parse('2026-10-20T03:00:00Z'),
+    });
+    const first = await run();
+    expect(first.rows).toBe(1);
+    expect(first.detail).toMatchObject({ norms: 0, partialErrors: 2 });
+    expect(repos.seasonObs.byYear(2026)).toHaveLength(1);
+    failNorm = false;
+    const second = await run();
+    expect(second.detail).toMatchObject({ norms: 2, partialErrors: 0 }); // 302·501 둘 다 같은 행을 돌려주는 가짜
+    expect(repos.seasonNorm.all()).toEqual([{ stn: '98', ssnId: 302, ssnMd: 301, mmdd: '10-21' }]);
   });
 });
