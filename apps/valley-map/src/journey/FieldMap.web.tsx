@@ -404,13 +404,15 @@ function MapChrome({
             ) : (
               <>
                 <Button
-                  icon="tree-pine"
+                  icon="locate-fixed"
                   onClick={() => {
-                    setOverlay(overlay === 'shade' ? null : 'shade');
+                    // 그늘 토글은 지도 도구 칩과 구간 탭에 있다. 여기서는 선택한 구간·시설로
+                    // 지도를 되돌린다(사용자 요청 2026-09-23 "위치 이동").
                     setSheet('peek');
+                    void session.recenterSelection();
                   }}
                 >
-                  그늘 {overlay === 'shade' ? '끄기' : '확인'}
+                  위치 이동
                 </Button>
                 <Button
                   variant="secondary"
