@@ -128,15 +128,18 @@
         "segment": "whole",
         "order": 0,
         "splitBasis": "none",
+        "depth": "knee",
+        "shadeByHour": [0.379, 0.37, 0.368, 0.367, 0.368, 0.376, 0.407, 0.486, 0.671],
+        "canopyCover": 0.367,
+        "shadeRatio": 0.368,
         "accessDistanceM": 433,
         "accessGradePct": 8.3,
+        "swimBanned": false,
+        "riskNote": "물놀이관리지역(관리) 신림계곡지구 물놀이장 — 최대 수심 0.6 m·평균 0.4 m. 인근 143 m 에 위험 구역(수심 1 m)",
         "basinCode": "101816",
         "mapIconTier": 0,
         "mapLabelTier": 0,
         "mapImportance": 10,
-        "shadeByHour": [0.379, 0.37, 0.368, 0.367, 0.368, 0.376, 0.407, 0.486, 0.671],
-        "canopyCover": 0.367,
-        "shadeRatio": 0.368,
         "elevationM": 120
       }
     }
