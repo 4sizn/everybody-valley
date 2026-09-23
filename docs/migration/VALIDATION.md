@@ -155,3 +155,8 @@ CUA in-app Chromium, dev8084 및 production export8085/8086. 테스트용 제보
 - 2025년 실측 예: 단풍나무 서울(108) 시작 10/27 · 절정 11/6, 유명산 북한산(108) 시작 10/22 · 절정 10/30. 2026년 관측은 아직 0행(9/23).
 - `season` 폴러: 호출 4건 중 일부 실패(API허브 504 잦음)해도 나머지를 적재하고, 전부 실패할 때만 실패로 기록. 첫 성공 틱에 `season_norm` 212행(75지점). `/api/foliage` 33계곡 전부 `observed`(관측 지점 있음) — 용추 → 북춘천 관서 26.5 km(평년 첫단풍 10/15 · 절정 10/27), 우이동 → 서울 501 북한산 11.2 km(10/15 · 10/28), 증심사 → 광주 501 무등산 8 km(10/21 · 11/4), 광덕 → 철원 14.4 km(10/12 · 10/23).
 - 캡처 `.proof/foliage/preview-kma-season-390.png`(우이동 미리보기 "단풍 전 · 평년 첫단풍 10/15 · 절정 10/28 · 서울 관측").
+
+## 단풍 잎을 계곡 목록·지도에도 (2026-09-23, 워크트리 `4sizn/foliage-leaf-everywhere`)
+
+- `ValleyCard` 에 `accessory` 슬롯(이름 오른쪽, 화살표 앞)을 추가하고 `pnpm design:build` 로 `packages/ui` 동기화. 계곡 찾기 목록·검색 결과 카드에 `FoliageLeaf`(잎 색 = 기상청 계절관측 단계), 지도 화면 구간 정보 탭에 잎 + 한 줄. `useFoliageStages()` 가 `/api/foliage` 한 번으로 33곳 단계를 받는다(시즌 밖이면 잎 없음).
+- 실측(8091, 8788 API): 목록 카드 33개 · 잎 33개 · fill 전부 `#2E7D32`(단풍 전). 캡처 `.proof/foliage/list-leaves-390.png`, `map-leaf-390.png`.

@@ -227,6 +227,7 @@ function ValleyCard({
   rank,
   description,
   selected,
+  accessory,
   onClick
 }) {
   return /* @__PURE__ */ React.createElement(
@@ -238,6 +239,7 @@ function ValleyCard({
     },
     /* @__PURE__ */ React.createElement("span", { className: "mv-valley-symbol" }, rank ? /* @__PURE__ */ React.createElement("span", { className: "mv-rank" }, String(rank).padStart(2, "0")) : /* @__PURE__ */ React.createElement(Icon, { name: "mountain", size: 28 })),
     /* @__PURE__ */ React.createElement("span", { className: "mv-valley-copy" }, /* @__PURE__ */ React.createElement("strong", null, name), /* @__PURE__ */ React.createElement("span", null, region), description && /* @__PURE__ */ React.createElement("small", null, description)),
+    accessory && /* @__PURE__ */ React.createElement("span", { className: "mv-valley-accessory" }, accessory),
     /* @__PURE__ */ React.createElement(Icon, { name: "chevron-right", size: 20 })
   );
 }

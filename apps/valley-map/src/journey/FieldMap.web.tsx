@@ -38,11 +38,13 @@ import { DIRECTIONS_PROVIDERS } from '@/components/valley/directions';
 import { SessionProvider, useAppState, useSession, useSessionRestart } from '@/session';
 import { PARSED, VALLEY_SOURCE } from '@/session/valleySource';
 import { BlogSection, type DiscoveryState } from './Discovery.web';
+import { FoliageLeaf } from './FoliageLeaf.web';
 import { journeySearch, type Place } from './journey';
 import { LandLegend, type LandStatus } from './LandLegend.web';
 import { Navigation } from './Navigation.web';
 import { Reports } from './Reports.web';
 import { ShadeHourTrack } from './ShadeHourTrack.web';
+import { useFoliage } from './useFoliage';
 import { useWeather } from './useWeather';
 
 type Props = {
@@ -113,6 +115,7 @@ function MapChrome({
   const initialized = useRef<typeof session | null>(null);
   const selecting = useRef(false);
   const weather = useWeather(place.valley.id);
+  const foliage = useFoliage(place.valley.id);
   const alert = weather.value?.alert;
   const risk: Status =
     alert?.level === 'watch'
@@ -490,6 +493,13 @@ function MapChrome({
                       icon="tree-pine"
                     />
                     <Metric label="구간 길이" value={place.segment.length().format()} />
+                    {foliage.inSeason && (
+                      <div className="mv-metric">
+                        <FoliageLeaf stage={foliage.stage} />
+                        <span>단풍</span>
+                        <strong>{foliage.line ?? '관측 지점 없음'}</strong>
+                      </div>
+                    )}
                   </div>
                   <p>{place.segment.riskNote ?? '이용 조건과 현장 통제를 방문 전에 확인하세요.'}</p>
                   <Button

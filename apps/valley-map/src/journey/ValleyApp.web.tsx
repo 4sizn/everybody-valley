@@ -43,7 +43,7 @@ import {
 import { type JourneyNavigation, Navigation } from './Navigation.web';
 import { SettingsDialog } from './SettingsDialog.web';
 import { useAccess } from './useAccess';
-import { useFoliage } from './useFoliage';
+import { useFoliage, useFoliageStages } from './useFoliage';
 import './reference.css';
 import './journey.css';
 
@@ -79,6 +79,7 @@ export function ValleyApp() {
   const [candidate, setCandidate] = useState<Place | null>(null);
   const foliage = useFoliage(candidate?.valley.id ?? '');
   const access = useAccess(candidate?.valley.id ?? '');
+  const leafStages = useFoliageStages();
   const [page, setPage] = useState<'home' | 'explore' | 'blog'>(initial.place ? 'explore' : 'home');
   const [query, setQuery] = useState('');
   const [storyValley, setStoryValley] = useState<string | null>(null);
@@ -348,6 +349,14 @@ export function ValleyApp() {
                                 name={item.valley.name}
                                 region={`${item.valley.segments.length}개 구간`}
                                 description="계곡 미리보기"
+                                accessory={
+                                  leafStages.has(item.valley.id) ? (
+                                    <FoliageLeaf
+                                      stage={leafStages.get(item.valley.id) ?? 'none'}
+                                      size={22}
+                                    />
+                                  ) : undefined
+                                }
                                 onClick={() => preview(item.valley)}
                               />
                             ) : (
@@ -466,6 +475,11 @@ export function ValleyApp() {
                               name={v.name}
                               region={`${v.segments.length}개 구간 · 주변 시설 ${v.facilities.length}곳`}
                               description="구간별 그늘과 주변 시설 살펴보기"
+                              accessory={
+                                leafStages.has(v.id) ? (
+                                  <FoliageLeaf stage={leafStages.get(v.id) ?? 'none'} size={22} />
+                                ) : undefined
+                              }
                               onClick={() => preview(v)}
                             />
                           ))}

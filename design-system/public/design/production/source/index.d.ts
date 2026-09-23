@@ -133,6 +133,8 @@ export function ValleyCard(props: {
   rank?: number | null;
   description?: string;
   selected?: boolean;
+  /** 이름 오른쪽 작은 상태 표시(예: 단풍 잎). */
+  accessory?: React.ReactNode;
   onClick: () => void;
 }): React.JSX.Element;
 export function FacilityRow(props: {

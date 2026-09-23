@@ -263,12 +263,14 @@ export function Card({ children, className = "", ...props }) {
     </article>
   );
 }
+/** `accessory` — 이름 오른쪽, 화살표 앞에 놓는 작은 상태 표시(예: 단풍 잎). 없으면 자리도 없다. */
 export function ValleyCard({
   name,
   region,
   rank,
   description,
   selected,
+  accessory,
   onClick,
 }) {
   return (
@@ -289,6 +291,7 @@ export function ValleyCard({
         <span>{region}</span>
         {description && <small>{description}</small>}
       </span>
+      {accessory && <span className="mv-valley-accessory">{accessory}</span>}
       <Icon name="chevron-right" size={20} />
     </button>
   );

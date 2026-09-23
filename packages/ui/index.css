@@ -607,6 +607,11 @@ textarea.mv-input {
   border-bottom: 1px solid var(--mv-border);
   background: var(--mv-accent-subtle);
 }
+.mv-valley-accessory {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
 .mv-valley-symbol {
   display: flex;
   align-items: center;

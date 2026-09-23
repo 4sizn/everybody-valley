@@ -58,3 +58,26 @@ export function useFoliage(valleyId: string): {
   const line = state ? foliageLine(state) : null;
   return { line, stage: state && state.confidence !== 'none' ? state.stage : 'none', inSeason };
 }
+
+/**
+ * 계곡 전부의 잎 색 — 목록·지도용. 시즌 밖이면 빈 맵(잎을 그리지 않는다). 관측 지점 없는 계곡은 `none`.
+ * `/api/foliage` 한 번으로 33곳을 받는다(서버 캐시 300 s).
+ */
+export function useFoliageStages(): ReadonlyMap<string, FoliageStage | 'none'> {
+  const inSeason = isFoliageSeason();
+  const [stages, setStages] = useState<ReadonlyMap<string, FoliageStage | 'none'>>(new Map());
+  useEffect(() => {
+    if (!inSeason) return;
+    let active = true;
+    void api.foliage().then((r) => {
+      if (!active || !r.ok) return;
+      setStages(
+        new Map(r.value.map((f) => [f.valleyId, f.confidence === 'none' ? 'none' : f.stage])),
+      );
+    });
+    return () => {
+      active = false;
+    };
+  }, [inSeason]);
+  return stages;
+}
