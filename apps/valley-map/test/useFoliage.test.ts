@@ -47,3 +47,17 @@ describe('isFoliageSeason — KST 9/15~11/30', () => {
     expect(isFoliageSeason(new Date('2026-11-30T15:00:00Z'))).toBe(false);
   });
 });
+
+describe('FOLIAGE_LEAF_COLOR', () => {
+  it('단계마다 다른 색, 종료와 없음은 회색', async () => {
+    const { FOLIAGE_LEAF_COLOR } = await import('../src/journey/FoliageLeaf.web');
+    const distinct = new Set([
+      FOLIAGE_LEAF_COLOR.green,
+      FOLIAGE_LEAF_COLOR.turning,
+      FOLIAGE_LEAF_COLOR.peak,
+      FOLIAGE_LEAF_COLOR.falling,
+    ]);
+    expect(distinct.size).toBe(4);
+    expect(FOLIAGE_LEAF_COLOR.dormant).toBe(FOLIAGE_LEAF_COLOR.none);
+  });
+});

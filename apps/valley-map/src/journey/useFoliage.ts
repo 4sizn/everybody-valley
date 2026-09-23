@@ -2,7 +2,7 @@
  * 계곡 하나의 단풍 한 줄 — `GET /api/foliage`(기상청 계절관측만 근거)를 시즌(9/15–11/30)에만 부른다.
  * 서버 판정을 문장으로 옮길 뿐 다시 판정하지 않는다.
  */
-import { type ApiFoliage, foliageStageLabel } from '@modu-valley/core';
+import { type ApiFoliage, type FoliageStage, foliageStageLabel } from '@modu-valley/core';
 import { useEffect, useState } from 'react';
 import { createApiClient } from '../api/createApiClient';
 
@@ -36,20 +36,25 @@ export function foliageLine(f: ApiFoliage): string | null {
   return `${foliageStageLabel(f.stage)}${since}${next}${where}`;
 }
 
-export function useFoliage(valleyId: string): { line: string | null; inSeason: boolean } {
+export function useFoliage(valleyId: string): {
+  line: string | null;
+  /** 잎 색. 관측 지점 없으면 `none`. */
+  stage: FoliageStage | 'none';
+  inSeason: boolean;
+} {
   const inSeason = isFoliageSeason();
-  const [line, setLine] = useState<string | null>(null);
+  const [state, setState] = useState<ApiFoliage | null>(null);
   useEffect(() => {
     if (!inSeason || !valleyId) return;
     let active = true;
     void api.foliage().then((r) => {
       if (!active || !r.ok) return;
-      const f = r.value.find((x) => x.valleyId === valleyId);
-      setLine(f ? foliageLine(f) : null);
+      setState(r.value.find((x) => x.valleyId === valleyId) ?? null);
     });
     return () => {
       active = false;
     };
   }, [valleyId, inSeason]);
-  return { line, inSeason };
+  const line = state ? foliageLine(state) : null;
+  return { line, stage: state && state.confidence !== 'none' ? state.stage : 'none', inSeason };
 }

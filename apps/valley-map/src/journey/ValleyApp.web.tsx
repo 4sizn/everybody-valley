@@ -31,6 +31,7 @@ import { PARSED } from '@/session/valleySource';
 import { useTheme } from '@/theme/ThemeProvider';
 import { BlogSection, DiscoveryHome, useDiscovery } from './Discovery.web';
 import { FieldMap } from './FieldMap.web';
+import { FoliageLeaf } from './FoliageLeaf.web';
 import {
   isStoriesUrl,
   journeySearch,
@@ -241,11 +242,11 @@ export function ValleyApp() {
                           icon="tent"
                         />
                         {foliage.inSeason && (
-                          <Metric
-                            label="단풍"
-                            value={foliage.line ?? '자료 없음'}
-                            icon="tree-pine"
-                          />
+                          <div className="mv-metric">
+                            <FoliageLeaf stage={foliage.stage} />
+                            <span>단풍</span>
+                            <strong>{foliage.line ?? '관측 지점 없음'}</strong>
+                          </div>
                         )}
                         {access.line && (
                           <Metric
