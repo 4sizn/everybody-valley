@@ -14,9 +14,10 @@ import { WebView } from 'react-native-webview';
 import { resolveApiBase } from '@/api/createApiClient';
 import { ABSOLUTE_FILL } from '@/theme/layout';
 import { useSafeAreaGutters } from '@/theme/safeArea';
-import { createThemedStyles } from '@/theme/ThemeProvider';
+import { createThemedStyles, useThemePreference } from '@/theme/ThemeProvider';
 import { FONT_FAMILY } from '@/theme/theme';
 import { RADII } from '@/theme/tokens';
+import { parseThemeMessage, THEME_BRIDGE_SCRIPT } from './webShellTheme';
 
 const WEB_URL = resolveApiBase();
 
@@ -30,6 +31,8 @@ export function WebShell() {
   // 겹친다. 상단 인셋은 셸이 여백으로 준다. 하단은 `env(safe-area-inset-bottom)` 이 살아 있어
   // 웹이 스스로 띄우므로 셸이 더하면 두 번 띄운다.
   const insets = useSafeAreaGutters();
+  // 상단 띠·상태바 색은 WebView 속 웹이 정한 테마를 따른다(`webShellTheme.ts`).
+  const { setPreference } = useThemePreference();
 
   const retry = () => {
     setFailed(false);
@@ -49,6 +52,11 @@ export function WebShell() {
         allowsBackForwardNavigationGestures
         // 웹 앱이 현재 위치로 지도를 맞춘다. 권한 문구는 Info.plist 에 있다.
         geolocationEnabled
+        injectedJavaScript={THEME_BRIDGE_SCRIPT}
+        onMessage={({ nativeEvent }) => {
+          const mode = parseThemeMessage(nativeEvent.data);
+          if (mode) setPreference(mode);
+        }}
         onLoadEnd={() => setLoading(false)}
         onError={() => {
           setLoading(false);
