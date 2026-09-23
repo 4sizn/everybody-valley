@@ -25,28 +25,47 @@ import { readCsv } from './csv.mts';
 import { elevationAt, TERRARIUM_ATTRIBUTION } from './elevation.mts';
 import { FACILITIES_DIR, loadKeys, SEED_DIR, todayKst, VALLEYS_DIR } from './env.mts';
 import {
+  EXTRA_MAX_FROM_LINE_M,
+  extraFacilities,
   FACILITY_RADIUS_M,
   type FacilityRecord,
   loadManualFacilities,
+  loadStdBins,
   loadStdParking,
+  loadStdParkPlaygrounds,
+  loadStdPlaygrounds,
   loadStdRestrooms,
   mergeFacilities,
   osmFacilities,
   shelterFacilities,
+  stdNearLine,
   stdWithin,
   toFacilityFeature,
+  trimFarFacilities,
 } from './facilities.mts';
 import { dumpsFile } from './format.mts';
 import { distanceM, lineLengthM, type Position, pointAlong, sliceLine } from './geo.mts';
 import { log, warn } from './log.mts';
 import { applyManual, loadManual, MANUAL_FIELDS, MANUAL_HEADER, MANUAL_PATH } from './manual.mts';
-import { fetchAmenities, fetchShelters, fetchWaterways, OSM_ATTRIBUTION } from './overpass.mts';
+import {
+  fetchAmenities,
+  fetchExtras,
+  fetchShelters,
+  fetchWaterways,
+  OSM_ATTRIBUTION,
+} from './overpass.mts';
 import { runShade, shadeEnvironmentReady } from './shade.mts';
 import { loadSplits, type SplitRow } from './splits.mts';
 import { loadSeedValleys, type SeedValley, valleyFilterFromArgv } from './valleys.mts';
 import { lookupBasin } from './vworld.mts';
 
 const WATERWAY_RADIUS_M = 2000;
+/**
+ * 중심선을 손으로 만든 계곡 — `seed:build` 가 덮어쓰면 안 된다. 긴고랑(SD3)은 OSM 에 하천이 없어
+ * Terrarium DEM 최소비용경로로 근사했는데, 2026-09-23 전체 재시딩이 934 m 떨어진 184 m 도랑을 중심선으로
+ * 잡아 덮어쓴 적이 있다(HEAD 에서 되살림). 여기 있는 계곡은 건너뛴다.
+ */
+const HAND_BUILT_CENTERLINE = new Set(['gingorang']);
 /** 정자 조회 반경(중심선 버퍼) — `SHELTER_MAX_FROM_LINE_M` 보다 조금 넉넉하게. */
 const SHELTER_FETCH_RADIUS_M = 400;
 const VWORLD_ATTRIBUTION =
@@ -55,6 +74,12 @@ const STD_PARKING_ATTRIBUTION =
   'https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)';
 const STD_RESTROOM_ATTRIBUTION =
   'https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)';
+const STD_BIN_ATTRIBUTION =
+  'https://www.data.go.kr/data/15129450/standard.do (전국휴지통표준데이터, 공공누리 1유형)';
+const STD_PARK_ATTRIBUTION =
+  'https://www.data.go.kr/data/15012890/standard.do (전국도시공원정보표준데이터 유희시설, 공공누리 1유형)';
+const STD_PLAYGROUND_ATTRIBUTION =
+  'https://www.data.go.kr/data/15124519/openapi.do (행정안전부 전국어린이놀이시설정보서비스)';
 /** 다른 파이프라인이 역기입하는 키(그늘 `--shade`, 표고 `seed:elevation`) — 재실행 때 기존 파일에서 그대로 옮긴다. */
 const CARRIED_KEYS = ['shadeByHour', 'canopyCover', 'shadeRatio', 'elevationM'] as const;
 /** 접근 거리·경사를 계산하는 주차장 최대 거리(m). 이보다 멀면 "이 구간의 주차장"이 아니다. */
@@ -143,6 +168,10 @@ async function buildValley(
     keys: ReturnType<typeof loadKeys>;
     stdParking: readonly FacilityRecord[];
     stdRestrooms: readonly FacilityRecord[];
+    /** 쓰레기통·놀이터 표준데이터 전체 행 — 중심선이 나온 뒤 `stdNearLine` 으로 자른다. */
+    stdBins: readonly import('./facilities.mts').StdParkingRow[];
+    stdPlaygrounds: readonly import('./facilities.mts').StdParkingRow[];
+    stdParkPlaygrounds: readonly import('./facilities.mts').StdParkingRow[];
     manualFacilities: readonly FacilityRecord[];
     manual: readonly import('./manual.mts').ManualEntry[];
     splits: readonly SplitRow[] | undefined;
@@ -169,13 +198,31 @@ async function buildValley(
     SHELTER_FETCH_RADIUS_M,
     context.keys,
   );
-  const facilities = mergeFacilities(
-    [...context.stdParking, ...context.stdRestrooms],
-    [
-      ...osmFacilities(pois, center, valley.id),
-      ...shelterFacilities(shelterPois, centerline.path, valley.id),
-    ],
-    context.manualFacilities,
+  /* 쓰레기통·놀이터(2026-09-23)도 중심선 기준 — `EXTRA_MAX_FROM_LINE_M`. 표준데이터 3종 + OSM. */
+  const extraPois = await fetchExtras(
+    valley.id,
+    centerline.path,
+    EXTRA_MAX_FROM_LINE_M,
+    context.keys,
+  );
+  const line = centerline.path;
+  const facilities = trimFarFacilities(
+    mergeFacilities(
+      [
+        ...context.stdParking,
+        ...context.stdRestrooms,
+        ...stdNearLine(context.stdPlaygrounds, line, valley.id, 'playground', 'std-playground'),
+        ...stdNearLine(context.stdParkPlaygrounds, line, valley.id, 'playground', 'std-park'),
+        ...stdNearLine(context.stdBins, line, valley.id, 'bin', 'std-bin'),
+      ],
+      [
+        ...osmFacilities(pois, center, valley.id),
+        ...shelterFacilities(shelterPois, line, valley.id),
+        ...extraFacilities(extraPois, line, valley.id),
+      ],
+      context.manualFacilities,
+    ),
+    line,
   );
 
   const existing = existingSegmentProps(
@@ -291,10 +338,14 @@ function facilityMetadata(
   const sources = [OSM_ATTRIBUTION];
   if (count('std-parking') > 0) sources.push(STD_PARKING_ATTRIBUTION);
   if (count('std-restroom') > 0) sources.push(STD_RESTROOM_ATTRIBUTION);
+  if (count('std-bin') > 0) sources.push(STD_BIN_ATTRIBUTION);
+  if (count('std-park') > 0) sources.push(STD_PARK_ATTRIBUTION);
+  if (count('std-playground') > 0) sources.push(STD_PLAYGROUND_ATTRIBUTION);
+  const extras = count('std-bin') + count('std-park') + count('std-playground');
   return {
-    description: `${valley.name} 시설 ${facilities.length}개 — 표준데이터 주차장 ${count('std-parking')} · 화장실 ${count('std-restroom')} · OSM ${count('osm')} · 수기 ${count('manual')}. 계곡 점 반경 ${FACILITY_RADIUS_M / 1000} km.`,
+    description: `${valley.name} 시설 ${facilities.length}개 — 표준데이터 주차장 ${count('std-parking')} · 화장실 ${count('std-restroom')} · 쓰레기통·놀이터 ${extras} · OSM ${count('osm')} · 수기 ${count('manual')}. 계곡 점 반경 ${FACILITY_RADIUS_M / 1000} km, 쓰레기통·놀이터는 중심선 ${EXTRA_MAX_FROM_LINE_M} m.`,
     source:
-      '전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)',
+      '전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)',
     sourceFile: 'scripts/seed/build.mts (pnpm seed:build)',
     datasetVersion: dates.version,
     collectedAt: dates.collectedAt,
@@ -432,6 +483,13 @@ async function main(): Promise<void> {
 
   const stdParkingRows = loadStdParking();
   const stdRestroomRows = loadStdRestrooms();
+  const stdBinRows = loadStdBins();
+  const stdPlaygroundRows = loadStdPlaygrounds();
+  const stdParkPlaygroundRows = loadStdParkPlaygrounds();
+  if (stdPlaygroundRows.length === 0)
+    warn(
+      'data/seed/std/ 에 놀이시설 CSV 가 없다 — `pnpm seed:playgrounds` (도시공원 유희시설·OSM 만 쓴다)',
+    );
   if (stdParkingRows.length === 0) {
     warn(
       'data/seed/std/ 에 전국주차장정보표준데이터 CSV 가 없다 — 주차장은 OSM·수기만 (README 의 다운로드 안내)',
@@ -449,11 +507,20 @@ async function main(): Promise<void> {
   const outputs: ValleyOutput[] = [];
   const missing: SeedValley[] = [];
   for (const valley of valleys) {
+    if (HAND_BUILT_CENTERLINE.has(valley.id)) {
+      warn(
+        `${valley.id}: 수기 중심선(SD3) — seed:build 가 덮어쓰지 않는다. 시설·봉우리는 별도 스크립트로`,
+      );
+      continue;
+    }
     const center: Position = [valley.lng, valley.lat];
     const output = await buildValley(valley, {
       keys,
       stdParking: stdWithin(stdParkingRows, center, valley.id, 'parking'),
       stdRestrooms: stdWithin(stdRestroomRows, center, valley.id, 'restroom'),
+      stdBins: stdBinRows,
+      stdPlaygrounds: stdPlaygroundRows,
+      stdParkPlaygrounds: stdParkPlaygroundRows,
       manualFacilities: manualFacilities.byValley.get(valley.id) ?? [],
       manual: manual.byValley.get(valley.id) ?? [],
       splits: splits.byValley.get(valley.id),

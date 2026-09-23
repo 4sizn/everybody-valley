@@ -17,7 +17,11 @@ import type {
   ExpressionSpecification,
   SymbolLayerSpecification,
 } from '@maplibre/maplibre-gl-style-spec';
+import type { MapContent, Peak } from '@modu-valley/core';
+import type { FeatureCollection, Point } from 'geojson';
 import { OPENMAPTILES_SOURCE } from './baseStyle';
+import { EMPTY_GEOJSON_SOURCE } from './featureProperties';
+import type { FeatureLayerSet } from './layerSets';
 import { MAP_PALETTES, type MapStyleMode } from './palette';
 
 export const PEAK_LABEL_LAYER_ID = 'terrain-peak-label';
@@ -81,3 +85,78 @@ export function peakLabelLayer(
     },
   };
 }
+
+// ── 자체 봉우리 소스 (2026-09-23) ─────────────────────────────────────
+
+/**
+ * 계곡 주변 봉우리 — **GeoJSON 소스** 라벨. 위 타일 라벨은 3D 지형 + 타일 최대 줌(14) 초과에서
+ * MapLibre 가 그리지 않아(단독 재현 z13.9 → 2개, z14.1 → 0개) 계곡 화면 기본 줌 14.2·15.5 에서
+ * 늘 비었다. GeoJSON 소스는 오버줌이 18 부터라 그 문제가 없다. 데이터는 `MapContent.peaks`
+ * (OSM `natural=peak`, `scripts/seed/peaks.mts`). 줌 10 부터, 표고 높은 순으로 자리를 잡고,
+ * 타일 라벨과 같은 자리(z11~13.9)에서는 충돌 규칙이 하나만 남긴다. 색은 명당 라벨과 같은
+ * 흰 글자 + 어두운 테 — 지형 위 어느 모드에서나 읽힌다.
+ */
+export const PEAK_SOURCE_ID = 'peaks';
+export const VALLEY_PEAK_LABEL_LAYER_ID = 'valley-peak-label';
+export const VALLEY_PEAK_MIN_ZOOM = 10;
+
+export type PeakFeatureProperties = {
+  readonly valleyId: string;
+  readonly name: string;
+  readonly ele: number | null;
+};
+
+export const VALLEY_PEAK_LABEL_LAYER: SymbolLayerSpecification = {
+  id: VALLEY_PEAK_LABEL_LAYER_ID,
+  type: 'symbol',
+  source: PEAK_SOURCE_ID,
+  minzoom: VALLEY_PEAK_MIN_ZOOM,
+  layout: {
+    'text-field': [
+      'concat',
+      '▲ ',
+      ['get', 'name'],
+      ['case', ['has', 'ele'], ['concat', ' ', ['to-string', ['get', 'ele']], 'm'], ''],
+    ],
+    'text-font': ['Noto Sans Bold'],
+    'text-size': 12,
+    'text-anchor': 'bottom',
+    'text-offset': [0, -0.4],
+    'text-max-width': 12,
+    'symbol-sort-key': ['-', 0, ['coalesce', ['get', 'ele'], 0]],
+  },
+  paint: {
+    'text-color': '#ffffff',
+    'text-halo-color': 'rgba(0,0,0,.8)',
+    'text-halo-width': 1.5,
+  },
+};
+
+export function toPeakFeatureCollection(
+  peaks: readonly Peak[],
+): FeatureCollection<Point, PeakFeatureProperties> {
+  return {
+    type: 'FeatureCollection',
+    features: peaks.map((peak) => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [peak.position.lng, peak.position.lat] },
+      properties: {
+        valleyId: peak.valleyId,
+        name: peak.name,
+        ele: peak.elevationM ?? null,
+      },
+    })),
+  };
+}
+
+/** 봉우리 레이어 셋 — 비인터랙티브(눌러도 선택이 아니다). 소스는 `content.peaks` 참조에만 의존한다. */
+export const PEAK_LAYER_SET: FeatureLayerSet = {
+  kind: 'peak',
+  sourceId: PEAK_SOURCE_ID,
+  emptySource: EMPTY_GEOJSON_SOURCE,
+  layers: [VALLEY_PEAK_LABEL_LAYER],
+  interactiveLayerIds: [],
+  readFeatureId: () => undefined,
+  dependencies: (content: MapContent) => [content.peaks],
+  toFeatureCollection: (content) => toPeakFeatureCollection(content.peaks),
+};

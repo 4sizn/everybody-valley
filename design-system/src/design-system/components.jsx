@@ -301,6 +301,8 @@ const FACILITY_ICONS = {
   "화장실": "toilet",
   "주차장": "square-parking",
   "정자·쉼터": "house",
+  "쓰레기통": "trash-2",
+  "놀이터": "toy-brick",
   "안전시설": "shield-check",
   "진입로": "navigation",
   "역·정류장": "map",

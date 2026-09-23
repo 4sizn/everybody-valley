@@ -2,11 +2,11 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "백둔리계곡 시설 3개 — 표준데이터 주차장 0 · 화장실 3 · OSM 0 · 수기 0. 계곡 점 반경 3 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "백둔리계곡 시설 2개 — 표준데이터 주차장 0 · 화장실 2 · 쓰레기통·놀이터 0 · OSM 0 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-21.0",
-    "collectedAt": "2026-09-21",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
     "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
@@ -37,22 +37,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.462908, 37.901507]
-      },
-      "properties": {
-        "id": "baekdunri-std-r-15971",
-        "valleyId": "baekdunri",
-        "name": "백둔리 보건진료소",
-        "facilityType": "restroom",
-        "operatingHours": "09:00~21:00",
-        "mapIconTier": 1,
-        "mapImportance": 21
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.496162, 37.919614]
       },
       "properties": {
@@ -62,7 +46,7 @@
         "facilityType": "restroom",
         "operatingHours": "09:00~21:00",
         "mapIconTier": 1,
-        "mapImportance": 22
+        "mapImportance": 21
       }
     }
   ]

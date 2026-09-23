@@ -1,0 +1,196 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "송추계곡 주변 봉우리 13개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.99252, 37.702372]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "여성봉",
+        "elevationM": 504.3,
+        "distanceM": 878,
+        "osmId": "node/5515194417"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010442, 37.722373]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "사패산",
+        "elevationM": 551.1,
+        "distanceM": 1450,
+        "osmId": "node/5515194667"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.001311, 37.696769]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "오봉산",
+        "elevationM": 665.6,
+        "distanceM": 1550,
+        "osmId": "node/5515194418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.013117, 37.697841]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "도봉산주봉",
+        "elevationM": 676.2,
+        "distanceM": 1722,
+        "osmId": "node/5515194416"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.015057, 37.698663]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "도봉산신선대",
+        "elevationM": 726,
+        "distanceM": 1752,
+        "osmId": "node/11377228354"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.015459, 37.698842]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "도봉산자운봉",
+        "elevationM": 740.2,
+        "distanceM": 1760,
+        "osmId": "node/5515194666"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.016624, 37.697979]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "만장봉",
+        "elevationM": 715.7,
+        "distanceM": 1900,
+        "osmId": "node/5515194665"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.959954, 37.728626]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "일영봉",
+        "elevationM": 443.7,
+        "distanceM": 1917,
+        "osmId": "node/10125389922"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.016864, 37.697706]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "선인봉",
+        "elevationM": 693.1,
+        "distanceM": 1937,
+        "osmId": "node/5515194664"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.979317, 37.686216]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "상장2봉",
+        "distanceM": 2747,
+        "osmId": "node/10940152954"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.977556, 37.686381]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "상장봉",
+        "elevationM": 513.3,
+        "distanceM": 2770,
+        "osmId": "node/5515194672"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.989486, 37.683727]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "상장6봉",
+        "elevationM": 526,
+        "distanceM": 2949,
+        "osmId": "node/10940153085"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.984937, 37.6834]
+      },
+      "properties": {
+        "valleyId": "songchu",
+        "name": "상장5봉",
+        "elevationM": 559,
+        "distanceM": 2988,
+        "osmId": "node/10940153059"
+      }
+    }
+  ]
+}

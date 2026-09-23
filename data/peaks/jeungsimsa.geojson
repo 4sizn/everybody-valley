@@ -1,0 +1,392 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "증심사계곡 주변 봉우리 27개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96227, 35.12832]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "꼬피등",
+        "elevationM": 330,
+        "distanceM": 342,
+        "osmId": "node/10250270876"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954383, 35.131122]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "안산",
+        "elevationM": 259.8,
+        "distanceM": 398,
+        "osmId": "node/10250277967"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.968038, 35.136721]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "장군봉",
+        "distanceM": 510,
+        "osmId": "node/10248473739"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.960813, 35.140679]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "가운데등",
+        "elevationM": 398,
+        "distanceM": 834,
+        "osmId": "node/10213446115"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.9769, 35.13129]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "토끼등",
+        "elevationM": 459,
+        "distanceM": 842,
+        "osmId": "node/10250277966"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.97128, 35.14019]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "낙타봉",
+        "elevationM": 545.2,
+        "distanceM": 966,
+        "osmId": "node/10250277921"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954416, 35.142265]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "향로봉",
+        "elevationM": 365.9,
+        "distanceM": 1064,
+        "osmId": "node/10250277912"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.967061, 35.121642]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "운소봉",
+        "elevationM": 495.9,
+        "distanceM": 1122,
+        "osmId": "node/10250275316"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.961543, 35.143567]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "평두봉",
+        "elevationM": 351,
+        "distanceM": 1162,
+        "osmId": "node/10213468226"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96907, 35.12065]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "새인봉",
+        "elevationM": 487,
+        "distanceM": 1272,
+        "osmId": "node/10250275319"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948311, 35.124431]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "자주봉",
+        "elevationM": 349.7,
+        "distanceM": 1311,
+        "osmId": "node/10250270898"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953778, 35.117953]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "장군봉",
+        "elevationM": 344.1,
+        "distanceM": 1706,
+        "osmId": "node/10250275332"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.959006, 35.115148]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "안장등",
+        "elevationM": 317,
+        "distanceM": 1837,
+        "osmId": "node/10248474277"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.981064, 35.117416]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "서인봉",
+        "elevationM": 611,
+        "distanceM": 2031,
+        "osmId": "node/10248475107"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.981078, 35.117406]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "서인봉",
+        "elevationM": 611,
+        "distanceM": 2033,
+        "osmId": "node/10250275331"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938006, 35.143117]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "깃대봉",
+        "elevationM": 219.4,
+        "distanceM": 2129,
+        "osmId": "node/10250272005"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.97582, 35.11319]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "성적등",
+        "elevationM": 447,
+        "distanceM": 2223,
+        "osmId": "node/10250220939"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.967922, 35.111014]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "마집봉",
+        "elevationM": 472.7,
+        "distanceM": 2293,
+        "osmId": "node/10250220955"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.98179, 35.15112]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "원효봉",
+        "elevationM": 560.9,
+        "distanceM": 2483,
+        "osmId": "node/10250284081"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942342, 35.114864]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "바랑산",
+        "elevationM": 315.7,
+        "distanceM": 2485,
+        "osmId": "node/10250220931"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949336, 35.154344]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "장원봉",
+        "elevationM": 387.5,
+        "distanceM": 2486,
+        "osmId": "node/10250284067"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.992535, 35.122566]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "중봉",
+        "elevationM": 915,
+        "distanceM": 2495,
+        "osmId": "node/10203950884"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.929156, 35.134236]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "미양산",
+        "elevationM": 89.7,
+        "distanceM": 2627,
+        "osmId": "node/10250277950"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.963531, 35.107521]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "핑매등",
+        "elevationM": 418,
+        "distanceM": 2644,
+        "osmId": "node/10248474945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947998, 35.110272]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "매봉",
+        "elevationM": 364.4,
+        "distanceM": 2699,
+        "osmId": "node/10248474946"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95912, 35.10695]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "수박등",
+        "elevationM": 465,
+        "distanceM": 2734,
+        "osmId": "node/10250220991"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.995765, 35.143731]
+      },
+      "properties": {
+        "valleyId": "jeungsimsa",
+        "name": "의상봉",
+        "elevationM": 546.6,
+        "distanceM": 2868,
+        "osmId": "node/10250272004"
+      }
+    }
+  ]
+}

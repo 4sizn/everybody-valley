@@ -2,18 +2,103 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "현등사계곡(운악산) 시설 4개 — 표준데이터 주차장 0 · 화장실 0 · OSM 4 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "현등사계곡(운악산) 시설 13개 — 표준데이터 주차장 1 · 화장실 3 · 쓰레기통·놀이터 0 · OSM 9 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
-    "sources": ["https://www.openstreetmap.org/copyright"]
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
   },
   "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.348703, 37.86425]
+      },
+      "properties": {
+        "id": "hyeondeungsa-std-p-239-2-000006",
+        "valleyId": "hyeondeungsa",
+        "name": "운악산 주차장",
+        "facilityType": "parking",
+        "capacity": 319,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.348966, 37.864764]
+      },
+      "properties": {
+        "id": "hyeondeungsa-std-r-15988",
+        "valleyId": "hyeondeungsa",
+        "name": "운악리 보건진료소",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.348705, 37.864249]
+      },
+      "properties": {
+        "id": "hyeondeungsa-std-r-16059",
+        "valleyId": "hyeondeungsa",
+        "name": "운악산주차장 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.349309, 37.865202]
+      },
+      "properties": {
+        "id": "hyeondeungsa-std-r-16060",
+        "valleyId": "hyeondeungsa",
+        "name": "운악산 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.349324, 37.866187]
+      },
+      "properties": {
+        "id": "hyeondeungsa-osm-food-9093009110",
+        "valleyId": "hyeondeungsa",
+        "name": "산이좋은사람들",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
@@ -26,7 +111,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 20
+        "mapImportance": 25
       }
     },
     {
@@ -41,7 +126,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 21
+        "mapImportance": 26
       }
     },
     {
@@ -56,7 +141,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 22
+        "mapImportance": 27
       }
     },
     {
@@ -71,7 +156,67 @@
         "name": "아테네커피랩",
         "facilityType": "cafe",
         "mapIconTier": 1,
-        "mapImportance": 23
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.348927, 37.864616]
+      },
+      "properties": {
+        "id": "hyeondeungsa-osm-store-11984898714",
+        "valleyId": "hyeondeungsa",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.348254, 37.863846]
+      },
+      "properties": {
+        "id": "hyeondeungsa-osm-parking-1214439227",
+        "valleyId": "hyeondeungsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.35565, 37.851828]
+      },
+      "properties": {
+        "id": "hyeondeungsa-osm-food-9093010746",
+        "valleyId": "hyeondeungsa",
+        "name": "청담",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.302841, 37.883465]
+      },
+      "properties": {
+        "id": "hyeondeungsa-osm-parking-8720516588",
+        "valleyId": "hyeondeungsa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     }
   ]

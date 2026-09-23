@@ -12,7 +12,9 @@ import {
   type LandParcel,
   lookupFacility,
   lookupSegment,
+  nearbyPeaks,
   parseLandParcels,
+  peakLabel,
   type SceneSource,
   type SheetSnap,
   segmentPositionLabel,
@@ -116,6 +118,11 @@ function MapChrome({
   const selecting = useRef(false);
   const weather = useWeather(place.valley.id);
   const foliage = useFoliage(place.valley.id);
+  // 구간 정보의 "주변 산" — 중심선에서 가까운 봉우리 3개(OSM). 합본이 없으면 빈 배열.
+  const peaks = useMemo(
+    () => nearbyPeaks(place.valley, PARSED.ok ? (PARSED.value.peaks ?? []) : []),
+    [place.valley],
+  );
   const alert = weather.value?.alert;
   const risk: Status =
     alert?.level === 'watch'
@@ -493,6 +500,15 @@ function MapChrome({
                       icon="tree-pine"
                     />
                     <Metric label="구간 길이" value={place.segment.length().format()} />
+                    <Metric
+                      label="주변 산"
+                      value={
+                        peaks.length === 0
+                          ? '자료 없음'
+                          : peaks.map(({ peak }) => peakLabel(peak)).join(' · ')
+                      }
+                      icon="mountain"
+                    />
                     {foliage.inSeason && (
                       <div className="mv-metric">
                         <FoliageLeaf stage={foliage.stage} />

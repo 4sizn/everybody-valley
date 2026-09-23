@@ -11,6 +11,7 @@
  * 스크립트가 `data/examples/` 의 샘플을 대신 합본한다.
  * 그늘(F4)은 같은 스크립트가 `data/shade/**` 를 `shade-bundle.json` 한 파일로 합친다 —
  * 산출물이 없는 체크아웃에서는 빈 합본이라 import 는 항상 성립하고 그늘 맵만 빈다.
+ * 봉우리(`data/peaks/`, OSM)도 같은 스크립트가 `peaks-bundle.json` 으로 합친다 — 없으면 빈 합본.
  *
  * 합본이 스키마를 어기면 앱을 죽이지 않고 세션을 `failed` 로 보낸다 —
  * `/firework` 는 이 모듈과 무관하게 살아 있어야 한다.
@@ -27,6 +28,7 @@ import {
   ValleyRepositoryPort,
 } from '@modu-valley/core';
 import facilitiesBundleRaw from '../../assets/valley/facilities-bundle.json';
+import peaksBundleRaw from '../../assets/valley/peaks-bundle.json';
 import shadeBundleRaw from '../../assets/valley/shade-bundle.json';
 import valleysBundleRaw from '../../assets/valley/valleys-bundle.json';
 
@@ -34,6 +36,7 @@ export const PARSED: Result<ValleyDataset, AppError> = loadValleyBundle(
   valleysBundleRaw,
   facilitiesBundleRaw,
   shadeBundleRaw,
+  peaksBundleRaw,
 );
 
 /** 번들된 합본이 검증에 실패했을 때 — 그 실패를 그대로 세션에 넘긴다. */

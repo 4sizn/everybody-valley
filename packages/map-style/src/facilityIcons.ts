@@ -105,6 +105,11 @@ export const FACILITY_GLYPHS: Readonly<Record<FacilityType, string>> = {
   // 정자(지붕 + 처마 + 기둥 둘 + 바닥)
   shelter:
     '<path d="M3.2 11.2L12 4.2l8.8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 11.2h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6.8 11.2v8.6M17.2 11.2v8.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4.8 20.2h14.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  // 쓰레기통(뚜껑 + 몸통 + 세로줄)
+  bin: '<path d="M5 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9.5 7V5h5v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6.5 7l1 13h9l1-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 10.5v6.5M14 10.5v6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  // 그네(A 프레임 + 줄 + 앉는 판)
+  playground:
+    '<path d="M4 20L9.5 4h5L20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 4l1 11.5M14.5 4l-1 11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8.5 15.5h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
   // 버스
   station:
     '<rect x="5" y="4" width="14" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 11h14" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="19.5" r="1.6" fill="currentColor"/><circle cx="15.5" cy="19.5" r="1.6" fill="currentColor"/>',

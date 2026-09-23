@@ -32,6 +32,7 @@ import type { FeatureCollection } from 'geojson';
 import { FACILITY_LAYER_SET } from './facilityLayers';
 import { FLOW_LAYER_SET } from './flowLayers';
 import { LAND_LAYER_SET } from './landLayers';
+import { PEAK_LAYER_SET } from './peakLayers';
 import type { LayerPlacement } from './placement';
 import { SEGMENT_LAYER_SET } from './segmentLayers';
 import { SHADE_LAYER_SET } from './shadeLayers';
@@ -39,7 +40,7 @@ import { SPOT_LAYER_SET } from './spotLayers';
 import { WATER_LAYER_SET } from './waterLayers';
 
 /** 레이어 셋의 종류 — press 가 가능한 피처 종류 + 배경처럼 깔리는 그늘·물줄기 면·흐름 점선(비인터랙티브). */
-export type MapLayerKind = MapFeatureKind | 'shade' | 'water' | 'flow' | 'land';
+export type MapLayerKind = MapFeatureKind | 'shade' | 'water' | 'flow' | 'land' | 'peak';
 
 /**
  * 그리는 위치. 생략 = 스타일 맨 위(기존 동작). 이름별 기준 레이어는 `placement.ts` —
@@ -76,7 +77,7 @@ export type InteractiveLayerSet = FeatureLayerSet & { readonly kind: MapFeatureK
 
 /**
  * 지도에 얹는 모든 피처 종류. 순서 = 그리는 순서(그늘 fill 맨 아래 → 물줄기 면 → 구간 선 →
- * 흐름 점선 → 시설 점 → 명당). 그늘은 `placement` 로 라벨 아래까지 내려가고, 나머지는
+ * 흐름 점선 → 시설 점 → 봉우리 라벨 → 명당). 그늘은 `placement` 로 라벨 아래까지 내려가고, 나머지는
  * 스타일 맨 위에 이 순서로 쌓인다. 흐름 점선이 구간 선 위인 이유는 `flowLayers.ts`.
  * 두 어댑터와 네이티브 뷰가 이 배열 하나를 순회한다.
  */
@@ -87,6 +88,7 @@ export const MAP_LAYER_SETS: readonly FeatureLayerSet[] = [
   SEGMENT_LAYER_SET,
   FLOW_LAYER_SET,
   FACILITY_LAYER_SET,
+  PEAK_LAYER_SET,
   SPOT_LAYER_SET,
 ];
 

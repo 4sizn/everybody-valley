@@ -1,0 +1,127 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "백운계곡 주변 봉우리 8개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.419153, 38.070683]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "452봉",
+        "elevationM": 452,
+        "distanceM": 1405,
+        "osmId": "node/10978266258"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.412337, 38.096855]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "박달봉",
+        "elevationM": 820,
+        "distanceM": 1830,
+        "osmId": "node/10241543381"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.444532, 38.074935]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "백운산",
+        "elevationM": 903,
+        "distanceM": 1839,
+        "osmId": "node/5150951221"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.45336, 38.08092]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "무학봉",
+        "elevationM": 813,
+        "distanceM": 2035,
+        "osmId": "node/10253015139"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.446594, 38.067588]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "삼각봉",
+        "elevationM": 921,
+        "distanceM": 2541,
+        "osmId": "node/10125390238"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.431111, 38.060432]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "향적봉",
+        "elevationM": 784,
+        "distanceM": 2576,
+        "osmId": "node/10026210232"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.431913, 38.116236]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "광덕산",
+        "elevationM": 1046.9,
+        "distanceM": 2789,
+        "osmId": "node/5282800378"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.424307, 38.057759]
+      },
+      "properties": {
+        "valleyId": "baegun-pocheon",
+        "name": "흥룡봉",
+        "elevationM": 729,
+        "distanceM": 2789,
+        "osmId": "node/10125390239"
+      }
+    }
+  ]
+}

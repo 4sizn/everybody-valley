@@ -12,7 +12,11 @@ import type { FacilityId, ValleyId } from './ids';
 import type { MapTier } from './MapTier';
 
 /**
- * 시설 종류 10종.
+ * 시설 종류 12종.
+ *
+ * `bin`(쓰레기통)·`playground`(놀이터)는 2026-09-23 추가 — 전국휴지통·도시공원 표준데이터와
+ * 행안부 어린이놀이시설 API 에 좌표가 있어 공식 출처로 채울 수 있게 됐다(사용자 요청 "쓰레기통과
+ * 놀이터 정보를 취득"). 둘 다 물가 300 m 안에 있는 계곡은 드물어 대개 "가는 길에" 묶음으로 보인다.
  *
  * valley-ds 반입 시 정규화 결정 (C3): 스키마 `facilityType` 과 마커 코드
  * `lazy-marker-icons.ts` 는 `store`, 팔레트 `map-palette.json` 만 `convenience`
@@ -27,6 +31,8 @@ export const FACILITY_TYPES = [
   'cafe',
   'store',
   'shelter',
+  'bin',
+  'playground',
   'station',
   'access',
   'safety',
@@ -41,6 +47,8 @@ const FACILITY_TYPE_LABELS: Readonly<Record<FacilityType, string>> = {
   cafe: '카페',
   store: '매점',
   shelter: '정자·쉼터',
+  bin: '쓰레기통',
+  playground: '놀이터',
   station: '역·정류장',
   access: '진입로',
   safety: '안전시설',

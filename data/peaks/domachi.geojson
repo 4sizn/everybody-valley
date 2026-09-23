@@ -1,0 +1,127 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "도마치계곡 주변 봉우리 8개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.41826, 38.013742]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "국망봉",
+        "elevationM": 1168,
+        "distanceM": 1956,
+        "osmId": "node/5283021261"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.458553, 38.016077]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "수덕바위봉",
+        "elevationM": 1115,
+        "distanceM": 2010,
+        "osmId": "node/10125390247"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.414563, 38.003104]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "견치봉",
+        "elevationM": 1120,
+        "distanceM": 2047,
+        "osmId": "node/10242050638"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.425603, 38.022942]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "돌풍봉",
+        "elevationM": 1112,
+        "distanceM": 2127,
+        "osmId": "node/10252936771"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.42785, 37.97774]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 2316,
+        "osmId": "node/10252936764"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.427845, 37.977729]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 2317,
+        "osmId": "node/10242949478"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.42422, 38.03088]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "신로봉",
+        "elevationM": 981,
+        "distanceM": 2959,
+        "osmId": "node/10252936781"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.40544, 37.99016]
+      },
+      "properties": {
+        "valleyId": "domachi",
+        "name": "민둥산",
+        "elevationM": 1010,
+        "distanceM": 2960,
+        "osmId": "node/10252936774"
+      }
+    }
+  ]
+}

@@ -2,16 +2,19 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "사나사계곡 시설 1개 — 표준데이터 주차장 0 · 화장실 0 · OSM 1 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "사나사계곡 시설 7개 — 표준데이터 주차장 0 · 화장실 2 · 쓰레기통·놀이터 0 · OSM 5 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
-    "sources": ["https://www.openstreetmap.org/copyright"]
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+    ]
   },
   "features": [
     {
@@ -27,6 +30,98 @@
         "facilityType": "cafe",
         "mapIconTier": 1,
         "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.545221, 37.560325]
+      },
+      "properties": {
+        "id": "sanasa-osm-parking-1487464363",
+        "valleyId": "sanasa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.541708, 37.559608]
+      },
+      "properties": {
+        "id": "sanasa-osm-parking-1487464327",
+        "valleyId": "sanasa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.542579, 37.558551]
+      },
+      "properties": {
+        "id": "sanasa-osm-parking-1487464376",
+        "valleyId": "sanasa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.530416, 37.564685]
+      },
+      "properties": {
+        "id": "sanasa-std-r-31578",
+        "valleyId": "sanasa",
+        "name": "두명안휴식지(펜션 인근)",
+        "facilityType": "restroom",
+        "operatingHours": ":~:",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.531653, 37.600527]
+      },
+      "properties": {
+        "id": "sanasa-osm-parking-1302809372",
+        "valleyId": "sanasa",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.51689, 37.566214]
+      },
+      "properties": {
+        "id": "sanasa-std-r-31581",
+        "valleyId": "sanasa",
+        "name": "두명안펜션(입구)",
+        "facilityType": "restroom",
+        "operatingHours": ":~:",
+        "mapIconTier": 1,
+        "mapImportance": 26
       }
     }
   ]

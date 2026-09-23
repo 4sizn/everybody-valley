@@ -1,0 +1,253 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "사나사계곡 주변 봉우리 17개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.559861, 37.565574]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "915봉",
+        "elevationM": 932,
+        "distanceM": 516,
+        "osmId": "node/11286386073"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.550606, 37.563365]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 북정상",
+        "elevationM": 1117,
+        "distanceM": 826,
+        "osmId": "node/12208704145"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.563861, 37.564573]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "957봉",
+        "elevationM": 957,
+        "distanceM": 847,
+        "osmId": "node/11286386072"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.524788, 37.586433]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용천봉",
+        "elevationM": 677.4,
+        "distanceM": 872,
+        "osmId": "node/11937207652"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.5651, 37.57703]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 문례봉",
+        "elevationM": 1002.5,
+        "distanceM": 985,
+        "osmId": "node/10252999155"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.549072, 37.561968]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 가섭봉",
+        "elevationM": 1157.1,
+        "distanceM": 1032,
+        "osmId": "node/10296666662"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.566777, 37.563624]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 용문봉",
+        "elevationM": 971,
+        "distanceM": 1117,
+        "osmId": "node/11026901483"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.54657, 37.561091]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 1155봉",
+        "elevationM": 1155,
+        "distanceM": 1250,
+        "osmId": "node/12210316947"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.543169, 37.558609]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 1150봉",
+        "elevationM": 1150,
+        "distanceM": 1657,
+        "osmId": "node/12210316946"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.540418, 37.55402]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 장군봉",
+        "elevationM": 1065,
+        "distanceM": 2200,
+        "osmId": "node/4520348305"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.580312, 37.574791]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "735봉",
+        "elevationM": 735.2,
+        "distanceM": 2206,
+        "osmId": "node/11115857466"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.564953, 37.548982]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "519봉 삼거리",
+        "elevationM": 519,
+        "distanceM": 2382,
+        "osmId": "node/11634384591"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.506483, 37.57532]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "어비산",
+        "elevationM": 823,
+        "distanceM": 2467,
+        "osmId": "node/10125517998"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.586627, 37.562986]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 용조봉",
+        "elevationM": 631,
+        "distanceM": 2766,
+        "osmId": "node/10107998754"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.534324, 37.549699]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "용문산 함왕봉",
+        "elevationM": 966,
+        "distanceM": 2915,
+        "osmId": "node/4520343119"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.551383, 37.543351]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "감미봉",
+        "elevationM": 555.9,
+        "distanceM": 2916,
+        "osmId": "node/10252999033"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.579636, 37.550444]
+      },
+      "properties": {
+        "valleyId": "sanasa",
+        "name": "덤봉",
+        "elevationM": 290.3,
+        "distanceM": 2937,
+        "osmId": "node/10252999061"
+      }
+    }
+  ]
+}

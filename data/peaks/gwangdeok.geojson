@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "광덕계곡 주변 봉우리 5개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.45336, 38.08092]
+      },
+      "properties": {
+        "valleyId": "gwangdeok",
+        "name": "무학봉",
+        "elevationM": 813,
+        "distanceM": 920,
+        "osmId": "node/10253015139"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.444532, 38.074935]
+      },
+      "properties": {
+        "valleyId": "gwangdeok",
+        "name": "백운산",
+        "elevationM": 903,
+        "distanceM": 1708,
+        "osmId": "node/5150951221"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.446594, 38.067588]
+      },
+      "properties": {
+        "valleyId": "gwangdeok",
+        "name": "삼각봉",
+        "elevationM": 921,
+        "distanceM": 2444,
+        "osmId": "node/10125390238"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.431913, 38.116236]
+      },
+      "properties": {
+        "valleyId": "gwangdeok",
+        "name": "광덕산",
+        "elevationM": 1046.9,
+        "distanceM": 2793,
+        "osmId": "node/5282800378"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.465544, 38.065839]
+      },
+      "properties": {
+        "valleyId": "gwangdeok",
+        "name": "번암산",
+        "elevationM": 832,
+        "distanceM": 2809,
+        "osmId": "node/10125390240"
+      }
+    }
+  ]
+}

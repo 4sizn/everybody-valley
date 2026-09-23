@@ -113,7 +113,7 @@ describe('valley-ds 정규화 결정 (C3)', () => {
   });
 
   it('시설 10종은 store 를 쓰고 convenience 는 들이지 않는다', () => {
-    expect(FACILITY_TYPES).toHaveLength(10);
+    expect(FACILITY_TYPES).toHaveLength(12);
     expect((FACILITY_TYPES as readonly string[]).includes('store')).toBe(true);
     expect((FACILITY_TYPES as readonly string[]).includes('convenience')).toBe(false);
     for (const type of FACILITY_TYPES) expect(facilityTypeLabel(type).length).toBeGreaterThan(0);

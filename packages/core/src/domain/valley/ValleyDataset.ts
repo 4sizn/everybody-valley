@@ -9,6 +9,7 @@
  * 필드 출처: `data/.schema/valleys.schema.json` `$defs.metadata`.
  */
 import type { ValleyId } from './ids';
+import type { Peak } from './Peak';
 import type { ValleyShade } from './Shade';
 import type { Valley } from './Valley';
 
@@ -61,4 +62,6 @@ export type ValleyDataset = {
    * 사용자가 켜는 렌즈라 없어도 데이터셋은 온전하다.
    */
   readonly shade: ReadonlyMap<ValleyId, ValleyShade>;
+  /** 계곡 주변 봉우리(OSM). 합본이 없는 체크아웃에서는 비어 있다 — 라벨일 뿐이라 없어도 온전하다. */
+  readonly peaks?: readonly Peak[];
 };

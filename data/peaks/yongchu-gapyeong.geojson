@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "용추계곡 주변 봉우리 6개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.47096, 37.85439]
+      },
+      "properties": {
+        "valleyId": "yongchu-gapyeong",
+        "name": "선인봉",
+        "elevationM": 486,
+        "distanceM": 514,
+        "osmId": "node/10253010720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.490171, 37.8618]
+      },
+      "properties": {
+        "valleyId": "yongchu-gapyeong",
+        "name": "옥녀봉",
+        "elevationM": 507.7,
+        "distanceM": 773,
+        "osmId": "node/10120267033"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.47179, 37.836852]
+      },
+      "properties": {
+        "valleyId": "yongchu-gapyeong",
+        "name": "수정봉",
+        "elevationM": 447,
+        "distanceM": 1930,
+        "osmId": "node/10242948031"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.479342, 37.881804]
+      },
+      "properties": {
+        "valleyId": "yongchu-gapyeong",
+        "name": "노적봉",
+        "elevationM": 859,
+        "distanceM": 2415,
+        "osmId": "node/10120267034"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.436602, 37.862906]
+      },
+      "properties": {
+        "valleyId": "yongchu-gapyeong",
+        "name": "칼봉산",
+        "elevationM": 899,
+        "distanceM": 2611,
+        "osmId": "node/1914942506"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.463801, 37.886881]
+      },
+      "properties": {
+        "valleyId": "yongchu-gapyeong",
+        "name": "바른골봉",
+        "elevationM": 781,
+        "distanceM": 2929,
+        "osmId": "node/10120267035"
+      }
+    }
+  ]
+}

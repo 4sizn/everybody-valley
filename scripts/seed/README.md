@@ -16,7 +16,9 @@ pnpm seed:build --valley baegun-pocheon # 일부만
 pnpm seed:build --shade                 # 쓰기 뒤 P1 그늘 파이프라인을 계곡별로(계곡당 ~35 s, 첫 실행은 자산 다운로드)
 pnpm seed:build --only-shade            # 파일은 두고 그늘만
 pnpm seed:elevation [--valley id] [--dry] # 중심선 표고 중앙값(Terrarium) → data/valleys/*.geojson `elevationM` (단풍 기온 보정)
-pnpm seed:std                           # (e) 표준데이터 CSV 내려받기 → data/seed/std/
+pnpm seed:std                           # (e) 표준데이터 CSV 내려받기 → data/seed/std/ (주차장·화장실·휴지통·도시공원)
+pnpm seed:playgrounds                   # (e) 행안부 어린이놀이시설 API 전수(약 8,500 요청, 하루 한 번) → data/seed/std/전국어린이놀이시설정보.csv
+pnpm seed:peaks [--valley id]           # 계곡 주변 봉우리(OSM natural=peak, 중심선 3 km) → data/peaks/<id>.geojson (지도 라벨·"주변 산")
 pnpm seed:safemap [--dry-run]           # (d) 생활안전지도 물놀이관리지역 → manual.csv 의 swimBanned·riskNote·depth (공식 출처)
 ```
 
@@ -47,7 +49,9 @@ pnpm seed:access --tag jungbu-2025 [--probe 3] [--dry]              # 필지 지
 | 좌표열 | OSM way (b) | 계곡 점에 가장 가까운 way 에서 시작해 끝 노드가 같은 way 를 이어 붙임(같은 이름 → 가장 긴 가지). 지류가 본류 옆구리로 합류하면 본류를 그 노드에서 잘라 하류만 이어 붙임. 방향은 OSM 규약(하류 방향) + Terrarium 표고 검증(20 m 넘게 거꾸로면 뒤집고 경고). 계곡 점 투영 지점에서 **상류 2 km · 하류 1 km** 절단 | `centerline.mts` |
 | 구간 | `data/seed/splits.csv` (c) | 행이 없으면 **1구간 `whole`**(`splitBasis: none`). 행이 있으면 상류 끝 기준 `fromM~toM` 으로 상·중·하를 자르고 `splitBasis`(toponym·safemap·facility)를 남김 | `splits.mts` |
 | 유역 코드 | 브이월드 WFS `lt_c_wkmsbsn` | 구간 중간점 → `sbsncd` 만 저장(`basinCode`). 폴리곤 저장 없음. 서버 `/api/basins` 와 같은 조회 | `vworld.mts` |
-| 시설 | 표준데이터 CSV(`data/seed/std/`, 있을 때) + OSM amenity + `facilities-manual.csv` (e) | 계곡 점 반경 1.5 km. 표준데이터 주차장 ↔ OSM 주차장 50 m 중복 제거, 수기가 최종 | `facilities.mts` |
+| 시설 | 표준데이터 CSV(`data/seed/std/`, 있을 때) + OSM amenity + `facilities-manual.csv` (e) | 계곡 점 반경 3 km. 같은 종류 50 m 안 중복 제거(표준↔OSM, 표준↔표준), 수기가 최종 | `facilities.mts` |
+| 쓰레기통·놀이터 | 전국휴지통·도시공원(유희시설) 표준데이터 + 어린이놀이시설 API CSV + OSM `leisure=playground`·`amenity=waste_*\|recycling` (2026-09-23) | 정자처럼 **중심선 기준** `EXTRA_MAX_FROM_LINE_M` 1,200 m — 계곡 점 반경으로 받으면 하류 주택가 가로쓰레기통이 수백 개 들어온다. 놀이시설 API 는 운영·실외만 | `facilities.mts` `overpass.mts` |
+| 봉우리 | OSM `natural=peak` + `name` (2026-09-23) | 중심선 bbox + 3 km 로 받아 중심선 거리 3 km 안만, `ele` 는 숫자로 풀리는 것만 `elevationM`. 앱은 자체 GeoJSON 소스로 "▲ 이름 표고m" 라벨을 그린다 — 베이스맵 타일 라벨은 3D 지형 + z ≥ 14 오버줌에서 MapLibre 가 그리지 않는다(실측) | `peaks.mts` `overpass.mts` |
 | 접근 | 가장 가까운 주차장 ↔ 구간 시작점 | `accessDistanceM`(직선, 3 km 안일 때만) · `accessGradePct`(Terrarium 표고차 / 거리) | `build.mts` `elevation.mts` |
 | 그늘·수관 | `scripts/shade`(P1) | `--shade` 로 계곡별 호출 → `shadeByHour`·`canopyCover`·`shadeRatio` 역기입 + `data/shade/<id>/` | `shade.mts` |
 | 안전 항목 | 행안부 생활안전지도 물놀이관리지역 JSON (d) | 관할 시군 전수 조회(`.cache/safemap/`) → 중심선과 거리 매칭(1,500 m / 읍면·리 일치 2,500 m / 지점명 일치) → `manual.csv` 의 swimBanned(위험지역 → true)·riskNote(관리구분·최대/평균 수심 그대로)·depth(평균 수심 환산) 를 confidence `high` 로 덮어씀. 표 `data/seed/safemap-matches.md` | `safemap.mts` |
@@ -77,8 +81,9 @@ SD1a 는 수기 항목을 **전부 빈 칸**으로 두었고, SD1b 에서 **공�
 `std.mts` 가 같은 요청을 Node 로 하고 UTF-8(BOM) CSV 를 `data/seed/std/`(gitignore)에 쓴다. 요청 간 1 s.
 
 ```sh
-pnpm seed:std              # 주차장 + 화장실
-pnpm seed:std parking      # 하나만 (parking | restroom)
+pnpm seed:std              # 주차장 + 화장실 + 휴지통 + 도시공원
+pnpm seed:std parking      # 하나만 (parking | restroom | bin | park)
+pnpm seed:playgrounds      # 어린이놀이시설 API (표준데이터 아님 — 아래)
 pnpm seed:build            # 매칭
 ```
 
@@ -86,6 +91,10 @@ pnpm seed:build            # 매칭
 | --- | --- | --- | --- | --- |
 | 전국주차장정보표준데이터 | 15012896 | `data/seed/std/전국주차장정보표준데이터.csv` | 주차장명·주차장관리번호·주차구획수·요금정보·평일운영시작/종료시각·위도·경도 | 18,878행, 좌표 있음 18,117 |
 | 전국공중화장실표준데이터 | 15012892 | `data/seed/std/전국공중화장실표준데이터.csv` | 화장실명·개방시간·위도·경도 | 33,820행, 좌표 있음 27,040 — 페이지 고지("2025-02 좌표 제공 중단")와 달리 이 엔드포인트에는 좌표가 남아 있다 |
+| 전국휴지통표준데이터 | 15129450 | `data/seed/std/전국휴지통표준데이터.csv` | 설치장소명·휴지통종류·위도·경도 | 3,732행(2026-09-23), 35개 지자체만 제공. 우리 계곡 관할 중엔 광진·강북(서울)·광주·파주·동두천 |
+| 전국도시공원정보표준데이터 | 15012890 | `data/seed/std/전국도시공원정보표준데이터.csv` | 공원명·공원보유시설(유희시설)·위도·경도 — 유희시설이 비어 있지 않은 공원만 놀이터로 | 18,295행(2026-09-23), 유희시설 있는 공원 5,939 |
+
+**어린이놀이시설 API**(행정안전부_전국어린이놀이시설정보서비스 15124519, `apis.data.go.kr/1741000/pfc3/getPfctInfo3`)는 표준데이터가 아니라 `serviceKey` 가 필요한 Open API 다 — `DATA_GO_KR_KEY_ENCODING` 으로 활용신청(자동승인, 2026-09-23 승인)해 두었다. 지역 필터 파라미터가 없고 `numOfRows` 가 10 으로 고정돼 전수 85,346건 = 8,535 요청. 개발계정 한도 10,000/일 이라 `pnpm seed:playgrounds` 는 **하루 한 번**만. 설치장소유형(도시공원·주택단지·야영장·유원지·식당…)·운영여부·실내외를 CSV 에 남기고, 시더는 운영·실외만 쓴다.
 
 인코딩은 UTF-8(BOM)·EUC-KR 둘 다 읽는다. 파일이 없으면 경고만 내고 OSM·수기로 진행한다. 출처는 공공누리 1유형(출처표시) — 사용된 파일이 있는 계곡의 `metadata.sources` 에 페이지 URL 이 붙는다.
 

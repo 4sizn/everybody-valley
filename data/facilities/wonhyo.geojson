@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "원효계곡 시설 13개 — 표준데이터 주차장 0 · 화장실 2 · OSM 11 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "원효계곡 시설 25개 — 표준데이터 주차장 0 · 화장실 3 · 쓰레기통·놀이터 0 · OSM 22 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-09.0",
-    "collectedAt": "2026-09-09",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -53,38 +53,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.982855, 35.163914]
-      },
-      "properties": {
-        "id": "wonhyo-osm-parking-11107892956",
-        "valleyId": "wonhyo",
-        "name": "주차장",
-        "facilityType": "parking",
-        "capacity": 5,
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.983227, 35.164694]
-      },
-      "properties": {
-        "id": "wonhyo-osm-parking-11110883737",
-        "valleyId": "wonhyo",
-        "name": "주차장",
-        "facilityType": "parking",
-        "capacity": 10,
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [126.998904, 35.167789]
       },
       "properties": {
@@ -109,7 +77,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 25
+        "mapImportance": 23
       }
     },
     {
@@ -131,6 +99,84 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
+        "coordinates": [126.998437, 35.16922]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-1197663634",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 60,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.989139, 35.144593]
+      },
+      "properties": {
+        "id": "wonhyo-osm-restroom-1241834632",
+        "valleyId": "wonhyo",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.986385, 35.145958]
+      },
+      "properties": {
+        "id": "wonhyo-osm-cafe-1241880499",
+        "valleyId": "wonhyo",
+        "name": "첫새벽",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.999681, 35.169806]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-11111741054",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 3,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.998608, 35.170027]
+      },
+      "properties": {
+        "id": "wonhyo-std-r-11034",
+        "valleyId": "wonhyo",
+        "name": "금곡마을(무돌길)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
         "coordinates": [126.989181, 35.143885]
       },
       "properties": {
@@ -146,21 +192,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.979728, 35.161959]
-      },
-      "properties": {
-        "id": "wonhyo-osm-food-1196916670",
-        "valleyId": "wonhyo",
-        "name": "문정휴게소",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 28
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [126.989518, 35.143681]
       },
       "properties": {
@@ -169,7 +200,99 @@
         "name": "만물슈퍼",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 29
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.989756, 35.143455]
+      },
+      "properties": {
+        "id": "wonhyo-osm-food-1231317946",
+        "valleyId": "wonhyo",
+        "name": "송원산장",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.982855, 35.163914]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-11107892956",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 5,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.990371, 35.143158]
+      },
+      "properties": {
+        "id": "wonhyo-osm-food-1231317944",
+        "valleyId": "wonhyo",
+        "name": "삼학식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.983227, 35.164694]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-11110883737",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 10,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.990761, 35.142928]
+      },
+      "properties": {
+        "id": "wonhyo-osm-store-1231317945",
+        "valleyId": "wonhyo",
+        "name": "광원슈퍼",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.979728, 35.161959]
+      },
+      "properties": {
+        "id": "wonhyo-osm-food-1196916670",
+        "valleyId": "wonhyo",
+        "name": "문정휴게소",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 37
       }
     },
     {
@@ -191,30 +314,92 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.989139, 35.144593]
+        "coordinates": [126.969905, 35.153691]
       },
       "properties": {
-        "id": "wonhyo-osm-restroom-1241834632",
+        "id": "wonhyo-osm-food-5259533023",
         "valleyId": "wonhyo",
-        "name": "화장실",
-        "facilityType": "restroom",
+        "name": "식당",
+        "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 31
+        "mapImportance": 39
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.986385, 35.145958]
+        "coordinates": [126.998497, 35.179763]
       },
       "properties": {
-        "id": "wonhyo-osm-cafe-1241880499",
+        "id": "wonhyo-osm-parking-1212777305",
         "valleyId": "wonhyo",
-        "name": "첫새벽",
-        "facilityType": "cafe",
-        "mapIconTier": 1,
-        "mapImportance": 32
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.997071, 35.18059]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-897071135",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 30,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.001278, 35.182185]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-1560100321",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96234, 35.162703]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-1222165093",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 15,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96471, 35.172793]
+      },
+      "properties": {
+        "id": "wonhyo-osm-parking-1232451244",
+        "valleyId": "wonhyo",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     }
   ]

@@ -17,10 +17,10 @@ import {
 import { FACILITY_COLORS, FACILITY_PIN_STROKE_COLOR } from '../src/palette';
 
 describe('아이콘 ID 규약 — facility/<type>[/selected]', () => {
-  it('10종 × 2상태 = 20개, 모드는 ID 에 없다(D2)', () => {
-    expect(FACILITY_ICON_SPECS).toHaveLength(20);
+  it('12종 × 2상태 = 24개, 모드는 ID 에 없다(D2)', () => {
+    expect(FACILITY_ICON_SPECS).toHaveLength(24);
     const ids = FACILITY_ICON_SPECS.map(({ type, selected }) => facilityIconId(type, selected));
-    expect(new Set(ids).size).toBe(20);
+    expect(new Set(ids).size).toBe(24);
     for (const id of ids) {
       expect(id).toMatch(/^facility\/[a-z]+(\/selected)?$/);
       expect(id).not.toMatch(/light|dark/);
@@ -105,7 +105,7 @@ describe('facilityPinSvg — A2 물방울 핀', () => {
     },
   );
 
-  it('20장 SVG 문자열 스냅샷 — 바뀌면 PNG 재빌드(pnpm icons:build) 가 필요하다', () => {
+  it('24장 SVG 문자열 스냅샷 — 바뀌면 PNG 재빌드(pnpm icons:build) 가 필요하다', () => {
     const all = Object.fromEntries(
       FACILITY_ICON_SPECS.map(({ type, selected }) => [
         facilityIconId(type, selected),

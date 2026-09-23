@@ -1,0 +1,196 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "수락산계곡(청학리) 주변 봉우리 13개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09109, 37.70235]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "향로봉",
+        "elevationM": 463.4,
+        "distanceM": 882,
+        "osmId": "node/10253004819"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.112881, 37.696514]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "국사봉",
+        "elevationM": 331.3,
+        "distanceM": 1004,
+        "osmId": "node/10253004813"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08874, 37.70366]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "영락대",
+        "elevationM": 483,
+        "distanceM": 1113,
+        "osmId": "node/10253004776"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.140619, 37.701145]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "옛성산",
+        "elevationM": 286,
+        "distanceM": 1447,
+        "osmId": "node/10120106807"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092089, 37.689806]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "삼각점",
+        "distanceM": 1501,
+        "osmId": "node/11378604209"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08271, 37.703105]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "기차바위",
+        "elevationM": 608,
+        "distanceM": 1625,
+        "osmId": "node/10253004792"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.121825, 37.721994]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "깃대봉",
+        "elevationM": 288.3,
+        "distanceM": 1680,
+        "osmId": "node/10253004833"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08287, 37.69509]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "코끼리바위",
+        "elevationM": 576,
+        "distanceM": 1741,
+        "osmId": "node/10253004832"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.08134, 37.699264]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "수락산",
+        "elevationM": 638,
+        "distanceM": 1748,
+        "osmId": "node/3803846068"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.143806, 37.697667]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "퇴뫼산",
+        "elevationM": 370.8,
+        "distanceM": 1769,
+        "osmId": "node/10120106808"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.084707, 37.690594]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "도솔봉",
+        "elevationM": 540,
+        "distanceM": 1866,
+        "osmId": "node/5150649711"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.079118, 37.711934]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "도정봉",
+        "elevationM": 448,
+        "distanceM": 2264,
+        "osmId": "node/7628172895"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.07656, 37.71338]
+      },
+      "properties": {
+        "valleyId": "suraksan",
+        "name": "동막봉",
+        "elevationM": 512,
+        "distanceM": 2540,
+        "osmId": "node/10253004782"
+      }
+    }
+  ]
+}

@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "구곡폭포 계곡 시설 2개 — 표준데이터 주차장 0 · 화장실 1 · OSM 1 · 수기 0. 계곡 점 반경 1.5 km. 정자·쉼터 1곳 추가(OSM shelter/pavilion, 중심선 250 m 안).",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "구곡폭포 계곡 시설 11개 — 표준데이터 주차장 0 · 화장실 4 · 쓰레기통·놀이터 0 · OSM 7 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-09.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -37,6 +37,21 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
+        "coordinates": [127.609501, 37.794827]
+      },
+      "properties": {
+        "id": "gugok-osm-shelter-10214239273",
+        "valleyId": "gugok",
+        "name": "구곡정",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
         "coordinates": [127.617006, 37.797709]
       },
       "properties": {
@@ -52,15 +67,123 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.609501, 37.794827]
+        "coordinates": [127.632485, 37.797305]
       },
       "properties": {
-        "id": "gugok-osm-shelter-10214239273",
+        "id": "gugok-osm-store-368684253",
         "valleyId": "gugok",
-        "name": "구곡정",
-        "facilityType": "shelter",
+        "name": "너구리 마트",
+        "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 0.4
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.63416, 37.805805]
+      },
+      "properties": {
+        "id": "gugok-std-r-16097",
+        "valleyId": "gugok",
+        "name": "강촌역",
+        "facilityType": "restroom",
+        "operatingHours": "5:00~24:20",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.62239, 37.767773]
+      },
+      "properties": {
+        "id": "gugok-osm-parking-1039476544",
+        "valleyId": "gugok",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.624385, 37.7683]
+      },
+      "properties": {
+        "id": "gugok-osm-parking-1039476553",
+        "valleyId": "gugok",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.623846, 37.768032]
+      },
+      "properties": {
+        "id": "gugok-osm-parking-1039476546",
+        "valleyId": "gugok",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.592226, 37.815405]
+      },
+      "properties": {
+        "id": "gugok-osm-restroom-7160274692",
+        "valleyId": "gugok",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.636269, 37.808817]
+      },
+      "properties": {
+        "id": "gugok-std-r-21529",
+        "valleyId": "gugok",
+        "name": "강촌삼거리",
+        "facilityType": "restroom",
+        "operatingHours": "상시",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.643413, 37.792811]
+      },
+      "properties": {
+        "id": "gugok-std-r-16137",
+        "valleyId": "gugok",
+        "name": "남산도서관",
+        "facilityType": "restroom",
+        "operatingHours": "9:00~22:00",
+        "mapIconTier": 1,
+        "mapImportance": 30
       }
     }
   ]

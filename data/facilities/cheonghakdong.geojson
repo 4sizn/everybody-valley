@@ -2,21 +2,100 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "청학동계곡 시설 13개 — 표준데이터 주차장 6 · 화장실 0 · OSM 7 · 수기 0. 계곡 점 반경 3 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "청학동계곡 시설 14개 — 표준데이터 주차장 6 · 화장실 0 · 쓰레기통·놀이터 1 · OSM 7 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-21.0",
-    "collectedAt": "2026-09-21",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
     "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
-      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)"
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012890/standard.do (전국도시공원정보표준데이터 유희시설, 공공누리 1유형)"
     ]
   },
   "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.318365, 37.953897]
+      },
+      "properties": {
+        "id": "cheonghakdong-std-park-818",
+        "valleyId": "cheonghakdong",
+        "name": "기산근린공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.316371, 37.955071]
+      },
+      "properties": {
+        "id": "cheonghakdong-osm-food-9093010773",
+        "valleyId": "cheonghakdong",
+        "name": "황토백운장",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.317693, 37.954524]
+      },
+      "properties": {
+        "id": "cheonghakdong-osm-food-9093010772",
+        "valleyId": "cheonghakdong",
+        "name": "최주미메밀국수",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.316694, 37.955641]
+      },
+      "properties": {
+        "id": "cheonghakdong-std-p-236-2-000018",
+        "valleyId": "cheonghakdong",
+        "name": "청계천 복개주차장",
+        "facilityType": "parking",
+        "capacity": 181,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.317567, 37.955356]
+      },
+      "properties": {
+        "id": "cheonghakdong-osm-parking-475895933",
+        "valleyId": "cheonghakdong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
@@ -33,6 +112,21 @@
         "operatingHours": "00:00~23:59",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.321809, 37.953114]
+      },
+      "properties": {
+        "id": "cheonghakdong-osm-store-9979766703",
+        "valleyId": "cheonghakdong",
+        "name": "emart24",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 26
       }
     },
     {
@@ -57,6 +151,21 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
+        "coordinates": [127.317114, 37.956264]
+      },
+      "properties": {
+        "id": "cheonghakdong-osm-store-368939717",
+        "valleyId": "cheonghakdong",
+        "name": "포천축협",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
         "coordinates": [127.320659, 37.954769]
       },
       "properties": {
@@ -65,42 +174,6 @@
         "name": "사리재5길 주차장",
         "facilityType": "parking",
         "capacity": 24,
-        "feeNote": "무료",
-        "operatingHours": "00:00~23:59",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.319801, 37.959825]
-      },
-      "properties": {
-        "id": "cheonghakdong-std-p-236-2-000019",
-        "valleyId": "cheonghakdong",
-        "name": "일동장터 주차장",
-        "facilityType": "parking",
-        "capacity": 340,
-        "feeNote": "무료",
-        "operatingHours": "00:00~23:59",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.316694, 37.955641]
-      },
-      "properties": {
-        "id": "cheonghakdong-std-p-236-2-000018",
-        "valleyId": "cheonghakdong",
-        "name": "청계천 복개주차장",
-        "facilityType": "parking",
-        "capacity": 181,
         "feeNote": "무료",
         "operatingHours": "00:00~23:59",
         "mapIconTier": 0,
@@ -129,21 +202,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.317114, 37.956264]
-      },
-      "properties": {
-        "id": "cheonghakdong-osm-store-368939717",
-        "valleyId": "cheonghakdong",
-        "name": "포천축협",
-        "facilityType": "store",
-        "mapIconTier": 1,
-        "mapImportance": 26
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.317856, 37.95853]
       },
       "properties": {
@@ -152,52 +210,25 @@
         "name": "싱싱횟집",
         "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 27
+        "mapImportance": 31
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.317693, 37.954524]
+        "coordinates": [127.319801, 37.959825]
       },
       "properties": {
-        "id": "cheonghakdong-osm-food-9093010772",
+        "id": "cheonghakdong-std-p-236-2-000019",
         "valleyId": "cheonghakdong",
-        "name": "최주미메밀국수",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 28
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.316371, 37.955071]
-      },
-      "properties": {
-        "id": "cheonghakdong-osm-food-9093010773",
-        "valleyId": "cheonghakdong",
-        "name": "황토백운장",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 29
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.321809, 37.953114]
-      },
-      "properties": {
-        "id": "cheonghakdong-osm-store-9979766703",
-        "valleyId": "cheonghakdong",
-        "name": "emart24",
-        "facilityType": "store",
-        "mapIconTier": 1,
-        "mapImportance": 30
+        "name": "일동장터 주차장",
+        "facilityType": "parking",
+        "capacity": 340,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     },
     {
@@ -214,22 +245,7 @@
         "capacity": 500,
         "operatingHours": "Am 11:00 - Pm 10:00",
         "mapIconTier": 1,
-        "mapImportance": 31
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.317567, 37.955356]
-      },
-      "properties": {
-        "id": "cheonghakdong-osm-parking-475895933",
-        "valleyId": "cheonghakdong",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
+        "mapImportance": 33
       }
     }
   ]

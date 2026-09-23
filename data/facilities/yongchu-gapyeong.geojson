@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "용추계곡 시설 9개 — 표준데이터 주차장 0 · 화장실 5 · OSM 4 · 수기 0. 계곡 점 반경 1.5 km. 정자·쉼터 1곳 추가(OSM shelter/pavilion, 중심선 250 m 안).",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "용추계곡 시설 47개 — 표준데이터 주차장 0 · 화장실 5 · 쓰레기통·놀이터 0 · OSM 42 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-09.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -69,38 +69,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.485459, 37.847753]
-      },
-      "properties": {
-        "id": "yongchu-gapyeong-std-r-30065",
-        "valleyId": "yongchu-gapyeong",
-        "name": "연인산 도립공원 탐방안내소 주차장",
-        "facilityType": "restroom",
-        "operatingHours": "09:00~21:00",
-        "mapIconTier": 1,
-        "mapImportance": 23
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.485459, 37.847753]
-      },
-      "properties": {
-        "id": "yongchu-gapyeong-std-r-30066",
-        "valleyId": "yongchu-gapyeong",
-        "name": "연인산 도립공원 관리사무소",
-        "facilityType": "restroom",
-        "operatingHours": "09:00~21:00",
-        "mapIconTier": 1,
-        "mapImportance": 24
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.486513, 37.848123]
       },
       "properties": {
@@ -109,7 +77,22 @@
         "name": "커피먹인닭",
         "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 25
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.486169, 37.846664]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1213206661",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     },
     {
@@ -169,7 +152,579 @@
         "name": "정자",
         "facilityType": "shelter",
         "mapIconTier": 1,
-        "mapImportance": 0.4
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.486936, 37.845531]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-bin-12149790149",
+        "valleyId": "yongchu-gapyeong",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.487683, 37.845156]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-store-12150784339",
+        "valleyId": "yongchu-gapyeong",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.487909, 37.844166]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1312713996",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.488886, 37.844545]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306552332",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.488515, 37.844032]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306552341",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.470694, 37.847028]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1304189607",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.489487, 37.84427]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306552334",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.489325, 37.844137]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-playground-1306552340",
+        "valleyId": "yongchu-gapyeong",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.48777, 37.84257]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1312583714",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.49228, 37.844032]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306594136",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.493792, 37.843111]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306723863",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.494472, 37.843548]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306723860",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.495089, 37.843521]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306723858",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498654, 37.845972]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-std-r-29913",
+        "valleyId": "yongchu-gapyeong",
+        "name": "농업기술센타",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.500546, 37.846698]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-9093010740",
+        "valleyId": "yongchu-gapyeong",
+        "name": "소나무집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.494915, 37.83939]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-12109450087",
+        "valleyId": "yongchu-gapyeong",
+        "name": "최가네 우렁쌈밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.494974, 37.839323]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1307626563",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.499449, 37.841901]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306969184",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.502377, 37.844286]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306732737",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.496899, 37.838198]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1307252490",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.505729, 37.852033]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-9093010722",
+        "valleyId": "yongchu-gapyeong",
+        "name": "파주닭국수가평점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.497406, 37.838171]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-12106101626",
+        "valleyId": "yongchu-gapyeong",
+        "name": "온정리 금강막국수 숯불닭갈비",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.506127, 37.851565]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-9093010738",
+        "valleyId": "yongchu-gapyeong",
+        "name": "다주리진곰탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498246, 37.838592]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-cafe-12108206673",
+        "valleyId": "yongchu-gapyeong",
+        "name": "카페목련",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.49785, 37.838264]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1307235289",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498563, 37.838664]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1307484638",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.501886, 37.841727]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306969191",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498583, 37.838466]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-12106101611",
+        "valleyId": "yongchu-gapyeong",
+        "name": "금자네 우거지갈비탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 56
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.506444, 37.850104]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-std-r-29960",
+        "valleyId": "yongchu-gapyeong",
+        "name": "송정주유소",
+        "facilityType": "restroom",
+        "operatingHours": "00:00~24:00",
+        "mapIconTier": 1,
+        "mapImportance": 57
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.507493, 37.856288]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1303761909",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.499988, 37.839047]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1307235279",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.50027, 37.839097]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-12106101546",
+        "valleyId": "yongchu-gapyeong",
+        "name": "용추숯불닭갈비",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 60
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498503, 37.837308]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-parking-1306465377",
+        "valleyId": "yongchu-gapyeong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.504892, 37.842546]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-12117686999",
+        "valleyId": "yongchu-gapyeong",
+        "name": "종가집곰탕 순대국",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.508855, 37.848914]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-9093010717",
+        "valleyId": "yongchu-gapyeong",
+        "name": "자연가든",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 63
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.509241, 37.850357]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-9093009115",
+        "valleyId": "yongchu-gapyeong",
+        "name": "우쿠야&닭익는마을",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.50585, 37.842023]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-12116791726",
+        "valleyId": "yongchu-gapyeong",
+        "name": "계량촌 부대찌개",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.514051, 37.85744]
+      },
+      "properties": {
+        "id": "yongchu-gapyeong-osm-food-9093009113",
+        "valleyId": "yongchu-gapyeong",
+        "name": "청대문",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 66
       }
     }
   ]

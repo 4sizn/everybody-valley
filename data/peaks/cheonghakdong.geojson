@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "청학동계곡 주변 봉우리 3개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.305783, 37.948467]
+      },
+      "properties": {
+        "valleyId": "cheonghakdong",
+        "name": "자주봉",
+        "elevationM": 210.7,
+        "distanceM": 512,
+        "osmId": "node/10253010781"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.328698, 37.921945]
+      },
+      "properties": {
+        "valleyId": "cheonghakdong",
+        "name": "원통산",
+        "elevationM": 566.2,
+        "distanceM": 2473,
+        "osmId": "node/10125389947"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.2827, 37.95705]
+      },
+      "properties": {
+        "valleyId": "cheonghakdong",
+        "name": "촛대봉",
+        "elevationM": 546.5,
+        "distanceM": 2696,
+        "osmId": "node/10253010774"
+      }
+    }
+  ]
+}

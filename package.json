@@ -36,7 +36,9 @@
     "build": "pnpm --filter valley-map build:web && pnpm server:build",
     "native:prebuild": "pnpm --filter valley-map prebuild",
     "seed:access": "tsx scripts/seed/access.mts",
-    "seed:elevation": "tsx scripts/seed/elevation-valleys.mts"
+    "seed:elevation": "tsx scripts/seed/elevation-valleys.mts",
+    "seed:playgrounds": "tsx scripts/seed/playgrounds.mts",
+    "seed:peaks": "tsx scripts/seed/peaks.mts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.11",

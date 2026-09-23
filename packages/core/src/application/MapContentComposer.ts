@@ -48,6 +48,7 @@ export class MapContentComposer {
   landParcels: MapContent['landParcels'] = [];
 
   #valleys: readonly Valley[] = [];
+  #peaks: MapContent['peaks'] = [];
   #base: MapContent = EMPTY_MAP_CONTENT;
   #shade: ReadonlyMap<ValleyId, ValleyShade> = new Map();
   readonly #overlays = new Map<ShadeHourIndex, ShadeOverlay>();
@@ -65,7 +66,9 @@ export class MapContentComposer {
       ...EMPTY_MAP_CONTENT,
       segments: dataset.valleys.flatMap((valley) => valley.segments),
       facilities: dataset.valleys.flatMap((valley) => valley.facilities),
+      peaks: dataset.peaks ?? [],
     };
+    this.#peaks = dataset.peaks ?? [];
     this.#shade = dataset.shade;
     this.#overlays.clear();
     this.#filterFingerprint = null;
@@ -105,12 +108,13 @@ export class MapContentComposer {
     const fingerprint = filterFingerprint(filter);
     if (fingerprint === this.#filterFingerprint) return;
     const { valleys } = filterValleys(this.#valleys, filter.selected, filter.pinnedValleyId);
+    const allowed = new Set(valleys.map((valley) => valley.id));
     this.#filteredBase = {
       ...EMPTY_MAP_CONTENT,
       segments: valleys.flatMap((valley) => valley.segments),
       facilities: valleys.flatMap((valley) => valley.facilities),
+      peaks: this.#peaks.filter((peak) => allowed.has(peak.valleyId)),
     };
-    const allowed = new Set(valleys.map((valley) => valley.id));
     this.#filteredShade = filterShadeMap(this.#shade, allowed);
     this.#filteredOverlays.clear();
     this.#filterFingerprint = fingerprint;

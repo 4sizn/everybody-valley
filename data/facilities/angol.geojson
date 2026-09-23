@@ -2,19 +2,20 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "안골계곡 시설 66개 — 표준데이터 주차장 1 · 화장실 5 · OSM 60 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "안골계곡 시설 154개 — 표준데이터 주차장 4 · 화장실 10 · 쓰레기통·놀이터 6 · OSM 134 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
       "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
-      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012890/standard.do (전국도시공원정보표준데이터 유희시설, 공공누리 1유형)"
     ]
   },
   "features": [
@@ -25,7 +26,7 @@
         "coordinates": [127.02714, 37.742871]
       },
       "properties": {
-        "id": "angol-std-p-207-2-000064",
+        "id": "angol-std-p-207-2-000067",
         "valleyId": "angol",
         "name": "호국로(흥선광장~경민광장)",
         "facilityType": "parking",
@@ -34,6 +35,58 @@
         "operatingHours": "00:00~23:59",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035717, 37.738692]
+      },
+      "properties": {
+        "id": "angol-std-p-207-2-000007",
+        "valleyId": "angol",
+        "name": "백석천 지하2번",
+        "facilityType": "parking",
+        "capacity": 246,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036374, 37.737582]
+      },
+      "properties": {
+        "id": "angol-std-p-207-2-000006",
+        "valleyId": "angol",
+        "name": "백석천 지하1번",
+        "facilityType": "parking",
+        "capacity": 346,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036372, 37.73758]
+      },
+      "properties": {
+        "id": "angol-std-r-12227",
+        "valleyId": "angol",
+        "name": "평화의광장(남측)",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 23
       }
     },
     {
@@ -49,7 +102,7 @@
         "facilityType": "restroom",
         "operatingHours": "연중무휴",
         "mapIconTier": 1,
-        "mapImportance": 21
+        "mapImportance": 24
       }
     },
     {
@@ -65,7 +118,7 @@
         "facilityType": "restroom",
         "operatingHours": "연중무휴",
         "mapIconTier": 1,
-        "mapImportance": 22
+        "mapImportance": 25
       }
     },
     {
@@ -81,7 +134,7 @@
         "facilityType": "restroom",
         "operatingHours": "연중무휴",
         "mapIconTier": 1,
-        "mapImportance": 23
+        "mapImportance": 26
       }
     },
     {
@@ -97,7 +150,7 @@
         "facilityType": "restroom",
         "operatingHours": "연중무휴",
         "mapIconTier": 1,
-        "mapImportance": 24
+        "mapImportance": 27
       }
     },
     {
@@ -113,7 +166,22 @@
         "facilityType": "restroom",
         "operatingHours": "연중무휴",
         "mapIconTier": 1,
-        "mapImportance": 25
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035943, 37.735452]
+      },
+      "properties": {
+        "id": "angol-std-park-1622",
+        "valleyId": "angol",
+        "name": "문화어린이공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 29
       }
     },
     {
@@ -128,7 +196,7 @@
         "name": "이수할인마트",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 26
+        "mapImportance": 30
       }
     },
     {
@@ -143,7 +211,22 @@
         "name": "양주축협",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 27
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.028374, 37.744215]
+      },
+      "properties": {
+        "id": "angol-osm-store-4632032830",
+        "valleyId": "angol",
+        "name": "성광슈퍼",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 32
       }
     },
     {
@@ -158,7 +241,7 @@
         "name": "떡볶이 대박집",
         "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 28
+        "mapImportance": 33
       }
     },
     {
@@ -174,7 +257,7 @@
         "facilityType": "restroom",
         "feeNote": "무료",
         "mapIconTier": 1,
-        "mapImportance": 29
+        "mapImportance": 34
       }
     },
     {
@@ -190,99 +273,7 @@
         "facilityType": "restroom",
         "feeNote": "무료",
         "mapIconTier": 1,
-        "mapImportance": 30
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036733, 37.732051]
-      },
-      "properties": {
-        "id": "angol-osm-parking-8318341008",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "feeNote": "유료",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036571, 37.730564]
-      },
-      "properties": {
-        "id": "angol-osm-store-8318341080",
-        "valleyId": "angol",
-        "name": "GS25",
-        "facilityType": "store",
-        "operatingHours": "Mo-Su,PH 00:00+",
-        "mapIconTier": 1,
-        "mapImportance": 32
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.03708, 37.730203]
-      },
-      "properties": {
-        "id": "angol-osm-food-8780521655",
-        "valleyId": "angol",
-        "name": "달리는 커피",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 33
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.031632, 37.72763]
-      },
-      "properties": {
-        "id": "angol-osm-restroom-8792155455",
-        "valleyId": "angol",
-        "name": "화장실",
-        "facilityType": "restroom",
-        "mapIconTier": 1,
-        "mapImportance": 34
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.035788, 37.734912]
-      },
-      "properties": {
-        "id": "angol-osm-food-9092942514",
-        "valleyId": "angol",
-        "name": "남해회",
-        "facilityType": "food",
-        "mapIconTier": 1,
         "mapImportance": 35
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036739, 37.735195]
-      },
-      "properties": {
-        "id": "angol-osm-food-9092946300",
-        "valleyId": "angol",
-        "name": "미락복",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 36
       }
     },
     {
@@ -295,6 +286,21 @@
         "id": "angol-osm-food-9093003537",
         "valleyId": "angol",
         "name": "하성설렁탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.030364, 37.742923]
+      },
+      "properties": {
+        "id": "angol-osm-food-9093003626",
+        "valleyId": "angol",
+        "name": "이디야커피의정부흥선점",
         "facilityType": "food",
         "mapIconTier": 1,
         "mapImportance": 37
@@ -364,131 +370,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.036685, 37.731791]
-      },
-      "properties": {
-        "id": "angol-osm-store-13177474417",
-        "valleyId": "angol",
-        "name": "이마트24",
-        "facilityType": "store",
-        "operatingHours": "Mo-Su,PH 00:00-12:00",
-        "mapIconTier": 1,
-        "mapImportance": 42
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036635, 37.731755]
-      },
-      "properties": {
-        "id": "angol-osm-food-13177474418",
-        "valleyId": "angol",
-        "name": "BBQ치킨",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 43
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036757, 37.733004]
-      },
-      "properties": {
-        "id": "angol-osm-food-13366467064",
-        "valleyId": "angol",
-        "name": "범양꼬치",
-        "facilityType": "food",
-        "mapIconTier": 1,
-        "mapImportance": 44
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.035403, 37.73392]
-      },
-      "properties": {
-        "id": "angol-osm-cafe-13366476681",
-        "valleyId": "angol",
-        "name": "카페이깔도",
-        "facilityType": "cafe",
-        "mapIconTier": 1,
-        "mapImportance": 45
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036985, 37.73135]
-      },
-      "properties": {
-        "id": "angol-osm-parking-468742480",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.016046, 37.739064]
-      },
-      "properties": {
-        "id": "angol-osm-parking-691166627",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.01863, 37.740008]
       },
       "properties": {
         "id": "angol-osm-parking-691166631",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.016592, 37.739887]
-      },
-      "properties": {
-        "id": "angol-osm-parking-691166654",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.014115, 37.739447]
-      },
-      "properties": {
-        "id": "angol-osm-parking-691166660",
         "valleyId": "angol",
         "name": "주차장",
         "facilityType": "parking",
@@ -575,21 +460,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.019755, 37.743107]
-      },
-      "properties": {
-        "id": "angol-osm-parking-701526494",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.034472, 37.73636]
       },
       "properties": {
@@ -661,7 +531,22 @@
         "name": "아름드리카페",
         "facilityType": "cafe",
         "mapIconTier": 1,
-        "mapImportance": 61
+        "mapImportance": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.031635, 37.743753]
+      },
+      "properties": {
+        "id": "angol-osm-parking-729224606",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
       }
     },
     {
@@ -714,21 +599,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.028062, 37.720037]
-      },
-      "properties": {
-        "id": "angol-osm-parking-845534665",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.032564, 37.740631]
       },
       "properties": {
@@ -744,104 +614,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.035758, 37.72797]
-      },
-      "properties": {
-        "id": "angol-osm-cafe-894582840",
-        "valleyId": "angol",
-        "name": "파머스빌리지",
-        "facilityType": "cafe",
-        "mapIconTier": 1,
-        "mapImportance": 67
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.035347, 37.728013]
-      },
-      "properties": {
-        "id": "angol-osm-parking-894582842",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "feeNote": "무료",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.036584, 37.727393]
-      },
-      "properties": {
-        "id": "angol-osm-parking-894855712",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "feeNote": "무료",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.029269, 37.741881]
       },
       "properties": {
         "id": "angol-osm-parking-894942536",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.037396, 37.732329]
-      },
-      "properties": {
-        "id": "angol-osm-parking-895422374",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "feeNote": "무료",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.013183, 37.737234]
-      },
-      "properties": {
-        "id": "angol-osm-store-1120991249",
-        "valleyId": "angol",
-        "name": "CU",
-        "facilityType": "store",
-        "operatingHours": "24/7",
-        "mapIconTier": 1,
-        "mapImportance": 72
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.019496, 37.741853]
-      },
-      "properties": {
-        "id": "angol-osm-parking-1249497508",
         "valleyId": "angol",
         "name": "주차장",
         "facilityType": "parking",
@@ -945,40 +721,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.036516, 37.734257]
-      },
-      "properties": {
-        "id": "angol-osm-parking-1313119259",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.03366, 37.73467]
       },
       "properties": {
         "id": "angol-osm-parking-1333090940",
-        "valleyId": "angol",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.022396, 37.744571]
-      },
-      "properties": {
-        "id": "angol-osm-parking-1429548418",
         "valleyId": "angol",
         "name": "주차장",
         "facilityType": "parking",
@@ -1029,6 +775,1596 @@
         "facilityType": "parking",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035788, 37.734912]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092942514",
+        "valleyId": "angol",
+        "name": "남해회",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 69
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.026188, 37.744779]
+      },
+      "properties": {
+        "id": "angol-osm-store-4632008746",
+        "valleyId": "angol",
+        "name": "GS25 경민대점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 70
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036529, 37.736751]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1430634358",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035403, 37.73392]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13366476681",
+        "valleyId": "angol",
+        "name": "카페이깔도",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03664, 37.738258]
+      },
+      "properties": {
+        "id": "angol-osm-store-368939800",
+        "valleyId": "angol",
+        "name": "양주축협",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.019496, 37.741853]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1249497508",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036908, 37.737242]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092946315",
+        "valleyId": "angol",
+        "name": "배양리두루치기",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 75
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036885, 37.738764]
+      },
+      "properties": {
+        "id": "angol-osm-store-368949162",
+        "valleyId": "angol",
+        "name": "광장편의점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 76
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036944, 37.738721]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092980071",
+        "valleyId": "angol",
+        "name": "양푼매운갈비",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 77
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.025184, 37.745191]
+      },
+      "properties": {
+        "id": "angol-osm-parking-701526493",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.031632, 37.72763]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-8792155455",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 79
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036739, 37.735195]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092946300",
+        "valleyId": "angol",
+        "name": "미락복",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 80
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.015923, 37.738766]
+      },
+      "properties": {
+        "id": "angol-std-park-1586",
+        "valleyId": "angol",
+        "name": "새싹어린이공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 81
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.029977, 37.745251]
+      },
+      "properties": {
+        "id": "angol-std-park-1589",
+        "valleyId": "angol",
+        "name": "토끼어린이공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 82
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.013183, 37.737234]
+      },
+      "properties": {
+        "id": "angol-osm-store-1120991249",
+        "valleyId": "angol",
+        "name": "CU",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 83
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.022396, 37.744571]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1429548418",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036516, 37.734257]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1313119259",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.016046, 37.739064]
+      },
+      "properties": {
+        "id": "angol-osm-parking-691166627",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036462, 37.741476]
+      },
+      "properties": {
+        "id": "angol-osm-food-9093003817",
+        "valleyId": "angol",
+        "name": "영이네",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.019755, 37.743107]
+      },
+      "properties": {
+        "id": "angol-osm-parking-701526494",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037702, 37.737299]
+      },
+      "properties": {
+        "id": "angol-osm-food-9093003525",
+        "valleyId": "angol",
+        "name": "참치락스시",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 89
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.026907, 37.745832]
+      },
+      "properties": {
+        "id": "angol-std-p-207-2-000038",
+        "valleyId": "angol",
+        "name": "경민대 앞 공영주차장",
+        "facilityType": "parking",
+        "capacity": 41,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.030154, 37.745578]
+      },
+      "properties": {
+        "id": "angol-osm-parking-729224605",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037521, 37.73537]
+      },
+      "properties": {
+        "id": "angol-osm-food-9093003619",
+        "valleyId": "angol",
+        "name": "일등가정식",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 92
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035235, 37.731371]
+      },
+      "properties": {
+        "id": "angol-osm-playground-852274335",
+        "valleyId": "angol",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 93
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035697, 37.732062]
+      },
+      "properties": {
+        "id": "angol-osm-playground-852274333",
+        "valleyId": "angol",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 94
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.016592, 37.739887]
+      },
+      "properties": {
+        "id": "angol-osm-parking-691166654",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.034151, 37.744258]
+      },
+      "properties": {
+        "id": "angol-osm-store-368683751",
+        "valleyId": "angol",
+        "name": "진성할인마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 96
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.027842, 37.746215]
+      },
+      "properties": {
+        "id": "angol-std-park-1609",
+        "valleyId": "angol",
+        "name": "우정어린이공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 97
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037307, 37.73415]
+      },
+      "properties": {
+        "id": "angol-std-park-1607",
+        "valleyId": "angol",
+        "name": "문예문화공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 98
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038098, 37.739383]
+      },
+      "properties": {
+        "id": "angol-osm-food-9093003627",
+        "valleyId": "angol",
+        "name": "진국식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036757, 37.733004]
+      },
+      "properties": {
+        "id": "angol-osm-food-13366467064",
+        "valleyId": "angol",
+        "name": "범양꼬치",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.030975, 37.745845]
+      },
+      "properties": {
+        "id": "angol-osm-food-368963490",
+        "valleyId": "angol",
+        "name": "다활어횟집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 101
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038411, 37.737313]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1430911342",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035481, 37.730834]
+      },
+      "properties": {
+        "id": "angol-osm-playground-852274336",
+        "valleyId": "angol",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 103
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03842, 37.738636]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092980114",
+        "valleyId": "angol",
+        "name": "김치두루치기",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 104
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037721, 37.734307]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092942491",
+        "valleyId": "angol",
+        "name": "순이네집밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 105
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.028062, 37.720037]
+      },
+      "properties": {
+        "id": "angol-osm-parking-845534665",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038285, 37.740276]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092980095",
+        "valleyId": "angol",
+        "name": "경원식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 107
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036733, 37.732051]
+      },
+      "properties": {
+        "id": "angol-osm-parking-8318341008",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "feeNote": "유료",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038365, 37.734805]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092993216",
+        "valleyId": "angol",
+        "name": "부산아지매국밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 109
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.014115, 37.739447]
+      },
+      "properties": {
+        "id": "angol-osm-parking-691166660",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038545, 37.735266]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13366445980",
+        "valleyId": "angol",
+        "name": "돌체카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 111
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037914, 37.733724]
+      },
+      "properties": {
+        "id": "angol-osm-store-13423809867",
+        "valleyId": "angol",
+        "name": "진로마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 112
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036635, 37.731755]
+      },
+      "properties": {
+        "id": "angol-osm-food-13177474418",
+        "valleyId": "angol",
+        "name": "BBQ치킨",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 113
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038655, 37.735343]
+      },
+      "properties": {
+        "id": "angol-osm-store-13342324663",
+        "valleyId": "angol",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 114
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036685, 37.731791]
+      },
+      "properties": {
+        "id": "angol-osm-store-13177474417",
+        "valleyId": "angol",
+        "name": "이마트24",
+        "facilityType": "store",
+        "operatingHours": "Mo-Su,PH 00:00-12:00",
+        "mapIconTier": 1,
+        "mapImportance": 115
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037565, 37.733033]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13366473187",
+        "valleyId": "angol",
+        "name": "빛뜨레커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 116
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038356, 37.734291]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092980077",
+        "valleyId": "angol",
+        "name": "전주본가콩나물국밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 117
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038004, 37.733406]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092942512",
+        "valleyId": "angol",
+        "name": "명태대가",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 118
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037396, 37.732329]
+      },
+      "properties": {
+        "id": "angol-osm-parking-895422374",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "feeNote": "무료",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038393, 37.733782]
+      },
+      "properties": {
+        "id": "angol-osm-food-13366474278",
+        "valleyId": "angol",
+        "name": "찰스치킨",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 120
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037752, 37.732625]
+      },
+      "properties": {
+        "id": "angol-osm-store-8460057298",
+        "valleyId": "angol",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 121
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039431, 37.738568]
+      },
+      "properties": {
+        "id": "angol-osm-food-9092942509",
+        "valleyId": "angol",
+        "name": "김밥천국",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 122
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038, 37.742307]
+      },
+      "properties": {
+        "id": "angol-osm-store-368683923",
+        "valleyId": "angol",
+        "name": "플러스마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 123
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036985, 37.73135]
+      },
+      "properties": {
+        "id": "angol-osm-parking-468742480",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039444, 37.736386]
+      },
+      "properties": {
+        "id": "angol-osm-food-9093003655",
+        "valleyId": "angol",
+        "name": "보궁쌈밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 125
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036571, 37.730564]
+      },
+      "properties": {
+        "id": "angol-osm-store-8318341080",
+        "valleyId": "angol",
+        "name": "GS25",
+        "facilityType": "store",
+        "operatingHours": "Mo-Su,PH 00:00+",
+        "mapIconTier": 1,
+        "mapImportance": 126
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039595, 37.737328]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1430911345",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039562, 37.736785]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1431540640",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039642, 37.735963]
+      },
+      "properties": {
+        "id": "angol-osm-parking-1430911346",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.027919, 37.747554]
+      },
+      "properties": {
+        "id": "angol-osm-parking-474260482",
+        "valleyId": "angol",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035998, 37.729204]
+      },
+      "properties": {
+        "id": "angol-osm-playground-852019033",
+        "valleyId": "angol",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 131
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038768, 37.733067]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-12154571794",
+        "valleyId": "angol",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 132
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038458, 37.732182]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-8670832361",
+        "valleyId": "angol",
+        "name": "아르노",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 133
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03542, 37.745709]
+      },
+      "properties": {
+        "id": "angol-osm-playground-1318446873",
+        "valleyId": "angol",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 134
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035758, 37.72797]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-894582840",
+        "valleyId": "angol",
+        "name": "파머스빌리지",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 135
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.032625, 37.747151]
+      },
+      "properties": {
+        "id": "angol-osm-store-4637366258",
+        "valleyId": "angol",
+        "name": "CU",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 136
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.040623, 37.736504]
+      },
+      "properties": {
+        "id": "angol-std-park-1611",
+        "valleyId": "angol",
+        "name": "달님문화공원 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 137
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.034714, 37.746453]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-12202032634",
+        "valleyId": "angol",
+        "name": "양말카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 138
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.037257, 37.729669]
+      },
+      "properties": {
+        "id": "angol-osm-playground-852019034",
+        "valleyId": "angol",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 139
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03789, 37.730604]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-895422352",
+        "valleyId": "angol",
+        "name": "오앤이",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 140
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038752, 37.731523]
+      },
+      "properties": {
+        "id": "angol-osm-store-845396806",
+        "valleyId": "angol",
+        "name": "대농식자재마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 141
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.041266, 37.736955]
+      },
+      "properties": {
+        "id": "angol-osm-store-13366457960",
+        "valleyId": "angol",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 142
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.034374, 37.747326]
+      },
+      "properties": {
+        "id": "angol-osm-store-368683839",
+        "valleyId": "angol",
+        "name": "리빙플러스마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 143
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.041485, 37.7377]
+      },
+      "properties": {
+        "id": "angol-osm-store-13361183455",
+        "valleyId": "angol",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 144
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.041634, 37.738534]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13361175848",
+        "valleyId": "angol",
+        "name": "할리스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 145
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.040845, 37.73378]
+      },
+      "properties": {
+        "id": "angol-std-r-12226",
+        "valleyId": "angol",
+        "name": "백석천 근린공원",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 146
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039949, 37.731899]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13342332820",
+        "valleyId": "angol",
+        "name": "데이데이카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 147
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.041634, 37.735768]
+      },
+      "properties": {
+        "id": "angol-osm-store-13150145825",
+        "valleyId": "angol",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 148
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.039958, 37.731832]
+      },
+      "properties": {
+        "id": "angol-osm-store-13142340875",
+        "valleyId": "angol",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 149
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038314, 37.729137]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13272323505",
+        "valleyId": "angol",
+        "name": "카페이룸",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 150
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.036648, 37.746773]
+      },
+      "properties": {
+        "id": "angol-osm-store-6705232914",
+        "valleyId": "angol",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 151
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03859, 37.728673]
+      },
+      "properties": {
+        "id": "angol-osm-store-8318341090",
+        "valleyId": "angol",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 152
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.038596, 37.728618]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13177474412",
+        "valleyId": "angol",
+        "name": "메가MGC커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 153
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.042766, 37.73814]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13361166316",
+        "valleyId": "angol",
+        "name": "Caffè Pascucci",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 154
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.043094, 37.73694]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13342315221",
+        "valleyId": "angol",
+        "name": "케일라24",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 155
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.043058, 37.736115]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13325821304",
+        "valleyId": "angol",
+        "name": "더벤티",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 156
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.040684, 37.730447]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13234053945",
+        "valleyId": "angol",
+        "name": "카페 링디",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 157
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.043592, 37.738621]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13361162683",
+        "valleyId": "angol",
+        "name": "메가MGC커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 158
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.035911, 37.723207]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-7685718349",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 159
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.04326, 37.733598]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-12642023607",
+        "valleyId": "angol",
+        "name": "11번가커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 160
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.043985, 37.736152]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-9093003742",
+        "valleyId": "angol",
+        "name": "피나클커피바",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 161
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.043697, 37.734489]
+      },
+      "properties": {
+        "id": "angol-osm-cafe-13342329048",
+        "valleyId": "angol",
+        "name": "리몬심카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 162
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.045107, 37.740356]
+      },
+      "properties": {
+        "id": "angol-std-r-12225",
+        "valleyId": "angol",
+        "name": "의정부2동 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 163
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.045515, 37.738674]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-13583976539",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 164
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03908, 37.724052]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-1429522918",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "feeNote": "무료",
+        "mapIconTier": 1,
+        "mapImportance": 165
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.046346, 37.738903]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-13583976534",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 166
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.047102, 37.739815]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-13581132470",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "feeNote": "무료",
+        "mapIconTier": 1,
+        "mapImportance": 167
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.043359, 37.750613]
+      },
+      "properties": {
+        "id": "angol-std-r-12260",
+        "valleyId": "angol",
+        "name": "행복누리공원화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 168
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.022323, 37.70486]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-1393434116",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 169
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.994641, 37.733721]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-10749906442",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 170
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.045633, 37.719681]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-943792247",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 171
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.051603, 37.726921]
+      },
+      "properties": {
+        "id": "angol-std-r-12231",
+        "valleyId": "angol",
+        "name": "트레일러 1호(동막교)",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 172
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.051189, 37.722975]
+      },
+      "properties": {
+        "id": "angol-osm-restroom-472044887",
+        "valleyId": "angol",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 173
       }
     }
   ]

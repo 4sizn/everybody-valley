@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "안골계곡 주변 봉우리 6개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.010442, 37.722373]
+      },
+      "properties": {
+        "valleyId": "angol",
+        "name": "사패산",
+        "elevationM": 551.1,
+        "distanceM": 466,
+        "osmId": "node/5515194667"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.015459, 37.698842]
+      },
+      "properties": {
+        "valleyId": "angol",
+        "name": "도봉산자운봉",
+        "elevationM": 740.2,
+        "distanceM": 2605,
+        "osmId": "node/5515194666"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.015057, 37.698663]
+      },
+      "properties": {
+        "valleyId": "angol",
+        "name": "도봉산신선대",
+        "elevationM": 726,
+        "distanceM": 2626,
+        "osmId": "node/11377228354"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.016624, 37.697979]
+      },
+      "properties": {
+        "valleyId": "angol",
+        "name": "만장봉",
+        "elevationM": 715.7,
+        "distanceM": 2702,
+        "osmId": "node/5515194665"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.013117, 37.697841]
+      },
+      "properties": {
+        "valleyId": "angol",
+        "name": "도봉산주봉",
+        "elevationM": 676.2,
+        "distanceM": 2726,
+        "osmId": "node/5515194416"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.016864, 37.697706]
+      },
+      "properties": {
+        "valleyId": "angol",
+        "name": "선인봉",
+        "elevationM": 693.1,
+        "distanceM": 2733,
+        "osmId": "node/5515194664"
+      }
+    }
+  ]
+}

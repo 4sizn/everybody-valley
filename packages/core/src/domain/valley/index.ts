@@ -84,6 +84,7 @@ export {
   type ValleyId,
 } from './ids';
 export { isMapTier, MAP_TIERS, type MapTier } from './MapTier';
+export { nearbyPeaks, type Peak, type PeakAtDistance, peakLabel } from './Peak';
 export {
   ACCESS_DIFFICULTIES,
   type AccessDifficulty,

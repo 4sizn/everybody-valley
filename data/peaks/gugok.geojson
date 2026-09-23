@@ -1,0 +1,141 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "구곡폭포 계곡 주변 봉우리 9개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.6086, 37.781984]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "두리봉",
+        "elevationM": 486.3,
+        "distanceM": 899,
+        "osmId": "node/10125413559"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.603563, 37.782228]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "감마봉",
+        "elevationM": 490.4,
+        "distanceM": 988,
+        "osmId": "node/6231773145"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.611286, 37.780723]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "봉화산",
+        "elevationM": 525.8,
+        "distanceM": 1061,
+        "osmId": "node/6231773325"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.604519, 37.80591]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "검봉산",
+        "elevationM": 529.6,
+        "distanceM": 1399,
+        "osmId": "node/10125517991"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.629594, 37.792483]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "뱀용산",
+        "elevationM": 228.9,
+        "distanceM": 1726,
+        "osmId": "node/10127223421"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.588926, 37.804532]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "육개봉",
+        "elevationM": 380,
+        "distanceM": 2138,
+        "osmId": "node/6231773042"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.63198, 37.80238]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "안산",
+        "elevationM": 246,
+        "distanceM": 2219,
+        "osmId": "node/10252953719"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.623118, 37.8122]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "강선봉",
+        "elevationM": 485.4,
+        "distanceM": 2380,
+        "osmId": "node/10125517989"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.610248, 37.766846]
+      },
+      "properties": {
+        "valleyId": "gugok",
+        "name": "소주봉",
+        "elevationM": 489,
+        "distanceM": 2587,
+        "osmId": "node/10127223423"
+      }
+    }
+  ]
+}

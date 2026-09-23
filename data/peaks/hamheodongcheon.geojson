@@ -1,0 +1,71 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "함허동천 주변 봉우리 4개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.451892, 37.621166]
+      },
+      "properties": {
+        "valleyId": "hamheodongcheon",
+        "name": "초피산",
+        "elevationM": 252.6,
+        "distanceM": 707,
+        "osmId": "node/10125280532"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.429683, 37.615542]
+      },
+      "properties": {
+        "valleyId": "hamheodongcheon",
+        "name": "마니산",
+        "elevationM": 469,
+        "distanceM": 2205,
+        "osmId": "node/1943766210"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.490368, 37.61042]
+      },
+      "properties": {
+        "valleyId": "hamheodongcheon",
+        "name": "길상산",
+        "elevationM": 335.8,
+        "distanceM": 2379,
+        "osmId": "node/9883404573"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.480222, 37.631808]
+      },
+      "properties": {
+        "valleyId": "hamheodongcheon",
+        "name": "정족산",
+        "elevationM": 222.5,
+        "distanceM": 2503,
+        "osmId": "node/10125280531"
+      }
+    }
+  ]
+}

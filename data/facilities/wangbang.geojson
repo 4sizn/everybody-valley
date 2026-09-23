@@ -2,18 +2,19 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "왕방계곡 시설 7개 — 표준데이터 주차장 6 · 화장실 0 · OSM 1 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "왕방계곡 시설 18개 — 표준데이터 주차장 8 · 화장실 6 · 쓰레기통·놀이터 0 · OSM 4 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
-      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)"
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
     ]
   },
   "features": [
@@ -129,6 +130,24 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
+        "coordinates": [127.135322, 37.89269]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-1-000021",
+        "valleyId": "wangbang",
+        "name": "폭포수농원 옆",
+        "facilityType": "parking",
+        "capacity": 9,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
         "coordinates": [127.124643, 37.892222]
       },
       "properties": {
@@ -137,7 +156,166 @@
         "name": "바다종합상가",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 26
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.136098, 37.900054]
+      },
+      "properties": {
+        "id": "wangbang-std-r-3570",
+        "valleyId": "wangbang",
+        "name": "동원노인전문병원 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.136026, 37.900833]
+      },
+      "properties": {
+        "id": "wangbang-std-r-3693",
+        "valleyId": "wangbang",
+        "name": "노인전문동두천병원 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.101569, 37.879933]
+      },
+      "properties": {
+        "id": "wangbang-std-r-3633",
+        "valleyId": "wangbang",
+        "name": "서울요양병원 화장실(본관)",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092563, 37.884533]
+      },
+      "properties": {
+        "id": "wangbang-osm-food-9092988202",
+        "valleyId": "wangbang",
+        "name": "약수산장",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089178, 37.893735]
+      },
+      "properties": {
+        "id": "wangbang-std-r-3620",
+        "valleyId": "wangbang",
+        "name": "광암동다목적회관",
+        "facilityType": "restroom",
+        "operatingHours": "(연중무휴)09:00~20:00",
+        "mapIconTier": 1,
+        "mapImportance": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089164, 37.893133]
+      },
+      "properties": {
+        "id": "wangbang-std-r-3589",
+        "valleyId": "wangbang",
+        "name": "광암119지역대 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087224, 37.894633]
+      },
+      "properties": {
+        "id": "wangbang-std-p-215-2-000022",
+        "valleyId": "wangbang",
+        "name": "광암교주차장",
+        "facilityType": "parking",
+        "capacity": 8,
+        "feeNote": "무료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.137869, 37.90927]
+      },
+      "properties": {
+        "id": "wangbang-osm-parking-1373279673",
+        "valleyId": "wangbang",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.083135, 37.894835]
+      },
+      "properties": {
+        "id": "wangbang-std-r-3588",
+        "valleyId": "wangbang",
+        "name": "광암파출소 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "연중무휴",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.082866, 37.896049]
+      },
+      "properties": {
+        "id": "wangbang-osm-store-368682925",
+        "valleyId": "wangbang",
+        "name": "병영마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 37
       }
     }
   ]

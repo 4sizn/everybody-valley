@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "경반계곡 주변 봉우리 6개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.47179, 37.836852]
+      },
+      "properties": {
+        "valleyId": "gyeongban",
+        "name": "수정봉",
+        "elevationM": 447,
+        "distanceM": 417,
+        "osmId": "node/10242948031"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.458362, 37.827014]
+      },
+      "properties": {
+        "valleyId": "gyeongban",
+        "name": "수리봉",
+        "elevationM": 544.5,
+        "distanceM": 1048,
+        "osmId": "node/10120267021"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.47096, 37.85439]
+      },
+      "properties": {
+        "valleyId": "gyeongban",
+        "name": "선인봉",
+        "elevationM": 486,
+        "distanceM": 1974,
+        "osmId": "node/10253010720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.432021, 37.842782]
+      },
+      "properties": {
+        "valleyId": "gyeongban",
+        "name": "송이봉",
+        "elevationM": 804,
+        "distanceM": 1977,
+        "osmId": "node/10121226437"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.47596, 37.80557]
+      },
+      "properties": {
+        "valleyId": "gyeongban",
+        "name": "태봉산",
+        "elevationM": 184.2,
+        "distanceM": 2565,
+        "osmId": "node/10252953783"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.436602, 37.862906]
+      },
+      "properties": {
+        "valleyId": "gyeongban",
+        "name": "칼봉산",
+        "elevationM": 899,
+        "distanceM": 2846,
+        "osmId": "node/1914942506"
+      }
+    }
+  ]
+}

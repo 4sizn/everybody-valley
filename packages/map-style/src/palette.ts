@@ -144,6 +144,9 @@ export const FACILITY_COLORS: Readonly<Record<FacilityType, HexColor>> = {
   store: '#7b61ff',
   /** 정자·쉼터 — 나무 그늘의 올리브. 비어 있던 색상환 90도 자리(초록 152도 화장실과 갈라진다). */
   shelter: '#7a9e2f',
+  /** 쓰레기통 — 회갈색(주차장 회색·정자 올리브 사이). 놀이터 — 분홍(색상환에서 비어 있던 330도). 2026-09-23. */
+  bin: '#8a7a5c',
+  playground: '#d9539b',
   parking: '#4b5563',
   access: '#6b5dd3',
   safety: '#d65a5a',

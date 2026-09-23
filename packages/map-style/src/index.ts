@@ -132,10 +132,17 @@ export {
 export {
   PEAK_HEIGHT_OFFSET_M,
   PEAK_LABEL_LAYER_ID,
+  PEAK_LAYER_SET,
   PEAK_MIN_ZOOM,
+  PEAK_SOURCE_ID,
   PEAK_TEXT_FIELD,
+  type PeakFeatureProperties,
   type PeakLabelOptions,
   peakLabelLayer,
+  toPeakFeatureCollection,
+  VALLEY_PEAK_LABEL_LAYER,
+  VALLEY_PEAK_LABEL_LAYER_ID,
+  VALLEY_PEAK_MIN_ZOOM,
 } from './peakLayers';
 export {
   findFirstSymbolLayerId,

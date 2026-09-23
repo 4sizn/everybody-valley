@@ -1,0 +1,141 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "어비계곡 주변 봉우리 9개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.490565, 37.579763]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "솔뫼",
+        "elevationM": 110,
+        "distanceM": 803,
+        "osmId": "node/10252999152"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.486706, 37.575336]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "유명산",
+        "elevationM": 864,
+        "distanceM": 1394,
+        "osmId": "node/5388363536"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.471507, 37.595385]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "중미산",
+        "elevationM": 834.2,
+        "distanceM": 1619,
+        "osmId": "node/5388363537"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.506483, 37.57532]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "어비산",
+        "elevationM": 823,
+        "distanceM": 1653,
+        "osmId": "node/10125517998"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.474038, 37.577581]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "소구니산",
+        "elevationM": 801.3,
+        "distanceM": 1957,
+        "osmId": "node/10026107663"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.492929, 37.564468]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "775봉",
+        "elevationM": 775,
+        "distanceM": 2447,
+        "osmId": "node/12450373038"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.524788, 37.586433]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "용천봉",
+        "elevationM": 677.4,
+        "distanceM": 2706,
+        "osmId": "node/11937207652"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.493653, 37.632861]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "벽암산",
+        "elevationM": 373.1,
+        "distanceM": 2731,
+        "osmId": "node/10252985171"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.486465, 37.561322]
+      },
+      "properties": {
+        "valleyId": "eobi",
+        "name": "대부산",
+        "elevationM": 743.8,
+        "distanceM": 2874,
+        "osmId": "node/10125517999"
+      }
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "우이동계곡 주변 봉우리 15개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.024447, 37.66565]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "시루봉",
+        "elevationM": 121.3,
+        "distanceM": 976,
+        "osmId": "node/5515194663"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.993763, 37.674992]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "왕관봉",
+        "elevationM": 520,
+        "distanceM": 1579,
+        "osmId": "node/10940152869"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.988027, 37.663726]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "영봉",
+        "elevationM": 597.1,
+        "distanceM": 1898,
+        "osmId": "node/5515194647"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.991898, 37.679576]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "상장8봉",
+        "elevationM": 545,
+        "distanceM": 2006,
+        "osmId": "node/10940153114"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.989873, 37.680662]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "상장7봉",
+        "distanceM": 2220,
+        "osmId": "node/10940153111"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.989486, 37.683727]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "상장6봉",
+        "elevationM": 526,
+        "distanceM": 2475,
+        "osmId": "node/10940153085"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.98018, 37.660224]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "인수봉",
+        "elevationM": 811.1,
+        "distanceM": 2667,
+        "osmId": "node/5515194670"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.984937, 37.6834]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "상장5봉",
+        "elevationM": 559,
+        "distanceM": 2750,
+        "osmId": "node/10940153059"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.979746, 37.656257]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "만경대",
+        "elevationM": 800.6,
+        "distanceM": 2864,
+        "osmId": "node/5515194624"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.976213, 37.666184]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "영장봉",
+        "elevationM": 550.1,
+        "distanceM": 2898,
+        "osmId": "node/5515194652"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.983772, 37.649849]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "일출봉",
+        "elevationM": 617.7,
+        "distanceM": 2901,
+        "osmId": "node/5515194645"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.978003, 37.65863]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "북한산(백운대)",
+        "elevationM": 835.6,
+        "distanceM": 2905,
+        "osmId": "node/5515194671"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.980944, 37.653172]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "용암봉",
+        "elevationM": 711.3,
+        "distanceM": 2919,
+        "osmId": "node/5515194646"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.975527, 37.665315]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "사기막봉",
+        "elevationM": 552.2,
+        "distanceM": 2964,
+        "osmId": "node/5515194651"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.98386, 37.648709]
+      },
+      "properties": {
+        "valleyId": "uidong",
+        "name": "월출봉",
+        "elevationM": 598.2,
+        "distanceM": 2971,
+        "osmId": "node/5515194644"
+      }
+    }
+  ]
+}

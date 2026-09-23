@@ -1,5 +1,5 @@
 /**
- * 저장소 루트 `data/valleys/*.geojson`·`data/facilities/*.geojson` 을 합본 두 장
+ * 저장소 루트 `data/valleys/*.geojson`·`data/facilities/*.geojson` 을 합본 두 장(+ `data/peaks/` 봉우리 합본)
  * `assets/valley/valleys-bundle.json`·`facilities-bundle.json` 으로 만들고,
  * `data/shade/**` 를 `shade-bundle.json` 한 장으로 합친다 (SD1 (f) · F4).
  *
@@ -35,6 +35,9 @@ const EXAMPLES_DIR = join(SOURCE_DIR, 'examples');
 const VALLEY_LIST = join(SOURCE_DIR, 'seed', 'valleys.json');
 const VALLEYS_BUNDLE = join(TARGET_DIR, 'valleys-bundle.json');
 const FACILITIES_BUNDLE = join(TARGET_DIR, 'facilities-bundle.json');
+/** 봉우리(OSM natural=peak, `pnpm seed:peaks`) — `data/peaks/<valleyId>.geojson`. 없으면 빈 합본. */
+const PEAKS_DIR = join(SOURCE_DIR, 'peaks');
+const PEAKS_BUNDLE = join(TARGET_DIR, 'peaks-bundle.json');
 /** 그늘 레이어(scripts/shade 산출) — `data/shade/<valleyId>/*.geojson` + `index.json`. F4 지도 레이어 입력. */
 const SHADE_SOURCE_DIR = join(SOURCE_DIR, 'shade');
 /** 합본 한 파일. 개별 사본(`assets/valley/shade/**`)은 두지 않는다 — 사본이 둘이면 어긋난다. */
@@ -213,6 +216,13 @@ const facilitiesJson = JSON.stringify(facilities.bundle);
 await writeFile(VALLEYS_BUNDLE, valleysJson, 'utf8');
 await writeFile(FACILITIES_BUNDLE, facilitiesJson, 'utf8');
 
+const peakFiles = sortByOrder(await geojsonFiles(PEAKS_DIR), order);
+const peakCollections = [];
+for (const file of peakFiles) peakCollections.push(await readCollection(join(PEAKS_DIR, file)));
+const peaksJson = JSON.stringify({ collections: peakCollections });
+await writeFile(PEAKS_BUNDLE, peaksJson, 'utf8');
+const peaksLine = `peaks-bundle.json (컬렉션 ${peakCollections.length}장 · ${Buffer.byteLength(peaksJson, 'utf8')} bytes)`;
+
 const shade = await bundleShade();
 const shadeLine = `shade-bundle.json (계곡 ${shade.valleys.length}개: ${shade.valleys.join(', ') || '없음'} · ${shade.bytes} bytes)`;
 const valleysLine = `valleys-bundle.json (컬렉션 ${valleys.bundle.collections.length}장 · ${Buffer.byteLength(valleysJson, 'utf8')} bytes · ${mode})`;
@@ -220,11 +230,13 @@ const facilitiesLine = `facilities-bundle.json (컬렉션 ${facilities.bundle.co
 
 await writeFile(
   join(TARGET_DIR, 'SOURCE'),
-  `data/valleys·facilities 합본 · data/shade/** 합본 (scripts/sync-valley-data.mjs) — 직접 고치지 말 것\n${[...sourceFiles, valleysLine, facilitiesLine, shadeLine].join('\n')}\n`,
+  `data/valleys·facilities 합본 · data/shade/** 합본 (scripts/sync-valley-data.mjs) — 직접 고치지 말 것\n${[...sourceFiles, ...peakFiles.map((file) => `peaks/${file}`), valleysLine, facilitiesLine, peaksLine, shadeLine].join('\n')}\n`,
   'utf8',
 );
 
-process.stdout.write(`계곡 합본을 assets/valley 로 썼습니다: ${valleysLine} · ${facilitiesLine}\n`);
+process.stdout.write(
+  `계곡 합본을 assets/valley 로 썼습니다: ${valleysLine} · ${facilitiesLine} · ${peaksLine}\n`,
+);
 if (mode === 'examples') {
   process.stdout.write(
     'data/valleys 가 비어 있어 data/examples 샘플을 합본했습니다 (pnpm seed:build 로 시딩).\n',

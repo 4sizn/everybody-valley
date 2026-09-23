@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "함허동천 시설 18개 — 표준데이터 주차장 1 · 화장실 8 · OSM 9 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "함허동천 시설 38개 — 표준데이터 주차장 3 · 화장실 12 · 쓰레기통·놀이터 0 · OSM 23 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -40,38 +40,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.445864, 37.608464]
-      },
-      "properties": {
-        "id": "hamheodongcheon-std-r-15624",
-        "valleyId": "hamheodongcheon",
-        "name": "정수사B",
-        "facilityType": "restroom",
-        "operatingHours": "24시간",
-        "mapIconTier": 1,
-        "mapImportance": 21
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.445864, 37.608464]
-      },
-      "properties": {
-        "id": "hamheodongcheon-std-r-15625",
-        "valleyId": "hamheodongcheon",
-        "name": "정수사A",
-        "facilityType": "restroom",
-        "operatingHours": "24시간",
-        "mapIconTier": 1,
-        "mapImportance": 22
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [126.451019, 37.613469]
       },
       "properties": {
@@ -81,7 +49,7 @@
         "facilityType": "restroom",
         "operatingHours": "24시간",
         "mapIconTier": 1,
-        "mapImportance": 23
+        "mapImportance": 21
       }
     },
     {
@@ -97,7 +65,7 @@
         "facilityType": "restroom",
         "operatingHours": "24시간",
         "mapIconTier": 1,
-        "mapImportance": 24
+        "mapImportance": 22
       }
     },
     {
@@ -113,7 +81,7 @@
         "facilityType": "restroom",
         "operatingHours": "24시간",
         "mapIconTier": 1,
-        "mapImportance": 25
+        "mapImportance": 23
       }
     },
     {
@@ -129,7 +97,7 @@
         "facilityType": "restroom",
         "operatingHours": "24시간",
         "mapIconTier": 1,
-        "mapImportance": 26
+        "mapImportance": 24
       }
     },
     {
@@ -145,7 +113,7 @@
         "facilityType": "restroom",
         "operatingHours": "24시간",
         "mapIconTier": 1,
-        "mapImportance": 27
+        "mapImportance": 25
       }
     },
     {
@@ -161,22 +129,7 @@
         "facilityType": "restroom",
         "operatingHours": "24시간",
         "mapIconTier": 1,
-        "mapImportance": 28
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.44385, 37.607362]
-      },
-      "properties": {
-        "id": "hamheodongcheon-osm-parking-3421390828",
-        "valleyId": "hamheodongcheon",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
+        "mapImportance": 26
       }
     },
     {
@@ -191,7 +144,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 30
+        "mapImportance": 27
       }
     },
     {
@@ -206,7 +159,7 @@
         "name": "세븐일레븐",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 31
+        "mapImportance": 28
       }
     },
     {
@@ -221,7 +174,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 32
+        "mapImportance": 29
       }
     },
     {
@@ -236,7 +189,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 33
+        "mapImportance": 30
       }
     },
     {
@@ -281,7 +234,7 @@
         "name": "기사식당",
         "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 36
+        "mapImportance": 33
       }
     },
     {
@@ -297,6 +250,363 @@
         "facilityType": "parking",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.445864, 37.608464]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15624",
+        "valleyId": "hamheodongcheon",
+        "name": "정수사B",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.44385, 37.607362]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-3421390828",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.479292, 37.60539]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15585",
+        "valleyId": "hamheodongcheon",
+        "name": "선두4리항",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.478862, 37.604485]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-1047419463",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.463047, 37.596935]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15577",
+        "valleyId": "hamheodongcheon",
+        "name": "분오저수지 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.461945, 37.596606]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9632617692",
+        "valleyId": "hamheodongcheon",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.480392, 37.622654]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9632472059",
+        "valleyId": "hamheodongcheon",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.456413, 37.595161]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-p-169-2-000024",
+        "valleyId": "hamheodongcheon",
+        "name": "동막해변 제2공영주차장",
+        "facilityType": "parking",
+        "capacity": 96,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.457211, 37.594847]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15579",
+        "valleyId": "hamheodongcheon",
+        "name": "동막1",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.459189, 37.59408]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-15578",
+        "valleyId": "hamheodongcheon",
+        "name": "동막2",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.45587, 37.594412]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-1047548179",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.456469, 37.594088]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-restroom-8158123319",
+        "valleyId": "hamheodongcheon",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.458328, 37.59361]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-parking-1047548170",
+        "valleyId": "hamheodongcheon",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.458022, 37.593303]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9632617908",
+        "valleyId": "hamheodongcheon",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 48
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.4584, 37.59295]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-food-368960751",
+        "valleyId": "hamheodongcheon",
+        "name": "대우횟집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.458529, 37.592899]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9632617875",
+        "valleyId": "hamheodongcheon",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.458109, 37.592744]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-p-169-1-000015",
+        "valleyId": "hamheodongcheon",
+        "name": "동막해수욕장주차장",
+        "facilityType": "parking",
+        "capacity": 46,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.459305, 37.592569]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9632617873",
+        "valleyId": "hamheodongcheon",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.442505, 37.596571]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-368675055",
+        "valleyId": "hamheodongcheon",
+        "name": "동막활어회마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 53
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.433844, 37.598593]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-food-368960661",
+        "valleyId": "hamheodongcheon",
+        "name": "솔밭횟집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 54
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.426463, 37.623296]
+      },
+      "properties": {
+        "id": "hamheodongcheon-std-r-16422",
+        "valleyId": "hamheodongcheon",
+        "name": "마니산(기도원)",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.432992, 37.631895]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9674770105",
+        "valleyId": "hamheodongcheon",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 56
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.425491, 37.604116]
+      },
+      "properties": {
+        "id": "hamheodongcheon-osm-store-9645277543",
+        "valleyId": "hamheodongcheon",
+        "name": "마니산상회",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 57
       }
     }
   ]

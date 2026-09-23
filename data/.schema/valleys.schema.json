@@ -253,12 +253,14 @@
             "cafe",
             "store",
             "shelter",
+            "bin",
+            "playground",
             "station",
             "access",
             "safety",
             "etc"
           ],
-          "description": "마커 색 10종과 1:1 대응 (tokens/map-palette.json). shelter(정자·쉼터)는 2026-09-08 추가 — OSM amenity=shelter/shelter_type=gazebo 수집. [C3 통일] 팔레트 키 convenience 는 store 로 바꾼다 — 스키마와 lazy-marker-icons.ts 가 이미 store 이고, 매점·슈퍼·편의점을 모두 담는 넓은 이름이라 계곡 현장에 맞다. 팔레트 교체는 C2 에서."
+          "description": "마커 색 12종과 1:1 대응 (tokens/map-palette.json). shelter(정자·쉼터)는 2026-09-08 추가 — OSM amenity=shelter/shelter_type=gazebo 수집. bin(쓰레기통)·playground(놀이터)는 2026-09-23 추가 — 전국휴지통·도시공원 표준데이터, 행안부 어린이놀이시설 API, OSM leisure=playground/amenity=waste_*. [C3 통일] 팔레트 키 convenience 는 store 로 바꾼다 — 스키마와 lazy-marker-icons.ts 가 이미 store 이고, 매점·슈퍼·편의점을 모두 담는 넓은 이름이라 계곡 현장에 맞다. 팔레트 교체는 C2 에서."
         },
         "capacity": {
           "type": "integer",

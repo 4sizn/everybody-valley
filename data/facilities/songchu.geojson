@@ -2,18 +2,19 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "송추계곡 시설 45개 — 표준데이터 주차장 4 · 화장실 0 · OSM 41 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "송추계곡 시설 63개 — 표준데이터 주차장 4 · 화장실 1 · 쓰레기통·놀이터 0 · OSM 58 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
-      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)"
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)"
     ]
   },
   "features": [
@@ -248,145 +249,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.971596, 37.708118]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690700968",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.972667, 37.707106]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690700981",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.972079, 37.706748]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690700985",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.972606, 37.706436]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690700988",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.972317, 37.707575]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690701001",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.975426, 37.705702]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690701071",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.976351, 37.707418]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690701148",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.976896, 37.707573]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690701153",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [126.977381, 37.708637]
       },
       "properties": {
         "id": "songchu-osm-parking-690701168",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.974406, 37.705075]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690701196",
         "valleyId": "songchu",
         "name": "주차장",
         "facilityType": "parking",
@@ -413,25 +279,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [126.977118, 37.706229]
+        "coordinates": [126.97013, 37.722066]
       },
       "properties": {
-        "id": "songchu-osm-parking-690704251",
-        "valleyId": "songchu",
-        "name": "주차장",
-        "facilityType": "parking",
-        "mapIconTier": 0,
-        "mapImportance": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.978425, 37.706254]
-      },
-      "properties": {
-        "id": "songchu-osm-parking-690704257",
+        "id": "songchu-osm-parking-691145491",
         "valleyId": "songchu",
         "name": "주차장",
         "facilityType": "parking",
@@ -484,7 +335,7 @@
         "facilityType": "food",
         "operatingHours": "Mo-Su 11:00-21:45",
         "mapIconTier": 1,
-        "mapImportance": 49
+        "mapImportance": 39
       }
     },
     {
@@ -532,7 +383,7 @@
         "facilityType": "food",
         "operatingHours": "Mo-Fr 10:00-22:00, Sa and Holiday 09:00-22:00",
         "mapIconTier": 1,
-        "mapImportance": 52
+        "mapImportance": 42
       }
     },
     {
@@ -548,7 +399,7 @@
         "facilityType": "food",
         "operatingHours": "Mo-Su 11:00-22:00",
         "mapIconTier": 1,
-        "mapImportance": 53
+        "mapImportance": 43
       }
     },
     {
@@ -563,7 +414,7 @@
         "name": "홈마트",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 54
+        "mapImportance": 44
       }
     },
     {
@@ -608,7 +459,7 @@
         "name": "화장실",
         "facilityType": "restroom",
         "mapIconTier": 1,
-        "mapImportance": 57
+        "mapImportance": 47
       }
     },
     {
@@ -623,7 +474,7 @@
         "name": "송추기사식당",
         "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 58
+        "mapImportance": 48
       }
     },
     {
@@ -638,7 +489,7 @@
         "name": "송추활백합칼국수",
         "facilityType": "food",
         "mapIconTier": 1,
-        "mapImportance": 59
+        "mapImportance": 49
       }
     },
     {
@@ -654,7 +505,7 @@
         "facilityType": "cafe",
         "operatingHours": "Mo-Su 07:00-21:30",
         "mapIconTier": 1,
-        "mapImportance": 60
+        "mapImportance": 50
       }
     },
     {
@@ -685,7 +536,7 @@
         "facilityType": "food",
         "operatingHours": "Mo-Su 10:30-21:00",
         "mapIconTier": 1,
-        "mapImportance": 62
+        "mapImportance": 52
       }
     },
     {
@@ -701,7 +552,7 @@
         "facilityType": "food",
         "operatingHours": "Mo-Su 11:00-22:00",
         "mapIconTier": 1,
-        "mapImportance": 63
+        "mapImportance": 53
       }
     },
     {
@@ -718,6 +569,427 @@
         "feeNote": "무료",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.976961, 37.72252]
+      },
+      "properties": {
+        "id": "songchu-osm-playground-842721951",
+        "valleyId": "songchu",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.978228, 37.721082]
+      },
+      "properties": {
+        "id": "songchu-osm-playground-1120992579",
+        "valleyId": "songchu",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 56
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.978425, 37.706254]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690704257",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.976896, 37.707573]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690701153",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.967823, 37.713649]
+      },
+      "properties": {
+        "id": "songchu-osm-bin-10161055791",
+        "valleyId": "songchu",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 59
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.976351, 37.707418]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690701148",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.977118, 37.706229]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690704251",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.969032, 37.723482]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-691145461",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.966922, 37.713409]
+      },
+      "properties": {
+        "id": "songchu-osm-playground-1110499410",
+        "valleyId": "songchu",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 63
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.964571, 37.719133]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-691145404",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972317, 37.707575]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690701001",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.971596, 37.708118]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690700968",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.975426, 37.705702]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690701071",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972667, 37.707106]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690700981",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972606, 37.706436]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690700988",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972079, 37.706748]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690700985",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.974406, 37.705075]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690701196",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.970535, 37.728503]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-691145425",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.97469, 37.699186]
+      },
+      "properties": {
+        "id": "songchu-osm-restroom-7908897957",
+        "valleyId": "songchu",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.973072, 37.699487]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690688455",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972378, 37.732209]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690863231",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.971754, 37.732133]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690863229",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.973064, 37.699]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690688445",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972681, 37.732722]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690863161",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.969376, 37.732078]
+      },
+      "properties": {
+        "id": "songchu-osm-parking-690863195",
+        "valleyId": "songchu",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.980045, 37.734964]
+      },
+      "properties": {
+        "id": "songchu-osm-food-10781290146",
+        "valleyId": "songchu",
+        "name": "양주르",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 80
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952006, 37.713324]
+      },
+      "properties": {
+        "id": "songchu-std-r-11986",
+        "valleyId": "songchu",
+        "name": "88보트장",
+        "facilityType": "restroom",
+        "operatingHours": "00:00~24:00",
+        "mapIconTier": 1,
+        "mapImportance": 81
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.994641, 37.733721]
+      },
+      "properties": {
+        "id": "songchu-osm-restroom-10749906442",
+        "valleyId": "songchu",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 82
       }
     }
   ]

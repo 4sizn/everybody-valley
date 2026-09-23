@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "왕방계곡 주변 봉우리 6개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.128332, 37.873962]
+      },
+      "properties": {
+        "valleyId": "wangbang",
+        "name": "해룡산",
+        "elevationM": 661.1,
+        "distanceM": 1922,
+        "osmId": "node/10076090532"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.155607, 37.895762]
+      },
+      "properties": {
+        "valleyId": "wangbang",
+        "name": "왕방산",
+        "elevationM": 736.7,
+        "distanceM": 2166,
+        "osmId": "node/10076090576"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.146668, 37.913163]
+      },
+      "properties": {
+        "valleyId": "wangbang",
+        "name": "국사봉",
+        "elevationM": 755,
+        "distanceM": 2753,
+        "osmId": "node/6876439745"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.076974, 37.899313]
+      },
+      "properties": {
+        "valleyId": "wangbang",
+        "name": "어등산",
+        "distanceM": 2903,
+        "osmId": "node/13719794576"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.0953, 37.86797]
+      },
+      "properties": {
+        "valleyId": "wangbang",
+        "name": "말봉",
+        "elevationM": 506,
+        "distanceM": 2954,
+        "osmId": "node/10253010750"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.098412, 37.866506]
+      },
+      "properties": {
+        "valleyId": "wangbang",
+        "name": "칠봉산",
+        "elevationM": 512.2,
+        "distanceM": 3000,
+        "osmId": "node/10125389942"
+      }
+    }
+  ]
+}

@@ -90,19 +90,63 @@ export async function fetchAmenities(
   const response = await cached(`overpass/amenity-${valleyId}-${radiusM}.json`, () =>
     query(ql, keys),
   );
-  const out: OsmPoi[] = [];
-  for (const element of response.elements) {
-    const lat = element.lat ?? element.center?.lat;
-    const lon = element.lon ?? element.center?.lon;
-    if (lat === undefined || lon === undefined) continue;
-    out.push({
-      type: element.type,
-      id: element.id,
-      position: [lon, lat],
-      tags: element.tags ?? {},
-    });
-  }
-  return out;
+  return toPois(response);
+}
+
+/** 중심선 bbox 를 `radiusM` 만큼 넓힌 Overpass bbox 문자열 `s,w,n,e`. */
+function bboxAround(line: readonly Position[], radiusM: number): string {
+  const lats = line.map(([, lat]) => lat);
+  const lngs = line.map(([lng]) => lng);
+  const dLat = radiusM / 111_320;
+  const dLng = radiusM / (111_320 * Math.cos((Math.min(...lats) * Math.PI) / 180));
+  return [
+    Math.min(...lats) - dLat,
+    Math.min(...lngs) - dLng,
+    Math.max(...lats) + dLat,
+    Math.max(...lngs) + dLng,
+  ]
+    .map((value) => value.toFixed(5))
+    .join(',');
+}
+
+/**
+ * 이름 있는 봉우리(`natural=peak`) — 중심선 bbox + `radiusM`. `ele` 태그는 그대로 두고 `peaks.mts` 가 숫자로 푼다.
+ * 캐시 `overpass/peaks-<id>-<r>.json`.
+ */
+export async function fetchPeaks(
+  valleyId: string,
+  line: readonly Position[],
+  radiusM: number,
+  keys: Keys,
+): Promise<readonly OsmPoi[]> {
+  const ql = `[out:json][timeout:60];node["natural"="peak"]["name"](${bboxAround(line, radiusM)});out;`;
+  const response = await cached(`overpass/peaks-${valleyId}-${radiusM}.json`, () =>
+    query(ql, keys),
+  );
+  return toPois(response);
+}
+
+/**
+ * 쓰레기통·놀이터 후보(2026-09-23) — 중심선을 `radiusM` 만큼 넓힌 **bbox** 로 조회한다. 정자처럼 선 버퍼
+ * (`around:r,lat,lon,…`)로 받으면 1.2 km 버퍼가 무거워 미러에서 504 가 났다(실측). bbox 는 가볍고, 선에서의
+ * 거리는 `facilities.mts` 가 다시 자른다. 기존 amenity 캐시를 건드리지 않도록 별도 캐시 파일(`extras-…`).
+ */
+export async function fetchExtras(
+  valleyId: string,
+  line: readonly Position[],
+  radiusM: number,
+  keys: Keys,
+): Promise<readonly OsmPoi[]> {
+  const bbox = bboxAround(line, radiusM);
+  const ql =
+    `[out:json][timeout:60];(` +
+    `nwr["leisure"="playground"](${bbox});` +
+    `nwr["amenity"~"^(waste_basket|waste_disposal|recycling)$"](${bbox});` +
+    `);out center tags;`;
+  const response = await cached(`overpass/extras-${valleyId}-${radiusM}-bbox.json`, () =>
+    query(ql, keys),
+  );
+  return toPois(response);
 }
 
 /**
@@ -135,6 +179,11 @@ export async function fetchShelters(
     `overpass/shelter-${valleyId}-${radiusM}-${samples.length}.json`,
     () => query(ql, keys),
   );
+  return toPois(response);
+}
+
+/** 응답 요소 → 점(way·relation 은 `center`). 좌표 없는 요소는 버린다. */
+function toPois(response: OverpassResponse): OsmPoi[] {
   const out: OsmPoi[] = [];
   for (const element of response.elements) {
     const lat = element.lat ?? element.center?.lat;

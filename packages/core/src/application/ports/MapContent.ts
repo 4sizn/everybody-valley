@@ -30,6 +30,7 @@ import {
   toSegmentId,
   type ValleyId,
 } from '../../domain/valley/ids';
+import type { Peak } from '../../domain/valley/Peak';
 import type { Segment } from '../../domain/valley/Segment';
 import type { ShadePolygons } from '../../domain/valley/Shade';
 import type { LandParcel } from './LandOwnership';
@@ -54,6 +55,8 @@ export type MapContent = {
   // ── valley ──
   readonly segments: readonly Segment[];
   readonly facilities: readonly Facility[];
+  /** 계곡 주변 봉우리 라벨(2026-09-23). 비인터랙티브 — 눌러도 선택이 아니다. */
+  readonly peaks: readonly Peak[];
   /** 구간별 혼잡 상태. 없는 구간은 "미확인"으로 그린다. */
   readonly crowd: ReadonlyMap<SegmentId, CrowdStatus>;
   /** 그늘 보기가 켜져 있을 때만 값이 있다. 꺼져 있거나 데이터가 없으면 `null`. */
@@ -76,6 +79,7 @@ export const EMPTY_MAP_CONTENT: MapContent = {
   launchSite: null,
   segments: [],
   facilities: [],
+  peaks: [],
   crowd: new Map(),
   shade: null,
 };

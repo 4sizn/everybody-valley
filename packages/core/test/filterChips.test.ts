@@ -91,18 +91,18 @@ describe('filterChips — SD1 실측', () => {
     expect(sd1.length).toBe(30);
   });
 
-  it('칩 단독 개수 — 화장실 14 · 주차장 15 · 무료 10 · 야영 7 · 그늘 많음 8', () => {
+  it('칩 단독 개수 — 화장실 15 · 주차장 18 · 무료 10 · 야영 7 · 그늘 많음 8', () => {
     const counts = filterChipMatchCounts(sd1, selectionOf());
-    expect(counts.get('restroom')).toBe(14);
-    expect(counts.get('parking')).toBe(15);
+    expect(counts.get('restroom')).toBe(15);
+    expect(counts.get('parking')).toBe(18);
     expect(counts.get('freeAccess')).toBe(10);
     expect(counts.get('camping')).toBe(7);
     expect(counts.get('shadeMany')).toBe(8);
   });
 
-  it('AND 조합 — 주차장+그늘 5 · 주차장+무료 4 · 주차장+무료+그늘 1 · 주차장+무료+야영 0', () => {
+  it('AND 조합 — 주차장+그늘 5 · 주차장+무료 6 · 주차장+무료+그늘 1 · 주차장+무료+야영 0', () => {
     expect(filterValleys(sd1, selectionOf('parking', 'shadeMany')).valleys).toHaveLength(5);
-    expect(filterValleys(sd1, selectionOf('parking', 'freeAccess')).valleys).toHaveLength(4);
+    expect(filterValleys(sd1, selectionOf('parking', 'freeAccess')).valleys).toHaveLength(6);
     expect(
       filterValleys(sd1, selectionOf('parking', 'freeAccess', 'shadeMany')).valleys,
     ).toHaveLength(1);
@@ -117,9 +117,9 @@ describe('filterChips — SD1 실측', () => {
     // 주차장을 이미 선택한 상태에서 그늘·무료 배지가 보여야 하는 값 — 위 조합과 같다.
     const withParking = filterChipMatchCounts(sd1, selectionOf('parking'));
     expect(withParking.get('shadeMany')).toBe(5);
-    expect(withParking.get('freeAccess')).toBe(4);
+    expect(withParking.get('freeAccess')).toBe(6);
     // 이미 선택된 칩 자신의 배지는 그 선택을 유지한 개수(=주차장 단독 개수).
-    expect(withParking.get('parking')).toBe(15);
+    expect(withParking.get('parking')).toBe(18);
   });
 
   it('정보가 없어 제외된 계곡 수 — 무료 15(30−15) · 야영 21(30−9)', () => {

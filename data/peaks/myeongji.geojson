@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "명지계곡 주변 봉우리 7개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.469773, 37.981881]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "언니통봉",
+        "elevationM": 928,
+        "distanceM": 911,
+        "osmId": "node/10242050795"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.46987, 37.98192]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "언니통봉",
+        "elevationM": 926,
+        "distanceM": 913,
+        "osmId": "node/10252936735"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.42785, 37.97774]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 1168,
+        "osmId": "node/10252936764"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.427845, 37.977729]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 1169,
+        "osmId": "node/10242949478"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.476309, 38.006227]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "석룡산",
+        "elevationM": 1147.4,
+        "distanceM": 2298,
+        "osmId": "node/10125390246"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.414563, 38.003104]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "견치봉",
+        "elevationM": 1120,
+        "distanceM": 2656,
+        "osmId": "node/10242050638"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.40544, 37.99016]
+      },
+      "properties": {
+        "valleyId": "myeongji",
+        "name": "민둥산",
+        "elevationM": 1010,
+        "distanceM": 2823,
+        "osmId": "node/10252936774"
+      }
+    }
+  ]
+}

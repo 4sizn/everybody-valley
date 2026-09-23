@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "현등사계곡(운악산) 주변 봉우리 6개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.332598, 37.875608]
+      },
+      "properties": {
+        "valleyId": "hyeondeungsa",
+        "name": "토봉",
+        "elevationM": 725,
+        "distanceM": 1295,
+        "osmId": "node/10125389944"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.325992, 37.876259]
+      },
+      "properties": {
+        "valleyId": "hyeondeungsa",
+        "name": "만경대",
+        "elevationM": 935,
+        "distanceM": 1682,
+        "osmId": "node/10125389945"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.3251, 37.877]
+      },
+      "properties": {
+        "valleyId": "hyeondeungsa",
+        "name": "비로봉",
+        "elevationM": 935,
+        "distanceM": 1796,
+        "osmId": "node/10252953791"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.32288, 37.87869]
+      },
+      "properties": {
+        "valleyId": "hyeondeungsa",
+        "name": "운악산",
+        "elevationM": 935,
+        "distanceM": 2066,
+        "osmId": "node/10253010745"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.31544, 37.85593]
+      },
+      "properties": {
+        "valleyId": "hyeondeungsa",
+        "name": "아기봉",
+        "elevationM": 768,
+        "distanceM": 2296,
+        "osmId": "node/10253010744"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.357733, 37.8889]
+      },
+      "properties": {
+        "valleyId": "hyeondeungsa",
+        "name": "천맥산",
+        "elevationM": 330.4,
+        "distanceM": 2806,
+        "osmId": "node/10253010736"
+      }
+    }
+  ]
+}

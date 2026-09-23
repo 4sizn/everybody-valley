@@ -35,7 +35,7 @@ describe('MAP_LAYER_SETS', () => {
     const kinds = MAP_LAYER_SETS.map((set) => set.kind);
     expect(new Set(kinds).size).toBe(kinds.length);
     expect(kinds).toEqual(
-      expect.arrayContaining(['shade', 'water', 'segment', 'flow', 'spot', 'facility']),
+      expect.arrayContaining(['shade', 'water', 'segment', 'flow', 'spot', 'facility', 'peak']),
     );
 
     const sourceIds = MAP_LAYER_SETS.map((set) => set.sourceId);
@@ -53,18 +53,28 @@ describe('MAP_LAYER_SETS', () => {
     }
   });
 
-  it('그늘 → 토지 경계 → 물줄기 면 → 구간 선 → 흐름 점선 → 시설 → 명당 순서로 그린다', () => {
+  it('그늘 → 토지 경계 → 물줄기 면 → 구간 선 → 흐름 점선 → 시설 → 봉우리 → 명당 순서로 그린다', () => {
     const order = MAP_LAYER_SETS.map((set) => set.kind);
-    expect(order).toEqual(['shade', 'land', 'water', 'segment', 'flow', 'facility', 'spot']);
+    expect(order).toEqual([
+      'shade',
+      'land',
+      'water',
+      'segment',
+      'flow',
+      'facility',
+      'peak',
+      'spot',
+    ]);
   });
 
-  it('그늘·토지·물줄기·흐름은 비인터랙티브(그늘·토지는 라벨 아래), 나머지는 히트 대상·맨 위', () => {
+  it('그늘·토지·물줄기·흐름·봉우리는 비인터랙티브(그늘·토지는 라벨 아래), 나머지는 히트 대상·맨 위', () => {
     for (const set of MAP_LAYER_SETS) {
       if (
         set.kind === 'shade' ||
         set.kind === 'land' ||
         set.kind === 'water' ||
-        set.kind === 'flow'
+        set.kind === 'flow' ||
+        set.kind === 'peak'
       ) {
         expect(isInteractiveLayerSet(set)).toBe(false);
         expect(set.interactiveLayerIds).toEqual([]);

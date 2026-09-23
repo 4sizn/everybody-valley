@@ -1,0 +1,155 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "조무락골 주변 봉우리 10개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.46987, 37.98192]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "언니통봉",
+        "elevationM": 926,
+        "distanceM": 793,
+        "osmId": "node/10252936735"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.469773, 37.981881]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "언니통봉",
+        "elevationM": 928,
+        "distanceM": 793,
+        "osmId": "node/10242050795"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.476309, 38.006227]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "석룡산",
+        "elevationM": 1147.4,
+        "distanceM": 1635,
+        "osmId": "node/10125390246"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.42785, 37.97774]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 2156,
+        "osmId": "node/10252936764"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.427845, 37.977729]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 2157,
+        "osmId": "node/10242949478"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498416, 37.989607]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "화악산 중봉",
+        "elevationM": 1446.1,
+        "distanceM": 2462,
+        "osmId": "node/7972716230"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.497383, 38.003366]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "삼일봉",
+        "elevationM": 1299,
+        "distanceM": 2659,
+        "osmId": "node/10252936762"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.458553, 38.016077]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "수덕바위봉",
+        "elevationM": 1115,
+        "distanceM": 2852,
+        "osmId": "node/10125390247"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.50333, 37.99478]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "화악산 상봉",
+        "elevationM": 1468.3,
+        "distanceM": 2889,
+        "osmId": "node/5429893547"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.503431, 37.994667]
+      },
+      "properties": {
+        "valleyId": "jomurak",
+        "name": "화악산",
+        "elevationM": 1468.3,
+        "distanceM": 2897,
+        "osmId": "node/11637337293"
+      }
+    }
+  ]
+}

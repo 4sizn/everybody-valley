@@ -1,0 +1,70 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "감악산 운계폭포 계곡 주변 봉우리 4개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.9319, 37.9282]
+      },
+      "properties": {
+        "valleyId": "gamaksan",
+        "name": "삼각점",
+        "elevationM": 400,
+        "distanceM": 1137,
+        "osmId": "node/10253010796"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.965045, 37.942442]
+      },
+      "properties": {
+        "valleyId": "gamaksan",
+        "name": "까치봉",
+        "distanceM": 1625,
+        "osmId": "node/10125370110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.969352, 37.938918]
+      },
+      "properties": {
+        "valleyId": "gamaksan",
+        "name": "임꺽정봉",
+        "elevationM": 675,
+        "distanceM": 1906,
+        "osmId": "node/10247969013"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.970076, 37.941156]
+      },
+      "properties": {
+        "valleyId": "gamaksan",
+        "name": "감악산",
+        "elevationM": 674,
+        "distanceM": 2028,
+        "osmId": "node/4867285021"
+      }
+    }
+  ]
+}

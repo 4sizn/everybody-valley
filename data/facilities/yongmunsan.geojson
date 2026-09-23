@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "용문산계곡 시설 16개 — 표준데이터 주차장 1 · 화장실 12 · OSM 3 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "용문산계곡 시설 18개 — 표준데이터 주차장 1 · 화장실 9 · 쓰레기통·놀이터 0 · OSM 8 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -56,22 +56,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.581249, 37.547606]
-      },
-      "properties": {
-        "id": "yongmunsan-std-r-14253",
-        "valleyId": "yongmunsan",
-        "name": "용문산국민관광지 박물관(1층)",
-        "facilityType": "restroom",
-        "operatingHours": "06:00~22:00",
-        "mapIconTier": 1,
-        "mapImportance": 22
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.579307, 37.54641]
       },
       "properties": {
@@ -81,7 +65,7 @@
         "facilityType": "restroom",
         "operatingHours": "07:00~22:00",
         "mapIconTier": 1,
-        "mapImportance": 23
+        "mapImportance": 22
       }
     },
     {
@@ -97,7 +81,7 @@
         "facilityType": "restroom",
         "operatingHours": ":~:",
         "mapIconTier": 1,
-        "mapImportance": 24
+        "mapImportance": 23
       }
     },
     {
@@ -113,23 +97,7 @@
         "facilityType": "restroom",
         "operatingHours": ":~:",
         "mapIconTier": 1,
-        "mapImportance": 25
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.582221, 37.547189]
-      },
-      "properties": {
-        "id": "yongmunsan-std-r-31597",
-        "valleyId": "yongmunsan",
-        "name": "용문산관광지(야외공연장 입구)",
-        "facilityType": "restroom",
-        "operatingHours": "06:00~22:00",
-        "mapIconTier": 1,
-        "mapImportance": 26
+        "mapImportance": 24
       }
     },
     {
@@ -145,7 +113,7 @@
         "facilityType": "restroom",
         "operatingHours": ":~:",
         "mapIconTier": 1,
-        "mapImportance": 27
+        "mapImportance": 25
       }
     },
     {
@@ -161,7 +129,7 @@
         "facilityType": "restroom",
         "operatingHours": "08:00~18:00",
         "mapIconTier": 1,
-        "mapImportance": 28
+        "mapImportance": 26
       }
     },
     {
@@ -177,55 +145,7 @@
         "facilityType": "restroom",
         "operatingHours": "07:00~22:00",
         "mapIconTier": 1,
-        "mapImportance": 29
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.581249, 37.547606]
-      },
-      "properties": {
-        "id": "yongmunsan-std-r-31620",
-        "valleyId": "yongmunsan",
-        "name": "용문산국민관광지 박물관(2층)",
-        "facilityType": "restroom",
-        "operatingHours": "07:00~22:00",
-        "mapIconTier": 1,
-        "mapImportance": 30
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.581249, 37.547606]
-      },
-      "properties": {
-        "id": "yongmunsan-std-r-31621",
-        "valleyId": "yongmunsan",
-        "name": "용문산국민관광지 박물관(1층)",
-        "facilityType": "restroom",
-        "operatingHours": "07:00~22:00",
-        "mapIconTier": 1,
-        "mapImportance": 31
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [127.583057, 37.545296]
-      },
-      "properties": {
-        "id": "yongmunsan-std-r-31622",
-        "valleyId": "yongmunsan",
-        "name": "용문산관광지(관리소)(관리소 건물내 직원 화장실)",
-        "facilityType": "restroom",
-        "operatingHours": "07:00~22:00",
-        "mapIconTier": 1,
-        "mapImportance": 32
+        "mapImportance": 27
       }
     },
     {
@@ -240,7 +160,7 @@
         "name": "세븐일레븐",
         "facilityType": "store",
         "mapIconTier": 1,
-        "mapImportance": 33
+        "mapImportance": 28
       }
     },
     {
@@ -271,6 +191,113 @@
         "facilityType": "parking",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.587196, 37.541962]
+      },
+      "properties": {
+        "id": "yongmunsan-osm-store-10758230507",
+        "valleyId": "yongmunsan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.545221, 37.560325]
+      },
+      "properties": {
+        "id": "yongmunsan-osm-parking-1487464363",
+        "valleyId": "yongmunsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.553906, 37.547869]
+      },
+      "properties": {
+        "id": "yongmunsan-osm-parking-1326248052",
+        "valleyId": "yongmunsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.542579, 37.558551]
+      },
+      "properties": {
+        "id": "yongmunsan-osm-parking-1487464376",
+        "valleyId": "yongmunsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.541708, 37.559608]
+      },
+      "properties": {
+        "id": "yongmunsan-osm-parking-1487464327",
+        "valleyId": "yongmunsan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.598805, 37.537182]
+      },
+      "properties": {
+        "id": "yongmunsan-std-r-31618",
+        "valleyId": "yongmunsan",
+        "name": "조계골중간",
+        "facilityType": "restroom",
+        "operatingHours": ":~:",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.552741, 37.528685]
+      },
+      "properties": {
+        "id": "yongmunsan-std-r-31636",
+        "valleyId": "yongmunsan",
+        "name": "학골계곡주차장",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~18:00",
+        "mapIconTier": 1,
+        "mapImportance": 37
       }
     }
   ]

@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "축령산계곡 주변 봉우리 3개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.316081, 37.76852]
+      },
+      "properties": {
+        "valleyId": "chungnyeongsan",
+        "name": "서리산",
+        "elevationM": 825,
+        "distanceM": 1707,
+        "osmId": "node/7972716233"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.30373, 37.77345]
+      },
+      "properties": {
+        "valleyId": "chungnyeongsan",
+        "name": "화채봉",
+        "elevationM": 651.5,
+        "distanceM": 2059,
+        "osmId": "node/10253004853"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.333886, 37.752763]
+      },
+      "properties": {
+        "valleyId": "chungnyeongsan",
+        "name": "축령산",
+        "elevationM": 879,
+        "distanceM": 2408,
+        "osmId": "node/443204531"
+      }
+    }
+  ]
+}

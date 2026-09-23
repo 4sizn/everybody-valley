@@ -1,0 +1,126 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "산정호수 비선폭포 계곡 주변 봉우리 8개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.3224, 38.063144]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "망봉산",
+        "elevationM": 382.5,
+        "distanceM": 607,
+        "osmId": "node/10242949481"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.322408, 38.063144]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "망봉산",
+        "elevationM": 382.5,
+        "distanceM": 607,
+        "osmId": "node/10253015157"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.314133, 38.073967]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "망무봉",
+        "elevationM": 441.7,
+        "distanceM": 674,
+        "osmId": "node/10253015150"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.34476, 38.065024]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "여우봉",
+        "elevationM": 726,
+        "distanceM": 1623,
+        "osmId": "node/10241543845"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.344796, 38.064988]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "여우봉",
+        "elevationM": 726,
+        "distanceM": 1627,
+        "osmId": "node/10253015155"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.337565, 38.090177]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "삼각봉",
+        "elevationM": 894.5,
+        "distanceM": 2545,
+        "osmId": "node/10125390191"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.305055, 38.090936]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "삼각점",
+        "elevationM": 478,
+        "distanceM": 2615,
+        "osmId": "node/10253015129"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.355266, 38.077559]
+      },
+      "properties": {
+        "valleyId": "bisun-sanjeong",
+        "name": "망봉산",
+        "distanceM": 2710,
+        "osmId": "node/10125390248"
+      }
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "지장산계곡 주변 봉우리 8개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.183011, 38.108824]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "향로봉",
+        "elevationM": 612.2,
+        "distanceM": 835,
+        "osmId": "node/10125390236"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.17164, 38.121724]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "북대",
+        "elevationM": 710,
+        "distanceM": 1442,
+        "osmId": "node/10242521673"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.1935, 38.1315]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "관인봉",
+        "elevationM": 717,
+        "distanceM": 1561,
+        "osmId": "node/10253017868"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.193152, 38.137114]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "관인북봉",
+        "elevationM": 720,
+        "distanceM": 2152,
+        "osmId": "node/10976113467"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.226787, 38.097506]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "수리봉",
+        "elevationM": 382.5,
+        "distanceM": 2202,
+        "osmId": "node/10125390083"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.175042, 38.137014]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "화인봉",
+        "elevationM": 805,
+        "distanceM": 2353,
+        "osmId": "node/10253017830"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.190853, 38.077917]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "종자산",
+        "elevationM": 643.7,
+        "distanceM": 2484,
+        "osmId": "node/10125390235"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.17299, 38.141134]
+      },
+      "properties": {
+        "valleyId": "jijangsan",
+        "name": "보개산 지장봉",
+        "elevationM": 876,
+        "distanceM": 2843,
+        "osmId": "node/10239453693"
+      }
+    }
+  ]
+}

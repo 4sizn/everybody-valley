@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "논남기계곡 주변 봉우리 7개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.427845, 37.977729]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 1200,
+        "osmId": "node/10242949478"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.42785, 37.97774]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "차돌박이산",
+        "elevationM": 702,
+        "distanceM": 1201,
+        "osmId": "node/10252936764"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.392477, 37.95894]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "깊이봉",
+        "elevationM": 892,
+        "distanceM": 1913,
+        "osmId": "node/10242949476"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.40544, 37.99016]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "민둥산",
+        "elevationM": 1010,
+        "distanceM": 2232,
+        "osmId": "node/10252936774"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.382848, 37.974383]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "백호봉",
+        "elevationM": 806,
+        "distanceM": 2336,
+        "osmId": "node/10242949477"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.3823, 37.96981]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "강씨봉",
+        "elevationM": 830.2,
+        "distanceM": 2340,
+        "osmId": "node/5406119976"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.396863, 37.944344]
+      },
+      "properties": {
+        "valleyId": "nonnamgi",
+        "name": "귀목봉",
+        "elevationM": 1036,
+        "distanceM": 2933,
+        "osmId": "node/10242049990"
+      }
+    }
+  ]
+}

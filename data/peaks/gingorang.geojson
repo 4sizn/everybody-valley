@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "긴고랑계곡 주변 봉우리 5개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09571, 37.571168]
+      },
+      "properties": {
+        "valleyId": "gingorang",
+        "name": "용마산",
+        "elevationM": 348,
+        "distanceM": 1,
+        "osmId": "node/2493496155"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.102742, 37.566844]
+      },
+      "properties": {
+        "valleyId": "gingorang",
+        "name": "아차산",
+        "elevationM": 295.7,
+        "distanceM": 600,
+        "osmId": "node/10252999053"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.10435, 37.571124]
+      },
+      "properties": {
+        "valleyId": "gingorang",
+        "name": "아차산",
+        "elevationM": 295,
+        "distanceM": 761,
+        "osmId": "node/4551691778"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.116763, 37.58109]
+      },
+      "properties": {
+        "valleyId": "gingorang",
+        "name": "시루봉",
+        "elevationM": 204,
+        "distanceM": 2159,
+        "osmId": "node/3819845648"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.113296, 37.59334]
+      },
+      "properties": {
+        "valleyId": "gingorang",
+        "name": "망우산",
+        "elevationM": 281.7,
+        "distanceM": 2913,
+        "osmId": "node/3819845649"
+      }
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "소요산계곡 주변 봉우리 10개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.0781, 37.938534]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "공주봉",
+        "elevationM": 526,
+        "distanceM": 1878,
+        "osmId": "node/10120158983"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.044391, 37.917037]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "어운산",
+        "distanceM": 1952,
+        "osmId": "node/13719794485"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.027063, 37.943096]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "마차산",
+        "elevationM": 588.4,
+        "distanceM": 2041,
+        "osmId": "node/10119435516"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.03192, 37.921047]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "안흥산",
+        "distanceM": 2067,
+        "osmId": "node/13719794649"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.065499, 37.916649]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "싸리산",
+        "distanceM": 2470,
+        "osmId": "node/13719794580"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089289, 37.94835]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "하백운대",
+        "elevationM": 443,
+        "distanceM": 2616,
+        "osmId": "node/10253010782"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.087934, 37.938516]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "소요산",
+        "elevationM": 587.5,
+        "distanceM": 2676,
+        "osmId": "node/5379626566"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.089975, 37.939415]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "나한대",
+        "elevationM": 571,
+        "distanceM": 2817,
+        "osmId": "node/11863326802"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.09271, 37.96103]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "번대산",
+        "elevationM": 460,
+        "distanceM": 2852,
+        "osmId": "node/10253010769"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.092947, 37.948513]
+      },
+      "properties": {
+        "valleyId": "soyosan",
+        "name": "중백운대",
+        "elevationM": 510,
+        "distanceM": 2935,
+        "osmId": "node/10241277741"
+      }
+    }
+  ]
+}

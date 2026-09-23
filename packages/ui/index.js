@@ -247,6 +247,8 @@ var FACILITY_ICONS = {
   "\uD654\uC7A5\uC2E4": "toilet",
   "\uC8FC\uCC28\uC7A5": "square-parking",
   "\uC815\uC790\xB7\uC27C\uD130": "house",
+  "\uC4F0\uB808\uAE30\uD1B5": "trash-2",
+  "\uB180\uC774\uD130": "toy-brick",
   "\uC548\uC804\uC2DC\uC124": "shield-check",
   "\uC9C4\uC785\uB85C": "navigation",
   "\uC5ED\xB7\uC815\uB958\uC7A5": "map",

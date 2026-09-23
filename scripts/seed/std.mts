@@ -8,8 +8,8 @@
  * 둘 다 로그인 없이 응답한다(2026-09-06 실측, Orca 브라우저에서 확인). 여기서는 같은 요청을 Node 로 하고
  * UTF-8(BOM) CSV 로 쓴다 — `facilities.mts` 가 한글 열 이름으로 읽는다.
  *
- *   pnpm seed:std            # 두 데이터셋 모두
- *   pnpm seed:std parking    # 하나만 (parking | restroom)
+ *   pnpm seed:std            # 네 데이터셋 모두
+ *   pnpm seed:std parking    # 하나만 (parking | restroom | bin | park) — bin 휴지통, park 도시공원(유희시설=놀이터)
  *
  * 출처: 공공데이터포털 표준데이터(공공누리 1유형 — 출처표시). 요청 간 1 s.
  */
@@ -24,7 +24,7 @@ const PER_PAGE = 10_000;
 const GAP_MS = 1000;
 
 interface StdDataset {
-  readonly key: 'parking' | 'restroom';
+  readonly key: 'parking' | 'restroom' | 'bin' | 'park';
   readonly pk: string;
   /** 파일명에 들어가는 단어 — `facilities.mts` 가 `*주차장*.csv`·`*화장실*.csv` 로 찾는다. */
   readonly fileName: string;
@@ -33,6 +33,8 @@ interface StdDataset {
 export const STD_DATASETS: readonly StdDataset[] = [
   { key: 'parking', pk: '15012896', fileName: '전국주차장정보표준데이터' },
   { key: 'restroom', pk: '15012892', fileName: '전국공중화장실표준데이터' },
+  { key: 'bin', pk: '15129450', fileName: '전국휴지통표준데이터' },
+  { key: 'park', pk: '15012890', fileName: '전국도시공원정보표준데이터' },
 ];
 
 interface ColumnList {

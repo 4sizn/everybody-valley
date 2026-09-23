@@ -1,0 +1,182 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "원효계곡 주변 봉우리 12개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.996184, 35.153884]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "윤필봉",
+        "elevationM": 404,
+        "distanceM": 452,
+        "osmId": "node/10213468234"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.98179, 35.15112]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "원효봉",
+        "elevationM": 560.9,
+        "distanceM": 802,
+        "osmId": "node/10250284081"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.995765, 35.143731]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "의상봉",
+        "elevationM": 546.6,
+        "distanceM": 994,
+        "osmId": "node/10250272004"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.971246, 35.163937]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "덕봉",
+        "elevationM": 472,
+        "distanceM": 1863,
+        "osmId": "node/9880485602"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.97128, 35.14019]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "낙타봉",
+        "elevationM": 545.2,
+        "distanceM": 2167,
+        "osmId": "node/10250277921"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.017394, 35.177894]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "꾀꼬리봉",
+        "elevationM": 145.5,
+        "distanceM": 2523,
+        "osmId": "node/10250287537"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.9769, 35.13129]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "토끼등",
+        "elevationM": 459,
+        "distanceM": 2580,
+        "osmId": "node/10250277966"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.968038, 35.136721]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "장군봉",
+        "distanceM": 2636,
+        "osmId": "node/10248473739"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.961543, 35.143567]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "평두봉",
+        "elevationM": 351,
+        "distanceM": 2790,
+        "osmId": "node/10213468226"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.972281, 35.179556]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "덕봉산",
+        "elevationM": 415.4,
+        "distanceM": 2821,
+        "osmId": "node/10250287527"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.01027, 35.13102]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "누에봉",
+        "elevationM": 1061,
+        "distanceM": 2893,
+        "osmId": "node/10250277965"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.960813, 35.140679]
+      },
+      "properties": {
+        "valleyId": "wonhyo",
+        "name": "가운데등",
+        "elevationM": 398,
+        "distanceM": 2969,
+        "osmId": "node/10213446115"
+      }
+    }
+  ]
+}

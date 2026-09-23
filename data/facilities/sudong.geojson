@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "수동계곡 시설 5개 — 표준데이터 주차장 0 · 화장실 3 · OSM 2 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "수동계곡 시설 9개 — 표준데이터 주차장 0 · 화장실 2 · 쓰레기통·놀이터 0 · OSM 7 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -53,22 +53,6 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [127.273474, 37.756283]
-      },
-      "properties": {
-        "id": "sudong-std-r-30307",
-        "valleyId": "sudong",
-        "name": "몽골문화촌승마장 전 가족쉼터 접수처 옆",
-        "facilityType": "restroom",
-        "operatingHours": "24시간",
-        "mapIconTier": 1,
-        "mapImportance": 22
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
         "coordinates": [127.272338, 37.749981]
       },
       "properties": {
@@ -93,6 +77,81 @@
         "facilityType": "parking",
         "mapIconTier": 0,
         "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.282994, 37.775589]
+      },
+      "properties": {
+        "id": "sudong-osm-parking-1434500561",
+        "valleyId": "sudong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.28746, 37.72863]
+      },
+      "properties": {
+        "id": "sudong-osm-food-4656208302",
+        "valleyId": "sudong",
+        "name": "수산성 중국집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.283699, 37.726689]
+      },
+      "properties": {
+        "id": "sudong-osm-store-4656316717",
+        "valleyId": "sudong",
+        "name": "캠핑장 매점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.28335, 37.72597]
+      },
+      "properties": {
+        "id": "sudong-osm-parking-471476547",
+        "valleyId": "sudong",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.277241, 37.72588]
+      },
+      "properties": {
+        "id": "sudong-osm-store-4656309977",
+        "valleyId": "sudong",
+        "name": "수산리 수퍼마켓",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 28
       }
     }
   ]

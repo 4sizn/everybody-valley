@@ -2,14 +2,14 @@
   "$schema": "../.schema/valleys.schema.json",
   "type": "FeatureCollection",
   "metadata": {
-    "description": "경반계곡 시설 1개 — 표준데이터 주차장 0 · 화장실 1 · OSM 0 · 수기 0. 계곡 점 반경 1.5 km.",
-    "source": "전국주차장정보·공중화장실 표준데이터(공공누리 1유형) + OSM amenity(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "description": "경반계곡 시설 33개 — 표준데이터 주차장 0 · 화장실 4 · 쓰레기통·놀이터 0 · OSM 29 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
     "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
-    "datasetVersion": "2026-09-06.0",
-    "collectedAt": "2026-09-06",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
     "coordinateOrder": "[longitude, latitude]",
     "crs": "EPSG:4326",
-    "filter": "계곡 점 반경 1500 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
     "verified": "desk",
     "sources": [
       "https://www.openstreetmap.org/copyright",
@@ -31,6 +31,490 @@
         "operatingHours": "09:00~21:00",
         "mapIconTier": 1,
         "mapImportance": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.470694, 37.847028]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1304189607",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.47424, 37.812592]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1467182503",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "feeNote": "무료",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.48777, 37.84257]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1312583714",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.457268, 37.816447]
+      },
+      "properties": {
+        "id": "gyeongban-osm-store-11472586625",
+        "valleyId": "gyeongban",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498077, 37.830819]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1296348263",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.487909, 37.844166]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1312713996",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.494974, 37.839323]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1307626563",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.488515, 37.844032]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306552341",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.494915, 37.83939]
+      },
+      "properties": {
+        "id": "gyeongban-osm-food-12109450087",
+        "valleyId": "gyeongban",
+        "name": "최가네 우렁쌈밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.488886, 37.844545]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306552332",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.489487, 37.84427]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306552334",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.482846, 37.849246]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1316323013",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.487683, 37.845156]
+      },
+      "properties": {
+        "id": "gyeongban-osm-store-12150784339",
+        "valleyId": "gyeongban",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.496899, 37.838198]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1307252490",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.486169, 37.846664]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1213206661",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.497406, 37.838171]
+      },
+      "properties": {
+        "id": "gyeongban-osm-food-12106101626",
+        "valleyId": "gyeongban",
+        "name": "온정리 금강막국수 숯불닭갈비",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.485914, 37.847247]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1312609241",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.485459, 37.847753]
+      },
+      "properties": {
+        "id": "gyeongban-std-r-29912",
+        "valleyId": "gyeongban",
+        "name": "연인산도립공원 탐방안내소",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.49785, 37.838264]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1307235289",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498503, 37.837308]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306465377",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.49228, 37.844032]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306594136",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498246, 37.838592]
+      },
+      "properties": {
+        "id": "gyeongban-osm-cafe-12108206673",
+        "valleyId": "gyeongban",
+        "name": "카페목련",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.493792, 37.843111]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306723863",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498583, 37.838466]
+      },
+      "properties": {
+        "id": "gyeongban-osm-food-12106101611",
+        "valleyId": "gyeongban",
+        "name": "금자네 우거지갈비탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.486513, 37.848123]
+      },
+      "properties": {
+        "id": "gyeongban-osm-food-12183537213",
+        "valleyId": "gyeongban",
+        "name": "커피먹인닭",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498563, 37.838664]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1307484638",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.501926, 37.831179]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306312913",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.494472, 37.843548]
+      },
+      "properties": {
+        "id": "gyeongban-osm-parking-1306723860",
+        "valleyId": "gyeongban",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.50027, 37.839097]
+      },
+      "properties": {
+        "id": "gyeongban-osm-food-12106101546",
+        "valleyId": "gyeongban",
+        "name": "용추숯불닭갈비",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.501943, 37.836522]
+      },
+      "properties": {
+        "id": "gyeongban-osm-food-9093009105",
+        "valleyId": "gyeongban",
+        "name": "숲B,B,U,갤러리숲",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.481998, 37.855007]
+      },
+      "properties": {
+        "id": "gyeongban-std-r-29911",
+        "valleyId": "gyeongban",
+        "name": "승안리 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.498654, 37.845972]
+      },
+      "properties": {
+        "id": "gyeongban-std-r-29913",
+        "valleyId": "gyeongban",
+        "name": "농업기술센타",
+        "facilityType": "restroom",
+        "operatingHours": "09:00~21:00",
+        "mapIconTier": 1,
+        "mapImportance": 52
       }
     }
   ]

@@ -1,10 +1,10 @@
 /**
  * 시설 핀 PNG → 아이콘 ID 표 (네이티브, C5 결정 (e)).
  *
- * `scripts/icons/build.mts` 가 `map-style` 의 SVG 팩토리로 구운 40장(10종 × 기본/선택 × @2x/@3x)을
+ * `scripts/icons/build.mts` 가 `map-style` 의 SVG 팩토리로 구운 48장(12종 × 기본/선택 × @2x/@3x)을
  * `<Images>` 에 등록한다. 키는 심볼 레이어가 부르는 ID(`facilityIconId`) 와 글자 하나 다르지 않다 —
- * web 은 같은 ID 를 런타임 SVG 로 푼다. Metro 의 `require()` 는 정적 문자열만 받으므로 20개를
- * 손으로 적고, `Record<FacilityType, …>` 타입이 10종 누락을 컴파일에서 잡는다. `@2x`/`@3x` 는 RN
+ * web 은 같은 ID 를 런타임 SVG 로 푼다. Metro 의 `require()` 는 정적 문자열만 받으므로 24개를
+ * 손으로 적고, `Record<FacilityType, …>` 타입이 12종 누락을 컴파일에서 잡는다. `@2x`/`@3x` 는 RN
  * 에셋 해상도 규약 — 기기 배율에 맞는 장을 Metro 가 고르고, 지도는 그 배율로 28×36dp 에 그린다.
  */
 import type { FacilityType } from '@modu-valley/core';
@@ -37,6 +37,14 @@ const FACILITY_ICON_FILES: Readonly<Record<FacilityType, IconPair>> = {
   shelter: {
     base: require('../../../assets/icons/facility-shelter.png'),
     selected: require('../../../assets/icons/facility-shelter-selected.png'),
+  },
+  bin: {
+    base: require('../../../assets/icons/facility-bin.png'),
+    selected: require('../../../assets/icons/facility-bin-selected.png'),
+  },
+  playground: {
+    base: require('../../../assets/icons/facility-playground.png'),
+    selected: require('../../../assets/icons/facility-playground-selected.png'),
   },
   station: {
     base: require('../../../assets/icons/facility-station.png'),

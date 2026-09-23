@@ -28,6 +28,8 @@ export type FacilityType =
   | 'cafe'
   | 'store'
   | 'shelter'
+  | 'bin'
+  | 'playground'
   | 'station'
   | 'access'
   | 'safety'
@@ -43,7 +45,14 @@ export interface FacilityRecord {
   readonly feeNote?: string;
   readonly operatingHours?: string;
   /** 어디서 왔나 — metadata.sources 와 매칭 결과표의 재료. */
-  readonly origin: 'std-parking' | 'std-restroom' | 'osm' | 'manual';
+  readonly origin:
+    | 'std-parking'
+    | 'std-restroom'
+    | 'std-bin'
+    | 'std-park'
+    | 'std-playground'
+    | 'osm'
+    | 'manual';
 }
 
 const TYPE_DEFAULT_NAME: Readonly<Record<FacilityType, string>> = {
@@ -53,6 +62,8 @@ const TYPE_DEFAULT_NAME: Readonly<Record<FacilityType, string>> = {
   cafe: '카페',
   store: '매점',
   shelter: '정자',
+  bin: '쓰레기통',
+  playground: '놀이터',
   station: '역·정류장',
   access: '진입로',
   safety: '안전시설',
@@ -144,6 +155,107 @@ export function loadStdRestrooms(): readonly StdParkingRow[] {
   return out;
 }
 
+/**
+ * 쓰레기통·놀이터 표준데이터(2026-09-23). 셋 다 `StdParkingRow` 모양으로 읽어 `stdNearLine` 에 넘긴다.
+ *
+ *   전국휴지통표준데이터(15129450)        설치장소명·위도·경도·휴지통종류 — 35개 지자체만 제공
+ *   전국도시공원정보표준데이터(15012890)  공원보유시설(유희시설) 이 비어 있지 않은 공원 = 놀이터 있는 공원
+ *   전국어린이놀이시설정보(API 15124519)  `pnpm seed:playgrounds` 가 CSV 로 내려놓은 것 — 운영 중·실외만
+ */
+export function loadStdBins(): readonly StdParkingRow[] {
+  return loadStdPoints('휴지통', '설치장소명', (row, header) => {
+    const kind = findColumn(header, '휴지통종류');
+    const recycling = kind !== undefined && /재활용/.test(row[kind] ?? '');
+    return { suffix: recycling ? ' (재활용)' : '' };
+  });
+}
+
+export function loadStdParkPlaygrounds(): readonly StdParkingRow[] {
+  return loadStdPoints('도시공원', '공원명', (row, header) => {
+    const play = findColumn(header, '공원보유시설(유희시설)');
+    const equipment = play === undefined ? '' : (row[play] ?? '').trim();
+    return equipment === '' ? undefined : { suffix: ' 놀이터' };
+  });
+}
+
+export function loadStdPlaygrounds(): readonly StdParkingRow[] {
+  return loadStdPoints('놀이시설', '놀이시설명', (row, header) => {
+    const operating = findColumn(header, '운영여부');
+    const indoor = findColumn(header, '실내외');
+    const place = findColumn(header, '설치장소유형');
+    if (operating !== undefined && row[operating] !== '운영') return undefined;
+    if (indoor !== undefined && row[indoor] === '실내') return undefined;
+    // 주택단지 놀이터는 단지 주민용이라 계곡 이용자 시설이 아니다 — 공원·야영장·유원지 등만.
+    if (place !== undefined && row[place] === '주택단지') return undefined;
+    return { suffix: '' };
+  });
+}
+
+/**
+ * 위도·경도 열이 있는 `*needle*.csv` 를 점으로 읽는다. `pick` 이 `undefined` 를 주면 그 행은 버리고,
+ * `suffix` 는 이름 뒤에 붙인다(요금·운영시간 칸은 비운다 — 쓰레기통 종류를 요금 칸에 넣으면 화면에 "이용 요금" 으로 뜬다).
+ */
+function loadStdPoints(
+  needle: string,
+  nameHeader: string,
+  pick: (row: CsvRow, header: string[]) => { suffix: string } | undefined,
+): readonly StdParkingRow[] {
+  const out: StdParkingRow[] = [];
+  for (const file of csvFilesIn(STD_DIR, needle)) {
+    const { header, rows } = readCsv(file);
+    const nameColumn = findColumn(header, nameHeader);
+    const latColumn = findColumn(header, '위도');
+    const lngColumn = findColumn(header, '경도');
+    if (nameColumn === undefined || latColumn === undefined || lngColumn === undefined) continue;
+    rows.forEach((row, index) => {
+      const lat = number(row[latColumn]);
+      const lng = number(row[lngColumn]);
+      if (lat === undefined || lng === undefined || lat === 0 || lng === 0) return;
+      const picked = pick(row, header);
+      if (picked === undefined) return;
+      const name = (row[nameColumn] ?? '').trim();
+      out.push({
+        key: String(index),
+        name: name === '' ? '' : `${name}${picked.suffix}`,
+        position: [lng, lat],
+        capacity: undefined,
+        feeNote: undefined,
+        operatingHours: undefined,
+      });
+    });
+  }
+  return out;
+}
+
+/**
+ * 쓰레기통·놀이터가 "이 계곡의 것"인 최대 거리 — **구간 중심선**에서(m). 주차장처럼 멀리 대고 걸어오는
+ * 시설이 아니라 곁에 있어야 뜻이 있는데, 물가 300 m 안엔 거의 없어(2026-09-23 실측: 33곳 중 0곳)
+ * 걸어갈 만한 거리까지는 "가는 길에" 로 보여 준다. 긴고랑 하류 주택가 가로쓰레기통 156개(1.4 km~)는
+ * 이 값에서 걸러진다.
+ */
+export const EXTRA_MAX_FROM_LINE_M = 1200;
+
+/** 표준데이터 점 → 쓰레기통·놀이터 시설. 중심선에서 `EXTRA_MAX_FROM_LINE_M` 안만. */
+export function stdNearLine(
+  rows: readonly StdParkingRow[],
+  line: readonly Position[],
+  valleyId: string,
+  type: 'bin' | 'playground',
+  origin: 'std-bin' | 'std-park' | 'std-playground',
+): FacilityRecord[] {
+  const prefix = origin === 'std-playground' ? 'std-pg' : origin;
+  return rows
+    .filter((row) => projectOnLine(line, row.position).distance <= EXTRA_MAX_FROM_LINE_M)
+    .map((row) => ({
+      id: `${valleyId}-${prefix}-${row.key.replace(/[^A-Za-z0-9_-]/g, '')}`,
+      valleyId,
+      name: row.name || TYPE_DEFAULT_NAME[type],
+      facilityType: type,
+      position: [round6(row.position[0]), round6(row.position[1])],
+      origin,
+    }));
+}
+
 export function stdWithin(
   rows: readonly StdParkingRow[],
   center: Position,
@@ -223,6 +335,45 @@ export function osmFacilities(
       ...(capacity === undefined ? {} : { capacity: Math.round(capacity) }),
       ...(fee === undefined ? {} : { feeNote: fee }),
       ...(hours === undefined ? {} : { operatingHours: hours }),
+      origin: 'osm',
+    });
+  }
+  return out;
+}
+
+// ── 쓰레기통·놀이터 OSM (2026-09-23) ──────────────────────────────────
+
+function extraType(tags: Readonly<Record<string, string>>): 'bin' | 'playground' | undefined {
+  if (tags['leisure'] === 'playground') return 'playground';
+  switch (tags['amenity']) {
+    case 'waste_basket':
+    case 'waste_disposal':
+    case 'recycling':
+      return 'bin';
+    default:
+      return undefined;
+  }
+}
+
+/** OSM `leisure=playground`·`amenity=waste_*|recycling` → 시설. 중심선에서 `EXTRA_MAX_FROM_LINE_M` 안만. */
+export function extraFacilities(
+  pois: readonly OsmPoi[],
+  line: readonly Position[],
+  valleyId: string,
+): FacilityRecord[] {
+  const out: FacilityRecord[] = [];
+  for (const poi of pois) {
+    const type = extraType(poi.tags);
+    if (type === undefined) continue;
+    if (projectOnLine(line, poi.position).distance > EXTRA_MAX_FROM_LINE_M) continue;
+    const fallback =
+      poi.tags['amenity'] === 'recycling' ? '재활용 수거함' : TYPE_DEFAULT_NAME[type];
+    out.push({
+      id: `${valleyId}-osm-${type}-${poi.id}`,
+      valleyId,
+      name: poi.tags['name'] ?? fallback,
+      facilityType: type,
+      position: [round6(poi.position[0]), round6(poi.position[1])],
       origin: 'osm',
     });
   }
@@ -372,16 +523,52 @@ export function loadManualFacilities(): {
   return { byValley, errors };
 }
 
+// ── 멀리 있는 것 자르기 (2026-09-23) ──────────────────────────────────
+
+/** 이 거리(중심선 기준, m) 안은 전부 남긴다 — core 의 "주변"(300 m)·주차장·정류장(800 m) 상한과 같다. */
+export const FAR_KEEP_M = 800;
+/** 그 밖("가는 길에")은 종류별로 가까운 순 이 개수까지만. */
+export const FAR_MAX_PER_TYPE = 20;
+
+/**
+ * 계곡 점 반경 3 km 로 긁으면 도심 계곡(긴고랑·안골)은 식당 900개가 들어와 파일이 600 KB 를 넘고
+ * "가는 길에" 목록이 끝없이 길어진다. 물가 800 m 안은 전부, 그 밖은 종류별 가까운 20개만 남긴다 —
+ * 회귀 기준(칩 개수)은 800 m 안만 보므로 이 자르기에 영향받지 않는다.
+ */
+export function trimFarFacilities(
+  facilities: readonly FacilityRecord[],
+  line: readonly Position[],
+): FacilityRecord[] {
+  const withDistance = facilities.map((facility) => ({
+    facility,
+    distance: projectOnLine(line, facility.position).distance,
+  }));
+  const near = withDistance.filter(({ distance }) => distance <= FAR_KEEP_M);
+  const far = withDistance
+    .filter(({ distance }) => distance > FAR_KEEP_M)
+    .sort((a, b) => a.distance - b.distance);
+  const perType = new Map<FacilityType, number>();
+  const kept = far.filter(({ facility }) => {
+    const seen = perType.get(facility.facilityType) ?? 0;
+    perType.set(facility.facilityType, seen + 1);
+    return seen < FAR_MAX_PER_TYPE;
+  });
+  return [...near, ...kept].map(({ facility }) => facility);
+}
+
 // ── 합치기 ────────────────────────────────────────────────────────────
 
-/** 표준데이터 → OSM(중복 제거) → 수기 순으로 합친다. 같은 id 는 뒤가 이긴다(수기가 최종). */
+/**
+ * 표준데이터 → OSM → 수기 순으로 합친다. 같은 종류가 50 m 안에 이미 있으면 중복으로 버린다(표준데이터
+ * 사이에서도 — 놀이시설 API 와 도시공원 유희시설이 같은 공원을 가리킨다). 같은 id 는 뒤가 이긴다(수기가 최종).
+ */
 export function mergeFacilities(
   std: readonly FacilityRecord[],
   osm: readonly FacilityRecord[],
   manual: readonly FacilityRecord[],
 ): FacilityRecord[] {
-  const out: FacilityRecord[] = [...std];
-  for (const record of osm) {
+  const out: FacilityRecord[] = [];
+  for (const record of [...std, ...osm]) {
     const duplicate = out.some(
       (existing) =>
         existing.facilityType === record.facilityType &&

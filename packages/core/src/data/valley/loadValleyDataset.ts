@@ -42,6 +42,7 @@ import { type AppError, ValleyDataError, type ValleyError } from '../../shared/e
 import { err, ok, type Result } from '../../shared/result';
 import { parseDatasetMetadata } from './DatasetMetadata';
 import { parseLineString, parsePoint } from './geometry';
+import { loadPeaksBundle } from './loadPeaksBundle';
 import { loadShadeBundle } from './loadShadeBundle';
 import { isJsonRecord, type JsonRecord, PropsReader } from './PropsReader';
 
@@ -135,6 +136,7 @@ export function loadValleyBundle(
   valleysBundleRaw: unknown,
   facilitiesBundleRaw?: unknown,
   shadeBundleRaw?: unknown,
+  peaksBundleRaw?: unknown,
 ): Result<ValleyDataset, AppError> {
   const bundle = readBundle(valleysBundleRaw, ROOT);
   if (!bundle.ok) return bundle;
@@ -166,7 +168,10 @@ export function loadValleyBundle(
   if (!valleys.ok) return valleys;
   const shade = attachShade(valleys.value, shadeBundleRaw);
   if (!shade.ok) return shade;
-  return ok({ metadata: metadata.value, valleys: valleys.value, shade: shade.value });
+  // 봉우리는 아는 계곡의 것만(그늘과 같은 규칙). 합본이 없으면 빈 배열.
+  const known = new Set(valleys.value.map((valley) => valley.id));
+  const peaks = loadPeaksBundle(peaksBundleRaw).filter((peak) => known.has(peak.valleyId));
+  return ok({ metadata: metadata.value, valleys: valleys.value, shade: shade.value, peaks });
 }
 
 type Collected<T> = {

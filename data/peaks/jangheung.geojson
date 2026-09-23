@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "장흥계곡 주변 봉우리 7개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-23.0",
+    "collectedAt": "2026-09-23",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.959954, 37.728626]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "일영봉",
+        "elevationM": 443.7,
+        "distanceM": 823,
+        "osmId": "node/10125389922"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949483, 37.755422]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "수리봉",
+        "elevationM": 517.6,
+        "distanceM": 1739,
+        "osmId": "node/10253004886"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.963173, 37.755591]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "장군봉",
+        "elevationM": 425.3,
+        "distanceM": 1747,
+        "osmId": "node/10125389923"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933105, 37.745434]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "형제봉",
+        "elevationM": 550,
+        "distanceM": 1858,
+        "osmId": "node/2677118472"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.92193, 37.73025]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "국수봉",
+        "elevationM": 418,
+        "distanceM": 2311,
+        "osmId": "node/10253004795"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.929319, 37.749098]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "개명산",
+        "elevationM": 560,
+        "distanceM": 2368,
+        "osmId": "node/7564761464"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.977071, 37.757292]
+      },
+      "properties": {
+        "valleyId": "jangheung",
+        "name": "챌봉",
+        "elevationM": 520.8,
+        "distanceM": 2578,
+        "osmId": "node/10125389924"
+      }
+    }
+  ]
+}
