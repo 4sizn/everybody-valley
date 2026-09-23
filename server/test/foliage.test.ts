@@ -1,17 +1,16 @@
 /**
- * 단풍 배선 테스트 — AWS 매분 행 → `daily_temps` 접기(`DailyTempsRepo.fold`), 계곡 중심 근처
- * 관측소 고르기 + 일별 중앙값 + `/api/foliage` 응답. 단계 문턱은 core `foliage.test.ts` 가 고정한다.
+ * 단풍 배선 — 계절관측 파서, 관서·유명산 지점 고르기, `/api/foliage`. 단계 규칙은 core 가 고정한다.
  */
 import path from 'node:path';
 import { LngLat } from '@modu-valley/core';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { type Db, openDatabase } from '../src/db/Database';
 import { runMigrations } from '../src/db/migrate';
-import { createRepos, kstDayOf, type Repos } from '../src/db/repos';
+import { createRepos, type Repos } from '../src/db/repos';
 import { foliageRoutes } from '../src/http/routes/foliage';
+import { parseSeasonNorm, parseSeasonObs } from '../src/sources/kmaSeason';
 
 const MIGRATIONS = path.resolve(import.meta.dirname, '../migrations');
-
 let db: Db;
 let repos: Repos;
 beforeEach(() => {
@@ -21,178 +20,90 @@ beforeEach(() => {
 });
 afterEach(() => db.close());
 
-const NOW = '2026-10-20T03:00:00.000Z';
-const T = (iso: string, code: string, ta: number | null) => ({
+const station = (code: string, name: string, lng: number, lat: number) => ({
   kind: 'aws' as const,
   code,
-  observedAt: iso,
-  value: 0,
-  extra: { ta },
+  name,
+  agency: null,
+  lng,
+  lat,
+  elevationM: null,
+  attrs: null,
+  suspicious: false,
 });
 
-describe('DailyTempsRepo.fold', () => {
-  it('같은 KST 날의 행을 MIN/MAX 로 접고, 결측 기온은 건너뛴다', () => {
-    // 2026-10-20T03:00Z = KST 12:00, 2026-10-19T16:00Z = KST 10-20 01:00 → 같은 날.
-    const n = repos.dailyTemps.fold(
-      [
-        T('2026-10-19T16:00:00.000Z', '454', 3.2),
-        T('2026-10-20T03:00:00.000Z', '454', 14.8),
-        T('2026-10-20T03:01:00.000Z', '454', null),
-        T('2026-10-19T14:59:00.000Z', '454', 8), // KST 10-19 23:59 → 전날
-      ],
-      NOW,
-    );
-    expect(n).toBe(3);
-    expect(repos.dailyTemps.series('aws', '454', '2026-10-01')).toEqual([
-      { kind: 'aws', code: '454', day: '2026-10-19', tminC: 8, tmaxC: 8, samples: 1 },
-      { kind: 'aws', code: '454', day: '2026-10-20', tminC: 3.2, tmaxC: 14.8, samples: 2 },
+describe('parseSeasonObs / parseSeasonNorm', () => {
+  it('# 주석 건너뛰고 YY STN TM SSN_ID SSN_MD 를 읽는다(공백·쉼표 모두)', () => {
+    const text =
+      '# YY STN TM SSN_ID SSN_MD\n2026  98 20261018 302 301\n2026,98,20261029,302,302,=\nbad line\n';
+    expect(parseSeasonObs(text)).toEqual([
+      { stn: '98', tm: '2026-10-18', ssnId: 302, ssnMd: 301 },
+      { stn: '98', tm: '2026-10-29', ssnId: 302, ssnMd: 302 },
     ]);
-    expect(repos.dailyTemps.prune('2026-10-20')).toBe(1);
+  });
+  it('평년은 월일만 남긴다', () => {
+    expect(parseSeasonNorm('98 302 301 1020\n2011 98 20111031 302 302\n')).toEqual([
+      { stn: '98', ssnId: 302, ssnMd: 301, mmdd: '10-20' },
+      { stn: '98', ssnId: 302, ssnMd: 302, mmdd: '10-31' },
+    ]);
   });
 });
 
 describe('GET /api/foliage', () => {
-  it('15 km 안 AWS 3곳의 일별 중앙값으로 판정, 관측소 없는 계곡은 none', async () => {
-    const center = LngLat.of(127.0, 37.7);
-    const line = [LngLat.of(126.99, 37.69), center, LngLat.of(127.01, 37.71)];
+  it('가까운 관서(302)와 유명산(501) 관측을 합쳐 판정, 평년은 유명산 우선, 지점 없으면 none', async () => {
     repos.stations.upsertMany(
       [
-        {
-          kind: 'aws',
-          code: 'A',
-          name: '가까움',
-          agency: null,
-          lng: 127.0,
-          lat: 37.71,
-          elevationM: 300,
-          attrs: null,
-          suspicious: false,
-        },
-        {
-          kind: 'aws',
-          code: 'B',
-          name: '중간',
-          agency: null,
-          lng: 127.05,
-          lat: 37.7,
-          elevationM: 100,
-          attrs: null,
-          suspicious: false,
-        },
-        {
-          kind: 'aws',
-          code: 'C',
-          name: '먼편',
-          agency: null,
-          lng: 127.1,
-          lat: 37.7,
-          elevationM: 50,
-          attrs: null,
-          suspicious: false,
-        },
-        {
-          kind: 'aws',
-          code: 'D',
-          name: '너무멂',
-          agency: null,
-          lng: 127.5,
-          lat: 37.7,
-          elevationM: 50,
-          attrs: null,
-          suspicious: false,
-        },
-        {
-          kind: 'aws',
-          code: 'E',
-          name: '4번째',
-          agency: null,
-          lng: 127.12,
-          lat: 37.7,
-          elevationM: 50,
-          attrs: null,
-          suspicious: false,
-        },
+        station('98', '동두천', 127.06, 37.9), // 관서, 계곡에서 ~6 km
+        station('108', '서울', 126.97, 37.57), // 관서, 더 멂
+        station('901', '북한산', 126.99, 37.66), // 유명산, ~27 km → 25 km 밖
       ],
-      NOW,
+      '2026-10-20T00:00:00.000Z',
     );
-    // 10-05 부터 찬 날 연속: A 는 2℃, B 는 4℃, C 는 9℃(중앙값 4 → 찬 날), D·E 는 안 잡힌다.
-    for (let i = 0; i < 15; i += 1) {
-      const day = `2026-10-${String(5 + i).padStart(2, '0')}`;
-      const iso = `${day}T12:00:00.000Z`; // KST 21:00 같은 날
-      repos.dailyTemps.fold(
-        [T(iso, 'A', 2), T(iso, 'B', 4), T(iso, 'C', 9), T(iso, 'D', -5), T(iso, 'E', -5)],
-        NOW,
-      );
-    }
+    const at = '2026-10-20T03:00:00.000Z';
+    repos.seasonObs.upsertMany(
+      [
+        { stn: '98', tm: '2026-10-18', ssnId: 302, ssnMd: 301 },
+        { stn: '108', tm: '2026-10-10', ssnId: 302, ssnMd: 301 },
+        { stn: '108', tm: '2026-10-19', ssnId: 302, ssnMd: 302 },
+        { stn: '901', tm: '2026-10-15', ssnId: 501, ssnMd: 501 },
+      ],
+      at,
+    );
+    repos.seasonNorm.upsertMany(
+      [
+        { stn: '98', ssnId: 302, ssnMd: 301, mmdd: '10-21' },
+        { stn: '98', ssnId: 302, ssnMd: 302, mmdd: '10-30' },
+      ],
+      at,
+    );
     const app = foliageRoutes({
       repos,
       valleyCenterlines: new Map([
-        ['near', line],
+        ['soyosan', [LngLat.of(127.08, 37.94), LngLat.of(127.09, 37.95)]],
         ['island', [LngLat.of(126.3, 33.4), LngLat.of(126.31, 33.41)]],
       ]),
-      now: () => Date.parse(NOW),
+      now: () => Date.parse(at),
     });
-    const res = await app.request('/');
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as {
-      today: string;
+    const body = (await (await app.request('/')).json()) as {
       foliage: {
         valleyId: string;
         stage: string;
         confidence: string;
-        stations: { code: string }[];
-        peakStart: string | null;
+        observedAt: string | null;
+        normals: Record<string, string>;
+        stations: { code: string; ssnId: number }[];
       }[];
     };
-    expect(body.today).toBe(kstDayOf(NOW));
-    const near = body.foliage.find((f) => f.valleyId === 'near');
-    expect(near?.stations.map((s) => s.code)).toEqual(['A', 'B', 'C']);
-    // 찬 날 10일 누적 → 10-14 절정 시작, 오늘(10-20)은 절정.
-    expect(near).toMatchObject({ stage: 'peak', peakStart: '2026-10-14', confidence: 'observed' });
+    const soyo = body.foliage.find((f) => f.valleyId === 'soyosan');
+    // 동두천(6 km)이 서울보다 가깝다 → 동두천의 301(시작)만 반영, 서울의 절정은 무관.
+    expect(soyo).toMatchObject({
+      stage: 'turning',
+      confidence: 'observed',
+      observedAt: '2026-10-18',
+      normals: { turning: '10-21', peak: '10-30' },
+    });
+    expect(soyo?.stations.map((s) => s.code)).toEqual(['98']);
     const island = body.foliage.find((f) => f.valleyId === 'island');
     expect(island).toMatchObject({ stage: 'green', confidence: 'none', stations: [] });
-  });
-});
-
-describe('GET /api/foliage — 표고 보정', () => {
-  it('계곡 표고를 알면 관측소 최저기온을 −0.65℃/100 m 로 옮겨 판정한다', async () => {
-    const line = [LngLat.of(127.0, 37.7), LngLat.of(127.01, 37.71)];
-    repos.stations.upsertMany(
-      [
-        {
-          kind: 'aws',
-          code: 'L',
-          name: '평지',
-          agency: null,
-          lng: 127.0,
-          lat: 37.71,
-          elevationM: 50,
-          attrs: null,
-          suspicious: false,
-        },
-      ],
-      NOW,
-    );
-    // 평지 7℃ × 15일 — 보정 없으면 찬 날 0(초록). 계곡 450 m 면 −2.6℃ → 4.4℃, 찬 날 15 → 절정.
-    for (let i = 0; i < 15; i += 1) {
-      const day = `2026-10-${String(5 + i).padStart(2, '0')}`;
-      repos.dailyTemps.fold([T(`${day}T12:00:00.000Z`, 'L', 7)], NOW);
-    }
-    const build = (valleyElevations?: Map<string, number>) =>
-      foliageRoutes({
-        repos,
-        valleyCenterlines: new Map([['v', line]]),
-        ...(valleyElevations ? { valleyElevations } : {}),
-        now: () => Date.parse(NOW),
-      });
-    type Body = {
-      foliage: { stage: string; elevationM: number | null; stations: { correctionC: number }[] }[];
-    };
-    const plain = (await (await build().request('/')).json()) as Body;
-    expect(plain.foliage[0]).toMatchObject({ stage: 'green', elevationM: null });
-    expect(plain.foliage[0]?.stations[0]?.correctionC).toBe(0);
-    const corrected = (await (await build(new Map([['v', 450]])).request('/')).json()) as Body;
-    expect(corrected.foliage[0]).toMatchObject({ stage: 'peak', elevationM: 450 });
-    expect(corrected.foliage[0]?.stations[0]?.correctionC).toBe(-2.6);
   });
 });

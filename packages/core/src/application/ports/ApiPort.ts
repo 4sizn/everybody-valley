@@ -115,28 +115,27 @@ export type ApiAccess = {
   readonly upcoming: ApiAccessControl | null;
 };
 
-/** 계곡 하나의 단풍 상태 — 서버 `GET /api/foliage`. 단계·날짜 뜻은 core `evaluateFoliage`. */
+/** 단풍 판정에 쓴 기상청 계절관측 지점. `ssnId` 302 관서(단풍나무) · 501 유명산. */
+export type ApiFoliageStation = {
+  readonly code: string;
+  readonly name: string;
+  readonly distanceKm: number;
+  readonly ssnId: number;
+};
+
+/** 계곡 하나의 단풍 단계 — 서버 `GET /api/foliage`. 기상청 계절관측(국내 오픈 API)만 근거. */
 export type ApiFoliage = {
   readonly valleyId: string;
   readonly stage: 'green' | 'turning' | 'peak' | 'falling' | 'dormant';
-  readonly confidence: 'observed' | 'estimated' | 'none';
-  /** KST `YYYY-MM-DD`. */
-  readonly lastDay: string | null;
-  readonly coldDays: number;
-  readonly turningStart: string | null;
-  readonly peakStart: string | null;
-  readonly fallingStart: string | null;
-  readonly forecast: { readonly turning: string | null; readonly peak: string | null };
-  /** 계곡 중심선 표고(m). 없으면 보정 없이 판정한 것. */
-  readonly elevationM?: number | null;
-  /** 판정에 쓴 기상청 AWS 관측소. `correctionC` 는 계곡 표고로 옮기며 더한 값(℃). */
-  readonly stations: readonly {
-    readonly code: string;
-    readonly name: string;
-    readonly elevationM: number | null;
-    readonly distanceKm: number;
-    readonly correctionC?: number;
-  }[];
+  /** 관측 지점이 하나도 없으면 `none`. */
+  readonly confidence: 'observed' | 'none';
+  /** 단계를 정한 관측일(KST `YYYY-MM-DD`). 단풍 전이면 `null`. */
+  readonly observedAt: string | null;
+  /** 단계별 첫 관측일. */
+  readonly dates: Partial<Record<'turning' | 'peak' | 'falling' | 'dormant', string>>;
+  /** 평년 월일(`MM-DD`). */
+  readonly normals: Partial<Record<'turning' | 'peak' | 'falling' | 'dormant', string>>;
+  readonly stations: readonly ApiFoliageStation[];
 };
 
 /**

@@ -34,7 +34,7 @@ docker compose logs --tail=80 app
 
 키 발급/출처 목록은 [API_KEYS.md](API_KEYS.md). 서버만 비밀키를 읽는다. 현재 런타임 설정이 실제로 쓰는 이름은 `VWORLD_API_KEY`, `HRFCO_API_KEY`(없으면 `_LOCAL`), `KMA_APIHUB_KEY`, `DATA_GO_KR_KEY_ENCODING/DECODING`이다. VWorld 운영키를 발급받았다면 런타임의 `VWORLD_API_KEY`에 넣는다.
 
-단풍 판정(`/api/foliage`)은 AWS 폴러가 접는 일 최저기온 `daily_temps`(120일 보존)를 쓴다. `KMA_APIHUB_KEY`와 `JOBS_ENABLED=true`가 있어야 쌓이고, 서버를 새로 올린 시즌 초에는 `pnpm server:backfill -- --from 20260901 --to <어제>`로 지난 날짜를 채운다(전체 지점 한 호출, 하루 8~30창, 같은 DB를 쓰는 서버가 떠 있어도 된다). 다시 돌려도 안전하다.
+단풍 판정(`/api/foliage`)은 **기상청 API허브 계절관측**(`sfc_ssn.php` 관측 · `sfc_ssn_norm.php` 평년)만 근거로 한다. `KMA_APIHUB_KEY`에 두 API의 **활용신청**이 있어야 `season` 폴러(4시간마다)가 `season_obs`·`season_norm`을 채운다. 신청 전에는 403으로 실패하고 배지는 "관측 지점 없음"으로 숨는다.
 
 이 맥의 로컬 운영 서버(8788)는 launchd 사용자 에이전트 `server/launchd/kr.moduvalley.server.plist` 로 상주한다(로그인 시 시작, 죽으면 10초 뒤 재시작, 로그 `~/Library/Logs/moduvalley/server-8788.log`). 새 빌드를 반영하려면 `pnpm build` 뒤 `launchctl kickstart -k gui/$(id -u)/kr.moduvalley.server`. 설치·해제 명령은 plist 머리말에 있다. Docker 데몬(colima)이 늘 떠 있지 않아 compose 대신 쓴다.
 

@@ -12,6 +12,7 @@ import { createAwsRun } from './awsJob';
 import { loadBasinsOnce } from './basinsJob';
 import { createHrfcoRun } from './hrfcoJob';
 import { PollJob } from './PollJob';
+import { createSeasonRun, SEASON_INTERVAL_MS } from './seasonJob';
 import { createStationsRun, STATIONS_INTERVAL_MS } from './stationsJob';
 
 export interface JobsDeps {
@@ -69,17 +70,20 @@ export function createJobs(deps: JobsDeps): Jobs {
         ...common,
         name: 'aws',
         intervalMs: config.awsIntervalMs,
-        run: createAwsRun({
-          key: config.kmaKey,
-          http,
-          repos,
-          hub,
-          intervalMs: config.awsIntervalMs,
-        }),
+        run: createAwsRun({ key: config.kmaKey, http, repos, hub }),
+      }),
+    );
+    // 계절관측(단풍) — 연 자료라 4시간마다. 활용신청 전이면 403 으로 실패하고 백오프한다.
+    jobs.push(
+      new PollJob({
+        ...common,
+        name: 'season',
+        intervalMs: SEASON_INTERVAL_MS,
+        run: createSeasonRun({ key: config.kmaKey, http, repos }),
       }),
     );
   } else {
-    logger.warn('KMA_APIHUB_KEY 없음 — aws 폴러를 만들지 않는다');
+    logger.warn('KMA_APIHUB_KEY 없음 — aws·season 폴러를 만들지 않는다');
   }
   // 경보 판정(F3b)은 외부 API 를 부르지 않는다 — hrfco·aws 가 쌓은 값만 본다. 키 유무와 무관하게 돈다.
   jobs.push(

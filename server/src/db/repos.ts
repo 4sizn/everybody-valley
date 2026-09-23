@@ -751,23 +751,27 @@ export class ReportsRepo {
   }
 }
 
-interface DailyTempRow {
-  kind: StationKind;
-  code: string;
-  day_kst: string;
-  tmin_c: number;
-  tmax_c: number;
-  samples: number;
+interface SeasonObsRow {
+  stn: string;
+  tm: string;
+  ssn_id: number;
+  ssn_md: number;
 }
 
-export interface DailyTempRecord {
-  readonly kind: StationKind;
-  readonly code: string;
+export interface SeasonObsRecord {
+  readonly stn: string;
   /** KST `YYYY-MM-DD`. */
-  readonly day: string;
-  readonly tminC: number;
-  readonly tmaxC: number;
-  readonly samples: number;
+  readonly tm: string;
+  readonly ssnId: number;
+  readonly ssnMd: number;
+}
+
+export interface SeasonNormRecord {
+  readonly stn: string;
+  readonly ssnId: number;
+  readonly ssnMd: number;
+  /** `MM-DD`. */
+  readonly mmdd: string;
 }
 
 const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
@@ -776,63 +780,64 @@ export function kstDayOf(iso: string): string {
   return new Date(new Date(iso).getTime() + KST_OFFSET_MS).toISOString().slice(0, 10);
 }
 
-/**
- * 관측소별 일 최저·최고기온(단풍 판정 재료). AWS 매분 행의 `extra.ta` 를 KST 날짜로 접는다 —
- * 폴러가 10분 창을 매 분 다시 읽으므로 같은 날 행은 MIN/MAX 로 합친다(같은 값을 여러 번
- * 세더라도 결과는 같다). 기온이 결측(`null`)인 행은 건너뛴다.
- */
-export class DailyTempsRepo {
+/** 기상청 계절관측(단풍) 관측 이벤트 — `sfc_ssn.php` 행 그대로. 단풍 단계의 유일한 재료. */
+export class SeasonObsRepo {
   readonly #db: Db;
   constructor(db: Db) {
     this.#db = db;
   }
 
-  fold(rows: readonly ObservationRecord[], now: string): number {
+  upsertMany(rows: readonly SeasonObsRecord[], now: string): number {
     const stmt = this.#db.prepare(
-      `INSERT INTO daily_temps (kind, code, day_kst, tmin_c, tmax_c, samples, updated_at)
-       VALUES (@kind, @code, @day_kst, @ta, @ta, 1, @updated_at)
-       ON CONFLICT (kind, code, day_kst) DO UPDATE SET
-         tmin_c = MIN(tmin_c, excluded.tmin_c), tmax_c = MAX(tmax_c, excluded.tmax_c),
-         samples = samples + 1, updated_at = excluded.updated_at`,
+      `INSERT INTO season_obs (stn, tm, ssn_id, ssn_md, fetched_at)
+       VALUES (@stn, @tm, @ssn_id, @ssn_md, @fetched_at)
+       ON CONFLICT (stn, tm, ssn_id, ssn_md) DO UPDATE SET fetched_at = excluded.fetched_at`,
     );
-    let n = 0;
     this.#db.transaction(() => {
-      for (const o of rows) {
-        const ta = o.extra?.['ta'];
-        if (typeof ta !== 'number') continue;
-        stmt.run({
-          kind: o.kind,
-          code: o.code,
-          day_kst: kstDayOf(o.observedAt),
-          ta,
-          updated_at: now,
-        });
-        n += 1;
+      for (const r of rows) {
+        stmt.run({ stn: r.stn, tm: r.tm, ssn_id: r.ssnId, ssn_md: r.ssnMd, fetched_at: now });
       }
     })();
-    return n;
+    return rows.length;
   }
 
-  /** 한 관측소의 `sinceDay`(포함) 이후 일별 값, 오래된 → 최신. */
-  series(kind: StationKind, code: string, sinceDay: string): DailyTempRecord[] {
+  /** `year` 년의 관측 전부(지점·날짜 순). */
+  byYear(year: number): SeasonObsRecord[] {
     const rows = this.#db
       .prepare(
-        'SELECT * FROM daily_temps WHERE kind = ? AND code = ? AND day_kst >= ? ORDER BY day_kst',
+        'SELECT stn, tm, ssn_id, ssn_md FROM season_obs WHERE tm >= ? AND tm < ? ORDER BY stn, tm',
       )
-      .all(kind, code, sinceDay) as DailyTempRow[];
-    return rows.map((r) => ({
-      kind: r.kind,
-      code: r.code,
-      day: r.day_kst,
-      tminC: r.tmin_c,
-      tmaxC: r.tmax_c,
-      samples: r.samples,
-    }));
+      .all(`${year}-01-01`, `${year + 1}-01-01`) as SeasonObsRow[];
+    return rows.map((r) => ({ stn: r.stn, tm: r.tm, ssnId: r.ssn_id, ssnMd: r.ssn_md }));
+  }
+}
+
+/** 기상청 계절관측 평년값 — `sfc_ssn_norm.php`. "평년 첫단풍 10/20" 의 재료. */
+export class SeasonNormRepo {
+  readonly #db: Db;
+  constructor(db: Db) {
+    this.#db = db;
   }
 
-  /** `day_kst < beforeDay` 를 지운다(보존 120일). */
-  prune(beforeDay: string): number {
-    return this.#db.prepare('DELETE FROM daily_temps WHERE day_kst < ?').run(beforeDay).changes;
+  upsertMany(rows: readonly SeasonNormRecord[], now: string): number {
+    const stmt = this.#db.prepare(
+      `INSERT INTO season_norm (stn, ssn_id, ssn_md, mmdd, fetched_at)
+       VALUES (@stn, @ssn_id, @ssn_md, @mmdd, @fetched_at)
+       ON CONFLICT (stn, ssn_id, ssn_md) DO UPDATE SET mmdd = excluded.mmdd, fetched_at = excluded.fetched_at`,
+    );
+    this.#db.transaction(() => {
+      for (const r of rows) {
+        stmt.run({ stn: r.stn, ssn_id: r.ssnId, ssn_md: r.ssnMd, mmdd: r.mmdd, fetched_at: now });
+      }
+    })();
+    return rows.length;
+  }
+
+  all(): SeasonNormRecord[] {
+    const rows = this.#db
+      .prepare('SELECT stn, ssn_id, ssn_md, mmdd FROM season_norm ORDER BY stn')
+      .all() as { stn: string; ssn_id: number; ssn_md: number; mmdd: string }[];
+    return rows.map((r) => ({ stn: r.stn, ssnId: r.ssn_id, ssnMd: r.ssn_md, mmdd: r.mmdd }));
   }
 }
 
@@ -840,7 +845,8 @@ export interface Repos {
   readonly stations: StationsRepo;
   readonly observations: ObservationsRepo;
   readonly latest: LatestRepo;
-  readonly dailyTemps: DailyTempsRepo;
+  readonly seasonObs: SeasonObsRepo;
+  readonly seasonNorm: SeasonNormRepo;
   readonly basins: BasinsRepo;
   readonly alerts: AlertsRepo;
   readonly reports: ReportsRepo;
@@ -852,7 +858,8 @@ export function createRepos(db: Db): Repos {
     stations: new StationsRepo(db),
     observations: new ObservationsRepo(db),
     latest: new LatestRepo(db),
-    dailyTemps: new DailyTempsRepo(db),
+    seasonObs: new SeasonObsRepo(db),
+    seasonNorm: new SeasonNormRepo(db),
     basins: new BasinsRepo(db),
     alerts: new AlertsRepo(db),
     reports: new ReportsRepo(db),

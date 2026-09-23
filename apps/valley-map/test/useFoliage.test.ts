@@ -6,45 +6,44 @@ const base: ApiFoliage = {
   valleyId: 'v',
   stage: 'green',
   confidence: 'observed',
-  lastDay: '2026-10-01',
-  coldDays: 0,
-  turningStart: null,
-  peakStart: null,
-  fallingStart: null,
-  forecast: { turning: null, peak: null },
-  stations: [],
+  observedAt: null,
+  dates: {},
+  normals: { turning: '10-20', peak: '10-31' },
+  stations: [{ code: '98', name: '동두천', distanceKm: 6.2, ssnId: 302 }],
 };
 
 describe('foliageLine', () => {
-  it('자료 없음 → null', () => {
-    expect(foliageLine({ ...base, confidence: 'none' })).toBeNull();
+  it('관측 지점 없음 → null', () => {
+    expect(foliageLine({ ...base, confidence: 'none', stations: [] })).toBeNull();
   });
-  it('초록 + 예측', () => {
-    expect(foliageLine({ ...base, forecast: { turning: '2026-10-08', peak: '2026-10-22' } })).toBe(
-      '10/8 물들기 · 10/22 절정 예상',
-    );
+  it('단풍 전 + 평년', () => {
+    expect(foliageLine(base)).toBe('단풍 전 · 평년 첫단풍 10/20 · 절정 10/31 · 동두천 관측');
   });
-  it('물들기 시작 + 자료 적음 꼬리표', () => {
+  it('물들기 시작 + 평년 절정', () => {
     expect(
       foliageLine({
         ...base,
         stage: 'turning',
-        confidence: 'estimated',
-        turningStart: '2026-10-12',
-        forecast: { turning: null, peak: '2026-10-26' },
+        observedAt: '2026-10-18',
+        dates: { turning: '2026-10-18' },
       }),
-    ).toBe('물들기 시작(10/12~) · 10/26 절정 예상 · 자료 적음');
+    ).toBe('물들기 시작(10/18~) · 평년 절정 10/31 · 동두천 관측');
   });
   it('절정', () => {
-    expect(foliageLine({ ...base, stage: 'peak', peakStart: '2026-10-28' })).toBe('절정(10/28~)');
+    expect(foliageLine({ ...base, stage: 'peak', observedAt: '2026-10-29' })).toBe(
+      '절정(10/29~) · 동두천 관측',
+    );
+  });
+  it('평년값 없음', () => {
+    expect(foliageLine({ ...base, normals: {} })).toBe('단풍 전 · 평년값 없음 · 동두천 관측');
   });
 });
 
 describe('isFoliageSeason — KST 9/15~11/30', () => {
   it('경계', () => {
-    expect(isFoliageSeason(new Date('2026-09-14T15:00:00Z'))).toBe(true); // KST 9/15 00:00
-    expect(isFoliageSeason(new Date('2026-09-14T14:59:00Z'))).toBe(false); // KST 9/14 23:59
+    expect(isFoliageSeason(new Date('2026-09-14T15:00:00Z'))).toBe(true);
+    expect(isFoliageSeason(new Date('2026-09-14T14:59:00Z'))).toBe(false);
     expect(isFoliageSeason(new Date('2026-11-30T14:59:00Z'))).toBe(true);
-    expect(isFoliageSeason(new Date('2026-11-30T15:00:00Z'))).toBe(false); // KST 12/1
+    expect(isFoliageSeason(new Date('2026-11-30T15:00:00Z'))).toBe(false);
   });
 });

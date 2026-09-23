@@ -61,13 +61,12 @@ export {
   toggleFilterChip,
 } from './filterChips';
 export {
-  addDays as addFoliageDays,
   type EvaluateFoliageInput,
   evaluateFoliage,
-  FOLIAGE_COLD_TMIN_C,
+  FOLIAGE_STAGE_BY_CODE,
   FOLIAGE_STAGES,
-  type FoliageConfidence,
-  type FoliageDay,
+  type FoliageNormals,
+  type FoliageObservation,
   type FoliageStage,
   type FoliageState,
   foliageStageLabel,

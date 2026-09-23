@@ -14,6 +14,7 @@ export {
   type ApiEvent,
   type ApiEventChannel,
   type ApiFoliage,
+  type ApiFoliageStation,
   type ApiHealth,
   type ApiIsoDateTime,
   type ApiLatest,
