@@ -61,13 +61,15 @@ function loadSd1Valleys(): readonly Valley[] {
 const catalog = loadSd1Valleys();
 // 기존 SD1 30곳의 실측 회귀 기준은 유지한다.
 /* SD1(수도권 30) 기준선 — 나중에 손으로 추가한 계곡은 뺀다. 긴고랑(SD3)에 이어 광주 무등산
-   두 곳(SD5, 2026-09-09)이 들어와, 그 값들이 SD1 실측 표를 흔들지 않게 여기서 가른다. */
-const ADDED_AFTER_SD1 = ['gingorang', 'jeungsimsa', 'wonhyo'].map(toValleyId);
+   두 곳(SD5, 2026-09-09), 관악산계곡(사용자 요청 2026-09-24)이 들어와, 그 값들이 SD1 실측 표를
+   흔들지 않게 여기서 가른다. */
+const ADDED_AFTER_SD1 = ['gingorang', 'jeungsimsa', 'wonhyo', 'gwanaksan'].map(toValleyId);
 const sd1 = catalog.filter((valley) => !ADDED_AFTER_SD1.includes(valley.id));
 
 describe('SD1 뒤에 더한 계곡', () => {
-  it('긴고랑·무등산 두 곳까지 33곳이 검색 대상이고, 산출된 그늘이 필터에 반영된다', () => {
-    expect(catalog).toHaveLength(33);
+  it('긴고랑·무등산 두 곳·관악산까지 34곳이 검색 대상이고, 산출된 그늘이 필터에 반영된다', () => {
+    // 34 = SD1 30 + 긴고랑 + 무등산 2 + 관악산(2026-09-24). 계곡을 더하면 이 수를 함께 올린다.
+    expect(catalog).toHaveLength(34);
     const added = catalog.filter((valley) => valley.id === toValleyId('gingorang'));
     expect(added).toHaveLength(1);
     const filtered = filterValleys(added, new Set(['shadeMany']));

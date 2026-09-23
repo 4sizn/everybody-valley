@@ -1,0 +1,4307 @@
+{
+  "$schema": "../.schema/valleys.schema.json",
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "관악산계곡 시설 282개 — 표준데이터 주차장 5 · 화장실 18 · 쓰레기통·놀이터 14 · OSM 245 · 수기 0. 계곡 점 반경 3 km, 쓰레기통·놀이터는 중심선 1200 m.",
+    "source": "전국주차장정보·공중화장실·휴지통·도시공원 표준데이터(공공누리 1유형) + 행안부 어린이놀이시설 API + OSM amenity·leisure(ODbL) + 수기 · 데스크 검수(현장 미확인)",
+    "sourceFile": "scripts/seed/build.mts (pnpm seed:build)",
+    "datasetVersion": "2026-09-24.0",
+    "collectedAt": "2026-09-24",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "filter": "계곡 점 반경 3000 m · 표준데이터 ↔ OSM 주차장 50 m 중복 제거",
+    "verified": "desk",
+    "sources": [
+      "https://www.openstreetmap.org/copyright",
+      "https://www.data.go.kr/data/15012896/standard.do (전국주차장정보표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012892/standard.do (전국공중화장실표준데이터, 공공누리 1유형)",
+      "https://www.data.go.kr/data/15012890/standard.do (전국도시공원정보표준데이터 유희시설, 공공누리 1유형)"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940753, 37.473249]
+      },
+      "properties": {
+        "id": "gwanaksan-std-p-120-2-000025",
+        "valleyId": "gwanaksan",
+        "name": "서림동제1공영주차장",
+        "facilityType": "parking",
+        "capacity": 12,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93923, 37.465908]
+      },
+      "properties": {
+        "id": "gwanaksan-std-p-120-2-000016",
+        "valleyId": "gwanaksan",
+        "name": "대학동제1공영주차장",
+        "facilityType": "parking",
+        "capacity": 5,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947611, 37.466871]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27546",
+        "valleyId": "gwanaksan",
+        "name": "2-11서울대 입구 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940612, 37.472323]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17635",
+        "valleyId": "gwanaksan",
+        "name": "해태 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940794, 37.475822]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17658",
+        "valleyId": "gwanaksan",
+        "name": "쑥고개 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943804, 37.476827]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17683",
+        "valleyId": "gwanaksan",
+        "name": "영락 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942282, 37.467915]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17688",
+        "valleyId": "gwanaksan",
+        "name": "목화 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942745, 37.475213]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17691",
+        "valleyId": "gwanaksan",
+        "name": "서광 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936475, 37.468445]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17696",
+        "valleyId": "gwanaksan",
+        "name": "태양 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943612, 37.4755]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17706",
+        "valleyId": "gwanaksan",
+        "name": "용담 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939275, 37.470934]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-368955010",
+        "valleyId": "gwanaksan",
+        "name": "소문난회집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950585, 37.459459]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-1613902317",
+        "valleyId": "gwanaksan",
+        "name": "서울대학교 학생식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949494, 37.459503]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1789861933",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955561, 37.460366]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1789877081",
+        "valleyId": "gwanaksan",
+        "name": "지하주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950622, 37.46186]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1789933617",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951717, 37.464918]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-1790451996",
+        "valleyId": "gwanaksan",
+        "name": "사르샤",
+        "facilityType": "food",
+        "operatingHours": "Mo-Fr 11:00-19:00",
+        "mapIconTier": 1,
+        "mapImportance": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948573, 37.456484]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-1790457427",
+        "valleyId": "gwanaksan",
+        "name": "7-ELEVEN",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951634, 37.464996]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-1790457431",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.9533, 37.460783]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-1790475149",
+        "valleyId": "gwanaksan",
+        "name": "Cafe MUG",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949511, 37.458111]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1793042681",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949269, 37.458554]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1793042686",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955877, 37.461021]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1966229956",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950573, 37.463691]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-2395781119",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949674, 37.466224]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-2583219714",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951158, 37.462388]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-3362751049",
+        "valleyId": "gwanaksan",
+        "name": "Parking (underground)",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951292, 37.463632]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-3362797531",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 40,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950085, 37.463279]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-3362814751",
+        "valleyId": "gwanaksan",
+        "name": "Underground parking",
+        "facilityType": "parking",
+        "capacity": 80,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950815, 37.462939]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-3362814753",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "capacity": 12,
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950389, 37.456104]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-3540581370",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950177, 37.455009]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-3540581371",
+        "valleyId": "gwanaksan",
+        "name": "BBQ치킨",
+        "facilityType": "food",
+        "capacity": 100,
+        "mapIconTier": 1,
+        "mapImportance": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951988, 37.455209]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-3540602537",
+        "valleyId": "gwanaksan",
+        "name": "Cafe MUG",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939499, 37.475665]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-3750369499",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952578, 37.458824]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-3805309357",
+        "valleyId": "gwanaksan",
+        "name": "롯데리아",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950979, 37.466646]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4373612924",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 53
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954246, 37.464797]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-4514838234",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952994, 37.462644]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-4527827478",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949443, 37.458961]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543195787",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 56
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950029, 37.458109]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196089",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 57
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950858, 37.457812]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196090",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 58
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950939, 37.458612]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196091",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 59
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.9505, 37.459477]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196092",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 60
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951135, 37.459981]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196093",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 61
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951964, 37.459419]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196094",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952533, 37.459058]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196095",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 63
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953655, 37.459142]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196096",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952224, 37.460349]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196097",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953558, 37.459852]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196099",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 66
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953184, 37.460917]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196100",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 67
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954029, 37.460717]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196102",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 68
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953948, 37.460207]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196103",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 69
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955233, 37.460323]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196104",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 70
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954728, 37.459626]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196106",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 71
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955964, 37.460052]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196108",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954842, 37.460988]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196109",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95185, 37.461911]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196111",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 74
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952127, 37.462324]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196112",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 75
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951064, 37.462453]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196114",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 76
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94946, 37.463582]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196116",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 77
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949069, 37.463931]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196117",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 78
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951541, 37.463576]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196118",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 79
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952305, 37.464479]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196120",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 80
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952139, 37.466492]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196121",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 81
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949629, 37.466529]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4543196122",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 82
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950245, 37.459376]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4562088363",
+        "valleyId": "gwanaksan",
+        "name": "공차",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 83
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937412, 37.46594]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4655059985",
+        "valleyId": "gwanaksan",
+        "name": "가비사랑방",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 84
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952595, 37.4585]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-4690297622",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950993, 37.448582]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-4749980468",
+        "valleyId": "gwanaksan",
+        "name": "라쿠치나",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 86
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952226, 37.449347]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-4749980481",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952301, 37.450344]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-4749980482",
+        "valleyId": "gwanaksan",
+        "name": "퀴즈노스",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 88
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952334, 37.448646]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-4749980487",
+        "valleyId": "gwanaksan",
+        "name": "302동 식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 89
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.957693, 37.461912]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-4752127259",
+        "valleyId": "gwanaksan",
+        "name": "아워홈",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 90
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.957687, 37.461984]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4752127260",
+        "valleyId": "gwanaksan",
+        "name": "카페그랑",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 91
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.957943, 37.461451]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-4752404083",
+        "valleyId": "gwanaksan",
+        "name": "GS25",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 92
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952712, 37.450789]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-6243730342",
+        "valleyId": "gwanaksan",
+        "name": "구시아 (300동 식당)",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 93
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952649, 37.45106]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-6243730343",
+        "valleyId": "gwanaksan",
+        "name": "카페드림",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 94
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939257, 37.471617]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-7224591511",
+        "valleyId": "gwanaksan",
+        "name": "카페 넥타르",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 95
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941396, 37.469868]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7224591513",
+        "valleyId": "gwanaksan",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 96
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941703, 37.469859]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7224591519",
+        "valleyId": "gwanaksan",
+        "name": "성호분식",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 97
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938974, 37.469164]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7224661886",
+        "valleyId": "gwanaksan",
+        "name": "웰빙마트",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 98
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941358, 37.470503]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7226614313",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947483, 37.462875]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-10609206683",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938743, 37.47185]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-10708245105",
+        "valleyId": "gwanaksan",
+        "name": "히퍼 커피",
+        "facilityType": "cafe",
+        "operatingHours": "Mo-Fr 08:00-02:00; Sa-Su 12:00-02:00",
+        "mapIconTier": 1,
+        "mapImportance": 101
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949955, 37.460564]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-10716118721",
+        "valleyId": "gwanaksan",
+        "name": "메가MGC커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 102
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953936, 37.466417]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-11002801291",
+        "valleyId": "gwanaksan",
+        "name": "베트남 쌀국수 전문점 포포인",
+        "facilityType": "food",
+        "operatingHours": "Mo-Fr 10:00-14:00; Sa-Su 11:00-14:00",
+        "mapIconTier": 1,
+        "mapImportance": 103
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94728, 37.466686]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-11012630298",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 104
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940112, 37.464617]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-11549138058",
+        "valleyId": "gwanaksan",
+        "name": "컵&커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 105
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937627, 37.468943]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-11549139184",
+        "valleyId": "gwanaksan",
+        "name": "메가MGC커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 106
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93758, 37.467991]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-11549139208",
+        "valleyId": "gwanaksan",
+        "name": "메밀쟁이",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 107
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937821, 37.468559]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-11549139215",
+        "valleyId": "gwanaksan",
+        "name": "대학동이모네",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 108
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937588, 37.468377]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-11549139220",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 109
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938915, 37.469621]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074366545",
+        "valleyId": "gwanaksan",
+        "name": "신림미가",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 110
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937365, 37.471137]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074419256",
+        "valleyId": "gwanaksan",
+        "name": "마장돈",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 111
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938687, 37.469132]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074420127",
+        "valleyId": "gwanaksan",
+        "name": "락락",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 112
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937977, 37.469149]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074426254",
+        "valleyId": "gwanaksan",
+        "name": "수라간",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 113
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936323, 37.470399]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074426757",
+        "valleyId": "gwanaksan",
+        "name": "고씨네 신림대학동점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 114
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935616, 37.468623]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074598617",
+        "valleyId": "gwanaksan",
+        "name": "기력장어 관악점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 115
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938428, 37.471673]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074603885",
+        "valleyId": "gwanaksan",
+        "name": "동네분식",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 116
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938837, 37.468505]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074661164",
+        "valleyId": "gwanaksan",
+        "name": "붕어빵창고",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 117
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940679, 37.471193]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074721267",
+        "valleyId": "gwanaksan",
+        "name": "카페로프트",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 118
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941188, 37.470467]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074733962",
+        "valleyId": "gwanaksan",
+        "name": "코바코 돈까스",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 119
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937996, 37.471986]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074737677",
+        "valleyId": "gwanaksan",
+        "name": "제육천하",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 120
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940411, 37.469962]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074740125",
+        "valleyId": "gwanaksan",
+        "name": "행복한하루",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 121
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940103, 37.471542]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074759567",
+        "valleyId": "gwanaksan",
+        "name": "피자다오 관악점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 122
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937656, 37.474814]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074773784",
+        "valleyId": "gwanaksan",
+        "name": "서림닭강정 신림점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 123
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939105, 37.470062]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074778784",
+        "valleyId": "gwanaksan",
+        "name": "내가 갈비찜이다 신림본점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 124
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938168, 37.469876]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12079500217",
+        "valleyId": "gwanaksan",
+        "name": "육삼냉면본점직영",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 125
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948862, 37.457465]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-12981844928",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 126
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938376, 37.470496]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13208294564",
+        "valleyId": "gwanaksan",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 127
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952606, 37.460848]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13249384365",
+        "valleyId": "gwanaksan",
+        "name": "카페109",
+        "facilityType": "cafe",
+        "operatingHours": "08:30-18:30",
+        "mapIconTier": 1,
+        "mapImportance": 128
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947626, 37.447314]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-13312348767",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 129
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951982, 37.455346]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-13617795533",
+        "valleyId": "gwanaksan",
+        "name": "Poke All day",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 130
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951986, 37.455282]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13617795534",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 131
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951436, 37.455871]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13617795538",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 132
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952711, 37.456171]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13617795540",
+        "valleyId": "gwanaksan",
+        "name": "Cafe ING",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 133
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948504, 37.456445]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-13617795543",
+        "valleyId": "gwanaksan",
+        "name": "두레미담",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 134
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948538, 37.460275]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-13617795544",
+        "valleyId": "gwanaksan",
+        "name": "Nine Ounce Burger",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 135
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948517, 37.460209]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13617795545",
+        "valleyId": "gwanaksan",
+        "name": "투썸플레이스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 136
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948492, 37.460138]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13617795546",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "operatingHours": "24/7",
+        "mapIconTier": 1,
+        "mapImportance": 137
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951716, 37.461877]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13617795548",
+        "valleyId": "gwanaksan",
+        "name": "카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 138
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950892, 37.462666]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13617795549",
+        "valleyId": "gwanaksan",
+        "name": "컴포즈커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 139
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951023, 37.462694]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13617795550",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 140
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954738, 37.459389]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13617795551",
+        "valleyId": "gwanaksan",
+        "name": "카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 141
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950334, 37.457612]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13617883877",
+        "valleyId": "gwanaksan",
+        "name": "Cafe ING",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 142
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936345, 37.469257]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612768",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 신림낭만거리점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 143
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940925, 37.472098]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612789",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 관악복마을점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 144
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935685, 37.472337]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614320",
+        "valleyId": "gwanaksan",
+        "name": "CU 신림동희점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 145
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937396, 37.470531]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614352",
+        "valleyId": "gwanaksan",
+        "name": "CU 신림버디점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 146
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936234, 37.470485]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614372",
+        "valleyId": "gwanaksan",
+        "name": "CU 신림테라스점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 147
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943196, 37.476633]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614378",
+        "valleyId": "gwanaksan",
+        "name": "CU 서울대이편한세상점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 148
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936438, 37.467561]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614388",
+        "valleyId": "gwanaksan",
+        "name": "CU 신림중앙점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 149
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940016, 37.472818]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614391",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악서림점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 150
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936716, 37.466326]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614397",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악고시촌점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 151
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939686, 37.473313]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614422",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 드림고시촌점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 152
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938274, 37.471638]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614423",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악행운점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 153
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.944513, 37.468719]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614434",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악산점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 154
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942186, 37.46881]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614447",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악선경점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 155
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938783, 37.466534]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614449",
+        "valleyId": "gwanaksan",
+        "name": "GS25 신림장원점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 156
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938628, 37.468326]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614473",
+        "valleyId": "gwanaksan",
+        "name": "CU 신림제이점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 157
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939914, 37.471384]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614485",
+        "valleyId": "gwanaksan",
+        "name": "CU 신림블루점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 158
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93929, 37.471958]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614507",
+        "valleyId": "gwanaksan",
+        "name": "GS25 신림신성점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 159
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952501, 37.464939]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-14007511635",
+        "valleyId": "gwanaksan",
+        "name": "더로스터59",
+        "facilityType": "cafe",
+        "operatingHours": "Mo-Fr 08:00-20:00",
+        "mapIconTier": 1,
+        "mapImportance": 160
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955357, 37.465604]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-14038417653",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952477, 37.460945]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-167665986",
+        "valleyId": "gwanaksan",
+        "name": "자하연식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 162
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955688, 37.460713]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-167983986",
+        "valleyId": "gwanaksan",
+        "name": "제4식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 163
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949139, 37.465167]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-318459668",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95077, 37.457247]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-377154957",
+        "valleyId": "gwanaksan",
+        "name": "공대간이식당",
+        "facilityType": "food",
+        "capacity": 100,
+        "operatingHours": "Mo-Fr 11:00-19:00; Sa 11:00-14:30",
+        "mapIconTier": 1,
+        "mapImportance": 165
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954618, 37.457396]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-385997489",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951391, 37.450265]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-424912282",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951379, 37.448383]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-424912287",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950245, 37.466635]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-424949435",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.954355, 37.461711]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-430290237",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "feeNote": "무료",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.951826, 37.451382]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-468665861",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937461, 37.466956]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-476258378",
+        "valleyId": "gwanaksan",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 172
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952933, 37.45429]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-483828700",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938015, 37.474505]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-583903388",
+        "valleyId": "gwanaksan",
+        "name": "은하수다방",
+        "facilityType": "cafe",
+        "operatingHours": "Mo-Su 08:00-22:00",
+        "mapIconTier": 1,
+        "mapImportance": 174
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940383, 37.464367]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1242747050",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938206, 37.465113]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-1437066447",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947178, 37.447377]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-shelter-10216116829",
+        "valleyId": "gwanaksan",
+        "name": "파고다쉼터",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 177
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947132, 37.448926]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-shelter-13312389791",
+        "valleyId": "gwanaksan",
+        "name": "약수정",
+        "facilityType": "shelter",
+        "mapIconTier": 1,
+        "mapImportance": 178
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947426, 37.462813]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-10609206684",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 179
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949555, 37.467702]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-12223558664",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 180
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952278, 37.470047]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13333052167",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 181
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94887, 37.466794]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13657583269",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 182
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938177, 37.470931]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13864223408",
+        "valleyId": "gwanaksan",
+        "name": "재활용 수거함",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 183
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937059, 37.471062]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13864312267",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 184
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94108, 37.470593]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13866687748",
+        "valleyId": "gwanaksan",
+        "name": "재활용 수거함",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 185
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942298, 37.470698]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13866689766",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 186
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943463, 37.470791]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13912284401",
+        "valleyId": "gwanaksan",
+        "name": "재활용 수거함",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 187
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937742, 37.475108]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614480",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악미리내점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 188
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938632, 37.475873]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614402",
+        "valleyId": "gwanaksan",
+        "name": "GS25 관악은혜점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 189
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936431, 37.474125]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614478",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 관악복은길점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 190
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935734, 37.467094]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612804",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 관악미림점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 191
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.958207, 37.463226]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-4752404079",
+        "valleyId": "gwanaksan",
+        "name": "기숙사식당",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 192
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.944732, 37.477619]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17701",
+        "valleyId": "gwanaksan",
+        "name": "청룡 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 193
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93477, 37.469459]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-13370930727",
+        "valleyId": "gwanaksan",
+        "name": "지코바치킨",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 194
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.940391, 37.477065]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614321",
+        "valleyId": "gwanaksan",
+        "name": "GS25 관악이편한점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 195
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934644, 37.470005]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614345",
+        "valleyId": "gwanaksan",
+        "name": "GS25 신림대학점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 196
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934638, 37.469538]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612769",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 신림고시촌점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 197
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937188, 37.475371]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-7559559441",
+        "valleyId": "gwanaksan",
+        "name": "중고가전가구",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 198
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93763, 37.475724]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-583975227",
+        "valleyId": "gwanaksan",
+        "name": "다인",
+        "facilityType": "food",
+        "capacity": 50,
+        "mapIconTier": 1,
+        "mapImportance": 199
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934743, 37.468729]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614493",
+        "valleyId": "gwanaksan",
+        "name": "CU 관악동방점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936021, 37.474236]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-7559560021",
+        "valleyId": "gwanaksan",
+        "name": "광성고물상",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 201
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952851, 37.474345]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13657583255",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 202
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935835, 37.474118]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7559560022",
+        "valleyId": "gwanaksan",
+        "name": "동태찜탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 203
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935027, 37.472763]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7270606085",
+        "valleyId": "gwanaksan",
+        "name": "김영자나주곰탕",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 204
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945408, 37.477904]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-playground-548472973",
+        "valleyId": "gwanaksan",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 205
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934267, 37.470869]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614467",
+        "valleyId": "gwanaksan",
+        "name": "GS25 관악녹두",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 206
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935286, 37.466517]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17681",
+        "valleyId": "gwanaksan",
+        "name": "미림 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 207
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934262, 37.471303]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-12961282009",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 208
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953254, 37.47444]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614336",
+        "valleyId": "gwanaksan",
+        "name": "GS25 서울대제일점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 209
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934354, 37.47183]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612799",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 서울대벤처타운점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 210
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.944476, 37.478206]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-548473915",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953154, 37.474622]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074663420",
+        "valleyId": "gwanaksan",
+        "name": "관악산 한우촌",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 212
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934141, 37.46895]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074644150",
+        "valleyId": "gwanaksan",
+        "name": "수성상회푸드웰점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 213
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937225, 37.460637]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-10628436974",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 214
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933964, 37.469024]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612791",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 관악호암로점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 215
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937592, 37.476481]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7559559438",
+        "valleyId": "gwanaksan",
+        "name": "천하중화요리",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94522, 37.478429]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-548473572",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945992, 37.478417]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-548473573",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933691, 37.470758]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074764287",
+        "valleyId": "gwanaksan",
+        "name": "초밥집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 219
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934163, 37.467506]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17695",
+        "valleyId": "gwanaksan",
+        "name": "사우촌 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 220
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937572, 37.476703]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7559554499",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 221
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947087, 37.478324]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074801828",
+        "valleyId": "gwanaksan",
+        "name": "BBQ치킨",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 222
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933544, 37.469902]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911612783",
+        "valleyId": "gwanaksan",
+        "name": "세븐일레븐 신림대학스타점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 223
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935857, 37.475471]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614356",
+        "valleyId": "gwanaksan",
+        "name": "CU 신화교힐스점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 224
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939985, 37.47799]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-177929581",
+        "valleyId": "gwanaksan",
+        "name": "쑥고개주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.936338, 37.47594]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074519862",
+        "valleyId": "gwanaksan",
+        "name": "엄키친",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 226
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.958338, 37.468161]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-347806945",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937995, 37.47716]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7559559430",
+        "valleyId": "gwanaksan",
+        "name": "뷔페식기사식당-24h",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 228
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.938445, 37.477453]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7559560015",
+        "valleyId": "gwanaksan",
+        "name": "CU",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 229
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933458, 37.468915]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074750984",
+        "valleyId": "gwanaksan",
+        "name": "웍앤웍 본점",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 230
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949514, 37.477823]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17702",
+        "valleyId": "gwanaksan",
+        "name": "일선 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 231
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933318, 37.47162]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-368954844",
+        "valleyId": "gwanaksan",
+        "name": "태평양회집",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 232
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934009, 37.47353]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7559554505",
+        "valleyId": "gwanaksan",
+        "name": "금비",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 233
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945914, 37.478892]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614353",
+        "valleyId": "gwanaksan",
+        "name": "GS25 봉천아이원점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 234
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933768, 37.473136]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7559560027",
+        "valleyId": "gwanaksan",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 235
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95208, 37.476472]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-13911614463",
+        "valleyId": "gwanaksan",
+        "name": "GS25 관악세봉점",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 236
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934849, 37.474896]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-bin-13654374145",
+        "valleyId": "gwanaksan",
+        "name": "쓰레기통",
+        "facilityType": "bin",
+        "mapIconTier": 1,
+        "mapImportance": 237
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947025, 37.478758]
+      },
+      "properties": {
+        "id": "gwanaksan-std-p-120-2-000032",
+        "valleyId": "gwanaksan",
+        "name": "청룡동제1공영주차장",
+        "facilityType": "parking",
+        "capacity": 17,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93751, 37.477375]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-store-7559554500",
+        "valleyId": "gwanaksan",
+        "name": "GS25",
+        "facilityType": "store",
+        "mapIconTier": 1,
+        "mapImportance": 239
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950242, 37.477852]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-12074292540",
+        "valleyId": "gwanaksan",
+        "name": "카페 민",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 240
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939048, 37.478193]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-615837872",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942194, 37.479176]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-12074367615",
+        "valleyId": "gwanaksan",
+        "name": "고기노리",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 242
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947384, 37.479033]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-9655673680",
+        "valleyId": "gwanaksan",
+        "name": "알렉스플레이스",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 243
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945059, 37.479356]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-9655723718",
+        "valleyId": "gwanaksan",
+        "name": "럭키초밥",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 244
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943617, 37.47943]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-4636992036",
+        "valleyId": "gwanaksan",
+        "name": "안동장",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 245
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943616, 37.47943]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-9655673673",
+        "valleyId": "gwanaksan",
+        "name": "다복다복",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 246
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933486, 37.47399]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-food-7559554502",
+        "valleyId": "gwanaksan",
+        "name": "산촌쭈꾸미",
+        "facilityType": "food",
+        "mapIconTier": 1,
+        "mapImportance": 247
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935702, 37.476728]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17671",
+        "valleyId": "gwanaksan",
+        "name": "신화 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 248
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.953512, 37.476236]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17672",
+        "valleyId": "gwanaksan",
+        "name": "백설 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 249
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.932322, 37.470333]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27543",
+        "valleyId": "gwanaksan",
+        "name": "1-17 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 250
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.932219, 37.469471]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27559",
+        "valleyId": "gwanaksan",
+        "name": "1-5 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 251
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.944564, 37.479724]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-545375928",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.959631, 37.468479]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-251117763",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94248, 37.479885]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-9655673674",
+        "valleyId": "gwanaksan",
+        "name": "오르막길",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 254
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.943044, 37.479968]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-548640413",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94631, 37.479889]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-196656215",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.945395, 37.479984]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-545366844",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93184, 37.469003]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27557",
+        "valleyId": "gwanaksan",
+        "name": "1-10 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 258
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.932549, 37.473626]
+      },
+      "properties": {
+        "id": "gwanaksan-std-park-17735",
+        "valleyId": "gwanaksan",
+        "name": "양산 놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 259
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.949425, 37.479321]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-178254716",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952451, 37.478255]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-5148945908",
+        "valleyId": "gwanaksan",
+        "name": "맘c 좋은 아저씨가 내려주는 기분 좋은 커피",
+        "facilityType": "cafe",
+        "operatingHours": "Mo-Sa 11:00-23:00",
+        "mapIconTier": 1,
+        "mapImportance": 261
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.931165, 37.469608]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27562",
+        "valleyId": "gwanaksan",
+        "name": "1-12 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 262
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950659, 37.479277]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-604428779",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.946401, 37.480464]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-196656175",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.933436, 37.464119]
+      },
+      "properties": {
+        "id": "gwanaksan-std-p-120-2-000024",
+        "valleyId": "gwanaksan",
+        "name": "삼성동제2공영주차장",
+        "facilityType": "parking",
+        "capacity": 70,
+        "feeNote": "유료",
+        "operatingHours": "00:00~23:59",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.931275, 37.467975]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27556",
+        "valleyId": "gwanaksan",
+        "name": "1-13 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 266
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.948981, 37.47999]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-607843342",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94391, 37.480676]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-playground-685264090",
+        "valleyId": "gwanaksan",
+        "name": "놀이터",
+        "facilityType": "playground",
+        "mapIconTier": 1,
+        "mapImportance": 268
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.944547, 37.480743]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-545362180",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.931109, 37.467975]
+      },
+      "properties": {
+        "id": "gwanaksan-std-p-120-1-000014",
+        "valleyId": "gwanaksan",
+        "name": "삼성동제1공영주차장",
+        "facilityType": "parking",
+        "capacity": 74,
+        "feeNote": "유료",
+        "operatingHours": "09:00~19:00",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.934004, 37.46096]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27551",
+        "valleyId": "gwanaksan",
+        "name": "2-4 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 271
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.930841, 37.468566]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27561",
+        "valleyId": "gwanaksan",
+        "name": "1-8 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 272
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.947257, 37.48072]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-parking-606174689",
+        "valleyId": "gwanaksan",
+        "name": "주차장",
+        "facilityType": "parking",
+        "mapIconTier": 0,
+        "mapImportance": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.937075, 37.479777]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-586150859",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 274
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955456, 37.477901]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27545",
+        "valleyId": "gwanaksan",
+        "name": "1-1 모래내 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 275
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.932624, 37.461932]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27550",
+        "valleyId": "gwanaksan",
+        "name": "1-15 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 276
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.930328, 37.465257]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27553",
+        "valleyId": "gwanaksan",
+        "name": "2-2 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 277
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95131, 37.481159]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-5750687120",
+        "valleyId": "gwanaksan",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 278
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942743, 37.482521]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4101352807",
+        "valleyId": "gwanaksan",
+        "name": "투썸플레이스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 279
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941481, 37.482518]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-21009",
+        "valleyId": "gwanaksan",
+        "name": "봉천",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 280
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.941815, 37.482659]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4101319553",
+        "valleyId": "gwanaksan",
+        "name": "이디야커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 281
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952634, 37.481113]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-20963",
+        "valleyId": "gwanaksan",
+        "name": "서울대입구",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 282
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.952044, 37.481614]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-5750687521",
+        "valleyId": "gwanaksan",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 283
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.956975, 37.478551]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-8662007147",
+        "valleyId": "gwanaksan",
+        "name": "카페 시트론 오피스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 284
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.929044, 37.460564]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27548",
+        "valleyId": "gwanaksan",
+        "name": "2-5 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 285
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.961057, 37.477762]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-13337485601",
+        "valleyId": "gwanaksan",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 286
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.963021, 37.475716]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-794501864",
+        "valleyId": "gwanaksan",
+        "name": "Secret coffee",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 287
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.928607, 37.459626]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-27549",
+        "valleyId": "gwanaksan",
+        "name": "2-6 공중화장실",
+        "facilityType": "restroom",
+        "operatingHours": "24시간",
+        "mapIconTier": 1,
+        "mapImportance": 288
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.963396, 37.477028]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-20964",
+        "valleyId": "gwanaksan",
+        "name": "낙성대",
+        "facilityType": "restroom",
+        "operatingHours": "05:00~01:00",
+        "mapIconTier": 1,
+        "mapImportance": 289
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.963088, 37.47745]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-5123461726",
+        "valleyId": "gwanaksan",
+        "name": "라떼킹",
+        "facilityType": "cafe",
+        "operatingHours": "Mo-Su 10:00-22:00",
+        "mapIconTier": 1,
+        "mapImportance": 290
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.966206, 37.441607]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-restroom-3444469793",
+        "valleyId": "gwanaksan",
+        "name": "화장실",
+        "facilityType": "restroom",
+        "mapIconTier": 1,
+        "mapImportance": 291
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.928127, 37.479555]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4631393049",
+        "valleyId": "gwanaksan",
+        "name": "카페",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 292
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.965132, 37.476149]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4660165191",
+        "valleyId": "gwanaksan",
+        "name": "스타벅스",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 293
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.927814, 37.480855]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-4658645429",
+        "valleyId": "gwanaksan",
+        "name": "이디야커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 294
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.950088, 37.486456]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-7475816987",
+        "valleyId": "gwanaksan",
+        "name": "TPS coffee lab",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 295
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.924881, 37.450338]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-6964",
+        "valleyId": "gwanaksan",
+        "name": "호암늘솔길 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "상시",
+        "mapIconTier": 1,
+        "mapImportance": 296
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.925119, 37.452119]
+      },
+      "properties": {
+        "id": "gwanaksan-std-r-6970",
+        "valleyId": "gwanaksan",
+        "name": "호압사 화장실",
+        "facilityType": "restroom",
+        "operatingHours": "상시",
+        "mapIconTier": 1,
+        "mapImportance": 297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.928712, 37.483295]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-12074765491",
+        "valleyId": "gwanaksan",
+        "name": "Cafe Pasadena",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 298
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.927559, 37.482386]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-8082889417",
+        "valleyId": "gwanaksan",
+        "name": "55coffee",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 299
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.92, 37.470946]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-10602812814",
+        "valleyId": "gwanaksan",
+        "name": "빽다방",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.919259, 37.460898]
+      },
+      "properties": {
+        "id": "gwanaksan-osm-cafe-10615528092",
+        "valleyId": "gwanaksan",
+        "name": "이디야커피",
+        "facilityType": "cafe",
+        "mapIconTier": 1,
+        "mapImportance": 301
+      }
+    }
+  ]
+}

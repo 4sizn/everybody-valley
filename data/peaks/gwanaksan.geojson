@@ -1,0 +1,375 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "description": "관악산계곡 주변 봉우리 26개 — 중심선 3 km 안, 이름 있는 OSM natural=peak",
+    "source": "OSM natural=peak (ODbL) — 이름·표고(ele) 그대로, 데스크 검수",
+    "sourceFile": "scripts/seed/peaks.mts (pnpm seed:peaks)",
+    "datasetVersion": "2026-09-24.0",
+    "collectedAt": "2026-09-24",
+    "coordinateOrder": "[longitude, latitude]",
+    "crs": "EPSG:4326",
+    "sources": ["https://www.openstreetmap.org/copyright"]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94479, 37.44982]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "모자봉",
+        "elevationM": 240,
+        "distanceM": 238,
+        "osmId": "node/10252984843"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.94512, 37.473942]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "청룡산",
+        "elevationM": 160,
+        "distanceM": 432,
+        "osmId": "node/5634783065"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.942262, 37.461502]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "국기봉(돌산바위)",
+        "elevationM": 233,
+        "distanceM": 503,
+        "osmId": "node/10252984856"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.955478, 37.462518]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "우정봉",
+        "elevationM": 173,
+        "distanceM": 583,
+        "osmId": "node/2955758826"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93846, 37.457972]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "돌산",
+        "elevationM": 236,
+        "distanceM": 800,
+        "osmId": "node/7570474151"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.93895, 37.44098]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "깃대봉국기봉",
+        "elevationM": 446,
+        "distanceM": 945,
+        "osmId": "node/10252984871"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.960353, 37.446789]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "자운암 국기봉",
+        "distanceM": 1059,
+        "osmId": "node/7570474158"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.958749, 37.439868]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "학바위 국기봉",
+        "elevationM": 521,
+        "distanceM": 1261,
+        "osmId": "node/442877585"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.959676, 37.440701]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "깃대봉",
+        "distanceM": 1280,
+        "osmId": "node/10603787093"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939371, 37.435915]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "삼성산",
+        "elevationM": 480.9,
+        "distanceM": 1358,
+        "osmId": "node/2668273218"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.930976, 37.447814]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "장군봉",
+        "elevationM": 409,
+        "distanceM": 1392,
+        "osmId": "node/7570474153"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.935699, 37.480838]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "장군봉",
+        "elevationM": 118.5,
+        "distanceM": 1413,
+        "osmId": "node/4881890763"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.964238, 37.44514]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "관악산",
+        "elevationM": 632,
+        "distanceM": 1448,
+        "osmId": "node/442878166"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.929054, 37.450951]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "호암산(민주동산 국기봉)",
+        "elevationM": 392,
+        "distanceM": 1602,
+        "osmId": "node/10252984868"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.926611, 37.474225]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "건우봉",
+        "elevationM": 140,
+        "distanceM": 1626,
+        "osmId": "node/4881890761"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96446, 37.44056]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "관악산",
+        "elevationM": 624.8,
+        "distanceM": 1666,
+        "osmId": "node/10252984825"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.95959, 37.43422]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "팔봉",
+        "elevationM": 521,
+        "distanceM": 1751,
+        "osmId": "node/10252954170"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.961638, 37.43468]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "팔봉국기봉",
+        "distanceM": 1833,
+        "osmId": "node/442789707"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.9372, 37.43137]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "국기봉",
+        "elevationM": 478.6,
+        "distanceM": 1894,
+        "osmId": "node/10252954186"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.970712, 37.46283]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "선유천 국기봉",
+        "elevationM": 319.5,
+        "distanceM": 1926,
+        "osmId": "node/7570474160"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.96127, 37.48372]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "까치산",
+        "elevationM": 122.3,
+        "distanceM": 2132,
+        "osmId": "node/10252984969"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.962415, 37.431126]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "육봉국기봉",
+        "distanceM": 2175,
+        "osmId": "node/6822157367"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.92992, 37.43179]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "학우봉",
+        "elevationM": 367,
+        "distanceM": 2230,
+        "osmId": "node/10252954158"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.92963, 37.431078]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "학우봉",
+        "elevationM": 344.3,
+        "distanceM": 2306,
+        "osmId": "node/442877731"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.939788, 37.492772]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "국사봉",
+        "elevationM": 180.9,
+        "distanceM": 2552,
+        "osmId": "node/2828072307"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.914035, 37.465317]
+      },
+      "properties": {
+        "valleyId": "gwanaksan",
+        "name": "선우봉",
+        "elevationM": 165,
+        "distanceM": 2725,
+        "osmId": "node/10252984956"
+      }
+    }
+  ]
+}

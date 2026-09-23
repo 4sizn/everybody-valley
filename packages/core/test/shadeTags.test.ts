@@ -61,8 +61,13 @@ describe('shadeTags', () => {
   });
 
   it('SD1 실데이터 30구간 분포 — 많음 8 · 보통 12 · 적음 10', () => {
-    /* SD1(수도권 30) 기준선 — 뒤에 손으로 더한 계곡(긴고랑 SD3, 광주 무등산 SD5)은 뺀다. */
-    const addedAfterSd1 = ['gingorang.geojson', 'jeungsimsa.geojson', 'wonhyo.geojson'];
+    /* SD1(수도권 30) 기준선 — 뒤에 손으로 더한 계곡(긴고랑 SD3, 광주 무등산 SD5, 관악산 2026-09-24)은 뺀다. */
+    const addedAfterSd1 = [
+      'gingorang.geojson',
+      'jeungsimsa.geojson',
+      'wonhyo.geojson',
+      'gwanaksan.geojson',
+    ];
     const files = readdirSync(VALLEYS_DIR).filter(
       (name) => name.endsWith('.geojson') && !addedAfterSd1.includes(name),
     );

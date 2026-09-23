@@ -77,10 +77,12 @@ describe('loadValleyCenterlines', () => {
     expect(loadValleyCenterlines(path.join(tmpDir, 'nope')).size).toBe(0);
   });
 
-  it('실제 data/valleys 33개 전부 중심선을 읽는다(최소 2점)', () => {
+  it('실제 data/valleys 34개 전부 중심선을 읽는다(최소 2점)', () => {
+    // 34 = SD1 30 + 긴고랑 + 무등산 2 + 관악산(2026-09-24). 계곡을 더하면 이 수를 함께 올린다.
     const ids = loadValleyIds(REAL_VALLEYS_DIR);
-    expect(ids.size).toBe(33);
+    expect(ids.size).toBe(34);
     expect(ids.has('gingorang')).toBe(true);
+    expect(ids.has('gwanaksan')).toBe(true);
     // 광주 무등산(2026-09-09) — 수도권 밖 첫 계곡이라 지역 가정이 남아 있으면 여기서 깨진다.
     expect(ids.has('jeungsimsa')).toBe(true);
     expect(ids.has('wonhyo')).toBe(true);
