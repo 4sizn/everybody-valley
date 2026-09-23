@@ -1,4 +1,5 @@
--- 0007 — 관측소별 일 최저·최고기온 (단풍 판정 재료). AWS 매분 폴러가 매 틱 접는다(running min/max).
+-- 0007 — 관측소별 일 최저·최고기온. **미사용(2026-09-23)**: 단풍 판정이 기상청 계절관측 API(0008)로 바뀌어 이 표를 채우는 코드가 없다.
+-- 마이그레이션은 되돌리지 않으므로 표는 남긴다. 원래 뜻: AWS 매분 폴러가 매 틱 접는다(running min/max).
 -- day_kst 는 KST 날짜 'YYYY-MM-DD'. observations(7일 보존)와 달리 한 시즌(120일) 남긴다.
 CREATE TABLE daily_temps (
   kind        TEXT NOT NULL,
