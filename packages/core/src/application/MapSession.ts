@@ -16,6 +16,7 @@
  */
 
 import { cameraCommand } from '../domain/camera/CameraPose';
+import { VALLEY_DETAIL_ZOOM } from '../domain/camera/CameraPresets';
 import { DEFAULT_MAP_GESTURES } from '../domain/camera/MapGestures';
 import { viewportCenterOffset } from '../domain/camera/ViewportCameraOffset';
 import type { SpotId } from '../domain/festival/SpotId';
@@ -343,7 +344,9 @@ export class MapSession implements AsyncInitializable {
             cameraCommand(
               {
                 center,
-                zoom: Math.max(15.5, state.camera?.zoom ?? 15.5),
+                // 상세 줌보다 멀리 있으면 상세 줌까지만 당긴다 — 15.5 로 박혀 있던 값이
+                // `focusSegment`(14.2) 직후 다시 당겨 시설 핀·봉우리를 프레임 밖으로 밀었다(2026-09-23).
+                zoom: Math.max(VALLEY_DETAIL_ZOOM, state.camera?.zoom ?? VALLEY_DETAIL_ZOOM),
                 offset: viewportCenterOffset(state.viewportInsets),
               },
               { motion: 'ease', durationMs: 240 },

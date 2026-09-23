@@ -24,6 +24,7 @@ import {
   TILTED_PITCH,
   VALLEY_DETAIL_FLAT_PITCH,
   VALLEY_DETAIL_TERRAIN_PITCH,
+  VALLEY_DETAIL_ZOOM,
   VALLEY_FLAT_PITCH,
   VALLEY_OVERVIEW_OFFSET,
   VALLEY_OVERVIEW_ZOOM,
@@ -707,7 +708,7 @@ describe('계곡 장면 (valley scene)', () => {
 
       const move = engine.lastMove;
       expect(move?.target.center?.equals(mid.midpoint())).toBe(true);
-      expect(move?.target.zoom).toBe(15.5);
+      expect(move?.target.zoom).toBe(VALLEY_DETAIL_ZOOM);
       expect(move?.target.pitch).toBe(VALLEY_DETAIL_TERRAIN_PITCH);
       // C6 — 옛 하드코딩 [0,-90] 대신 인셋 기반 offset.
       expect(move?.target.offset).toEqual(viewportCenterOffset(VALLEY_TEST_INSETS));
@@ -724,7 +725,7 @@ describe('계곡 장면 (valley scene)', () => {
       const move = flat.engine.lastMove;
       expect(move?.target.pitch).toBe(VALLEY_DETAIL_FLAT_PITCH);
       expect(move?.target.bearing).toBeUndefined();
-      expect(move?.target.zoom).toBe(15.5);
+      expect(move?.target.zoom).toBe(VALLEY_DETAIL_ZOOM);
       flat.session.dispose();
     });
 
@@ -753,7 +754,7 @@ describe('계곡 장면 (valley scene)', () => {
       // 프리셋 호출 순서: 첫 계곡 → 구간 → 복귀
       expect(cameraTrail(engine)).toEqual([
         `fly:z${VALLEY_OVERVIEW_ZOOM}`,
-        'fly:z15.5',
+        `fly:z${VALLEY_DETAIL_ZOOM}`,
         `ease:z${VALLEY_OVERVIEW_ZOOM}`,
       ]);
       session.dispose();
@@ -1070,7 +1071,7 @@ describe('계곡 장면 (valley scene)', () => {
       expect(engine.selections.at(-1)?.kind).toBe('facility');
       expect(cameraTrail(engine)).toEqual([
         `fly:z${VALLEY_OVERVIEW_ZOOM}`,
-        'fly:z15.5',
+        `fly:z${VALLEY_DETAIL_ZOOM}`,
         `ease:z${VALLEY_OVERVIEW_ZOOM}`,
       ]);
       session.dispose();

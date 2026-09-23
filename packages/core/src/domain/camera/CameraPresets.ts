@@ -213,8 +213,14 @@ export function focusValley(center: LngLat, insets: CameraViewportInsets): Camer
   );
 }
 
-/** 구간 상세의 줌 — 구간 하나(수백 m)가 화면 폭의 절반쯤을 차지해 선택 강조가 읽히는 값. */
-export const VALLEY_DETAIL_ZOOM = 15.5;
+/**
+ * 구간 상세의 줌. 원래 15.5("구간 하나(수백 m)가 화면 폭의 절반")였지만, SD1 33곳은 전부 1구간
+ * `whole`(2~3 km)이라 15.5·pitch 58 에서는 폰 폭(390 px)에 물가 ~1 km 만 들어와 **시설 핀과 봉우리
+ * 라벨이 전부 프레임 밖**이었다(2026-09-23 실측, 송추: 시설 63개 중 화면 안 0 → 14.2 에서 7개·봉우리
+ * 4개, 13.6 에서 23개·6개). 개요 줌(14.2)과 같게 두어 선택 때 줌이 튀지 않고 주변이 함께 보인다.
+ * 제보 위치 고르기는 이 값이 아니라 자기 줌(`reportLocationPicker`)을 쓴다.
+ */
+export const VALLEY_DETAIL_ZOOM = 14.2;
 /** 3D 지형이 없을 때의 상세 pitch(F1b) — 살짝 눕히면 선이 "물길"로 읽히고 그 이상은 얻는 게 없다. */
 export const VALLEY_DETAIL_FLAT_PITCH = 30;
 /**

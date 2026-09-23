@@ -116,7 +116,7 @@ describe('focusSegment — 지형 유무별 상세 시점', () => {
   // 계산 규칙은 `ViewportCameraOffset.test.ts` 몫이다.
   const insets = { top: 48, bottom: 340.65 };
 
-  it('지형이 있으면 pitch 58 · 축 가로지르기 bearing · 중간점 · 15.5 · 인셋 기반 offset', () => {
+  it('지형이 있으면 pitch 58 · 축 가로지르기 bearing · 중간점 · 상세 줌 14.2 · 인셋 기반 offset', () => {
     const command = focusSegment(mid, { terrain: true, insets });
     expect(command.target.pitch).toBe(VALLEY_DETAIL_TERRAIN_PITCH);
     expect(VALLEY_DETAIL_TERRAIN_PITCH).toBe(58);

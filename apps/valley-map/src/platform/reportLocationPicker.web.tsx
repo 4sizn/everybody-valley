@@ -25,7 +25,6 @@ import {
   type LngLat,
   type Logger,
   MAX_PITCH,
-  VALLEY_DETAIL_ZOOM,
 } from '@modu-valley/core';
 import { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -35,6 +34,8 @@ import { FONT_FAMILY } from '@/theme/theme';
 import { RADII } from '@/theme/tokens';
 import { createMapEngine, MapHost, type MapHostHandle } from './mapPlatform';
 
+/** 제보 위치 고르기의 줌 — 옛 계곡 상세 줌 값. */
+const REPORT_PICKER_ZOOM = 15.5;
 export const REPORT_LOCATION_PICKER_SUPPORTED = true;
 
 export type ReportLocationPickerProps = {
@@ -102,7 +103,8 @@ export function ReportLocationPicker({
     const engine = createMapEngine({
       host,
       launchSite: initialCenterRef.current,
-      initialView: { zoom: VALLEY_DETAIL_ZOOM, pitch: 0, bearing: 0, maxPitch: MAX_PITCH },
+      // 위치를 찍는 화면은 계곡 상세(14.2)보다 가깝게 — 수십 m 를 가려야 한다.
+      initialView: { zoom: REPORT_PICKER_ZOOM, pitch: 0, bearing: 0, maxPitch: MAX_PITCH },
       styleMode,
       terrain: false,
       logger,
