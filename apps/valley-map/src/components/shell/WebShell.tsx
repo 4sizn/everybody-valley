@@ -13,6 +13,7 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import { WebView } from 'react-native-webview';
 import { resolveApiBase } from '@/api/createApiClient';
 import { ABSOLUTE_FILL } from '@/theme/layout';
+import { useSafeAreaGutters } from '@/theme/safeArea';
 import { createThemedStyles } from '@/theme/ThemeProvider';
 import { FONT_FAMILY } from '@/theme/theme';
 import { RADII } from '@/theme/tokens';
@@ -25,6 +26,10 @@ export function WebShell() {
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const themed = useThemedStyles();
+  // WKWebView 안에서는 `env(safe-area-inset-top)` 이 0 이라 웹의 상단바가 다이내믹 아일랜드에
+  // 겹친다. 상단 인셋은 셸이 여백으로 준다. 하단은 `env(safe-area-inset-bottom)` 이 살아 있어
+  // 웹이 스스로 띄우므로 셸이 더하면 두 번 띄운다.
+  const insets = useSafeAreaGutters();
 
   const retry = () => {
     setFailed(false);
@@ -33,7 +38,7 @@ export function WebShell() {
   };
 
   return (
-    <View style={[styles.root, themed.root]}>
+    <View style={[styles.root, themed.root, { paddingTop: insets.top }]}>
       <WebView
         key={attempt}
         ref={webView}
