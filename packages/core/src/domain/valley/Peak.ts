@@ -38,6 +38,10 @@ export function nearbyPeaks(
     .filter((peak) => peak.valleyId === valley.id)
     .map((peak) => ({ peak, distance: distanceToPolyline(peak.position, line) }))
     .sort((a, b) => a.distance.meters - b.distance.meters)
-    .filter(({ peak }) => (seen.has(peak.name) ? false : (seen.add(peak.name), true)))
+    .filter(({ peak }) => {
+      if (seen.has(peak.name)) return false;
+      seen.add(peak.name);
+      return true;
+    })
     .slice(0, limit);
 }
