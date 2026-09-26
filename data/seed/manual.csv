@@ -267,7 +267,7 @@ gwanaksan,gwanaksan-whole,depth,knee,https://www.safemap.go.kr/wtrPlay/searchWtr
 gwanaksan,gwanaksan-whole,bed,,,,,
 gwanaksan,gwanaksan-whole,accessDifficulty,,,,,
 gwanaksan,gwanaksan-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-24,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m,high
-gwanaksan,gwanaksan-whole,freeAccess,,,,,
-gwanaksan,gwanaksan-whole,campingAllowed,,,,,
-gwanaksan,gwanaksan-whole,petAllowed,,,,,
+gwanaksan,gwanaksan-whole,freeAccess,true,https://www.gwanak.go.kr/site/gwanak/08/10803030101002025090909.jsp,2026-09-26,"관악구청 ""관악산공원 물놀이장"" 안내 — 신림계곡지구(신림동 205-1 일대), 2026-07-04~08-30 운영, 이용료 ""무료"". 공원 자체도 입장료를 받지 않는다",medium
+gwanaksan,gwanaksan-whole,campingAllowed,false,https://parks.seoul.go.kr/park/detailView.do?key=2604070019&pIdx=36,2026-09-26,"서울시 공원안내 관악산공원 이용 시 참고사항 ""야영, 취사행위 및 불을 피우지 않습니다"". 야영은 서울시 공공서비스예약의 관악산 모험숲 캠핑숲 프로그램(1박2일, 유료, 선정 가족만)으로만 가능",medium
+gwanaksan,gwanaksan-whole,petAllowed,,https://parks.seoul.go.kr/park/detailView.do?key=2604070019&pIdx=36,2026-09-26,"서울시 관악산공원 안내는 ""반려동물은 생태계 보전과 대중의 이용에 불편함이 없도록 출입을 자제하여 주시기 바랍니다"" 로 자제 요청일 뿐 금지가 아니라 true/false 로 옮기지 않는다",
 gwanaksan,gwanaksan-whole,riskNote,물놀이관리지역(관리) 신림계곡지구 물놀이장 — 최대 수심 0.6 m·평균 0.4 m. 인근 143 m 에 위험 구역(수심 1 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-24,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
