@@ -10,6 +10,7 @@ import {
   type FetchLike,
   type Logger,
 } from '@modu-valley/core';
+import { VisibilityEventSource } from './visibilityEventSource';
 
 export const DEFAULT_API_BASE = 'http://localhost:8787';
 
@@ -31,11 +32,18 @@ export function reportPhotoUrl(url: string): string {
   return /^https?:\/\//.test(url) ? url : `${resolveApiBase()}${url}`;
 }
 
-/** 브라우저(web)에는 `EventSource` 가 있고, RN 런타임에는 없다 — 없으면 SSE 없이 REST 만 쓴다. */
+/**
+ * 브라우저(web)에는 `EventSource` 가 있고, RN 런타임에는 없다 — 없으면 SSE 없이 REST 만 쓴다.
+ *
+ * `document` 가 있으면 `VisibilityEventSource` 로 감싼다. 숨은 탭이 연결을 쥐고 있으면 브라우저의
+ * 출처당 여섯 연결 한도가 차서 새 탭이 멈춘다(그 파일에 실측을 적어 두었다).
+ */
 function eventSourceFactory(): EventSourceFactory | undefined {
   const ctor = (globalThis as { EventSource?: new (url: string) => unknown }).EventSource;
   if (typeof ctor !== 'function') return undefined;
-  return (url) => new ctor(url) as unknown as ReturnType<EventSourceFactory>;
+  const open = (url: string) => new ctor(url) as unknown as ReturnType<EventSourceFactory>;
+  if (typeof document === 'undefined') return open;
+  return (url) => new VisibilityEventSource(() => open(url), document);
 }
 
 export function createApiClient(
