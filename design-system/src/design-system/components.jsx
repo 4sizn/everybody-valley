@@ -614,11 +614,6 @@ export function MapSheet({
           <h3>{title}</h3>
           <p>{subtitle}</p>
         </div>
-        <IconButton
-          label={state === "peek" ? "정보 펼치기" : "지도 크게 보기"}
-          icon={state === "peek" ? "plus" : "minus"}
-          onClick={() => onChange(state === "peek" ? "half" : "peek")}
-        />
       </header>
       {state !== "peek" && (
         <>

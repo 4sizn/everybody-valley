@@ -408,6 +408,16 @@ function MapChrome({
                     void session.recenterSelection();
                   }}
                 />
+                {/*
+                  시트 헤더의 +/- 를 없앤 자리(사용자 결정 2026-09-26). 계곡 시트는 푸터의
+                  '구간 정보'가 같은 일을 하지만 시설 시트에는 그런 버튼이 없어, 접힘 상태에서
+                  끌지 못하는 사람은 시설 정보를 다시 펼 수 없다. 그래서 여기로 옮긴다.
+                */}
+                <IconButton
+                  label={sheet === 'peek' ? '정보 펼치기' : '지도 크게 보기'}
+                  icon={sheet === 'peek' ? 'plus' : 'minus'}
+                  onClick={() => setSheet(sheet === 'peek' ? 'half' : 'peek')}
+                />
               </>
             ) : (
               <>

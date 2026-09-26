@@ -469,14 +469,7 @@ function MapSheet({
       "aria-label": "\uC120\uD0DD \uC7A5\uC18C \uC815\uBCF4"
     },
     /* @__PURE__ */ React.createElement("div", { className: "mv-sheet-handle", ...dragHandlers }, /* @__PURE__ */ React.createElement("span", null)),
-    /* @__PURE__ */ React.createElement("header", { ...dragHandlers }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", null, title), /* @__PURE__ */ React.createElement("p", null, subtitle)), /* @__PURE__ */ React.createElement(
-      IconButton,
-      {
-        label: state === "peek" ? "\uC815\uBCF4 \uD3BC\uCE58\uAE30" : "\uC9C0\uB3C4 \uD06C\uAC8C \uBCF4\uAE30",
-        icon: state === "peek" ? "plus" : "minus",
-        onClick: () => onChange(state === "peek" ? "half" : "peek")
-      }
-    )),
+    /* @__PURE__ */ React.createElement("header", { ...dragHandlers }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", null, title), /* @__PURE__ */ React.createElement("p", null, subtitle))),
     state !== "peek" && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "mv-sheet-snap" }, /* @__PURE__ */ React.createElement(
       "button",
       {
