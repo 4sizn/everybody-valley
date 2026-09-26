@@ -57,6 +57,7 @@ docker compose up -d --build
 - [홈 배너·블로그 운영과 관심 순위](docs/CONTENT.md)
 - [기능·환경 이관 대응표](docs/migration/FEATURES.md)
 - [실제 브라우저 검증 기록](docs/migration/VALIDATION.md)
+- 아이폰 실기기 확인: `node scripts/dev/ios-device.mjs shot|drag|tap` (준비·환경변수는 그 파일 머리말). 결과는 `.proof/ios/`, `python3 scripts/proof-check.py .proof/ios` 로 먼저 거른다
 - [원본/구현 시각 비교](design-qa.md)
 - [출시 전 설정 항목](docs/RELEASE-CHECKLIST.md)
 
