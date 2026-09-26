@@ -1,12 +1,12 @@
 valleyId,segmentId,field,value,sourceUrl,checkedAt,note,confidence
-baegun-pocheon,baegun-pocheon-whole,depth,adult,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 37 '영평천' 일반지역·계곡 (경기도 포천시 이동면 도평리 36 일대) 중심선에서 1705 m [읍면리 일치]; 평균 2 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+baegun-pocheon,baegun-pocheon-whole,depth,adult,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 62 '백운계곡' 관리지역·계곡 (경기도 포천시 이동면 도평리 36 일대) 중심선에서 1705 m [읍면리 일치]; 평균 2 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 baegun-pocheon,baegun-pocheon-whole,bed,,,,비공식 출처라 제거(thetravelnews.co.kr; 이전 값 mixed),
 baegun-pocheon,baegun-pocheon-whole,accessDifficulty,,,,,
-baegun-pocheon,baegun-pocheon-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 37 '영평천' 일반지역·계곡 (경기도 포천시 이동면 도평리 36 일대) 중심선에서 1705 m [읍면리 일치],high
+baegun-pocheon,baegun-pocheon-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 62 '백운계곡' 관리지역·계곡 (경기도 포천시 이동면 도평리 36 일대) 중심선에서 1705 m [읍면리 일치],high
 baegun-pocheon,baegun-pocheon-whole,freeAccess,,,,비공식 출처라 제거(thetravelnews.co.kr; 이전 값 true),
 baegun-pocheon,baegun-pocheon-whole,campingAllowed,,,,비공식 출처라 제거(thetravelnews.co.kr; 이전 값 false),
 baegun-pocheon,baegun-pocheon-whole,petAllowed,,,,,
-baegun-pocheon,baegun-pocheon-whole,riskNote,물놀이관리지역(일반) 영평천 — 최대 수심 3 m·평균 2 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 37 '영평천' 일반지역·계곡 (경기도 포천시 이동면 도평리 36 일대) 중심선에서 1705 m [읍면리 일치]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+baegun-pocheon,baegun-pocheon-whole,riskNote,물놀이관리지역(관리) 백운계곡 — 최대 수심 3 m·평균 2 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 62 '백운계곡' 관리지역·계곡 (경기도 포천시 이동면 도평리 36 일대) 중심선에서 1705 m [읍면리 일치]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
 cheonghakdong,cheonghakdong-whole,depth,,,,,
 cheonghakdong,cheonghakdong-whole,bed,,,,,
 cheonghakdong,cheonghakdong-whole,accessDifficulty,,,,,
@@ -39,94 +39,94 @@ wangbang,wangbang-whole,freeAccess,,,,비공식 출처라 제거(www.newswhoplus
 wangbang,wangbang-whole,campingAllowed,,,,비공식 출처라 제거(www.kpinews.kr; 이전 값 false),
 wangbang,wangbang-whole,petAllowed,,,,,
 wangbang,wangbang-whole,riskNote,,,,,
-myeongji,myeongji-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 90 '도마천' 일반지역·하천 (경기도 가평군 북면 적목리 643) 중심선에서 10 m [거리]; 위험지역 OBJT_ID 1100 625 m; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+myeongji,myeongji-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 28 m [거리]; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 myeongji,myeongji-whole,bed,,,,비공식 출처라 제거(www.welfarehello.com; 이전 값 mixed),
 myeongji,myeongji-whole,accessDifficulty,,,,,
-myeongji,myeongji-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 90 '도마천' 일반지역·하천 (경기도 가평군 북면 적목리 643) 중심선에서 10 m [거리]; 위험지역 OBJT_ID 1100 625 m,high
+myeongji,myeongji-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 28 m [거리],high
 myeongji,myeongji-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&submenu=etc&paramidx=TL0000084,2026-09-07,입장료 : 없음,medium
 myeongji,myeongji-whole,campingAllowed,,,,,
 myeongji,myeongji-whole,petAllowed,,,,,
-myeongji,myeongji-whole,riskNote,물놀이관리지역(일반) 도마천 — 최대 수심 3 m·평균 1 m. 인근 적목리 용소폭포는 위험지역(수심 10 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 90 '도마천' 일반지역·하천 (경기도 가평군 북면 적목리 643) 중심선에서 10 m [거리]; 위험지역 OBJT_ID 1100 625 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-yongchu-gapyeong,yongchu-gapyeong-whole,depth,adult,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 1099 '용추계곡' 위험지역·하천 (경기도 가평군 가평읍 승안리 산 225) 중심선에서 10 m [거리]; 평균 3 m·최대 5 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+myeongji,myeongji-whole,riskNote,물놀이관리지역(관리) 토마토펜션 앞 — 최대 수심 3 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 28 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+yongchu-gapyeong,yongchu-gapyeong-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 91 '용추쉼터' 관리지역·계곡 (경기도 가평군 가평읍 승안리 산60-1) 중심선에서 35 m [거리]; 위험 구역 OBJT_ID 93 254 m; 평균 1 m·최대 2 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 yongchu-gapyeong,yongchu-gapyeong-whole,bed,,,,비공식 출처라 제거(brunch.co.kr; 이전 값 mixed),
 yongchu-gapyeong,yongchu-gapyeong-whole,accessDifficulty,,,,,
-yongchu-gapyeong,yongchu-gapyeong-whole,swimBanned,true,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 1099 '용추계곡' 위험지역·하천 (경기도 가평군 가평읍 승안리 산 225) 중심선에서 10 m [거리],high
+yongchu-gapyeong,yongchu-gapyeong-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 91 '용추쉼터' 관리지역·계곡 (경기도 가평군 가평읍 승안리 산60-1) 중심선에서 35 m [거리]; 위험 구역 OBJT_ID 93 254 m,high
 yongchu-gapyeong,yongchu-gapyeong-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&submenu=&paramidx=TL0000152,2026-09-06,"가평군 문화관광 연인산도립공원 ""입장료: 없음""; brunch ""입장과 주차는 무료다"", 취사 금지·도시락 반입 가능",medium
 yongchu-gapyeong,yongchu-gapyeong-whole,campingAllowed,,,,비공식 출처라 제거(www.kgdm.co.kr; 이전 값 false),
 yongchu-gapyeong,yongchu-gapyeong-whole,petAllowed,,,,,
-yongchu-gapyeong,yongchu-gapyeong-whole,riskNote,"물놀이관리지역(위험) 용추계곡 — 최대 수심 5 m·평균 3 m, 입수 금지",https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 1099 '용추계곡' 위험지역·하천 (경기도 가평군 가평읍 승안리 산 225) 중심선에서 10 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-jomurak,jomurak-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 90 '도마천' 일반지역·하천 (경기도 가평군 북면 적목리 643) 중심선에서 1084 m [거리]; 위험지역 OBJT_ID 1100 1637 m; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+yongchu-gapyeong,yongchu-gapyeong-whole,riskNote,물놀이관리지역(관리) 용추쉼터 — 최대 수심 2 m·평균 1 m. 인근 254 m 에 위험 구역(수심 5 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 91 '용추쉼터' 관리지역·계곡 (경기도 가평군 가평읍 승안리 산60-1) 중심선에서 35 m [거리]; 위험 구역 OBJT_ID 93 254 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+jomurak,jomurak-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 738 m [거리]; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 jomurak,jomurak-whole,bed,,,,,
 jomurak,jomurak-whole,accessDifficulty,,,,,
-jomurak,jomurak-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 90 '도마천' 일반지역·하천 (경기도 가평군 북면 적목리 643) 중심선에서 1084 m [거리]; 위험지역 OBJT_ID 1100 1637 m,high
+jomurak,jomurak-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 738 m [거리],high
 jomurak,jomurak-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&paramidx=TL0000081,2026-09-07,입장료 : 없음,medium
 jomurak,jomurak-whole,campingAllowed,,,,,
 jomurak,jomurak-whole,petAllowed,,,,,
-jomurak,jomurak-whole,riskNote,물놀이관리지역(일반) 도마천 — 최대 수심 3 m·평균 1 m. 인근 적목리 용소폭포는 위험지역(수심 10 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 90 '도마천' 일반지역·하천 (경기도 가평군 북면 적목리 643) 중심선에서 1084 m [거리]; 위험지역 OBJT_ID 1100 1637 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-yumyeongsan,yumyeongsan-whole,depth,waist,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 68 '벽계천' 일반지역·하천 (경기도 가평군 설악면 가일리 350) 중심선에서 1327 m [거리]; 평균 1 m·최대 1 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+jomurak,jomurak-whole,riskNote,물놀이관리지역(관리) 토마토펜션 앞 — 최대 수심 3 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 738 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+yumyeongsan,yumyeongsan-whole,depth,waist,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 94 '어비계곡(밤벌유원지)' 관리지역·계곡 (경기도 가평군 설악면 가일리 350) 중심선에서 1193 m [거리]; 평균 1 m·최대 1 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 yumyeongsan,yumyeongsan-whole,bed,,,,,
 yumyeongsan,yumyeongsan-whole,accessDifficulty,,,,,
-yumyeongsan,yumyeongsan-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 68 '벽계천' 일반지역·하천 (경기도 가평군 설악면 가일리 350) 중심선에서 1327 m [거리],high
+yumyeongsan,yumyeongsan-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 94 '어비계곡(밤벌유원지)' 관리지역·계곡 (경기도 가평군 설악면 가일리 350) 중심선에서 1193 m [거리],high
 yumyeongsan,yumyeongsan-whole,freeAccess,false,https://www.foresttrip.go.kr/pot/rm/ug/selectFcltUseGdncView.do?hmpgId=0101&menuId=004002008&ruleId=208,2026-09-06,"산림청 휴양림 준수사항 ""납입한 입장료 및 시설사용료"" 유료(어른 1,000원·주차 3,000원, telltrip yumyeongsan guide 2026)",medium
 yumyeongsan,yumyeongsan-whole,campingAllowed,true,https://www.foresttrip.go.kr/pot/rm/fa/selectCmpgrArmpListView.do?hmpgId=0101&menuId=002002002,2026-09-06,"산림청 국립유명산자연휴양림 야영장 야영데크 101~222·캠핑카야영장 301~310 운영(예약제), 취사는 지정 장소에서만",medium
 yumyeongsan,yumyeongsan-whole,petAllowed,false,https://www.foresttrip.go.kr/pot/rm/ug/selectFcltUseGdncView.do?hmpgId=0101&menuId=004002008&ruleId=208,2026-09-06,"산림청 국립유명산자연휴양림 이용객준수사항 ""애완동물 및 혐오동물 등을 동반하고 입장할 수 없으며"" (장애인 보조견 제외)",medium
-yumyeongsan,yumyeongsan-whole,riskNote,물놀이관리지역(일반) 벽계천 — 최대 수심 1 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 68 '벽계천' 일반지역·하천 (경기도 가평군 설악면 가일리 350) 중심선에서 1327 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-eobi,eobi-whole,depth,waist,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 68 '벽계천' 일반지역·하천 (경기도 가평군 설악면 가일리 350) 중심선에서 25 m [거리]; 평균 1 m·최대 1 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+yumyeongsan,yumyeongsan-whole,riskNote,물놀이관리지역(관리) 어비계곡(밤벌유원지) — 최대 수심 1 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 94 '어비계곡(밤벌유원지)' 관리지역·계곡 (경기도 가평군 설악면 가일리 350) 중심선에서 1193 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+eobi,eobi-whole,depth,waist,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 94 '어비계곡(밤벌유원지)' 관리지역·계곡 (경기도 가평군 설악면 가일리 350) 중심선에서 129 m [거리]; 평균 1 m·최대 1 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 eobi,eobi-whole,bed,mixed,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&paramidx=TL0000076&submenu=mnt,2026-09-06,"가평군 ""잔돌이 잔잔히 깔려"" ""크고 작은 바위"" + 구석구석 ""너른 바위를 따라"" (korean.visitkorea.or.kr cotid=64bc182a)",medium
 eobi,eobi-whole,accessDifficulty,,,,,
-eobi,eobi-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 68 '벽계천' 일반지역·하천 (경기도 가평군 설악면 가일리 350) 중심선에서 25 m [거리],high
+eobi,eobi-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 94 '어비계곡(밤벌유원지)' 관리지역·계곡 (경기도 가평군 설악면 가일리 350) 중심선에서 129 m [거리],high
 eobi,eobi-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&paramidx=TL0000076&submenu=mnt,2026-09-06,"가평군 ""입장료 : 없음""; 경기도 2023 어비계곡 ""이동식 평상 등 불법시설"" 집중단속 대상(ecojournal.co.kr idx=143689)",medium
 eobi,eobi-whole,campingAllowed,,,,,
 eobi,eobi-whole,petAllowed,,,,,
-eobi,eobi-whole,riskNote,물놀이관리지역(일반) 벽계천 — 최대 수심 1 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 68 '벽계천' 일반지역·하천 (경기도 가평군 설악면 가일리 350) 중심선에서 25 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-baekdunri,baekdunri-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 84 '가평천' 일반지역·계곡 (경기도 가평군 북면 백둔리 1115) 중심선에서 62 m [거리]; 평균 1 m·최대 2 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+eobi,eobi-whole,riskNote,물놀이관리지역(관리) 어비계곡(밤벌유원지) — 최대 수심 1 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 94 '어비계곡(밤벌유원지)' 관리지역·계곡 (경기도 가평군 설악면 가일리 350) 중심선에서 129 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+baekdunri,baekdunri-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 113 '백둔교 아래' 관리지역·계곡 (경기도 가평군 북면 백둔리 1115) 중심선에서 32 m [거리]; 평균 1 m·최대 2 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 baekdunri,baekdunri-whole,bed,,,,,
 baekdunri,baekdunri-whole,accessDifficulty,,,,,
-baekdunri,baekdunri-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 84 '가평천' 일반지역·계곡 (경기도 가평군 북면 백둔리 1115) 중심선에서 62 m [거리],high
+baekdunri,baekdunri-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 113 '백둔교 아래' 관리지역·계곡 (경기도 가평군 북면 백둔리 1115) 중심선에서 32 m [거리],high
 baekdunri,baekdunri-whole,freeAccess,,,,비공식 출처라 제거(www.welfarehello.com; 이전 값 true),
 baekdunri,baekdunri-whole,campingAllowed,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&submenu=null&paramidx=TL0000061,2026-09-06,"가평군 문화관광 ""연인산 다목적캠핑장 소재지 : 북면 백둔로 441"" (가평군시설관리공단 운영, gpfmc.or.kr); 계곡 바로 옆 공공 캠핑장",medium
 baekdunri,baekdunri-whole,petAllowed,,,,비공식 출처라 제거(www.welfarehello.com; 이전 값 true),
-baekdunri,baekdunri-whole,riskNote,물놀이관리지역(일반) 가평천 — 최대 수심 2 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 84 '가평천' 일반지역·계곡 (경기도 가평군 북면 백둔리 1115) 중심선에서 62 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-gyeongban,gyeongban-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 65 '경반천' 일반지역·하천 (경기도 가평군 가평읍 경반리 516) 중심선에서 523 m [거리]; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+baekdunri,baekdunri-whole,riskNote,물놀이관리지역(관리) 백둔교 아래 — 최대 수심 2 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 113 '백둔교 아래' 관리지역·계곡 (경기도 가평군 북면 백둔리 1115) 중심선에서 32 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+gyeongban,gyeongban-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 90 '범소 유원지' 관리지역·계곡 (경기도 가평군 가평읍 경반리 516) 중심선에서 526 m [거리]; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 gyeongban,gyeongban-whole,bed,,,,비공식 출처라 제거(www.ytn.co.kr; 이전 값 rock),
 gyeongban,gyeongban-whole,accessDifficulty,,,,,
-gyeongban,gyeongban-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 65 '경반천' 일반지역·하천 (경기도 가평군 가평읍 경반리 516) 중심선에서 523 m [거리],high
+gyeongban,gyeongban-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 90 '범소 유원지' 관리지역·계곡 (경기도 가평군 가평읍 경반리 516) 중심선에서 526 m [거리],high
 gyeongban,gyeongban-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&submenu=etc&paramidx=TL0000143,2026-09-06,"가평군 문화관광 칼봉산자연휴양림(경반계곡 들머리) ""입장료 : 없음"" ""주차시설 : 없음""",medium
 gyeongban,gyeongban-whole,campingAllowed,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&submenu=etc&paramidx=TL0000143,2026-09-06,"가평군 칼봉산자연휴양림 ""야영장, 숲속의 집, 다목적 운동장 등 부대시설""; 상류 경반분교 ""야영장으로 활용""(YTN 2020)",medium
 gyeongban,gyeongban-whole,petAllowed,,,,,
-gyeongban,gyeongban-whole,riskNote,물놀이관리지역(일반) 경반천 — 최대 수심 3 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 65 '경반천' 일반지역·하천 (경기도 가평군 가평읍 경반리 516) 중심선에서 523 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-nonnamgi,nonnamgi-whole,depth,,,,비공식 출처라 제거(m.cafe.daum.net; 이전 값 knee),
+gyeongban,gyeongban-whole,riskNote,물놀이관리지역(관리) 범소 유원지 — 최대 수심 3 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 90 '범소 유원지' 관리지역·계곡 (경기도 가평군 가평읍 경반리 516) 중심선에서 526 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+nonnamgi,nonnamgi-whole,depth,adult,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 108 '가람유원지' 관리지역·계곡 (경기도 가평군 북면 적목리 산131-11) 중심선에서 984 m [거리]; 평균 2 m·최대 3.5 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 nonnamgi,nonnamgi-whole,bed,,,,,
 nonnamgi,nonnamgi-whole,accessDifficulty,,,,,
-nonnamgi,nonnamgi-whole,swimBanned,false,https://www.foresttrip.go.kr/pot/rm/ri/selectRcrfrIntrdDtlView.do?hmpgId=ID02030019&menuId=002001,2026-09-06,"경기도 강씨봉자연휴양림(도유림) 안내 ""간이 물놀이시설"" 운영; 월간산 ""휴양림 물놀이장으로 사용되는 계곡"" — 물놀이 허용 구간",medium
+nonnamgi,nonnamgi-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 108 '가람유원지' 관리지역·계곡 (경기도 가평군 북면 적목리 산131-11) 중심선에서 984 m [거리],high
 nonnamgi,nonnamgi-whole,freeAccess,false,https://www.foresttrip.go.kr/pot/rm/ug/selectFcltUseGdncView.do?hmpgId=ID02030019&menuId=004002005&ruleId=205,2026-09-06,"강씨봉자연휴양림 이용요금 ""입장료 어른 1,000 / 청소년·군인 600 / 어린이 300"" 주차 소·중형 3,000 (휴양림 물놀이장 구간 기준)",medium
 nonnamgi,nonnamgi-whole,campingAllowed,true,https://www.foresttrip.go.kr/pot/rm/fa/selectCmpgrArmpDtlView.do?insttId=0101&goodsId=G01010200202002003900356,2026-09-07,"야영데크(116) 입실:14시~22시, 퇴실:다음날 오전 11시까지, 텐트1개+텐트와 연결되는 타프1개만 허용",medium
 nonnamgi,nonnamgi-whole,petAllowed,false,https://www.foresttrip.go.kr/pot/rm/ug/selectFcltUseGdncView.do?hmpgId=ID02030019&menuId=004002008&ruleId=208,2026-09-06,"강씨봉자연휴양림 이용객준수사항 ""애완동물 및 혐오동물 등을 동반하고 입장할 수 없으며"" (보조견 제외)",medium
-nonnamgi,nonnamgi-whole,riskNote,,,,,
-hyeondeungsa,hyeondeungsa-whole,depth,waist,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 78 '조종천' 일반지역·하천 (경기도 가평군 조종면 신상리 257) 중심선에서 1099 m [거리]; 평균 1 m·최대 1.5 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+nonnamgi,nonnamgi-whole,riskNote,물놀이관리지역(관리) 가람유원지 — 최대 수심 3.5 m·평균 2 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 108 '가람유원지' 관리지역·계곡 (경기도 가평군 북면 적목리 산131-11) 중심선에서 984 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+hyeondeungsa,hyeondeungsa-whole,depth,waist,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 104 '용수유원지' 관리지역·계곡 (경기도 가평군 조종면 신상리 257) 중심선에서 1109 m [거리]; 평균 1 m·최대 1.5 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 hyeondeungsa,hyeondeungsa-whole,bed,,,,비공식 출처라 제거(www.welfarehello.com; 이전 값 rock),
 hyeondeungsa,hyeondeungsa-whole,accessDifficulty,,,,,
-hyeondeungsa,hyeondeungsa-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 78 '조종천' 일반지역·하천 (경기도 가평군 조종면 신상리 257) 중심선에서 1099 m [거리],high
+hyeondeungsa,hyeondeungsa-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 104 '용수유원지' 관리지역·계곡 (경기도 가평군 조종면 신상리 257) 중심선에서 1109 m [거리],high
 hyeondeungsa,hyeondeungsa-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&submenu=&paramidx=TL0000053,2026-09-06,"가평군 문화관광 운악산 ""입장료 : 없음"" (현등사 문화재관람료는 2023.5 폐지); 입수 금지 구역이라 평상·자릿세 해당 없음",medium
 hyeondeungsa,hyeondeungsa-whole,campingAllowed,,,,,
 hyeondeungsa,hyeondeungsa-whole,petAllowed,,,,비공식 출처라 제거(www.welfarehello.com; 이전 값 false),
-hyeondeungsa,hyeondeungsa-whole,riskNote,물놀이관리지역(일반) 조종천 — 최대 수심 1.5 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 78 '조종천' 일반지역·하천 (경기도 가평군 조종면 신상리 257) 중심선에서 1099 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-domachi,domachi-whole,depth,adult,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 1100 '적목리 용소폭포' 위험지역·하천 (경기도 가평군 북면 적목리 산 198) 중심선에서 834 m [거리]; 평균 3 m·최대 10 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+hyeondeungsa,hyeondeungsa-whole,riskNote,물놀이관리지역(관리) 용수유원지 — 최대 수심 1.5 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 104 '용수유원지' 관리지역·계곡 (경기도 가평군 조종면 신상리 257) 중심선에서 1109 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+domachi,domachi-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 824 m [거리]; 위험 구역 OBJT_ID 105 990 m; 평균 1 m·최대 3 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 domachi,domachi-whole,bed,,,,,
 domachi,domachi-whole,accessDifficulty,,,,,
-domachi,domachi-whole,swimBanned,true,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 1100 '적목리 용소폭포' 위험지역·하천 (경기도 가평군 북면 적목리 산 198) 중심선에서 834 m [거리],high
+domachi,domachi-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 824 m [거리]; 위험 구역 OBJT_ID 105 990 m,high
 domachi,domachi-whole,freeAccess,true,https://www.gptour.go.kr/tour/tour_view.jsp?menu=tour&paramidx=TL0000055,2026-09-06,"가평군 문화관광 도마치계곡(적목용소) ""입장료 : 없음"" ""주차시설 : 없음""",medium
 domachi,domachi-whole,campingAllowed,,,,,
 domachi,domachi-whole,petAllowed,,,,,
-domachi,domachi-whole,riskNote,"물놀이관리지역(위험) 적목리 용소폭포 — 최대 수심 10 m·평균 3 m, 입수 금지",https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 1100 '적목리 용소폭포' 위험지역·하천 (경기도 가평군 북면 적목리 산 198) 중심선에서 834 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
-sudong,sudong-whole,depth,,,,비공식 출처라 제거(www.welfarehello.com; 이전 값 adult),
+domachi,domachi-whole,riskNote,물놀이관리지역(관리) 토마토펜션 앞 — 최대 수심 3 m·평균 1 m. 인근 990 m 에 위험 구역(수심 3 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 106 '토마토펜션 앞' 관리지역·계곡 (경기도 가평군 북면 적목리 489-1) 중심선에서 824 m [거리]; 위험 구역 OBJT_ID 105 990 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+sudong,sudong-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 53 '몽골문화촌' 관리지역·계곡 (경기도 남양주시 수동면 내방리 237-6) 중심선에서 38 m [거리]; 평균 0.3 m·최대 0.6 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 sudong,sudong-whole,bed,,,,,
 sudong,sudong-whole,accessDifficulty,,,,,
-sudong,sudong-whole,swimBanned,,,,비공식 출처라 제거(m.newstown.co.kr; 이전 값 false),
+sudong,sudong-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 53 '몽골문화촌' 관리지역·계곡 (경기도 남양주시 수동면 내방리 237-6) 중심선에서 38 m [거리],high
 sudong,sudong-whole,freeAccess,,,,비공식 출처라 제거(www.mhns.co.kr; 이전 값 true),
 sudong,sudong-whole,campingAllowed,true,https://www.nyj.go.kr/culture/viewTnResrceU.do?resrceNo=362&rcpp=6&si1=2&si2=2&key=253,2026-09-06,"남양주시 문화관광 수동계곡 ""수동가족쉼터에서 캠핑을 할 수 있습니다"" ""입장료 : 캠핑시 별도 이용료""; 시 블로그는 쉼터 공사 중 이용불가 안내(시점 확인 필요)",medium
 sudong,sudong-whole,petAllowed,,,,,
-sudong,sudong-whole,riskNote,,,,비공식 출처라 제거(m.newstown.co.kr; 이전 값 물골안유원지(입석리)는 다른 관리지역보다 수심이 깊어 위험구역 안전부표 설치·안전관리요원 배치),
+sudong,sudong-whole,riskNote,물놀이관리지역(관리) 몽골문화촌 — 최대 수심 0.6 m·평균 0.3 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 53 '몽골문화촌' 관리지역·계곡 (경기도 남양주시 수동면 내방리 237-6) 중심선에서 38 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
 chungnyeongsan,chungnyeongsan-whole,depth,,,,비공식 출처라 제거(관광공사·해설사 사이트 www.gocamping.or.kr; 이전 값 knee) — 지자체 go.kr·공단 or.kr 만 인정,
 chungnyeongsan,chungnyeongsan-whole,bed,,,,,
 chungnyeongsan,chungnyeongsan-whole,accessDifficulty,,,,,
@@ -167,14 +167,14 @@ soyosan,soyosan-whole,freeAccess,,,,비공식 출처라 제거(v.daum.net; 이�
 soyosan,soyosan-whole,campingAllowed,,,,,
 soyosan,soyosan-whole,petAllowed,,,,,
 soyosan,soyosan-whole,riskNote,,,,,
-dongmak,dongmak-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 94 '동막리유원지' 일반지역·계곡 (경기도 연천군 연천읍 동막리 181-2) 중심선에서 64 m [거리]; 평균 1 m·최대 2 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+dongmak,dongmak-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 119 '동막리자라바위' 관리지역·계곡 (경기도 연천군 연천읍 동막리 181-2) 중심선에서 65 m [거리]; 평균 1 m·최대 2 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 dongmak,dongmak-whole,bed,,,,,
 dongmak,dongmak-whole,accessDifficulty,,,,,
-dongmak,dongmak-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 94 '동막리유원지' 일반지역·계곡 (경기도 연천군 연천읍 동막리 181-2) 중심선에서 64 m [거리],high
+dongmak,dongmak-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 119 '동막리자라바위' 관리지역·계곡 (경기도 연천군 연천읍 동막리 181-2) 중심선에서 65 m [거리],high
 dongmak,dongmak-whole,freeAccess,,,,,
 dongmak,dongmak-whole,campingAllowed,,,,비공식 출처라 제거(www.tripinfo.co.kr; 이전 값 false),
 dongmak,dongmak-whole,petAllowed,,,,비공식 출처라 제거(관광공사·해설사 사이트 korean.visitkorea.or.kr; 이전 값 true) — 지자체 go.kr·공단 or.kr 만 인정,
-dongmak,dongmak-whole,riskNote,물놀이관리지역(일반) 동막리유원지 — 최대 수심 2 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-06,생활안전지도 OBJT_ID 94 '동막리유원지' 일반지역·계곡 (경기도 연천군 연천읍 동막리 181-2) 중심선에서 64 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+dongmak,dongmak-whole,riskNote,물놀이관리지역(관리) 동막리자라바위 — 최대 수심 2 m·평균 1 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 119 '동막리자라바위' 관리지역·계곡 (경기도 연천군 연천읍 동막리 181-2) 중심선에서 65 m [거리]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
 gamaksan,gamaksan-whole,depth,,,,,
 gamaksan,gamaksan-whole,bed,,,,,
 gamaksan,gamaksan-whole,accessDifficulty,,,,,
@@ -183,14 +183,14 @@ gamaksan,gamaksan-whole,freeAccess,true,https://tour.paju.go.kr/user/tour/place/
 gamaksan,gamaksan-whole,campingAllowed,,,,,
 gamaksan,gamaksan-whole,petAllowed,,,,비공식 출처라 제거(관광공사·해설사 사이트 korean.visitkorea.or.kr; 이전 값 true) — 지자체 go.kr·공단 or.kr 만 인정,
 gamaksan,gamaksan-whole,riskNote,"파주시: 산불예방 입산통제 2.1~5.15·11.1~12.15, 출렁다리는 악천후 시 운영 중단",https://tour.paju.go.kr/user/tour/place/BD_tourPlaceInfoView.do?menuCode=4&cntntsSn=57,2026-09-06,"파주시 문화관광 설마계곡·출렁다리 페이지(입산통제 기간, 악천후 운영 중단). 운계폭포 입수 금지 문구는 관광공사 출처라 제거",medium
-sanasa,sanasa-whole,depth,,,,"SD2 재판정(2026-09-07) 매칭 해제 — safemap OBJT_ID 53 '사나사 계곡'(용천리 952)은 현재 등록 좌표(용천리 20-2, 중심선 사기막천·원암골)에서 7782 m로 다른 수계. 실제 사나사 사찰·계곡 입구(용천리 302 일대, OSM way 205412695 '사탄천')에서는 약 2856 m — 좌표 후보는 SD2 보고 참조",
+sanasa,sanasa-whole,depth,mixed,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 66 '사나사 계곡' 관리지역·계곡 (경기도 양평군 옥천면 용천리319-30) 중심선에서 6314 m [이름 일치]; 평균 0.5 m·최대 1 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 sanasa,sanasa-whole,bed,,,,비공식 출처라 제거(thetravelnews.co.kr; 이전 값 mixed),
 sanasa,sanasa-whole,accessDifficulty,,,,,
-sanasa,sanasa-whole,swimBanned,,,,"SD2 재판정(2026-09-07) 매칭 해제 — safemap OBJT_ID 53 '사나사 계곡'(용천리 952)은 현재 등록 좌표(용천리 20-2, 중심선 사기막천·원암골)에서 7782 m로 다른 수계. 실제 사나사 사찰·계곡 입구(용천리 302 일대, OSM way 205412695 '사탄천')에서는 약 2856 m — 좌표 후보는 SD2 보고 참조",
+sanasa,sanasa-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 66 '사나사 계곡' 관리지역·계곡 (경기도 양평군 옥천면 용천리319-30) 중심선에서 6314 m [이름 일치],high
 sanasa,sanasa-whole,freeAccess,,,,,
 sanasa,sanasa-whole,campingAllowed,,,,,
 sanasa,sanasa-whole,petAllowed,,,,,
-sanasa,sanasa-whole,riskNote,,,,"SD2 재판정(2026-09-07) 매칭 해제 — safemap OBJT_ID 53 '사나사 계곡'(용천리 952)은 현재 등록 좌표(용천리 20-2, 중심선 사기막천·원암골)에서 7782 m로 다른 수계. 실제 사나사 사찰·계곡 입구(용천리 302 일대, OSM way 205412695 '사탄천')에서는 약 2856 m — 좌표 후보는 SD2 보고 참조",
+sanasa,sanasa-whole,riskNote,물놀이관리지역(관리) 사나사 계곡 — 최대 수심 1 m·평균 0.5 m,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 66 '사나사 계곡' 관리지역·계곡 (경기도 양평군 옥천면 용천리319-30) 중심선에서 6314 m [이름 일치]; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
 yongmunsan,yongmunsan-whole,depth,,,,,
 yongmunsan,yongmunsan-whole,bed,,,,,
 yongmunsan,yongmunsan-whole,accessDifficulty,,,,,
@@ -263,11 +263,11 @@ jeungsimsa,jeungsimsa-whole,freeAccess,,,,,
 jeungsimsa,jeungsimsa-whole,campingAllowed,,,,,
 jeungsimsa,jeungsimsa-whole,petAllowed,,,,,
 jeungsimsa,jeungsimsa-whole,riskNote,,,,,
-gwanaksan,gwanaksan-whole,depth,knee,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-24,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m; 평균 0.4 m·최대 0.6 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
+gwanaksan,gwanaksan-whole,depth,knee,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m; 평균 0.4 m·최대 0.6 m 환산(≤0.5 knee·≤1 waist·>1 adult·최대≥2×평균 mixed),high
 gwanaksan,gwanaksan-whole,bed,,,,,
 gwanaksan,gwanaksan-whole,accessDifficulty,,,,,
-gwanaksan,gwanaksan-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-24,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m,high
+gwanaksan,gwanaksan-whole,swimBanned,false,https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m,high
 gwanaksan,gwanaksan-whole,freeAccess,true,https://www.gwanak.go.kr/site/gwanak/08/10803030101002025090909.jsp,2026-09-26,"관악구청 ""관악산공원 물놀이장"" 안내 — 신림계곡지구(신림동 205-1 일대), 2026-07-04~08-30 운영, 이용료 ""무료"". 공원 자체도 입장료를 받지 않는다",medium
 gwanaksan,gwanaksan-whole,campingAllowed,false,https://parks.seoul.go.kr/park/detailView.do?key=2604070019&pIdx=36,2026-09-26,"서울시 공원안내 관악산공원 이용 시 참고사항 ""야영, 취사행위 및 불을 피우지 않습니다"". 야영은 서울시 공공서비스예약의 관악산 모험숲 캠핑숲 프로그램(1박2일, 유료, 선정 가족만)으로만 가능",medium
 gwanaksan,gwanaksan-whole,petAllowed,,https://parks.seoul.go.kr/park/detailView.do?key=2604070019&pIdx=36,2026-09-26,"서울시 관악산공원 안내는 ""반려동물은 생태계 보전과 대중의 이용에 불편함이 없도록 출입을 자제하여 주시기 바랍니다"" 로 자제 요청일 뿐 금지가 아니라 true/false 로 옮기지 않는다",
-gwanaksan,gwanaksan-whole,riskNote,물놀이관리지역(관리) 신림계곡지구 물놀이장 — 최대 수심 0.6 m·평균 0.4 m. 인근 143 m 에 위험 구역(수심 1 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-24,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
+gwanaksan,gwanaksan-whole,riskNote,물놀이관리지역(관리) 신림계곡지구 물놀이장 — 최대 수심 0.6 m·평균 0.4 m. 인근 143 m 에 위험 구역(수심 1 m),https://www.safemap.go.kr/wtrPlay/searchWtrplay.do,2026-09-26,생활안전지도 OBJT_ID 1 '신림계곡지구 물놀이장' 관리지역·계곡 (서울특별시 관악구 신림동 808-125) 중심선에서 19 m [거리]; 위험 구역 OBJT_ID 2 143 m; MANAGEMENT·WATER_DEEP·WATER_AVG 그대로,high
