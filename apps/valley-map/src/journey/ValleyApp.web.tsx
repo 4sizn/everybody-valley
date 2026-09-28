@@ -6,8 +6,10 @@ import {
   filterValleys,
   searchCatalog,
   segmentPositionLabel,
+  VALLEY_INITIAL_VIEW,
   type Valley,
 } from '@modu-valley/core';
+import { demTileUrls } from '@modu-valley/map-style';
 import {
   Alert,
   Badge,
@@ -169,6 +171,25 @@ export function ValleyApp() {
     discovery.feed?.stories.some((s) => s.kind === 'blog' && s.valleyId === v.id),
   );
   const results = query.trim() ? searchCatalog(valleys, query) : [];
+  /* 첫 결과의 계곡 — 지형 타일 미리 받기의 대상이다(아래 effect). 계곡 결과든 시설 결과든
+     지도는 그 계곡에서 열린다. */
+  const firstResultValley = results[0]
+    ? results[0].kind === 'valley'
+      ? results[0].valley
+      : results[0].valley
+    : null;
+  /* 미리보기를 보는 동안 그 계곡의 지형(DEM) 타일을 미리 받아 둔다.
+     지도는 지형이 자리잡을 때까지 화면을 감춘다(타일이 도착할 때마다 지면이 솟아 "지도가
+     튄다"로 보이기 때문) — 여기서 먼저 받아 두면 그 기다림이 사라진다. 실패는 무시한다:
+     못 받아도 지도가 알아서 받는다. */
+  useEffect(() => {
+    const valley = candidate?.valley ?? firstResultValley;
+    if (!valley) return;
+    for (const url of demTileUrls(valley.center(), VALLEY_INITIAL_VIEW.zoom)) {
+      void fetch(url, { mode: 'cors' }).catch(() => {});
+    }
+  }, [candidate, firstResultValley]);
+
   const visible = filterValleys(valleys, filters).valleys;
   return (
     <Navigation.Provider value={navigation}>

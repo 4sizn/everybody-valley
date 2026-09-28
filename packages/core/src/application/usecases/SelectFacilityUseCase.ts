@@ -34,6 +34,8 @@ export type SelectFacilityDeps = {
   readonly cameraQueue: SerialTaskQueue;
   /** N1 — 필터가 걸려 있으면 선택이 바뀐 뒤(핀 고정 계곡이 옮겨 간 뒤) 지도를 다시 그린다. */
   readonly composer: MapContentComposer;
+  /** 시트 면을 셸이 직접 관리하는가(field mode). 켜져 있으면 카메라를 되돌리지 않는다. */
+  readonly preserveSelection?: boolean;
   readonly logger: Logger;
 };
 
@@ -74,14 +76,25 @@ export class SelectFacilityUseCase {
 
     if (!closingDetail) return ok();
 
-    // 구간 상세 위에서 시설을 골랐다 — 상세 닫기와 같은 복귀 절차.
-    engine.stopCamera();
+    /* 구간 상세 위에서 시설을 골랐다 — 상세 닫기와 같은 복귀 절차.
+     *
+     * 단, 시트 면을 스스로 관리하는 셸(field mode)에서는 **카메라를 되돌리지 않는다**.
+     * 그 셸에서 핀을 누르는 것은 상세를 닫는 행위가 아니라 시설 정보를 여는 행위인데,
+     * 복귀 시점(`releaseSegment`)이 pitch 58 → 0, bearing → 북쪽, 줌·offset 까지 한꺼번에
+     * 되돌려 "핀 하나 눌렀는데 지도가 통째로 다른 곳이 됐다"가 됐다(실기 확인 2026-09-26).
+     * 핀은 이미 화면에 있고, 시트가 그 핀을 가리면 `recenterSelection('ensure')` 이
+     * 가릴 만큼만 민다 — 그쪽이 이 셸의 카메라 정책이다.
+     */
+    const releasing = this.#deps.preserveSelection !== true;
+    if (releasing) engine.stopCamera();
     const [, flipped] = await Promise.all([
-      cameraQueue.run(
-        'camera:release-segment',
-        (cameraToken) => engine.moveCamera(releaseSegment(), cameraToken),
-        'preempt',
-      ),
+      releasing
+        ? cameraQueue.run(
+            'camera:release-segment',
+            (cameraToken) => engine.moveCamera(releaseSegment(), cameraToken),
+            'preempt',
+          )
+        : Promise.resolve(ok()),
       flip.flipTo('list'),
     ]);
 

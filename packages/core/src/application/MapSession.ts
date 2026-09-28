@@ -81,6 +81,13 @@ import { WaterFlowCoordinator } from './WaterFlowCoordinator';
 const REPORT_QUERY_LIMIT = 50;
 
 /**
+ * 선택 보정(`recenterSelection`)의 길이. 시트 애니메이션(`--mv-motion-panel` 220ms)
+ * 바로 뒤에 이어지므로 그와 비슷한 결로 두되, 240ms 는 수백 px 을 옮길 때 끊기듯 보여
+ * 조금 늘렸다.
+ */
+const RECENTER_SELECTION_MS = 320;
+
+/**
  * 세션 의존. `scene` 이 어느 저장소를 요구하는지는 `SceneSource` 유니온이 정한다 —
  *   `{ scene: 'festival', repository }` 또는 `{ scene: 'valley', valleyRepository }`.
  */
@@ -184,6 +191,7 @@ export class MapSession implements AsyncInitializable {
       flip: this.#flip,
       cameraQueue: this.#cameraQueue,
       composer,
+      preserveSelection: this.#preserveSelection,
     } as const;
 
     this.#loadSession = new LoadSessionUseCase({
@@ -192,6 +200,7 @@ export class MapSession implements AsyncInitializable {
       storage: deps.storage,
       cameraQueue: this.#cameraQueue,
       composer,
+      preserveSelection: this.#preserveSelection,
     });
     this.#selectSpot = new SelectSpotUseCase(selecting);
     this.#selectSegment = new SelectSegmentUseCase(selecting);
@@ -320,8 +329,14 @@ export class MapSession implements AsyncInitializable {
     return this.#guard('recenter-valley', () => this.#cameraControl.recenterValley());
   }
 
-  /** Reposition the selected point inside the measured visible map area. */
-  recenterSelection(): Promise<VoidResult> {
+  /**
+   * 선택한 지점을 시트가 가리지 않는 영역에 둔다.
+   *
+   * `'center'`(기본) — 그 영역 한가운데로 데려온다. 사용자가 "위치 이동"을 누른 경우.
+   * `'ensure'` — **가려졌을 때만, 들어올 만큼만** 민다. 핀을 눌러 시트가 커졌을 때처럼
+   * 사용자가 카메라를 옮겨 달라고 한 적이 없는 경우다. 이미 보이면 지도는 가만히 있는다.
+   */
+  recenterSelection(mode: 'center' | 'ensure' = 'center'): Promise<VoidResult> {
     const state = this.store.state;
     const valleys = state.valleys ?? [];
     const facility = state.selectedFacilityId
@@ -339,21 +354,32 @@ export class MapSession implements AsyncInitializable {
     return this.#guard('recenter-selection', () =>
       this.#cameraQueue.run(
         'camera:visible-selection',
-        (token) =>
-          this.#engine.moveCamera(
+        (token) => {
+          /* 목표는 **실행 시점**에 만든다. 이 명령은 선택 비행 뒤에 줄을 서므로,
+             호출 시점의 줌·인셋으로 굳혀 두면 비행이 끝난 화면과 어긋난 자리로 되돌린다.
+             비행이 이미 이 구도로 데려다 놓았으면 어댑터가 명령을 통째로 버린다. */
+          const live = this.#engine.getCamera();
+          const zoom = live.ok ? live.value.zoom : (this.store.state.camera?.zoom ?? null);
+          const insets = this.store.state.viewportInsets;
+          return this.#engine.moveCamera(
             cameraCommand(
               {
                 center,
                 // 상세 줌보다 멀리 있으면 상세 줌까지만 당긴다 — 15.5 로 박혀 있던 값이
                 // `focusSegment`(14.2) 직후 다시 당겨 시설 핀·봉우리를 프레임 밖으로 밀었다(2026-09-23).
-                zoom: Math.max(VALLEY_DETAIL_ZOOM, state.camera?.zoom ?? VALLEY_DETAIL_ZOOM),
-                offset: viewportCenterOffset(state.viewportInsets),
+                zoom: Math.max(VALLEY_DETAIL_ZOOM, zoom ?? VALLEY_DETAIL_ZOOM),
+                offset: viewportCenterOffset(insets),
+                ...(mode === 'ensure' ? { keepVisible: insets } : {}),
               },
-              { motion: 'ease', durationMs: 240 },
+              { motion: 'ease', durationMs: RECENTER_SELECTION_MS },
             ),
             token,
-          ),
-        'preempt',
+          );
+        },
+        /* `preempt` 가 아니다 — 이 보정은 진행 중인 선택 비행을 **끊을 이유가 없다**.
+           끊으면 비행이 중간에서 멈추고 짧은 보정으로 갈아타는 것이 그대로 보인다(튐).
+           줄을 서면 비행이 끝난 뒤에 돌고, 그때는 대개 할 일이 없어 조용히 버려진다. */
+        'queue',
       ),
     );
   }

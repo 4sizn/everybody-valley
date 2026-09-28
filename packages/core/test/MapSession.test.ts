@@ -1355,6 +1355,52 @@ describe('선택 계곡 사용자 흐름', () => {
     session.dispose();
   });
 
+  it('field mode 진입은 개요 비행을 걸지 않는다 — 셸이 곧바로 구간을 고른다', async () => {
+    const { session: field, engine: fieldEngine } = createValleySession({
+      preserveSelection: true,
+    });
+    await field.initialize(NONE_CANCELLATION_TOKEN);
+    expect(fieldEngine.moves).toHaveLength(0);
+    field.dispose();
+
+    // 일반 셸은 예전대로 첫 계곡으로 날아간다.
+    const { session, engine } = createValleySession();
+    await session.initialize(NONE_CANCELLATION_TOKEN);
+    expect(engine.moves).toHaveLength(1);
+    session.dispose();
+  });
+
+  it('field mode 에서 구간 상세 위의 시설 선택은 카메라를 되돌리지 않는다', async () => {
+    const { session, engine } = createValleySession({ preserveSelection: true });
+    await session.initialize(NONE_CANCELLATION_TOKEN);
+    const segment = sampleValley.segments[0];
+    const facility = sampleValley.facilities[0];
+    if (!segment || !facility) throw new Error('fixture');
+    await session.selectSegment(segment.id);
+    const before = engine.moves.length;
+
+    await session.selectFacility(facility.id);
+
+    // 핀을 눌렀을 뿐이다 — pitch·bearing 을 되돌리는 '상세 닫기' 비행이 붙으면 안 된다.
+    expect(engine.moves.length).toBe(before);
+    expect(session.store.state.selectedFacilityId).toBe(facility.id);
+  });
+
+  it('일반 셸에서는 같은 조작이 예전대로 상세 닫기 시점으로 돌아간다', async () => {
+    const { session, engine } = createValleySession();
+    await session.initialize(NONE_CANCELLATION_TOKEN);
+    const segment = sampleValley.segments[0];
+    const facility = sampleValley.facilities[0];
+    if (!segment || !facility) throw new Error('fixture');
+    await session.selectSegment(segment.id);
+    const before = engine.moves.length;
+
+    await session.selectFacility(facility.id);
+
+    expect(engine.moves.length).toBe(before + 1);
+    expect(engine.moves.at(-1)?.command.target.pitch).toBe(VALLEY_FLAT_PITCH);
+  });
+
   it('시설 재중앙화는 선택을 유지하고 실제 시설 좌표와 가림 영역을 사용한다', async () => {
     const { session, engine } = createValleySession({ preserveSelection: true });
     await session.initialize(NONE_CANCELLATION_TOKEN);

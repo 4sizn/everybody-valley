@@ -18,7 +18,10 @@ import {
   type SceneSource,
   type SheetSnap,
   segmentPositionLabel,
+  VALLEY_DETAIL_TERRAIN_PITCH,
+  VALLEY_DETAIL_ZOOM,
   VALLEY_INITIAL_VIEW,
+  valleyAxisBearing,
 } from '@modu-valley/core';
 import {
   Alert,
@@ -61,7 +64,23 @@ type Props = {
   onSettings: () => void;
 };
 export function FieldMap(props: Props) {
-  const center = useMemo(() => props.place.valley.center(), [props.place.valley]);
+  /* 지도를 **처음부터 목적지 구도로** 만든다.
+   *
+   * 예전에는 북쪽·평면(`VALLEY_INITIAL_VIEW`)으로 만들고 `focusSegment` 가 1.4초 동안
+   * pitch 0→58, bearing 0→87° 를 돌렸다. 카메라 값 자체는 연속이지만 실기기(3D 지형,
+   * 초당 30~50프레임)에서는 한 프레임에 43px 씩 건너뛰어 "지도가 튄다"로 보였다(실측).
+   * 시작 구도를 목적지와 같게 두면 그 회전이 통째로 사라지고, 남는 것은 시트를 피하는
+   * 작은 중심 보정뿐이다. */
+  const center = useMemo(() => props.place.segment.midpoint(), [props.place.segment]);
+  const initialView = useMemo(
+    () => ({
+      zoom: VALLEY_DETAIL_ZOOM,
+      pitch: VALLEY_DETAIL_TERRAIN_PITCH,
+      bearing: valleyAxisBearing(props.place.segment),
+      maxPitch: VALLEY_INITIAL_VIEW.maxPitch,
+    }),
+    [props.place.segment],
+  );
   const source = useMemo<SceneSource>(
     () =>
       PARSED.ok
@@ -81,7 +100,7 @@ export function FieldMap(props: Props) {
         preserveSelection
         source={source}
         initialCenter={center}
-        initialView={VALLEY_INITIAL_VIEW}
+        initialView={initialView}
       >
         <MapChrome {...props} />
       </SessionProvider>
@@ -102,7 +121,17 @@ function MapChrome({
   const navigation = useContext(Navigation);
   const restart = useSessionRestart();
   const status = useAppState((s) => s.status);
-  const state = useAppState((s) => s);
+  /* 상태 전체를 구독하면 카메라 pose 가 **매 프레임** 들어오는 동안 이 화면이 통째로
+     다시 그려진다 — 그 렌더 부하가 바로 그 카메라 애니메이션을 끊기게 만들었다.
+     실제로 쓰는 조각만, 그것도 값이 바뀔 때만 바뀌는 모양으로 고른다. */
+  const valleys = useAppState((s) => s.valleys);
+  const selectedFacilityId = useAppState((s) => s.selectedFacilityId);
+  const selectedSegmentId = useAppState((s) => s.selectedSegmentId);
+  const valleyShade = useAppState((s) => s.valleyShade);
+  const baseMapOutage = useAppState((s) => s.baseMapHealth.outage);
+  const datasetNote = useAppState((s) => s.valleyMetadata?.description);
+  // 각도 그대로가 아니라 불리언으로 — 기울이는 동안 매 프레임 다시 그리지 않는다.
+  const tilted = useAppState((s) => (s.camera?.pitch ?? 0) > 0);
   const [sheet, setSheet] = useState<SheetSnap>(initialSheet);
   const [tab, setTab] = useState('segment');
   const [overlay, setOverlay] = useState<'shade' | 'land' | null>(null);
@@ -151,14 +180,16 @@ function MapChrome({
         : session.selectSegment(place.segment.id)
     ).finally(() => {
       selecting.current = false;
-      void session.recenterSelection();
+      /* 진입 비행(`focusSegment`)이 이미 같은 인셋으로 자리를 잡았다. 여기서 'center' 로
+         한 번 더 옮기면 지형 고도 보정과 겹쳐 "다 왔는데 또 움직인다"가 된다(실측). */
+      void session.recenterSelection('ensure');
     });
   }, [session, status, hour, sheet, place]);
   useEffect(() => {
     if (status !== 'ready' || selecting.current) return;
-    const valleys = state.valleys ?? [];
-    if (state.selectedFacilityId && state.selectedFacilityId !== place.facility?.id) {
-      const match = lookupFacility(valleys, state.selectedFacilityId);
+    const known = valleys ?? [];
+    if (selectedFacilityId && selectedFacilityId !== place.facility?.id) {
+      const match = lookupFacility(known, selectedFacilityId);
       if (match.ok) {
         const segment = match.value.valley.segments[0];
         if (segment) {
@@ -166,14 +197,11 @@ function MapChrome({
           setSheet('half');
         }
       }
-    } else if (
-      state.selectedSegmentId &&
-      (state.selectedSegmentId !== place.segment.id || place.facility)
-    ) {
-      const match = lookupSegment(valleys, state.selectedSegmentId);
+    } else if (selectedSegmentId && (selectedSegmentId !== place.segment.id || place.facility)) {
+      const match = lookupSegment(known, selectedSegmentId);
       if (match.ok) onPlace({ valley: match.value.valley, segment: match.value.segment });
     }
-  }, [state.selectedFacilityId, state.selectedSegmentId, state.valleys, status, place, onPlace]);
+  }, [selectedFacilityId, selectedSegmentId, valleys, status, place, onPlace]);
   useEffect(() => {
     window.history.replaceState(null, '', journeySearch(place, sheet, hour));
     if (navigation) navigation.current.url = window.location.href;
@@ -187,11 +215,18 @@ function MapChrome({
       setTop(topHeight);
       session.setViewportInsets({ top: topHeight, bottom });
       session.setSheetSnap(sheet);
+      /* 시트 높이 전환(220ms) 동안 `ResizeObserver` 가 매 프레임 여기로 들어온다.
+         마지막 프레임 직후 한 번만 본다 — 전환이 끝나자마자 이어져야 시트와 지도가 한
+         동작으로 읽힌다(예전 220ms 는 멈췄다 다시 움직였다).
+
+         `'ensure'` — 사용자가 카메라를 옮겨 달라고 한 적이 없다. 시트가 커지면서 선택한
+         지점을 **가렸을 때만**, 다시 보일 만큼만 민다. 가리지 않았으면 지도는 가만히
+         있는다(핀을 누르면 지도가 통째로 뛰던 것, 사용자 보고 2026-09-26). */
       clearTimeout(moveTimer);
       if (sheet !== 'full')
         moveTimer = setTimeout(() => {
-          void session.recenterSelection();
-        }, 220);
+          void session.recenterSelection('ensure');
+        }, 60);
     };
     const observer = new ResizeObserver(measure);
     if (topRef.current) observer.observe(topRef.current);
@@ -249,7 +284,8 @@ function MapChrome({
       ? session.selectFacility(next.facility.id)
       : session.selectSegment(next.segment.id));
     if (result.ok) {
-      void session.recenterSelection();
+      // 선택 비행이 이미 자리를 잡아 놓는다. 여기서는 가렸는지만 본다.
+      void session.recenterSelection('ensure');
       onPlace(next);
       setSheet(next.facility ? 'half' : 'peek');
     }
@@ -265,7 +301,7 @@ function MapChrome({
   const title = place.facility?.name ?? place.valley.name;
   const around = useMemo(() => place.valley.facilitiesAround(), [place.valley]);
   const destination = place.facility?.position ?? place.segment.midpoint();
-  const shade = state.valleyShade?.get(place.valley.id);
+  const shade = valleyShade?.get(place.valley.id);
   return (
     <div className="ev-map-chrome">
       <div className="app-map-top ev-map-top" ref={topRef}>
@@ -294,7 +330,7 @@ function MapChrome({
               ? ' · 갱신 지연, 이전 경보 유지'
               : ''}
         </Alert>
-        {state.baseMapHealth.outage && (
+        {baseMapOutage && (
           <Alert
             status="error"
             title="배경 지도를 불러오지 못했습니다"
@@ -573,7 +609,7 @@ function MapChrome({
                     현장 제보 작성
                   </Button>
                   <p className="ev-muted">
-                    자료 출처: {state.valleyMetadata?.description ?? '계곡·시설 수집 자료'}. 그늘은{' '}
+                    자료 출처: {datasetNote ?? '계곡·시설 수집 자료'}. 그늘은{' '}
                     {shade?.metadata.source ?? '지형·수관 모델'} 기반 추정입니다.
                   </p>
                 </>
@@ -696,7 +732,7 @@ function MapChrome({
               축소
             </Button>
             <Button variant="secondary" icon="mountain" onClick={() => void session.togglePitch()}>
-              {(state.camera?.pitch ?? 0) > 0 ? '2D 평면으로' : '3D 지형으로'}
+              {tilted ? '2D 평면으로' : '3D 지형으로'}
             </Button>
             <Button variant="secondary" icon="compass" onClick={() => void session.alignNorth()}>
               북쪽 정렬

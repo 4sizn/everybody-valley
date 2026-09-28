@@ -45,6 +45,8 @@ export type LoadSessionDeps = {
   readonly cameraQueue: SerialTaskQueue;
   /** 계곡 장면의 지도 내용 바탕. 그늘 유즈케이스들과 같은 인스턴스를 본다. */
   readonly composer: MapContentComposer;
+  /** 셸이 선택과 시점을 직접 몰고 가는가(field mode). 켜져 있으면 진입 개요 비행을 걸지 않는다. */
+  readonly preserveSelection?: boolean;
   readonly logger: Logger;
 };
 
@@ -144,9 +146,14 @@ export class LoadSessionUseCase {
     });
 
     /* 첫 계곡으로 시점 이동. 상태는 이미 ready 다 — 카메라 비행은 연출이지
-       준비 조건이 아니다. 취소(사용자가 먼저 지도를 만짐)는 정상 흐름. */
+       준비 조건이 아니다. 취소(사용자가 먼저 지도를 만짐)는 정상 흐름.
+
+       단, 셸이 선택을 직접 몰고 가는 field mode 에서는 걸지 않는다. 그 셸은 `ready` 가
+       되는 즉시 구간을 골라 `focusSegment`(기울이고 계곡 축으로 회전) 를 태우므로, 이
+       개요 비행은 그 앞에 끼어 **평면으로 한 번 움직였다가 곧바로 기울어지는** 두 박자가
+       된다 — 사용자가 "한 틱 튄다"고 말한 그 장면이다(실측 2026-09-26). */
     const first: Valley | undefined = dataset.valleys[0];
-    if (first !== undefined) {
+    if (first !== undefined && this.#deps.preserveSelection !== true) {
       const flown = await cameraQueue.run(
         'camera:focus-valley',
         (cameraToken) =>
