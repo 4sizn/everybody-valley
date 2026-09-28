@@ -55,6 +55,7 @@ import {
   isShadeVisible,
   isStyleSpecification,
   MAP_LAYER_SETS,
+  MAP_PALETTES,
   MAP_STYLE_URLS,
   type MapStyleMode,
   overrideBaseMapOrigin,
@@ -78,6 +79,26 @@ import { MarkerIconRegistry } from './MarkerIconRegistry';
 import { toLngLatLike } from './mapStyle';
 import { SelectionPinController } from './SelectionPinController';
 import { WaterFlowController } from './WaterFlowController';
+
+/**
+ * 진단 손잡이(`globalThis.__mvMap`)를 붙일지. **모듈이 처음 평가될 때 한 번** 정한다 —
+ * 앱이 지도로 넘어가며 주소를 다시 쓰므로(`?valley=...`), 지도 생성 시점에 다시 읽으면
+ * 플래그가 이미 사라지고 없다(실측).
+ */
+const DIAGNOSTIC_HANDLE =
+  (globalThis as { __DEV__?: boolean }).__DEV__ !== false ||
+  globalThis.location?.search?.includes('debugcam=1') === true;
+
+/** 첫 카메라 명령이 지형 타일을 기다리는 한도. 넘으면 지형 없이 그냥 난다. */
+const TERRAIN_READY_BUDGET_MS = 2500;
+/** `setTerrain` 이 실제로 반영될 때까지 기다리는 한도. 넘으면 그냥 진행한다. */
+const TERRAIN_APPLY_BUDGET_MS = 2000;
+/** 이만큼 움직이면 "지면이 솟았다"고 본다. 그 뒤의 멈춤만 완료로 친다. */
+const TERRAIN_APPLY_MOVE_PX = 2;
+/** 지면이 솟았는지 재는 탐침 지점(중심에서 북쪽으로). 약 440m. */
+const TERRAIN_PROBE_DEGREES = 0.004;
+/** 지형을 올릴 때 화면을 흐렸다 밝히는 시간. 짧아야 "잠깐 흐려졌다" 로 읽힌다. */
+const TERRAIN_REVEAL_FADE_MS = 160;
 
 export const MAPLIBRE_CAPABILITIES: MapCapabilities = {
   engineName: 'maplibre-gl',
@@ -157,6 +178,21 @@ export class MapLibreEngine extends MapEnginePort {
   #state: LifecycleState = 'idle';
   #map: MapLibreMap | undefined;
   #camera: CameraController | undefined;
+  /**
+   * 지형(DEM)이 이 화면 몫만큼 도착할 때까지 기다리는 약속. **첫 카메라 명령만** 기다린다.
+   *
+   * 이유는 사용자가 "지도가 한 번 튄다"고 부른 그 현상이다. 카메라는 매끄러운데(포즈 계측으로
+   * 확인) 화면 위 지형이 한 프레임에 38px 솟는다 — DEM 타일이 도착하면 그 자리의 지면 높이가
+   * 0 에서 실제 고도로 바뀌고, 배율 1.5 가 그걸 더 키운다. 비행 중에 그 일이 일어나면 카메라
+   * 움직임과 섞여 "튀었다"로 보인다. 지형이 자리잡은 뒤에 날면 한 번의 매끄러운 이동만 남는다.
+   */
+  #terrainReady: Promise<void> | undefined;
+  /**
+   * 감춰 둔 지도를 보여 준다. 지형이 자리잡고 **첫 카메라 보정까지 끝난 뒤** 부른다 —
+   * 그 사이에 일어나는 지면 솟음과 작은 이동을 사용자가 볼 이유가 없다. 지형이 없는
+   * 장면(festival)에서는 아무 일도 하지 않는다.
+   */
+  #revealSurface: () => void = () => {};
   /** `MAP_LAYER_SETS` 순서대로 하나씩. 설치·갱신·해제를 순회로 처리한다. */
   #layers: readonly FeatureLayerController[] = [];
   #pin: SelectionPinController | undefined;
@@ -246,7 +282,22 @@ export class MapLibreEngine extends MapEnginePort {
   override async moveCamera(command: CameraCommand, token: CancellationToken): Promise<VoidResult> {
     const camera = this.#camera;
     if (camera === undefined) return err(notReady('moveCamera'));
-    return camera.move(command, token);
+    if (this.#terrainReady === undefined) return camera.move(command, token);
+
+    const waiting = this.#terrainReady;
+    this.#terrainReady = undefined; // 한 번만 기다린다
+    await waiting;
+    const guard = token.checkpoint('terrain-ready');
+    if (!guard.ok) {
+      this.#revealSurface();
+      return guard;
+    }
+    try {
+      return await camera.move(command, token);
+    } finally {
+      // 첫 보정까지 끝났다 — 이제 완성된 화면을 들여보낸다.
+      this.#revealSurface();
+    }
   }
 
   override stopCamera(): void {
@@ -516,7 +567,17 @@ export class MapLibreEngine extends MapEnginePort {
       this.#resources.add(icons.register(facilityIconSvgById));
 
       this.#map = map;
-      this.#camera = this.#resources.add(new CameraController(map, this.#logger));
+      /* 진단 손잡이. 카메라가 "튄다"는 증상은 명령 로그만으로는 못 가른다 — 명령 없이 화면이
+         움직이는 경우(지형 타일 도착으로 지면이 솟음)가 있어 **프레임별 화면 좌표**를 읽어야
+         한다. 개발 빌드에서는 늘, 배포 빌드에서는 주소에 `?debugcam=1` 을 붙였을 때만 붙는다
+         — 실기기 확인은 배포 번들로만 할 수 있어서다(개발 번들은 셀룰러에서 안 뜬다). */
+      if (DIAGNOSTIC_HANDLE) (globalThis as { __mvMap?: MapLibreMap }).__mvMap = map;
+      this.#camera = this.#resources.add(
+        /* 짧은 이동을 직선으로 낮추는 것은 계곡 화면만 — `/firework` 은 데모의 포물선 비행 그대로. */
+        new CameraController(map, this.#logger, {
+          shortHopEase: this.#options.fireworks !== true,
+        }),
+      );
       this.#pin = this.#resources.add(new SelectionPinController(map, this.#logger));
       this.#waterFlow = this.#resources.add(new WaterFlowController(map, this.#logger));
       this.#layers = MAP_LAYER_SETS.map((set) =>
@@ -632,42 +693,146 @@ export class MapLibreEngine extends MapEnginePort {
    * 3D 지형 — 스타일에 들어 있는 DEM 소스(`#loadStyle`, C10a)로 지면을 들어 올린다.
    * 구간 선·시설 점·그늘 fill 은 추가 작업 없이 지형에 드레이프된다.
    *
-   * **중심 고도 보정**: 프로그램 카메라 이동(`flyTo`/`easeTo`) 뒤 MapLibre 는 지형 중심
-   * 고도를 갱신하지 않아 장면이 화면 위로 밀린다(스파이크에서 확인). 이동이 끝나면
-   * (`moveend`) 그리고 DEM 타일이 늦게 도착해 값이 바뀌었을 때(`idle`) 지형에서 중심 고도를
-   * 읽어 다시 넣는다. 1m 안쪽 차이는 건너뛴다 — 값이 맞을 때는 아무 일도 없어야 사용자
-   * 제스처와 싸우지 않는다. 원시 m 이며 과장 배율과 무관하다(`setCenterElevation` 규약).
+   * **중심 고도는 손대지 않는다.** 한때 이 자리에 "이동이 끝나면 지형 고도를 읽어 다시
+   * 넣는" 보정이 있었다. 그게 사용자가 보던 튐의 뿌리였다 —
+   *   · `setCenterElevation` 은 내부가 `jumpTo` 라 진행 중인 비행을 **죽인다**
+   *     (실측: 목표 zoom 15.2 로 가던 easeTo 가 14.582 에서 그대로 끝났다).
+   *   · 한 프레임에 0 → 268m 를 꽂아 화면을 통째로 밀었고, 나눠 넣으면 이번엔
+   *     "다 왔는데 또 미끄러진다"가 됐다.
+   *   · DEM 타일이 정밀해질 때마다 목표값이 바뀌어 그 움직임이 되풀이됐다.
+   *
+   * 애초에 필요 없는 일이었다. maplibre-gl 의 `centerClampedToGround` 가 기본 `true` 이고,
+   * 엔진이 카메라가 갱신될 때마다 중심 고도를 지형에 붙인다(실측: 고도를 0 으로 망가뜨린 뒤
+   * 평범한 `easeTo` 한 번에 268.3 으로 스스로 복구). 우리가 할 일은 그 위에 손을 얹지 않는 것뿐이다.
    */
+  /**
+   * `setTerrain` 이 **화면에 반영될 때까지** 기다린다.
+   *
+   * 호출은 즉시 돌아오지만 지면이 실제로 솟는 것은 약 430ms 뒤다(실측). `idle` 은 타일이
+   * 계속 흘러 들어오면 한도를 다 쓰고(1.5초), 고도값(`queryTerrainElevation`)은 mesh 가
+   * 올라오기 전에 이미 최종값을 답한다(99ms 만에 안정). 그래서 **화면에 찍히는 자리**를 본다:
+   * 중심에서 조금 떨어진 한 점의 화면 y 가 한 번 움직인 뒤 멈추면 그때가 반영이 끝난 때다.
+   * "아직 안 움직였다"를 완료로 읽지 않으려면 움직임을 먼저 확인해야 한다 — 기기에서 적용이
+   * 늦어 그대로 새어 나갔다.
+   */
+  #afterTerrainApplied(map: MapLibreMap): Promise<void> {
+    return new Promise<void>((resolve) => {
+      const started = performance.now();
+      const probe = (): number => {
+        const center = map.getCenter();
+        return map.project([center.lng, center.lat + TERRAIN_PROBE_DEGREES]).y;
+      };
+      let last = probe();
+      let stable = 0;
+      let moved = false;
+      let frame = 0;
+      const watch = (): void => {
+        const now = probe();
+        const step = Math.abs(now - last);
+        moved = moved || step >= TERRAIN_APPLY_MOVE_PX;
+        stable = step < 0.5 ? stable + 1 : 0;
+        last = now;
+        const elapsedMs = Math.round(performance.now() - started);
+        if ((moved && stable >= 3) || elapsedMs > TERRAIN_APPLY_BUDGET_MS) {
+          this.#logger.debug('지형 반영 완료', { elapsedMs });
+          resolve();
+          return;
+        }
+        frame = requestAnimationFrame(watch);
+      };
+      watch();
+      this.#resources.add(toDisposable(() => cancelAnimationFrame(frame)));
+    });
+  }
+
   #installTerrain(map: MapLibreMap): VoidResult {
     try {
-      map.setTerrain({ source: TERRAIN_DEM_SOURCE_ID, exaggeration: TERRAIN_EXAGGERATION });
+      /* 엔진이 중심 고도를 **저 혼자** 지면에 붙이는 동작을 끈다(`centerClampedToGround`,
+         기본 true). DEM 타일이 도착하는 순간 그 보정이 한 프레임에 들어와 지도가 훅 밀린다
+         — 카메라 명령이 없는데도 화면이 31px 움직였다(실측, 고도 0 → 284m).
+         애니메이션 중의 고도 보간(`_updateElevation`)은 이 설정과 무관하게 계속 돈다. */
+      map.setCenterClampedToGround(false);
     } catch (thrown) {
       return err(
         new MapEngineError('map/layer-failed', '3D 지형을 켜지 못했습니다.', {
           cause: thrown,
-          context: { source: TERRAIN_DEM_SOURCE_ID, exaggeration: TERRAIN_EXAGGERATION },
+          context: { source: TERRAIN_DEM_SOURCE_ID },
         }),
       );
     }
 
-    const syncCenterElevation = (): void => {
-      if (map.getTerrain() === null) return;
-      const elevation = map.queryTerrainElevation(map.getCenter());
-      if (elevation === null) return;
-      const drift = elevation - map.getCenterElevation();
-      if (Math.abs(drift) <= CENTER_ELEVATION_TOLERANCE_M) return;
-      map.setCenterElevation(elevation);
-      this.#logger.debug('지형 중심 고도 보정', { elevation: Math.round(elevation), drift });
+    /* **지형은 타일이 다 온 뒤에 켠다.** 켜 두고 기다리면 타일이 도착할 때마다 그 자리의
+       지면이 솟아 화면이 한 번에 13~87px 움직인다(실측) — 그게 "지도가 튄다"의 정체였다.
+       그렇다고 다 올 때까지 지도를 감추면 느린 망에서 3초 가까이 빈 화면이 된다(기기 실측).
+       그래서 2D 지도는 곧바로 보여 주고, 지형은 **짧은 페이드 뒤에서** 올린다:
+         타일 준비 → 페이드 아웃 → setTerrain + 첫 카메라 보정 → 페이드 인.
+       사용자가 보는 것은 잠깐의 흐려짐 하나뿐이고, 솟음과 보정은 그 뒤에서 끝난다. */
+    const surface = map.getCanvasContainer();
+    this.#options.container.style.backgroundColor =
+      MAP_PALETTES[this.#options.styleMode].background;
+    surface.style.transition = `opacity ${TERRAIN_REVEAL_FADE_MS}ms ease-out`;
+
+    const reveal = (): void => {
+      surface.style.opacity = '1';
+      // 계측이 "이 움직임이 화면에 보였는가"를 가릴 수 있게 공개 시각을 남긴다.
+      if (DIAGNOSTIC_HANDLE) (globalThis as { __mvRevealAt?: number }).__mvRevealAt = Date.now();
     };
-    map.on('moveend', syncCenterElevation);
-    map.on('idle', syncCenterElevation);
+    this.#revealSurface = reveal;
     this.#resources.add(
       toDisposable(() => {
-        map.off('moveend', syncCenterElevation);
-        map.off('idle', syncCenterElevation);
+        this.#revealSurface = () => {};
+        surface.style.opacity = '1';
       }),
     );
-    this.#logger.debug('3D 지형 켬', { exaggeration: TERRAIN_EXAGGERATION });
+
+    this.#terrainReady = new Promise<void>((resolve) => {
+      const store = new DisposableStore(this.#logger);
+      let done = false;
+      /** 지형을 실제로 켜는 지점 — 화면을 흐린 뒤에 켠다. */
+      const raise = (): void => {
+        if (done) return;
+        done = true;
+        store.dispose();
+        surface.style.opacity = '0';
+        /* 흐려지는 데 걸리는 시간을 **기다렸다가** 켠다. 곧바로 켜면 아직 또렷한 화면에서
+           지면이 솟아 그대로 보인다(실측 86px). */
+        const raiseTimer = setTimeout(() => {
+          try {
+            map.setTerrain({ source: TERRAIN_DEM_SOURCE_ID, exaggeration: TERRAIN_EXAGGERATION });
+            this.#logger.debug('3D 지형 켬', { exaggeration: TERRAIN_EXAGGERATION });
+          } catch (thrown) {
+            this.#logger.warn('3D 지형을 켜지 못했다', { reason: String(thrown) });
+            resolve();
+            return;
+          }
+          void this.#afterTerrainApplied(map).then(resolve);
+        }, TERRAIN_REVEAL_FADE_MS + 20);
+        this.#resources.add(toDisposable(() => clearTimeout(raiseTimer)));
+      };
+      const check = (): void => {
+        if (map.isSourceLoaded(TERRAIN_DEM_SOURCE_ID)) {
+          this.#logger.debug('지형 타일 준비됨');
+          raise();
+        }
+      };
+      map.on('sourcedata', check);
+      map.on('idle', check);
+      store.add(
+        toDisposable(() => {
+          map.off('sourcedata', check);
+          map.off('idle', check);
+        }),
+      );
+      /* 안전망 — 타일을 못 받아도 영영 2D 로 두지 않는다. 그때는 있는 타일로 켠다. */
+      const timer = setTimeout(() => {
+        this.#logger.debug('지형 타일을 기다리다 시간을 넘겨 그냥 켠다');
+        raise();
+      }, TERRAIN_READY_BUDGET_MS);
+      store.add(toDisposable(() => clearTimeout(timer)));
+      this.#resources.add(store);
+      check();
+    });
+
     return ok();
   }
 
@@ -767,7 +932,6 @@ export class MapLibreEngine extends MapEnginePort {
 }
 
 /** 지형 중심 고도가 이만큼 안에서 어긋난 것은 보정하지 않는다 — 제스처 중 맞는 값과 싸우지 않게. */
-const CENTER_ELEVATION_TOLERANCE_M = 1;
 
 /**
  * 오류 이벤트가 베이스맵 실패인가(C7). maplibre 는 소스·타일 오류에 `sourceId`·`source`(명세)를

@@ -129,3 +129,36 @@ export const COLOR_RELIEF_LAYER: ColorReliefLayerSpecification = {
 export function terrainLayers(mode: MapStyleMode): readonly LayerSpecification[] {
   return mode === 'light' ? [COLOR_RELIEF_LAYER, hillshadeLayer(mode)] : [hillshadeLayer(mode)];
 }
+
+/**
+ * 어느 지점 주변의 DEM 타일 주소들 — **미리 받아 두기 위한 것**.
+ *
+ * 지도가 뜬 뒤에 DEM 이 도착하면 그 자리의 지면이 한 번에 솟는다(실측 13~38px). 그래서
+ * 어댑터는 타일이 준비될 때까지 지도를 감춰 두는데, 그 기다림이 곧 빈 화면 시간이다.
+ * 계곡을 고르는 미리보기 화면에서 이 주소들을 먼저 받아 두면 브라우저 캐시에 들어가 있어
+ * 지도가 뜰 때 기다릴 것이 없다.
+ *
+ * 중심 타일과 그 이웃 8장. 줌은 지도 줌을 타일 줌으로 반올림하되 소스 상한(15)을 넘지 않는다.
+ */
+export function demTileUrls(center: { readonly lng: number; readonly lat: number }, zoom: number) {
+  const z = Math.max(0, Math.min(TERRAIN_DEM_SOURCE.maxzoom ?? 15, Math.round(zoom)));
+  const n = 2 ** z;
+  const x0 = Math.floor(((center.lng + 180) / 360) * n);
+  const latRad = (center.lat * Math.PI) / 180;
+  const y0 = Math.floor(
+    ((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n,
+  );
+  const template = TERRAIN_DEM_SOURCE.tiles?.[0] ?? '';
+  const urls: string[] = [];
+  for (let dx = -1; dx <= 1; dx += 1) {
+    for (let dy = -1; dy <= 1; dy += 1) {
+      const x = x0 + dx;
+      const y = y0 + dy;
+      if (x < 0 || y < 0 || x >= n || y >= n) continue;
+      urls.push(
+        template.replace('{z}', String(z)).replace('{x}', String(x)).replace('{y}', String(y)),
+      );
+    }
+  }
+  return urls;
+}

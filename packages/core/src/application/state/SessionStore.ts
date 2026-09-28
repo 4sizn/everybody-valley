@@ -175,9 +175,21 @@ export class SessionStore extends ObservableStore<AppState> {
     this.patch({ sheetSnap });
   }
 
-  /** 표현 계층이 창 크기·안전 영역·지금 스냅에서 잰 값(C8). 카메라는 이 값을 쓰지 않는다(C6). */
+  /**
+   * 표현 계층이 창 크기·안전 영역·지금 스냅에서 잰 값(C8).
+   *
+   * 값이 같으면 상태를 바꾸지 않는다 — `ResizeObserver` 가 시트 높이 전환(220ms) 동안
+   * **매 프레임** 이 메서드를 부르므로, 새 객체를 그대로 넣으면 그 사이 화면 전체가
+   * 매 프레임 다시 그려진다. 그 렌더 부하가 같은 시간에 도는 카메라 애니메이션을
+   * 끊기게 만들었다.
+   */
   setViewportInsets(viewportInsets: ViewportInsets): void {
-    this.patch({ viewportInsets });
+    this.update((current) =>
+      current.viewportInsets.top === viewportInsets.top &&
+      current.viewportInsets.bottom === viewportInsets.bottom
+        ? current
+        : { ...current, viewportInsets },
+    );
   }
 
   setSpotLayout(spotLayout: SpotLayout): void {
