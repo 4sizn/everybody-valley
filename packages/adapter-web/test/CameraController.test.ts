@@ -21,6 +21,7 @@ function fakeMap(pose: { zoom: number; pitch: number; bearing: number }, screen:
     getPitch: () => pose.pitch,
     getBearing: () => pose.bearing,
     isMoving: () => false,
+    getTerrain: () => null,
     project: () => ({ x: screen[0], y: screen[1] }),
     getContainer: () => ({ clientWidth: 400, clientHeight: 800 }),
     flyTo: vi.fn(),
@@ -174,4 +175,24 @@ it('각도가 크게 바뀌는 이동은 가까워도 프리셋 시간을 지킨
   expect((await moved).ok).toBe(true);
   expect(spy.easeTo).not.toHaveBeenCalled();
   expect(spy.flyTo.mock.calls[0]?.[0].duration).toBe(1400);
+});
+
+it('지형 위에서는 어긋난 만큼을 한 번 더 맞추고, 그 보정이 다시 보정을 부르지 않는다', async () => {
+  // 목표가 원하는 자리(화면 중심)에서 40px 아래에 그려진다 — 지형이 만든 어긋남.
+  const { map, spy, settle } = fakeMap({ zoom: 14.2, pitch: 58, bearing: 0 }, [200, 440]);
+  Object.assign(spy, { getTerrain: () => ({}) });
+  const camera = new CameraController(map, new NoopLogger(), { shortHopEase: true });
+
+  const moved = camera.move(
+    cameraCommand({ center: CENTER, zoom: 14.2 }, { motion: 'ease', durationMs: 320 }),
+    NONE_CANCELLATION_TOKEN,
+  );
+  settle(); // 첫 이동 끝
+  await Promise.resolve();
+  settle(); // 보정 이동 끝
+  expect((await moved).ok).toBe(true);
+
+  // 두 번 움직였고, 두 번째는 어긋난 40px 을 되민 offset 이다.
+  expect(spy.easeTo).toHaveBeenCalledTimes(2);
+  expect(spy.easeTo.mock.calls[1]?.[0].offset).toEqual([0, -40]);
 });

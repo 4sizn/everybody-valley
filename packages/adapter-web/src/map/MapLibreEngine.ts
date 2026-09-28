@@ -746,20 +746,13 @@ export class MapLibreEngine extends MapEnginePort {
   }
 
   #installTerrain(map: MapLibreMap): VoidResult {
-    try {
-      /* 엔진이 중심 고도를 **저 혼자** 지면에 붙이는 동작을 끈다(`centerClampedToGround`,
-         기본 true). DEM 타일이 도착하는 순간 그 보정이 한 프레임에 들어와 지도가 훅 밀린다
-         — 카메라 명령이 없는데도 화면이 31px 움직였다(실측, 고도 0 → 284m).
-         애니메이션 중의 고도 보간(`_updateElevation`)은 이 설정과 무관하게 계속 돈다. */
-      map.setCenterClampedToGround(false);
-    } catch (thrown) {
-      return err(
-        new MapEngineError('map/layer-failed', '3D 지형을 켜지 못했습니다.', {
-          cause: thrown,
-          context: { source: TERRAIN_DEM_SOURCE_ID },
-        }),
-      );
-    }
+    /* `centerClampedToGround`(기본 true)는 **켠 채로 둔다**.
+       한때 껐었다 — DEM 이 도착하는 순간 그 보정이 한 프레임에 들어와 카메라 명령도 없이
+       화면이 31px 밀렸기 때문이다. 하지만 끄면 중심 고도가 0(해수면)에 머물러, 지면 위의 한
+       점을 화면 어디에 놓을지 정하는 `offset` 이 통째로 어긋난다 — "위치 이동"이 선택 지점을
+       가시 영역 가운데가 아니라 77px 위에 놓았다(실측). 이제는 지형을 **타일이 다 온 뒤 흐린
+       화면 뒤에서** 켜므로 그 보정도 거기서 함께 끝난다.
+       `setTerrain` 자체의 실패는 아래 `raise()` 에서 받는다 — 지도를 못 쓰게 할 일은 아니다. */
 
     /* **지형은 타일이 다 온 뒤에 켠다.** 켜 두고 기다리면 타일이 도착할 때마다 그 자리의
        지면이 솟아 화면이 한 번에 13~87px 움직인다(실측) — 그게 "지도가 튄다"의 정체였다.
