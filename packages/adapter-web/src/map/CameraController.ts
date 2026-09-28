@@ -49,6 +49,8 @@ const MOVE_END_GRACE_MS = 600;
  * 진입 직후의 `focusValley` 가 전부 같은 구도를 다시 요구한다. 그 연쇄가 "튐"이었다.
  */
 const FRAMED_CENTER_PX = 10;
+/** 지형 때문에 어긋난 만큼을 되미는 시간. 이미 거의 맞은 자리라 짧게. */
+const FRAMING_SETTLE_MS = 220;
 const FRAMED_ZOOM = 0.02;
 const FRAMED_DEGREES = 0.5;
 
@@ -133,6 +135,8 @@ export class CameraController implements Disposable {
   readonly #shortHopEase: boolean;
 
   #disposed = false;
+  /** 지형 보정이 자기 자신을 다시 부르지 않게 하는 빗장. */
+  #settling = false;
 
   constructor(map: MapLibreMap, logger: Logger, options: CameraControllerOptions) {
     this.#map = map;
@@ -211,7 +215,45 @@ export class CameraController implements Disposable {
       );
     }
 
-    return settled.promise;
+    const result = await settled.promise;
+    if (!result.ok) return result;
+    return this.#settleFraming(resolved, token);
+  }
+
+  /**
+   * 이동이 끝난 자리에서 **실제로 어긋난 만큼**을 재서 한 번 더 맞춘다.
+   *
+   * 지형이 켜져 있으면 `offset` 이 뜻하는 자리와 화면에 그려지는 자리가 갈린다 — MapLibre 는
+   * 목표점을 중심 고도 평면에서 놓는데 그 점의 지면은 다른 높이에 있기 때문이다. 계곡처럼
+   * 고도차가 큰 곳에서 "위치 이동"이 선택 지점을 가운데가 아니라 39px 아래에 놓았다(실측).
+   * 남은 차이를 재서 그만큼만 밀면 한 번에 수렴한다. 이 보정은 자기 자신을 다시 부르지
+   * 않는다(`#settling`) — 무한히 쫓아가지 않게.
+   */
+  async #settleFraming(command: CameraCommand, token: CancellationToken): Promise<VoidResult> {
+    const target = command.target;
+    if (this.#settling || target.center === undefined || this.#map.getTerrain() === null) {
+      return ok();
+    }
+    const delta = this.#centerDeltaPx(target);
+    if (delta === null || Math.hypot(delta.x, delta.y) <= FRAMED_CENTER_PX) return ok();
+
+    const [offsetX, offsetY] = target.offset ?? [0, 0];
+    this.#settling = true;
+    try {
+      this.#logger.debug('지형 때문에 어긋난 구도를 한 번 더 맞춘다', {
+        dx: Math.round(delta.x),
+        dy: Math.round(delta.y),
+      });
+      return await this.move(
+        {
+          target: { ...target, offset: [offsetX - delta.x, offsetY - delta.y] },
+          transition: { motion: 'ease', durationMs: FRAMING_SETTLE_MS },
+        },
+        token,
+      );
+    } finally {
+      this.#settling = false;
+    }
   }
 
   dispose(): void {

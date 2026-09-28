@@ -146,6 +146,9 @@ function MapChrome({
   const sheetRef = useRef<HTMLDivElement>(null);
   const initialized = useRef<typeof session | null>(null);
   const selecting = useRef(false);
+  /* "위치 이동"이 눌렸다. 시트를 접은 **뒤** 가운데 맞춤을 해야 한다 — 누른 순간의 인셋으로
+     계산하면 시트가 아직 큰 상태의 가운데라, 접히고 나면 위로 치우쳐 보인다(사용자 보고). */
+  const centerPending = useRef(false);
   const weather = useWeather(place.valley.id);
   const foliage = useFoliage(place.valley.id);
   // 구간 정보의 "주변 산" — 중심선에서 가까운 봉우리 3개(OSM). 합본이 없으면 빈 배열.
@@ -225,7 +228,9 @@ function MapChrome({
       clearTimeout(moveTimer);
       if (sheet !== 'full')
         moveTimer = setTimeout(() => {
-          void session.recenterSelection('ensure');
+          const mode = centerPending.current ? 'center' : 'ensure';
+          centerPending.current = false;
+          void session.recenterSelection(mode);
         }, 60);
     };
     const observer = new ResizeObserver(measure);
@@ -290,6 +295,15 @@ function MapChrome({
       setSheet(next.facility ? 'half' : 'peek');
     }
     selecting.current = false;
+  };
+  /** "위치 이동" — 지도를 크게 보이게 접고, 접힌 뒤의 화면 가운데로 선택 지점을 데려온다. */
+  const centerOnSelection = () => {
+    if (sheet === 'peek') {
+      void session.recenterSelection('center');
+      return;
+    }
+    centerPending.current = true;
+    setSheet('peek');
   };
   const backToValley = () => {
     setTab('segment');
@@ -436,14 +450,7 @@ function MapChrome({
                   길찾기
                 </Button>
                 <IconButton label="계곡으로 돌아가기" icon="map" onClick={backToValley} />
-                <IconButton
-                  label="위치 이동"
-                  icon="locate-fixed"
-                  onClick={() => {
-                    setSheet('peek');
-                    void session.recenterSelection();
-                  }}
-                />
+                <IconButton label="위치 이동" icon="locate-fixed" onClick={centerOnSelection} />
                 {/*
                   시트 헤더의 +/- 를 없앤 자리(사용자 결정 2026-09-26). 계곡 시트는 푸터의
                   '구간 정보'가 같은 일을 하지만 시설 시트에는 그런 버튼이 없어, 접힘 상태에서
@@ -462,8 +469,7 @@ function MapChrome({
                   onClick={() => {
                     // 그늘 토글은 지도 도구 칩과 구간 탭에 있다. 여기서는 선택한 구간·시설로
                     // 지도를 되돌린다(사용자 요청 2026-09-23 "위치 이동").
-                    setSheet('peek');
-                    void session.recenterSelection();
+                    centerOnSelection();
                   }}
                 >
                   위치 이동
@@ -741,7 +747,7 @@ function MapChrome({
               variant="secondary"
               icon="locate-fixed"
               onClick={() => {
-                void session.recenterSelection();
+                centerOnSelection();
                 setControls(false);
               }}
             >

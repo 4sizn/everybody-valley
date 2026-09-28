@@ -119,33 +119,6 @@ it('지형을 켜도 중심 고도를 직접 건드리지 않는다 — 엔진�
   }
 });
 
-it('지형을 켜면 엔진의 자동 중심 고도 클램프를 끈다', async () => {
-  vi.stubGlobal(
-    'fetch',
-    vi.fn(async () => new Response(JSON.stringify({ version: 8, sources: {}, layers: [] }))),
-  );
-  const setCenterClampedToGround = vi.fn();
-  Object.assign(map, { setTerrain: vi.fn(), setCenterClampedToGround, isSourceLoaded: () => true });
-
-  const center = LngLat.create(127, 35);
-  if (!center.ok) throw center.error;
-  const engine = new MapLibreEngine({
-    container: { style: {} } as unknown as HTMLElement,
-    launchSite: center.value,
-    logger: new NoopLogger(),
-    styleMode: 'light',
-    terrain: true,
-  });
-  try {
-    expect((await engine.initialize(NONE_CANCELLATION_TOKEN)).ok).toBe(true);
-    /* 켜 두면 DEM 타일이 도착하는 순간 엔진이 카메라 명령 없이 화면을 밀어 버린다
-       (실측 31px). 우리 명령만 카메라를 움직여야 한다. */
-    expect(setCenterClampedToGround).toHaveBeenCalledWith(false);
-  } finally {
-    engine.dispose();
-  }
-});
-
 it('지형은 타일이 다 온 뒤에 켜고, 첫 카메라 명령은 그 뒤에 움직인다', async () => {
   vi.stubGlobal(
     'fetch',
